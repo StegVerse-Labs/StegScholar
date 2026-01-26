@@ -1,0 +1,8 @@
+\begin{tikzpicture}[node distance=3cm, every node/.style={draw, align=center}]
+\node (trust) {Trust};
+\node (boundary) [below left of=trust] {Boundary};
+\node (audit) [below right of=trust] {Audit};
+\draw[->] (trust) -- (boundary);
+\draw[->] (boundary) -- (audit);
+\draw[->] (audit) -- (trust);
+\end{tikzpicture}
