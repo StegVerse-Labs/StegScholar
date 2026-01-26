@@ -1,0 +1,5 @@
+- [ ] Double blind scrub
+- [ ] Figures embedded
+- [ ] Related work complete
+- [ ] Limitations included
+- [ ] Bibliography linked
