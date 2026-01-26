@@ -1,26 +1,22 @@
-# StegScholar
+# StegScholar Roadmap
 
-StegScholar is the scholarly research repository for StegVerse.
+## Phase 0 — Foundations
+- [x] Glossary v0.1
+- [x] Papers 1–3 drafted
+- [x] Capstone outline
+- [x] Shared figures
+- [x] Bibliography file
 
-This repository tracks:
-- Peer-review research papers
-- Submission history and outcomes
-- Figures and diagrams
-- Reading lists and prior work
-- Evolving research primitives and terminology
+## Phase 1 — Submission Cycle
+- [ ] Submit Paper 1 (systems workshop)
+- [ ] Submit Paper 2 (security venue)
+- [ ] Submit Paper 3 (AI governance venue)
 
-## Research Themes
-- Trust as a system state
-- Auditability and irrecoverable audit loss
-- Credential lifecycle failures
-- Boundary-condition autonomy
-- Survivable governance under uncertainty
+## Phase 2 — Field Seeding
+- [ ] Publish glossary as citable artifact
+- [ ] Release diagram pack
+- [ ] Publish reading map
 
-## Design Principles
-- Papers are standalone and composable
-- No paper depends on StegVerse as a platform
-- StegVerse serves only as an existence proof
-- Terminology is stable, versioned, and reusable
-
-## Status
-Active research program — submission phase.
+## Phase 3 — Synthesis
+- [ ] Submit Capstone paper
+- [ ] Derive combination papers
