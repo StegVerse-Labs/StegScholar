@@ -1,0 +1,81 @@
+\documentclass[10pt]{article}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+\title{Trust-Bounded Socio-Technical Systems: Architectural Primitives for Auditability and Failure}
+\author{Anonymous Submission}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Distributed systems increasingly combine human actors, automated components, and institutional processes, yet commonly treat trust as an implicit assumption rather than an explicit system property. This paper introduces a minimal set of architectural primitives for trust-bounded socio-technical systems, including trust as state, enforceable boundaries, and auditable state transitions. We show that trust persistence, decay, and loss of verifiable history are not exceptional conditions but expected operational realities. By explicitly modeling these conditions, systems can remain coherent and governable under partial observability, policy change, and heterogeneous actors. The proposed framework is independent of specific technologies, does not require autonomous or artificial intelligence components, and is applicable to a wide range of security- and safety-critical systems.
+\end{abstract}
+
+\section{Introduction}
+Modern systems rarely operate in purely technical domains. Human operators, institutional policies, automated workflows, and software components jointly influence system behavior. Despite this reality, most system architectures implicitly assume that trust is stable, that failures are observable, and that history can be reconstructed when needed.
+
+In practice, these assumptions frequently fail. Credentials persist beyond their justifying conditions, audit artifacts become inaccessible due to policy or architectural constraints, and systems continue operating despite uncertainty about prior actions. When failures occur under such conditions, systems often lose the ability to explain or govern their own behavior.
+
+This paper argues that these failures are architectural rather than incidental. We propose primitives that make trust explicit, represent audit loss as a first-class condition, and constrain behavior through enforceable boundaries rather than policy alone.
+
+\section{Contributions}
+This paper makes four primary contributions:
+\begin{itemize}
+  \item \textbf{Trust as State:} formalizing trust as an explicit, mutable system variable rather than an implicit assumption.
+  \item \textbf{Audit Loss as a Valid State:} introducing irrecoverable audit loss as an expected operational condition, not an exception.
+  \item \textbf{Boundary Enforcement as Governance Mechanism:} distinguishing enforceable system boundaries from policy-only constraints.
+  \item \textbf{Survivability Under Epistemic Constraint:} showing how systems remain governable even when historical reconstruction is impossible.
+\end{itemize}
+
+\section{Background and Scope}
+This work draws on distributed systems, security architecture, and governance frameworks, but does not attempt to unify these domains philosophically. We model socio-technical factors only insofar as they introduce enforceable constraints, policy-induced audit limits, and trust lifecycle discontinuities that affect system behavior.
+
+We do not address moral responsibility, organizational incentives, or social dynamics beyond their architectural implications.
+
+\section{Trust as an Explicit System State}
+We define \textit{trust} as a measurable, evolving system state representing confidence in an actor or component's behavior. Trust is not binary and does not imply correctness or intent. Crucially, trust persists by default and changes only through explicit state transitions.
+
+We highlight three properties:
+\begin{itemize}
+  \item \textbf{Trust continuity:} trust persists unless explicitly degraded.
+  \item \textbf{Trust decay:} trust weakens in the absence of reaffirming evidence.
+  \item \textbf{Phantom trust:} trust persists after justification becomes unverifiable.
+\end{itemize}
+
+Treating trust as state exposes behaviors systems already exhibit but rarely acknowledge.
+
+\section{Boundary Enforcement}
+Boundaries define what actions are permissible within a system. Unlike policy statements, boundaries must be enforceable, auditable, and revocable. Boundary enforcement operates independently of an actor's internal decision-making process and applies equally to human and technical components.
+
+Treating boundaries as mechanisms rather than norms allows systems to constrain behavior under partial observability. Boundary enforcement provides a means of revoking capability without requiring retrospective attribution or intent analysis.
+
+\section{Auditability and Irrecoverable Audit Loss}
+Auditability is often treated as binary: either logs exist or they do not. In practice, auditability exists along a spectrum. Policy constraints, architectural decisions, and temporal factors may render certain histories irrecoverable even when systems continue operating.
+
+We define \textit{irrecoverable audit loss} as a system state in which historical actions cannot be reliably reconstructed. Rather than treating this condition as exceptional, systems must explicitly represent it as a valid outcome and design for survivability under such constraints.
+
+\section{Minimal Model Sketch}
+At minimum, a trust-bounded system maintains three state variables:
+\begin{align*}
+Trust &\in \{high, degraded, unknown\} \\
+Boundary &\in \{enabled, restricted, revoked\} \\
+Audit &\in \{available, partial, irrecoverable\}
+\end{align*}
+Transitions between these states are recorded as immutable events. No assumption is made that all transitions are observable.
+
+\section{Illustrative Vignette}
+Consider a distributed operational system undergoing policy-driven log retention changes. Historical access records become inaccessible while operations continue uninterrupted. Trust in certain components persists, not due to evidence, but due to lack of alternatives. Without explicit representation of audit loss and trust decay, the system cannot distinguish confidence from convenience and cannot justify governance decisions post hoc.
+
+\section{Related Work}
+Distributed systems research formalizes failure under bounded assumptions of observability. Zero-trust architectures constrain access but do not explicitly represent loss of trust justification over time or audit loss as a first-class system state. Governance and accountability frameworks emphasize norms and oversight rather than enforceable runtime mechanisms. This work complements these traditions by introducing architectural primitives for trust persistence, boundary enforcement, and survivability under epistemic constraint.
+
+\section{Limitations and Future Work}
+This paper does not prescribe specific enforcement mechanisms or formal proofs. It does not guarantee correctness, prevent misuse, or resolve governance disputes. Future work may explore formalization, failure-mode analysis, and application to autonomous components.
+
+\bibliographystyle{plain}
+\bibliography{stegscholar}
+
+\end{document}
