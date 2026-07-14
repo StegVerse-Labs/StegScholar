@@ -94,30 +94,41 @@ The current work is a **candidate cross-domain systems formalism**, not an estab
 - Initial validation protocol defined.
 - Publication figures and draft papers were generated in a prior runtime, but binary artifacts have not yet been durably committed here.
 - Coherence-determinant extension decisions, cautions, research gap, and validation direction durably recorded.
+- Claims register committed at `papers/recoverability-geometry-rigel-number/claims-register.md`.
+- Coherence-determinant extension committed at `papers/recoverability-geometry-rigel-number/coherence-determinant-extension.md`.
+- Reproducible standard-library scalar delayed-control benchmark committed at `papers/recoverability-geometry-rigel-number/simulations/scalar_delayed_control.py` in commit `46322db84e2d3d71df47cd4b13e04974b5c2c396`.
+- Simulation methodology, units, replay instructions, interpretation constraints, and next benchmark requirements committed at `papers/recoverability-geometry-rigel-number/simulations/README.md` in commit `26675a62afe817e6bdfc3d00dd2c33560a6069f4`.
+- The benchmark defines recovery independently from the Rigel equation using a hard safety boundary plus terminal target return.
+- The benchmark reserves an upper-delay and upper-instability parameter region for out-of-distribution evaluation rather than relying only on random row holdout.
 
 ## Immediate tasks
 
-1. Maintain a canonical Markdown manuscript in `papers/recoverability-geometry-rigel-number/manuscript.md`.
-2. Maintain a validation protocol in `papers/recoverability-geometry-rigel-number/validation-protocol.md`.
-3. Add a rigorous notation and dimensional-analysis table.
-4. Derive a detector-specific instantiation without asserting access to unpublished collider timing data.
-5. Develop and test a simulated delayed-control benchmark.
-6. Test whether decomposed latency predicts failure better than total latency alone.
-7. Add a Kuramoto delayed-coupling instantiation and clearly state equivalence limits.
-8. Add a Hamilton-Jacobi formulation showing how delayed observation changes the reachable/viable set.
-9. Recreate and commit figures as source-controlled SVG or code-generated assets.
-10. Prepare a short, technically narrow outreach note for Dr. Nural Akchurin focused on AI-in-the-loop calorimeter/reconstruction latency.
-11. Create a claims register separating established results, derived results, conjectures, analogies, and disallowed overclaims.
-12. Create a primary-source related-work and gap map for the coherence-determinant extension.
-13. Define dimensionless candidate observables for coherence-envelope boundaries.
-14. Specify and simulate the SCW coherence-audit experiment before any authorized service test.
-15. Determine whether the coherence extension predicts boundary movement better than established critical-transition, reachability, queueing, and synchronization models.
+1. Maintain the canonical Markdown manuscript in `papers/recoverability-geometry-rigel-number/manuscript.md`.
+2. Maintain the validation protocol in `papers/recoverability-geometry-rigel-number/validation-protocol.md`.
+3. Add a rigorous notation, units, and dimensional-analysis table to the manuscript.
+4. Run and verify the delayed-control benchmark; commit configuration, summary, output hashes, and a validation receipt.
+5. Add deterministic tests for delay partitioning, outcome labeling, score direction, and replay stability.
+6. Add fitted decomposed-latency and interaction baselines, bootstrap uncertainty intervals, calibration measures, and leakage controls.
+7. Add constant-total-latency ablations that redistribute delay among observation, commitment, and realization phases.
+8. Determine whether decomposed latency predicts failure better than total latency and `lambda * total latency` in the held-out parameter region.
+9. Add a Kuramoto delayed-coupling benchmark and clearly state equivalence limits.
+10. Add a queue/buffer or SCW-like distributed-service benchmark with independently labeled overflow, deadline, and recovery outcomes.
+11. Add a Hamilton-Jacobi formulation showing how delayed observation changes the reachable/viable set.
+12. Derive a detector-specific instantiation without asserting access to unpublished collider timing data.
+13. Recreate and commit figures as source-controlled SVG or code-generated assets.
+14. Prepare a short, technically narrow outreach note for Dr. Nural Akchurin focused on AI-in-the-loop calorimeter/reconstruction latency.
+15. Create a primary-source related-work and gap map for the coherence-determinant extension.
+16. Define and compare dimensionless candidate observables for coherence-envelope boundaries.
+17. Determine whether the coherence extension predicts boundary movement better than established critical-transition, reachability, queueing, and synchronization models.
 
 ## Known blockers and cautions
 
-- No empirical evidence yet demonstrates cross-domain clustering at `Ri approx 1`.
+- The newly committed simulation source has not yet been executed in a verified repository workflow or accompanied by committed generated evidence.
+- No empirical evidence yet demonstrates cross-domain clustering at `Ri approximately 1`.
 - `V`, `lambda`, `delta_0`, and `kappa` require domain-specific operational definitions.
+- The initial scalar benchmark uses one provisional construction of `V` and `delta_0`; success would not establish uniqueness of those definitions.
 - The additive decomposition of latency does not by itself establish statistical independence or separability of phase effects.
+- A phase decomposition can only show added value after constant-total-delay ablations and fitted-baseline comparisons.
 - Fundamental constants such as `hbar`, `G`, `c`, or the cosmological constant are inputs or scale constraints unless a separate variational derivation proves otherwise.
 - Binary figures and prior PDF drafts remain non-authoritative until regenerated and committed.
 - No conservation law for a scalar quantity called coherence has been established.
@@ -130,6 +141,7 @@ The current work is a **candidate cross-domain systems formalism**, not an estab
 
 - Research direction and authorship: Rigel Randolph.
 - Current repository continuation: StegScholar research track.
+- Simulation source implementation: committed; verification run unassigned.
 - External scientific review: unassigned.
 - Engineered-system validation: unassigned pending target authorization.
 
@@ -138,10 +150,10 @@ The current work is a **candidate cross-domain systems formalism**, not an estab
 A continuation session may:
 
 - refine definitions and derivations;
-- create simulations and tests;
+- create, execute, and test simulations in authorized environments;
 - add literature-grounded comparisons using primary sources;
 - improve manuscript structure and figures;
-- prepare outreach material;
+- prepare outreach material without sending it;
 - create claims registers, dataset specifications, issues, tasks, and validation receipts;
 - update this handoff with committed evidence.
 
