@@ -1,0 +1,118 @@
+name: Rigel validation
+
+on:
+  workflow_dispatch:
+    inputs:
+      episodes:
+        description: "Episode count for the validation run"
+        required: false
+        default: "10000"
+  push:
+    branches: [main]
+    paths:
+      - "papers/recoverability-geometry-rigel-number/simulations/**"
+      - ".github/workflows/rigel-validation.yml"
+  pull_request:
+    paths:
+      - "papers/recoverability-geometry-rigel-number/simulations/**"
+      - ".github/workflows/rigel-validation.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  test-and-simulate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run deterministic tests
+        run: |
+          python papers/recoverability-geometry-rigel-number/simulations/test_scalar_delayed_control.py
+
+      - name: Resolve episode count
+        id: episodes
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "value=${{ inputs.episodes }}" >> "$GITHUB_OUTPUT"
+          elif [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            echo "value=1000" >> "$GITHUB_OUTPUT"
+          else
+            echo "value=10000" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Run benchmark
+        run: |
+          python papers/recoverability-geometry-rigel-number/simulations/scalar_delayed_control.py \
+            --episodes "${{ steps.episodes.outputs.value }}" \
+            --seed 20260714 \
+            --output-dir generated/scalar-delayed-control
+
+      - name: Create validation receipt
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          output = Path("generated/scalar-delayed-control")
+          files = [output / "config.json", output / "episodes.csv", output / "summary.json"]
+          hashes = {}
+          for path in files:
+              digest = hashlib.sha256(path.read_bytes()).hexdigest()
+              hashes[str(path)] = {"sha256": digest, "bytes": path.stat().st_size}
+
+          receipt = {
+              "schema_version": "1.0",
+              "benchmark_id": "rigel-scalar-delayed-control-v1",
+              "generated_at_utc": datetime.now(timezone.utc).isoformat(),
+              "repository": os.environ.get("GITHUB_REPOSITORY"),
+              "commit_sha": os.environ.get("GITHUB_SHA"),
+              "run_id": os.environ.get("GITHUB_RUN_ID"),
+              "run_attempt": os.environ.get("GITHUB_RUN_ATTEMPT"),
+              "event_name": os.environ.get("GITHUB_EVENT_NAME"),
+              "python": "3.12",
+              "command": (
+                  "python papers/recoverability-geometry-rigel-number/simulations/"
+                  "scalar_delayed_control.py --episodes "
+                  "${{ steps.episodes.outputs.value }} --seed 20260714 "
+                  "--output-dir generated/scalar-delayed-control"
+              ),
+              "independent_outcome_label": True,
+              "files": hashes,
+              "claim_limit": (
+                  "This receipt proves deterministic execution and artifact identity only; "
+                  "it does not establish cross-domain validity or a universal Ri=1 threshold."
+              ),
+          }
+          (output / "validation-receipt.json").write_text(
+              json.dumps(receipt, indent=2, sort_keys=True), encoding="utf-8"
+          )
+          PY
+
+      - name: Display summary
+        run: cat generated/scalar-delayed-control/summary.json
+
+      - name: Upload validation evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: rigel-scalar-delayed-control-${{ github.sha }}
+          path: |
+            generated/scalar-delayed-control/config.json
+            generated/scalar-delayed-control/episodes.csv
+            generated/scalar-delayed-control/summary.json
+            generated/scalar-delayed-control/validation-receipt.json
+          if-no-files-found: error
+          retention-days: 30
