@@ -44,6 +44,15 @@ The generated summary reports ROC AUC for:
 
 These are diagnostic score comparisons, not a complete model-selection result. The next stage must add fitted decomposed-latency, domain-baseline, and flexible nonparametric models with calibration and uncertainty intervals.
 
+## Canonical configuration
+
+The source-controlled benchmark declaration is:
+
+- `scalar-delayed-control.config.json`
+- `scalar-delayed-control.config.schema.json`
+
+The JSON declaration mirrors the current Python defaults and records the independent recovery label, held-out parameter region, and candidate comparison scores. The current script still constructs `Config` from its command-line arguments; config-file ingestion remains a follow-on task. Any change to Python defaults must be reflected in the canonical JSON declaration or explicitly documented as an experimental override.
+
 ## Run
 
 From the repository root:
@@ -62,6 +71,27 @@ python papers/recoverability-geometry-rigel-number/simulations/scalar_delayed_co
 ```
 
 The protocol target remains at least 10,000 episodes.
+
+## Deterministic tests
+
+Run:
+
+```bash
+python papers/recoverability-geometry-rigel-number/simulations/test_scalar_delayed_control.py
+```
+
+The standard-library test suite verifies:
+
+- delay discretization and queue behavior;
+- algebra and monotonic direction of the candidate score;
+- deterministic split assignment;
+- exact equality of total latency and phase sum;
+- phase-burden calculations;
+- fixed-seed replay stability;
+- outcome-label implications;
+- safety violations preventing recovery.
+
+These tests verify implementation mechanics. They do not validate the candidate cross-domain theory or establish an empirical transition at `Ri = 1`.
 
 ## Generated outputs
 
@@ -102,9 +132,11 @@ The candidate receives no support from this benchmark unless it improves over bo
 
 ## Next benchmark work
 
-1. Add deterministic tests for delay partitioning and outcome labeling.
-2. Add fitted logistic and interaction baselines without data leakage.
-3. Add bootstrap confidence intervals.
-4. Add ablations holding total latency constant while redistributing phase delays.
-5. Add a delayed-coupled-oscillator benchmark with synchronization ground truth.
-6. Add a queue/buffer benchmark with overflow and recovery labels.
+1. Execute and verify the deterministic test suite in a repository workflow.
+2. Execute the 10,000-episode canonical benchmark and commit a validation receipt with output hashes.
+3. Add config-file ingestion and schema validation or a standard-library validation fallback.
+4. Add fitted logistic and interaction baselines without data leakage.
+5. Add bootstrap confidence intervals and calibration metrics.
+6. Add constant-total-latency ablations that redistribute phase delays.
+7. Add a delayed-coupled-oscillator benchmark with synchronization ground truth.
+8. Add a queue/buffer benchmark with overflow and recovery labels.
