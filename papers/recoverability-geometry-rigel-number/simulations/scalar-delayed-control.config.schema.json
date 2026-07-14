@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stegverse.org/schemas/rigel/scalar-delayed-control.config.schema.json",
+  "title": "Rigel Scalar Delayed-Control Benchmark Configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark_id",
+    "seed",
+    "episodes",
+    "dt",
+    "horizon_s",
+    "recovery_window_s",
+    "target_abs_x",
+    "safety_abs_x",
+    "control_limit",
+    "observation_delay_s",
+    "commitment_delay_s",
+    "realization_delay_s",
+    "plant_growth_rate_s_inv",
+    "controller_gain",
+    "initial_abs_x",
+    "process_noise_sd",
+    "sensor_noise_sd",
+    "margin_floor",
+    "out_of_distribution_holdout",
+    "independent_recovery_label",
+    "candidate_scores"
+  ],
+  "properties": {
+    "$schema": {"type": "string"},
+    "benchmark_id": {"type": "string", "minLength": 1},
+    "seed": {"type": "integer", "minimum": 0},
+    "episodes": {"type": "integer", "minimum": 100},
+    "dt": {"type": "number", "exclusiveMinimum": 0},
+    "horizon_s": {"type": "number", "exclusiveMinimum": 0},
+    "recovery_window_s": {"type": "number", "exclusiveMinimum": 0},
+    "target_abs_x": {"type": "number", "minimum": 0},
+    "safety_abs_x": {"type": "number", "exclusiveMinimum": 0},
+    "control_limit": {"type": "number", "exclusiveMinimum": 0},
+    "observation_delay_s": {"$ref": "#/$defs/nonnegativeRange"},
+    "commitment_delay_s": {"$ref": "#/$defs/nonnegativeRange"},
+    "realization_delay_s": {"$ref": "#/$defs/nonnegativeRange"},
+    "plant_growth_rate_s_inv": {"$ref": "#/$defs/nonnegativeRange"},
+    "controller_gain": {"$ref": "#/$defs/nonnegativeRange"},
+    "initial_abs_x": {"$ref": "#/$defs/nonnegativeRange"},
+    "process_noise_sd": {"$ref": "#/$defs/nonnegativeRange"},
+    "sensor_noise_sd": {"$ref": "#/$defs/nonnegativeRange"},
+    "margin_floor": {"type": "number", "exclusiveMinimum": 0},
+    "out_of_distribution_holdout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["selection_rule", "upper_region_fraction", "variables"],
+      "properties": {
+        "selection_rule": {"type": "string", "minLength": 1},
+        "upper_region_fraction": {"type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1},
+        "variables": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "independent_recovery_label": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["all_conditions_required"],
+      "properties": {
+        "all_conditions_required": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "candidate_scores": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    }
+  },
+  "$defs": {
+    "nonnegativeRange": {
+      "type": "array",
+      "prefixItems": [
+        {"type": "number", "minimum": 0},
+        {"type": "number", "minimum": 0}
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    }
+  }
+}
