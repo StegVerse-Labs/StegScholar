@@ -1,0 +1,42 @@
+{
+  "$schema": "./scalar-delayed-control.config.schema.json",
+  "benchmark_id": "rigel-scalar-delayed-control-v1",
+  "seed": 20260714,
+  "episodes": 10000,
+  "dt": 0.01,
+  "horizon_s": 8.0,
+  "recovery_window_s": 1.0,
+  "target_abs_x": 0.15,
+  "safety_abs_x": 4.0,
+  "control_limit": 8.0,
+  "observation_delay_s": [0.0, 0.25],
+  "commitment_delay_s": [0.0, 0.25],
+  "realization_delay_s": [0.0, 0.25],
+  "plant_growth_rate_s_inv": [0.2, 1.4],
+  "controller_gain": [1.0, 4.5],
+  "initial_abs_x": [0.2, 1.5],
+  "process_noise_sd": [0.0, 0.1],
+  "sensor_noise_sd": [0.0, 0.1],
+  "margin_floor": 1e-9,
+  "out_of_distribution_holdout": {
+    "selection_rule": "episode_id modulo 5 equals 0",
+    "upper_region_fraction": 0.28,
+    "variables": [
+      "observation_delay_s",
+      "commitment_delay_s",
+      "realization_delay_s",
+      "plant_growth_rate_s_inv"
+    ]
+  },
+  "independent_recovery_label": {
+    "all_conditions_required": [
+      "no state sample exceeds safety_abs_x",
+      "terminal mean absolute state is at most target_abs_x"
+    ]
+  },
+  "candidate_scores": [
+    "alpha_total",
+    "lambda_growth_times_alpha_total",
+    "rigel_number"
+  ]
+}
