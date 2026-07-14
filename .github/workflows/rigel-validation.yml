@@ -11,6 +11,10 @@ on:
         description: "Matched scenarios for the constant-total-latency ablation"
         required: false
         default: "2000"
+      bootstrap_replicates:
+        description: "Bootstrap replicates for held-out baseline intervals"
+        required: false
+        default: "500"
   push:
     branches: [main]
     paths:
@@ -49,12 +53,15 @@ jobs:
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
             echo "episodes=${{ inputs.episodes }}" >> "$GITHUB_OUTPUT"
             echo "ablation_scenarios=${{ inputs.ablation_scenarios }}" >> "$GITHUB_OUTPUT"
+            echo "bootstrap_replicates=${{ inputs.bootstrap_replicates }}" >> "$GITHUB_OUTPUT"
           elif [[ "${{ github.event_name }}" == "pull_request" ]]; then
             echo "episodes=1000" >> "$GITHUB_OUTPUT"
             echo "ablation_scenarios=250" >> "$GITHUB_OUTPUT"
+            echo "bootstrap_replicates=200" >> "$GITHUB_OUTPUT"
           else
             echo "episodes=10000" >> "$GITHUB_OUTPUT"
             echo "ablation_scenarios=2000" >> "$GITHUB_OUTPUT"
+            echo "bootstrap_replicates=500" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Run scalar benchmark
@@ -63,6 +70,14 @@ jobs:
             --episodes "${{ steps.run_sizes.outputs.episodes }}" \
             --seed 20260714 \
             --output-dir generated/scalar-delayed-control
+
+      - name: Fit held-out latency baselines
+        run: |
+          python papers/recoverability-geometry-rigel-number/simulations/fit_baselines.py \
+            --episodes-csv generated/scalar-delayed-control/episodes.csv \
+            --output generated/scalar-delayed-control/baseline-evaluation.json \
+            --bootstrap-replicates "${{ steps.run_sizes.outputs.bootstrap_replicates }}" \
+            --seed 20260714
 
       - name: Run constant-total-latency ablation
         run: |
@@ -86,16 +101,18 @@ jobs:
               {
                   "benchmark_id": "rigel-scalar-delayed-control-v1",
                   "output": Path("generated/scalar-delayed-control"),
+                  "files": ["config.json", "episodes.csv", "summary.json", "baseline-evaluation.json"],
                   "command": (
                       "python papers/recoverability-geometry-rigel-number/simulations/"
                       "scalar_delayed_control.py --episodes "
                       "${{ steps.run_sizes.outputs.episodes }} --seed 20260714 "
-                      "--output-dir generated/scalar-delayed-control"
+                      "--output-dir generated/scalar-delayed-control; then fit_baselines.py"
                   ),
               },
               {
                   "benchmark_id": "rigel-constant-total-latency-ablation-v1",
                   "output": Path("generated/constant-total-latency-ablation"),
+                  "files": ["config.json", "episodes.csv", "summary.json"],
                   "command": (
                       "python papers/recoverability-geometry-rigel-number/simulations/"
                       "constant_total_latency_ablation.py --scenarios "
@@ -108,14 +125,14 @@ jobs:
 
           for run in runs:
               output = run["output"]
-              files = [output / "config.json", output / "episodes.csv", output / "summary.json"]
+              files = [output / name for name in run["files"]]
               hashes = {}
               for path in files:
                   digest = hashlib.sha256(path.read_bytes()).hexdigest()
                   hashes[str(path)] = {"sha256": digest, "bytes": path.stat().st_size}
 
               receipt = {
-                  "schema_version": "1.0",
+                  "schema_version": "1.1",
                   "benchmark_id": run["benchmark_id"],
                   "generated_at_utc": datetime.now(timezone.utc).isoformat(),
                   "repository": os.environ.get("GITHUB_REPOSITORY"),
@@ -141,6 +158,8 @@ jobs:
         run: |
           echo "Scalar benchmark summary"
           cat generated/scalar-delayed-control/summary.json
+          echo "Held-out fitted baseline evaluation"
+          cat generated/scalar-delayed-control/baseline-evaluation.json
           echo "Constant-total-latency ablation summary"
           cat generated/constant-total-latency-ablation/summary.json
 
@@ -152,6 +171,7 @@ jobs:
             generated/scalar-delayed-control/config.json
             generated/scalar-delayed-control/episodes.csv
             generated/scalar-delayed-control/summary.json
+            generated/scalar-delayed-control/baseline-evaluation.json
             generated/scalar-delayed-control/validation-receipt.json
             generated/constant-total-latency-ablation/config.json
             generated/constant-total-latency-ablation/episodes.csv
