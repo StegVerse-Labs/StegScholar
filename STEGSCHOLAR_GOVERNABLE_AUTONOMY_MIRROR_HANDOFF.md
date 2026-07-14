@@ -102,6 +102,14 @@ StegScholar requires a public-facing research and peer-review section on StegVer
 
 Each public paper page should expose version, status, claims scope, canonical source, generated artifact hashes, known limitations, citation guidance, and a durable feedback path. `stable-paper` means internally version-stable, not externally peer-reviewed. Site implementation must check `StegVerse-Labs/Site/docs/SITE_MIRROR_HANDOFF.md` before mutation. See issue #1.
 
+## Completed durable program infrastructure
+
+- Program index and taxonomy: `research-programs/governable-autonomy/README.md`
+- Artifact manifest: `research-programs/governable-autonomy/ARTIFACT_MANIFEST.md`
+- Machine-readable paper registry: `research-programs/governable-autonomy/paper-registry.json`
+
+These records establish stable paper identifiers, maturity categories, claims scope, limitations, review states, canonical source targets, and future candidate intake requirements.
+
 ## Active task map
 
 - #1 — Publish StegScholar peer-review portal on StegVerse.org
@@ -116,19 +124,21 @@ Each public paper page should expose version, status, claims scope, canonical so
 - #10 — Define compute-floor and degraded-capacity semantics
 - #11 — Add state-integrity and compromised-state recovery model
 - #12 — Add monotonic authority-contraction property tests
-- #13 — Create program index and paper taxonomy
-- #14 — Add archival and continuation criteria
-- #15 — Consolidate implementation sequence
-- #16 — Create this handoff
-- #17 — Create artifact manifest
-- #18 — Create machine-readable paper-status registry
-- #19 — Implement and verify handoff and manifest
 - #20 — Create initial canonical source directories
+
+## Completed issues
+
+- #13 — Program index and paper taxonomy
+- #14 — Archival and continuation criteria
+- #16 — Governable Autonomy handoff
+- #17 — Artifact manifest
+- #18 — Machine-readable paper-status registry
+- #19 — Handoff and manifest verification
 
 ## Recommended implementation order
 
-1. Maintain this handoff and create the program index/taxonomy.
-2. Create the artifact manifest and paper-status registry.
+1. Create canonical source files for all six papers and shared figure documentation under issue #20.
+2. Define the review evidence/status schema under issue #4.
 3. Formalize the execution-boundary model, degraded-capacity semantics, and state-integrity model.
 4. Implement property tests and simulations.
 5. Create reproducible diagrams and paper builds.
