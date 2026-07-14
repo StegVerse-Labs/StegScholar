@@ -1,0 +1,175 @@
+{
+  "schema_version": "1.0.0-draft",
+  "program_id": "governable-autonomy",
+  "program_title": "Governable Autonomy",
+  "author": "Rigel Randolph",
+  "last_updated": "2026-07-14",
+  "status_values": [
+    "research-note",
+    "draft-concept",
+    "working-paper",
+    "stable-paper",
+    "superseded",
+    "withdrawn"
+  ],
+  "review_state_values": [
+    "none",
+    "feedback-invited",
+    "comments-received",
+    "revision-in-progress",
+    "independently-reviewed",
+    "replicated",
+    "venue-submitted",
+    "venue-accepted"
+  ],
+  "papers": [
+    {
+      "paper_id": "GA-001",
+      "slug": "governance-invariant-for-autonomous-systems",
+      "title": "Governance Invariant for Autonomous Systems",
+      "version": "0.1.0-draft",
+      "status": "draft-concept",
+      "review_state": "none",
+      "canonical_source": "papers/governance-invariant-for-autonomous-systems/manuscript.md",
+      "artifact_directory": "papers/governance-invariant-for-autonomous-systems/dist/",
+      "artifact_hashes": [],
+      "claims_scope": "Proposes a monotonic authority-contraction safety property for autonomous socio-technical systems under epistemic degradation.",
+      "known_limitations": [
+        "No general proof is committed.",
+        "Scalar notation may be inadequate for action-set semantics.",
+        "Emergency authority and authorized re-expansion require formal treatment."
+      ],
+      "review_records": [],
+      "external_references": [],
+      "issues": [5, 7, 10, 11, 12]
+    },
+    {
+      "paper_id": "GA-002",
+      "slug": "survivable-governance",
+      "title": "Survivable Governance",
+      "version": "0.1.0-reconstruction",
+      "status": "working-paper",
+      "review_state": "revision-in-progress",
+      "canonical_source": "papers/survivable-governance/manuscript.md",
+      "artifact_directory": "papers/survivable-governance/dist/",
+      "artifact_hashes": [],
+      "claims_scope": "Defines governance behavior intended to remain bounded when trust and historical reconstruction degrade.",
+      "known_limitations": [
+        "Canonical full manuscript has not yet been reconstructed.",
+        "The framework bounds behavior rather than proving correctness."
+      ],
+      "review_records": [],
+      "external_references": [],
+      "issues": [3, 10, 11]
+    },
+    {
+      "paper_id": "GA-003",
+      "slug": "survivable-governance-formal-model",
+      "title": "Formal Model Sketch: Survivable Governance Under Epistemic Constraint",
+      "version": "0.1.0-reconstruction",
+      "status": "working-paper",
+      "review_state": "revision-in-progress",
+      "canonical_source": "papers/survivable-governance-formal-model/manuscript.md",
+      "artifact_directory": "papers/survivable-governance-formal-model/dist/",
+      "artifact_hashes": [],
+      "claims_scope": "Defines a minimal state model over trust, boundary mode, and audit status with monotonic tightening under uncertainty.",
+      "known_limitations": [
+        "State integrity and degraded enforcement capacity are not yet integrated.",
+        "Transition semantics and recovery conditions require formalization."
+      ],
+      "review_records": [],
+      "external_references": [],
+      "issues": [7, 10, 11, 12]
+    },
+    {
+      "paper_id": "GA-004",
+      "slug": "trust-bounded-socio-technical-systems",
+      "title": "Trust-Bounded Socio-Technical Systems: Architectural Primitives for Auditability and Failure",
+      "version": "0.1.0-reconstruction",
+      "status": "working-paper",
+      "review_state": "revision-in-progress",
+      "canonical_source": "papers/trust-bounded-socio-technical-systems/manuscript.md",
+      "artifact_directory": "papers/trust-bounded-socio-technical-systems/dist/",
+      "artifact_hashes": [],
+      "claims_scope": "Treats trust and irrecoverable audit loss as operational state and boundaries as execution mechanisms.",
+      "known_limitations": [
+        "Canonical full manuscript has not yet been reconstructed.",
+        "State-integrity independence requires analysis."
+      ],
+      "review_records": [],
+      "external_references": [],
+      "issues": [3, 11]
+    },
+    {
+      "paper_id": "GA-005",
+      "slug": "ghost-credentials-and-phantom-trust",
+      "title": "Ghost Credentials and Phantom Trust",
+      "version": "0.1.0-reconstruction",
+      "status": "working-paper",
+      "review_state": "revision-in-progress",
+      "canonical_source": "papers/ghost-credentials-and-phantom-trust/manuscript.md",
+      "artifact_directory": "papers/ghost-credentials-and-phantom-trust/dist/",
+      "artifact_hashes": [],
+      "claims_scope": "Identifies failure modes where credential validity or inherited trust persists after substantive justification disappears.",
+      "known_limitations": [
+        "The failure modes require sharper differentiation from existing authorization and revocation literature.",
+        "The paper identifies uncertainty but does not eliminate it."
+      ],
+      "review_records": [],
+      "external_references": [],
+      "issues": [3, 9]
+    },
+    {
+      "paper_id": "GA-006",
+      "slug": "boundary-condition-autonomy",
+      "title": "Boundary-Condition Autonomy",
+      "version": "0.1.0-reconstruction",
+      "status": "working-paper",
+      "review_state": "revision-in-progress",
+      "canonical_source": "papers/boundary-condition-autonomy/manuscript.md",
+      "artifact_directory": "papers/boundary-condition-autonomy/dist/",
+      "artifact_hashes": [],
+      "claims_scope": "Treats autonomy as a revocable execution mode governed by enforceable boundary conditions at the state-transition boundary.",
+      "known_limitations": [
+        "Does not solve alignment or ethics.",
+        "No executable reference model or formal proof is committed.",
+        "Relationship to external irreversibility frameworks requires primary-source verification."
+      ],
+      "review_records": [],
+      "external_references": [],
+      "issues": [6, 7, 9, 10, 11, 12]
+    }
+  ],
+  "future_candidate_intake": {
+    "issue": 2,
+    "allowed_statuses": [
+      "research-note",
+      "draft-concept",
+      "working-paper",
+      "stable-paper",
+      "superseded",
+      "withdrawn"
+    ],
+    "required_fields": [
+      "paper_id",
+      "slug",
+      "title",
+      "version",
+      "status",
+      "review_state",
+      "canonical_source",
+      "claims_scope",
+      "known_limitations",
+      "review_records",
+      "external_references"
+    ]
+  },
+  "release_gate": {
+    "canonical_sources_required": true,
+    "reproducible_build_required": true,
+    "artifact_hashes_required": true,
+    "claims_scope_required": true,
+    "review_state_required": true,
+    "external_validation_implied": false
+  }
+}
