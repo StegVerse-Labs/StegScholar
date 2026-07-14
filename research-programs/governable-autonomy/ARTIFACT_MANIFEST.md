@@ -17,7 +17,9 @@ Current release status: **pre-release / reconstruction required**
 | `GA-005` | Ghost Credentials and Phantom Trust | working-paper reconstruction | `papers/ghost-credentials-and-phantom-trust/manuscript.md` | `papers/ghost-credentials-and-phantom-trust/dist/` |
 | `GA-006` | Boundary-Condition Autonomy | working-paper reconstruction | `papers/boundary-condition-autonomy/manuscript.md` | `papers/boundary-condition-autonomy/dist/` |
 
-No target path listed above is authoritative until the corresponding file is committed and linked here with its content hash.
+The program index is committed at `research-programs/governable-autonomy/README.md` and the machine-readable registry is committed at `research-programs/governable-autonomy/paper-registry.json`.
+
+No target path listed above is authoritative until the corresponding manuscript is committed and linked here with its content hash.
 
 ## Required shared diagrams
 
@@ -78,7 +80,7 @@ figures/governable-autonomy/
   *.md
 ```
 
-The layout is provisional until issue #13 and issue #20 are resolved.
+The taxonomy and registry are now committed. The paper-source and figure-source directories remain the next implementation step under issue #20.
 
 ## Review-state discipline
 
@@ -97,6 +99,8 @@ Public comments, LinkedIn responses, conceptual comparisons, and references to r
 
 ## Current verification status
 
+- Program index/taxonomy: committed and verified
+- Machine-readable paper registry: committed and verified
 - Canonical manuscript reconstruction: not complete
 - Diagram reconstruction: not complete
 - Reproducible build: not complete
@@ -110,6 +114,8 @@ Public comments, LinkedIn responses, conceptual comparisons, and references to r
 ## Linked work
 
 - Handoff: `STEGSCHOLAR_GOVERNABLE_AUTONOMY_MIRROR_HANDOFF.md`
+- Program index: `research-programs/governable-autonomy/README.md`
+- Paper registry: `research-programs/governable-autonomy/paper-registry.json`
 - Public portal: #1
 - Additional paper inventory: #2
 - Artifact reconstruction: #3
