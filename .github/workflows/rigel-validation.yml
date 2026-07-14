@@ -7,6 +7,10 @@ on:
         description: "Episode count for the validation run"
         required: false
         default: "10000"
+      ablation_scenarios:
+        description: "Matched scenarios for the constant-total-latency ablation"
+        required: false
+        default: "2000"
   push:
     branches: [main]
     paths:
@@ -23,7 +27,7 @@ permissions:
 jobs:
   test-and-simulate:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
 
     steps:
       - name: Check out repository
@@ -38,26 +42,37 @@ jobs:
         run: |
           python papers/recoverability-geometry-rigel-number/simulations/test_scalar_delayed_control.py
 
-      - name: Resolve episode count
-        id: episodes
+      - name: Resolve run sizes
+        id: run_sizes
         shell: bash
         run: |
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
-            echo "value=${{ inputs.episodes }}" >> "$GITHUB_OUTPUT"
+            echo "episodes=${{ inputs.episodes }}" >> "$GITHUB_OUTPUT"
+            echo "ablation_scenarios=${{ inputs.ablation_scenarios }}" >> "$GITHUB_OUTPUT"
           elif [[ "${{ github.event_name }}" == "pull_request" ]]; then
-            echo "value=1000" >> "$GITHUB_OUTPUT"
+            echo "episodes=1000" >> "$GITHUB_OUTPUT"
+            echo "ablation_scenarios=250" >> "$GITHUB_OUTPUT"
           else
-            echo "value=10000" >> "$GITHUB_OUTPUT"
+            echo "episodes=10000" >> "$GITHUB_OUTPUT"
+            echo "ablation_scenarios=2000" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Run benchmark
+      - name: Run scalar benchmark
         run: |
           python papers/recoverability-geometry-rigel-number/simulations/scalar_delayed_control.py \
-            --episodes "${{ steps.episodes.outputs.value }}" \
+            --episodes "${{ steps.run_sizes.outputs.episodes }}" \
             --seed 20260714 \
             --output-dir generated/scalar-delayed-control
 
-      - name: Create validation receipt
+      - name: Run constant-total-latency ablation
+        run: |
+          python papers/recoverability-geometry-rigel-number/simulations/constant_total_latency_ablation.py \
+            --scenarios "${{ steps.run_sizes.outputs.ablation_scenarios }}" \
+            --seed 20260714 \
+            --total-latency 0.45 \
+            --output-dir generated/constant-total-latency-ablation
+
+      - name: Create validation receipts
         shell: bash
         run: |
           python - <<'PY'
@@ -67,52 +82,80 @@ jobs:
           from datetime import datetime, timezone
           from pathlib import Path
 
-          output = Path("generated/scalar-delayed-control")
-          files = [output / "config.json", output / "episodes.csv", output / "summary.json"]
-          hashes = {}
-          for path in files:
-              digest = hashlib.sha256(path.read_bytes()).hexdigest()
-              hashes[str(path)] = {"sha256": digest, "bytes": path.stat().st_size}
+          runs = [
+              {
+                  "benchmark_id": "rigel-scalar-delayed-control-v1",
+                  "output": Path("generated/scalar-delayed-control"),
+                  "command": (
+                      "python papers/recoverability-geometry-rigel-number/simulations/"
+                      "scalar_delayed_control.py --episodes "
+                      "${{ steps.run_sizes.outputs.episodes }} --seed 20260714 "
+                      "--output-dir generated/scalar-delayed-control"
+                  ),
+              },
+              {
+                  "benchmark_id": "rigel-constant-total-latency-ablation-v1",
+                  "output": Path("generated/constant-total-latency-ablation"),
+                  "command": (
+                      "python papers/recoverability-geometry-rigel-number/simulations/"
+                      "constant_total_latency_ablation.py --scenarios "
+                      "${{ steps.run_sizes.outputs.ablation_scenarios }} --seed 20260714 "
+                      "--total-latency 0.45 "
+                      "--output-dir generated/constant-total-latency-ablation"
+                  ),
+              },
+          ]
 
-          receipt = {
-              "schema_version": "1.0",
-              "benchmark_id": "rigel-scalar-delayed-control-v1",
-              "generated_at_utc": datetime.now(timezone.utc).isoformat(),
-              "repository": os.environ.get("GITHUB_REPOSITORY"),
-              "commit_sha": os.environ.get("GITHUB_SHA"),
-              "run_id": os.environ.get("GITHUB_RUN_ID"),
-              "run_attempt": os.environ.get("GITHUB_RUN_ATTEMPT"),
-              "event_name": os.environ.get("GITHUB_EVENT_NAME"),
-              "python": "3.12",
-              "command": (
-                  "python papers/recoverability-geometry-rigel-number/simulations/"
-                  "scalar_delayed_control.py --episodes "
-                  "${{ steps.episodes.outputs.value }} --seed 20260714 "
-                  "--output-dir generated/scalar-delayed-control"
-              ),
-              "independent_outcome_label": True,
-              "files": hashes,
-              "claim_limit": (
-                  "This receipt proves deterministic execution and artifact identity only; "
-                  "it does not establish cross-domain validity or a universal Ri=1 threshold."
-              ),
-          }
-          (output / "validation-receipt.json").write_text(
-              json.dumps(receipt, indent=2, sort_keys=True), encoding="utf-8"
-          )
+          for run in runs:
+              output = run["output"]
+              files = [output / "config.json", output / "episodes.csv", output / "summary.json"]
+              hashes = {}
+              for path in files:
+                  digest = hashlib.sha256(path.read_bytes()).hexdigest()
+                  hashes[str(path)] = {"sha256": digest, "bytes": path.stat().st_size}
+
+              receipt = {
+                  "schema_version": "1.0",
+                  "benchmark_id": run["benchmark_id"],
+                  "generated_at_utc": datetime.now(timezone.utc).isoformat(),
+                  "repository": os.environ.get("GITHUB_REPOSITORY"),
+                  "commit_sha": os.environ.get("GITHUB_SHA"),
+                  "run_id": os.environ.get("GITHUB_RUN_ID"),
+                  "run_attempt": os.environ.get("GITHUB_RUN_ATTEMPT"),
+                  "event_name": os.environ.get("GITHUB_EVENT_NAME"),
+                  "python": "3.12",
+                  "command": run["command"],
+                  "independent_outcome_label": True,
+                  "files": hashes,
+                  "claim_limit": (
+                      "This receipt proves deterministic execution and artifact identity only; "
+                      "it does not establish cross-domain validity or a universal Ri=1 threshold."
+                  ),
+              }
+              (output / "validation-receipt.json").write_text(
+                  json.dumps(receipt, indent=2, sort_keys=True), encoding="utf-8"
+              )
           PY
 
-      - name: Display summary
-        run: cat generated/scalar-delayed-control/summary.json
+      - name: Display summaries
+        run: |
+          echo "Scalar benchmark summary"
+          cat generated/scalar-delayed-control/summary.json
+          echo "Constant-total-latency ablation summary"
+          cat generated/constant-total-latency-ablation/summary.json
 
       - name: Upload validation evidence
         uses: actions/upload-artifact@v4
         with:
-          name: rigel-scalar-delayed-control-${{ github.sha }}
+          name: rigel-validation-${{ github.sha }}
           path: |
             generated/scalar-delayed-control/config.json
             generated/scalar-delayed-control/episodes.csv
             generated/scalar-delayed-control/summary.json
             generated/scalar-delayed-control/validation-receipt.json
+            generated/constant-total-latency-ablation/config.json
+            generated/constant-total-latency-ablation/episodes.csv
+            generated/constant-total-latency-ablation/summary.json
+            generated/constant-total-latency-ablation/validation-receipt.json
           if-no-files-found: error
           retention-days: 30
