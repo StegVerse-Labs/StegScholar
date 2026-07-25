@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stegverse.org/schemas/stegscholar/math-solver-request.schema.json",
+  "title": "StegScholar Math Solver Request",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "request_id",
+    "research_topic_id",
+    "question",
+    "method",
+    "inputs",
+    "expected_outputs",
+    "authority"
+  ],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "request_id": {"type": "string"},
+    "research_topic_id": {"type": "string"},
+    "question": {"type": "string"},
+    "hypothesis_refs": {"type": "array", "items": {"type": "string"}},
+    "method": {
+      "type": "object",
+      "required": ["method_id", "description", "version"],
+      "properties": {
+        "method_id": {"type": "string"},
+        "description": {"type": "string"},
+        "version": {"type": "string"},
+        "equations": {"type": "array", "items": {"type": "string"}},
+        "parameters": {"type": "object"},
+        "negative_controls": {"type": "array", "items": {"type": "string"}},
+        "sensitivity_tests": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["artifact_ref", "hash_status"],
+        "properties": {
+          "artifact_ref": {"type": "string"},
+          "sha256": {"type": ["string", "null"]},
+          "hash_status": {"enum": ["VERIFIED", "PENDING", "UNAVAILABLE"]},
+          "role": {"type": "string"}
+        }
+      }
+    },
+    "expected_outputs": {"type": "array", "items": {"type": "string"}},
+    "determinism": {
+      "type": "object",
+      "properties": {
+        "required": {"type": "boolean"},
+        "random_seed": {"type": ["integer", "null"]},
+        "runtime_lock_required": {"type": "boolean"}
+      }
+    },
+    "authority": {
+      "type": "object",
+      "required": ["execution_authority", "publication_authority", "promotion_authority"],
+      "properties": {
+        "execution_authority": {"type": "boolean"},
+        "publication_authority": {"type": "boolean", "const": false},
+        "promotion_authority": {"type": "boolean", "const": false}
+      }
+    }
+  }
+}
