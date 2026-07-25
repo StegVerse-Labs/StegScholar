@@ -1,0 +1,55 @@
+{
+  "schema_version": "stegscholar.research-topic.v1",
+  "research_topic_id": "TIDC-001",
+  "title": "Technology-Induced Discovery Clustering",
+  "state": "PILOT",
+  "authority_repository": "StegVerse-Labs/StegScholar",
+  "public_mirror": "StegVerse-Labs/Site/technology-induced-discovery-clustering.html",
+  "summary": "Tests whether general-purpose problem-solving technologies produce delayed, learning-mediated clusters of mathematical and scientific discovery.",
+  "hypotheses": [
+    {
+      "hypothesis_id": "TIDC-H1",
+      "statement": "General-purpose problem-solving technologies produce statistically detectable, temporally concentrated increases in technology-dependent discovery after an adoption and method-learning lag.",
+      "status": "PILOT",
+      "falsification_conditions": [
+        "No reproducible clustering remains after controlling for publication and researcher growth.",
+        "Detected peaks precede effective technology exposure.",
+        "Placebo dates and weakly compatible fields produce comparable effects."
+      ]
+    },
+    {
+      "hypothesis_id": "TIDC-H7",
+      "statement": "Candidate generation increases before accepted knowledge where verification or institutional acceptance capacity is constrained.",
+      "status": "PILOT",
+      "falsification_conditions": [
+        "Candidate generation and accepted knowledge show no measurable divergence under verification constraints."
+      ]
+    }
+  ],
+  "source_records": [
+    "Site:data/tidc/pilot-events-v0.1.json"
+  ],
+  "dataset_records": [
+    "Site:data/tidc/pilot-events-v0.1.json"
+  ],
+  "math_solver_requests": [
+    "topics/TIDC/math-solver/requests/TIDC-MS-001.json"
+  ],
+  "result_records": [],
+  "verification_records": [],
+  "contradiction_records": [],
+  "revision_history": [
+    {
+      "version": "0.1",
+      "date": "2026-07-25",
+      "change": "Registered first pilot topic and linked progressive Site publication."
+    }
+  ],
+  "publication": {
+    "posture": "RESEARCH_NOTE",
+    "status": "published as pilot research; not confirmatory",
+    "site_pages": [
+      "technology-induced-discovery-clustering.html"
+    ]
+  }
+}
