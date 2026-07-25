@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stegverse.org/schemas/stegscholar/research-topic.schema.json",
+  "title": "StegScholar Research Topic",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "research_topic_id",
+    "title",
+    "state",
+    "hypotheses",
+    "source_records",
+    "math_solver_requests",
+    "result_records",
+    "publication"
+  ],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "research_topic_id": {"type": "string", "pattern": "^[A-Z0-9-]+$"},
+    "title": {"type": "string", "minLength": 1},
+    "state": {
+      "enum": ["PROPOSED", "PROTOCOL", "PILOT", "EXPLORATORY", "PREREGISTERED", "CONFIRMATORY", "REPLICATED", "REVISED", "DEPRECATED"]
+    },
+    "authority_repository": {"type": "string"},
+    "public_mirror": {"type": ["string", "null"]},
+    "summary": {"type": "string"},
+    "hypotheses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["hypothesis_id", "statement", "falsification_conditions"],
+        "properties": {
+          "hypothesis_id": {"type": "string"},
+          "statement": {"type": "string"},
+          "status": {"type": "string"},
+          "falsification_conditions": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "source_records": {"type": "array", "items": {"type": "string"}},
+    "dataset_records": {"type": "array", "items": {"type": "string"}},
+    "math_solver_requests": {"type": "array", "items": {"type": "string"}},
+    "result_records": {"type": "array", "items": {"type": "string"}},
+    "verification_records": {"type": "array", "items": {"type": "string"}},
+    "contradiction_records": {"type": "array", "items": {"type": "string"}},
+    "revision_history": {"type": "array", "items": {"type": "object"}},
+    "publication": {
+      "type": "object",
+      "required": ["posture", "status"],
+      "properties": {
+        "posture": {"enum": ["DRAFT", "RESEARCH_NOTE", "MIRROR", "RECEIPT_BACKED", "CANONICAL_CLAIM", "DEPRECATED"]},
+        "status": {"type": "string"},
+        "site_pages": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}
