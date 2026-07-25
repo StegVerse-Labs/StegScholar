@@ -1,0 +1,58 @@
+{
+  "schema_version": "stegscholar.math-solver-request.v1",
+  "request_id": "TIDC-MS-001",
+  "research_topic_id": "TIDC-001",
+  "question": "Given the current pilot event ledger, generate descriptive chronology, event-date completeness diagnostics, technology-wave counts, self-capability proportions, and a preregistration-ready analysis plan without making confirmatory claims.",
+  "hypothesis_refs": ["TIDC-H1", "TIDC-H7"],
+  "method": {
+    "method_id": "TIDC-PILOT-DESCRIPTIVE-001",
+    "description": "Deterministic pilot diagnostics only. No causal or confirmatory estimation is authorized.",
+    "version": "1.0.0",
+    "equations": [
+      "completion_rate(field)=nonmissing(field)/N",
+      "self_capability_share=self_capability_events/N",
+      "wave_share(w)=events_in_wave(w)/N"
+    ],
+    "parameters": {
+      "minimum_event_count_for_inference": 40,
+      "current_event_count": 10,
+      "allow_confirmatory_inference": false
+    },
+    "negative_controls": [
+      "Do not infer clustering from ten seed-coded events.",
+      "Do not treat publication date as candidate-generation date unless marked as a proxy.",
+      "Do not treat source count as independent confirmation."
+    ],
+    "sensitivity_tests": [
+      "Recalculate completeness excluding proxy dates.",
+      "Separate aggregate events that may require subevent decomposition.",
+      "Report all unresolved date fields and classification uncertainties."
+    ]
+  },
+  "inputs": [
+    {
+      "artifact_ref": "StegVerse-Labs/Site:data/tidc/pilot-events-v0.1.json",
+      "sha256": null,
+      "hash_status": "PENDING",
+      "role": "pilot event and source ledger"
+    }
+  ],
+  "expected_outputs": [
+    "machine-readable descriptive summary",
+    "date-completeness table",
+    "technology-wave count table",
+    "self-capability proportion",
+    "open-data-quality queue",
+    "analysis-plan candidate"
+  ],
+  "determinism": {
+    "required": true,
+    "random_seed": null,
+    "runtime_lock_required": true
+  },
+  "authority": {
+    "execution_authority": true,
+    "publication_authority": false,
+    "promotion_authority": false
+  }
+}
