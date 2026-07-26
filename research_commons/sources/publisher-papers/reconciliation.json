@@ -1,0 +1,68 @@
+{
+  "reconciliation_version": "1.0.0",
+  "source_repository": "GCAT-BCAT-Engine/Publisher",
+  "observed_sources": [
+    "papers.json",
+    "papers_manifest.yml"
+  ],
+  "summary": {
+    "union_record_count": 5,
+    "runtime_record_count": 3,
+    "manifest_record_count": 4,
+    "consistent_record_count": 1,
+    "records_requiring_reconciliation": 4
+  },
+  "records": [
+    {
+      "paper_id": "sv-cost-reduction-2026",
+      "runtime_present": true,
+      "manifest_present": true,
+      "status": "mismatch",
+      "differences": [
+        "title",
+        "subtitle",
+        "version",
+        "abstract",
+        "html_url",
+        "tags"
+      ]
+    },
+    {
+      "paper_id": "sv-iict-2026",
+      "runtime_present": true,
+      "manifest_present": true,
+      "status": "consistent_in_observed_fields",
+      "differences": []
+    },
+    {
+      "paper_id": "ext001-2026",
+      "runtime_present": true,
+      "manifest_present": false,
+      "status": "runtime_only",
+      "differences": [
+        "record absent from observed manifest"
+      ]
+    },
+    {
+      "paper_id": "sv-gcat-bcat-admissibility-2026",
+      "runtime_present": false,
+      "manifest_present": true,
+      "status": "manifest_only",
+      "differences": [
+        "record absent from runtime catalog"
+      ]
+    },
+    {
+      "paper_id": "sv-god-framework-2026",
+      "runtime_present": false,
+      "manifest_present": true,
+      "status": "incomplete_manifest_record",
+      "differences": [
+        "record absent from runtime catalog",
+        "observed manifest record lacks complete metadata"
+      ]
+    }
+  ],
+  "required_resolution": "Publisher must reconcile its canonical manifest and generated runtime catalog. Research Commons preserves observed differences and must not choose a silent winner.",
+  "authority_boundary": "Research Commons indexes Publisher records but does not replace Publisher publication authority."
+}
