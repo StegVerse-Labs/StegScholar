@@ -1,0 +1,59 @@
+{
+  "index_id": "RC-INDEX-PUBLISHER-PAPERS-2026-07-26",
+  "source_registry": "research_commons/sources/publisher-papers/registry.json",
+  "source_observation": "research_commons/sources/publisher-papers/source-observation.json",
+  "generated_from_pinned_source": true,
+  "entries": [
+    {
+      "commons_id": "RC-PUB-001",
+      "publisher_id": "sv-cost-reduction-2026",
+      "title": "StegVerse Autonomous Mathematical Problem Solving",
+      "category": "cost_optimization",
+      "status": "published",
+      "knowledge_posture": "published_source_record",
+      "terms": ["cost reduction", "batch optimization", "tiered routing", "formal proof", "Lean 4", "mathematical problem solving"],
+      "page": "research_commons/sources/publisher-papers/sv-cost-reduction-2026.md"
+    },
+    {
+      "commons_id": "RC-PUB-002",
+      "publisher_id": "sv-iict-2026",
+      "title": "Irreversibility-Inference Convergence Theorem",
+      "category": "governance",
+      "status": "draft",
+      "knowledge_posture": "theorem_candidate",
+      "terms": ["IICT", "commit-time admissibility", "governance distance", "reconstructability", "transition elements"],
+      "page": "research_commons/sources/publisher-papers/sv-iict-2026.md"
+    },
+    {
+      "commons_id": "RC-PUB-003",
+      "publisher_id": "ext001-2026",
+      "title": "EXT001: External Problem Demonstration",
+      "category": "experimental",
+      "status": "draft",
+      "knowledge_posture": "planned_experiment",
+      "terms": ["external problem", "cross-domain", "Erdos-class", "pipeline demonstration"],
+      "page": "research_commons/sources/publisher-papers/ext001-2026.md"
+    },
+    {
+      "commons_id": "RC-PUB-004",
+      "publisher_id": "sv-gcat-bcat-admissibility-2026",
+      "title": "GCAT/BCAT Admissibility: Complete Invariant Characterization",
+      "category": "formal_methods",
+      "status": "draft",
+      "knowledge_posture": "formal_claim_candidate",
+      "terms": ["GCAT", "BCAT", "admissibility", "invariants", "categorical rewriting", "commit-time"],
+      "page": "research_commons/sources/publisher-papers/sv-gcat-bcat-admissibility-2026.md"
+    },
+    {
+      "commons_id": "RC-PUB-005",
+      "publisher_id": "sv-god-framework-2026",
+      "title": "Geometrically Ontological Divergence: The GOD Framework",
+      "category": "philosophy_of_computation",
+      "status": "draft",
+      "knowledge_posture": "incomplete_framework_candidate",
+      "terms": ["GOD framework", "ontology", "geometry", "compression", "boundary", "divergence"],
+      "page": "research_commons/sources/publisher-papers/sv-god-framework-2026.md"
+    }
+  ],
+  "boundary": "Search inclusion improves discoverability only. It does not validate claims, confer publication authority, or authorize reuse."
+}
