@@ -1,0 +1,30 @@
+{
+  "receipt_id": "RC-OBS-PUBLISHER-2026-07-26-001",
+  "observed_at": "2026-07-26T00:00:00Z",
+  "observer": "StegVerse Research Commons",
+  "source_repository": "GCAT-BCAT-Engine/Publisher",
+  "source_ref": "fad5822df767128f1a3f11ab7235f95c3c260530",
+  "observed_files": [
+    {
+      "path": "papers.json",
+      "blob_sha": "abdfba70a62f2cffeaa2d4b34bd6337d7f171551",
+      "role": "runtime_catalog"
+    },
+    {
+      "path": "papers_manifest.yml",
+      "blob_sha": "61727b110e3326790ad174a7253360b4aa915146",
+      "role": "source_manifest"
+    }
+  ],
+  "registry_hash": "sha256:pending-deterministic-generation",
+  "alignment_status": "reconciliation_required",
+  "authority_boundary": "This receipt proves which Publisher records were observed. Publisher retains publication custody; the receipt grants neither publication authority nor protocol-specific reuse admissibility.",
+  "grants_publication_authority": false,
+  "grants_reuse_admissibility": false,
+  "generation_status": "registry_hash_pending_validator_generation",
+  "notes": [
+    "The source commit and blob identities are pinned.",
+    "The final SHA-256 registry hash must be generated from canonical registry.json bytes by the repository validator.",
+    "A later observation supersedes this receipt only for future indexing; historical lineage remains durable."
+  ]
+}
