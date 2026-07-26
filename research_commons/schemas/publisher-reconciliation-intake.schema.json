@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stegverse.org/schemas/publisher-reconciliation-intake.schema.json",
+  "title": "Publisher Catalog Reconciliation Intake",
+  "type": "object",
+  "required": ["intake_id", "publisher_id", "runtime_record", "manifest_record", "differences", "decision"],
+  "properties": {
+    "intake_id": {"type": "string", "minLength": 1},
+    "publisher_id": {"type": "string", "minLength": 1},
+    "runtime_record": {"type": ["object", "null"]},
+    "manifest_record": {"type": ["object", "null"]},
+    "differences": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["field", "runtime_value", "manifest_value"],
+        "properties": {
+          "field": {"type": "string"},
+          "runtime_value": {},
+          "manifest_value": {}
+        },
+        "additionalProperties": false
+      }
+    },
+    "decision": {
+      "enum": ["pending", "runtime_authoritative", "manifest_authoritative", "merged_correction", "remove_record", "quarantine"]
+    },
+    "decision_actor": {"type": ["string", "null"]},
+    "decision_receipt": {"type": ["string", "null"]},
+    "commons_refresh_authorized": {"type": "boolean", "default": false}
+  },
+  "additionalProperties": false
+}
