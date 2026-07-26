@@ -1,0 +1,48 @@
+{
+  "manifest_id": "RC-SITE-PUBLISHER-PAPERS-2026-07-26",
+  "projection_target": "StegVerse-Labs/Site",
+  "source_authority": "GCAT-BCAT-Engine/Publisher",
+  "commons_custody": "StegVerse-Labs/StegScholar/research_commons",
+  "projection_mode": "progressive_read_only",
+  "activation_status": "not_authorized",
+  "requires": [
+    "fresh Publisher source observation receipt",
+    "Research Commons registry validation",
+    "Publisher manifest/runtime reconciliation or explicit discrepancy display",
+    "Site mirror handoff review",
+    "public-path verification receipt"
+  ],
+  "entries": [
+    {
+      "publisher_id": "sv-cost-reduction-2026",
+      "commons_page": "research_commons/sources/publisher-papers/sv-cost-reduction-2026.md",
+      "public_eligibility": "eligible_after_projection_gate",
+      "display_disclaimer": "Published source record; peer review is not asserted."
+    },
+    {
+      "publisher_id": "sv-iict-2026",
+      "commons_page": "research_commons/sources/publisher-papers/sv-iict-2026.md",
+      "public_eligibility": "eligible_as_draft_after_projection_gate",
+      "display_disclaimer": "Draft theorem candidate; not an established theorem."
+    },
+    {
+      "publisher_id": "ext001-2026",
+      "commons_page": "research_commons/sources/publisher-papers/ext001-2026.md",
+      "public_eligibility": "eligible_as_planned_experiment_after_projection_gate",
+      "display_disclaimer": "Planned external demonstration; execution results are not yet present."
+    },
+    {
+      "publisher_id": "sv-gcat-bcat-admissibility-2026",
+      "commons_page": "research_commons/sources/publisher-papers/sv-gcat-bcat-admissibility-2026.md",
+      "public_eligibility": "blocked_pending_source_reconciliation",
+      "display_disclaimer": "Manifest-only draft record; runtime catalog reconciliation is pending."
+    },
+    {
+      "publisher_id": "sv-god-framework-2026",
+      "commons_page": "research_commons/sources/publisher-papers/sv-god-framework-2026.md",
+      "public_eligibility": "blocked_pending_complete_source_record",
+      "display_disclaimer": "Incomplete manifest-only framework candidate."
+    }
+  ],
+  "authority_boundary": "The Site is a public projection surface. It does not become publication custody, proof authority, or reuse authority."
+}
