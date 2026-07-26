@@ -1,0 +1,34 @@
+name: Build and validate Research Commons
+
+on:
+  push:
+    paths:
+      - "research_commons/**"
+      - ".github/workflows/build-and-validate-research-commons.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build deterministic indexes and canonical registry receipt
+        run: python research_commons/tools/build_publisher_indexes.py
+      - name: Validate Publisher paper registry
+        run: python research_commons/tools/validate_publisher_papers.py
+      - name: Validate Site projection boundary
+        run: python research_commons/tools/validate_site_projection.py
+      - name: Upload generated validation artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: research-commons-validation
+          path: |
+            research_commons/indexes/publisher-papers/*.json
+            research_commons/sources/publisher-papers/registry-hash-receipt.json
+          if-no-files-found: error
