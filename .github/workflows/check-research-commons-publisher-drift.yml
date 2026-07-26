@@ -1,0 +1,42 @@
+name: Check Research Commons Publisher Drift
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_ref:
+        description: Current Publisher commit SHA
+        required: true
+        type: string
+      papers_json_sha:
+        description: Current Publisher papers.json blob SHA
+        required: true
+        type: string
+      manifest_sha:
+        description: Current Publisher papers_manifest.yml blob SHA
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  check-drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compare current Publisher identities with pinned observation
+        run: |
+          python research_commons/tools/check_publisher_source_drift.py \
+            --source-ref '${{ inputs.source_ref }}' \
+            --papers-json-sha '${{ inputs.papers_json_sha }}' \
+            --manifest-sha '${{ inputs.manifest_sha }}' \
+            | tee publisher-drift-decision.json
+      - name: Upload decision receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: publisher-drift-decision
+          path: publisher-drift-decision.json
+
+# Boundary: this workflow detects drift only. It does not ingest, reconcile,
+# publish, mutate Publisher, mutate Site, or authorize reuse.
