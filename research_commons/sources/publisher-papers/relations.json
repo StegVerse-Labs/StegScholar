@@ -1,0 +1,61 @@
+{
+  "registry_version": "1.0.0",
+  "source_authority": "GCAT-BCAT-Engine/Publisher",
+  "relations": [
+    {
+      "subject": "sv-cost-reduction-2026",
+      "predicate": "supports",
+      "object": "governed-research-cost-estimation",
+      "posture": "reported_published_result"
+    },
+    {
+      "subject": "sv-cost-reduction-2026",
+      "predicate": "contains_negative_result",
+      "object": "cache-framing-semantic-output-change",
+      "posture": "reported_published_result"
+    },
+    {
+      "subject": "sv-iict-2026",
+      "predicate": "extends",
+      "object": "commit-time-admissibility",
+      "posture": "theorem_candidate"
+    },
+    {
+      "subject": "sv-iict-2026",
+      "predicate": "requires_validation_of",
+      "object": "convergence-under-preserved-reconstructability",
+      "posture": "open"
+    },
+    {
+      "subject": "ext001-2026",
+      "predicate": "proposes_test_of",
+      "object": "cross-domain-pipeline-applicability",
+      "posture": "planned_experiment"
+    },
+    {
+      "subject": "sv-gcat-bcat-admissibility-2026",
+      "predicate": "formalizes",
+      "object": "commit-time-admissibility",
+      "posture": "formal_claim_candidate"
+    },
+    {
+      "subject": "sv-god-framework-2026",
+      "predicate": "relates_to",
+      "object": "computational-ontology",
+      "posture": "incomplete_framework_candidate"
+    },
+    {
+      "subject": "sv-gcat-bcat-admissibility-2026",
+      "predicate": "related_to",
+      "object": "sv-iict-2026",
+      "posture": "conceptual_relation_not_validation"
+    },
+    {
+      "subject": "sv-god-framework-2026",
+      "predicate": "related_to",
+      "object": "sv-gcat-bcat-admissibility-2026",
+      "posture": "conceptual_relation_not_validation"
+    }
+  ],
+  "boundary": "A relation records discoverability and declared posture. It does not establish truth, causation, priority, or admissibility for a later protocol."
+}
