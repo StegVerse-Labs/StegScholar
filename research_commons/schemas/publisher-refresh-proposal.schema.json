@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stegverse.org/schemas/publisher-refresh-proposal.schema.json",
+  "title": "Research Commons Publisher Refresh Proposal",
+  "type": "object",
+  "required": [
+    "proposal_id",
+    "source_repository",
+    "prior_observation_ref",
+    "current_source_identity",
+    "drift_detected",
+    "proposed_actions",
+    "automatic_sync_authorized"
+  ],
+  "properties": {
+    "proposal_id": {"type": "string", "minLength": 1},
+    "source_repository": {"const": "GCAT-BCAT-Engine/Publisher"},
+    "prior_observation_ref": {"type": "string", "minLength": 1},
+    "current_source_identity": {
+      "type": "object",
+      "required": ["commit_sha", "papers_json_blob_sha", "papers_manifest_blob_sha"],
+      "properties": {
+        "commit_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "papers_json_blob_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "papers_manifest_blob_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"}
+      },
+      "additionalProperties": false
+    },
+    "drift_detected": {"type": "boolean"},
+    "proposed_actions": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "observe_source",
+          "reconcile_catalogs",
+          "refresh_registry",
+          "rebuild_indexes",
+          "revalidate_projection",
+          "request_site_dispatch"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "automatic_sync_authorized": {"const": false},
+    "publication_authority_created": {"const": false},
+    "reuse_authority_created": {"const": false}
+  },
+  "additionalProperties": false
+}
