@@ -1,0 +1,32 @@
+name: Validate Research Commons Publisher Papers
+
+on:
+  push:
+    paths:
+      - "research_commons/sources/publisher-papers/**"
+      - "research_commons/tools/validate_publisher_papers.py"
+      - ".github/workflows/validate-research-commons-publisher-papers.yml"
+  pull_request:
+    paths:
+      - "research_commons/sources/publisher-papers/**"
+      - "research_commons/tools/validate_publisher_papers.py"
+      - ".github/workflows/validate-research-commons-publisher-papers.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate Publisher paper projection
+        run: python research_commons/tools/validate_publisher_papers.py
