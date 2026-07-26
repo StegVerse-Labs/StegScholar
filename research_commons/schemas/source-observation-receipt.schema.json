@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stegverse.org/schemas/research-commons-source-observation-receipt.schema.json",
+  "title": "Research Commons Source Observation Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "receipt_id",
+    "observed_at",
+    "observer",
+    "source_repository",
+    "source_ref",
+    "observed_files",
+    "registry_hash",
+    "authority_boundary"
+  ],
+  "properties": {
+    "receipt_id": {"type": "string", "minLength": 1},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "observer": {"type": "string", "minLength": 1},
+    "source_repository": {"type": "string", "pattern": "^[^/]+/[^/]+$"},
+    "source_ref": {"type": "string", "minLength": 1},
+    "observed_files": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "blob_sha", "role"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "blob_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+          "role": {"enum": ["source_manifest", "runtime_catalog", "paper_artifact", "supporting_record"]}
+        }
+      }
+    },
+    "registry_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "alignment_status": {
+      "enum": ["aligned", "reconciliation_required", "source_unavailable", "partial_observation"]
+    },
+    "authority_boundary": {"type": "string", "minLength": 1},
+    "grants_publication_authority": {"const": false},
+    "grants_reuse_admissibility": {"const": false}
+  }
+}
