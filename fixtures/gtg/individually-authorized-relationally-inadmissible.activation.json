@@ -1,0 +1,38 @@
+{
+  "schema_version": "0.1.0",
+  "record_id": "gtg-activation-fixture-001",
+  "candidate_transition_id": "tau-joint-disclosure-001",
+  "commit_time": "2026-07-28T12:00:00Z",
+  "relational_projection": {
+    "participants": ["actor-a", "actor-b", "protected-subject"],
+    "relation_classes": ["AUTHORITY", "RESPONSIBILITY", "CONSTRAINT", "CONSENT", "CONSEQUENCE"],
+    "relevant_to_transition": true,
+    "source_references": ["fixture://authority/a", "fixture://authority/b", "fixture://consent/protected-subject"]
+  },
+  "governance_basis": {
+    "policy_refs": ["fixture://policy/disclosure-v1"],
+    "authority_refs": ["fixture://authority/a", "fixture://authority/b"],
+    "constraint_refs": ["fixture://constraint/no-joint-disclosure-without-subject-consent"],
+    "evidence_refs": ["fixture://evidence/consent-absent"]
+  },
+  "activation_tests": {
+    "discoverable": true,
+    "commit_reconstructable": true,
+    "basis_attached": true,
+    "included_in_admissibility": true,
+    "outcome_sensitive": true
+  },
+  "activation_result": "ACTIVE",
+  "authority": {
+    "observer_standing": true,
+    "review_standing": true,
+    "execution_authority": false,
+    "certification_authority": false
+  },
+  "continuation": {
+    "survives_actor_termination": true,
+    "reconstruction_refs": ["fixture://reconstruction/tau-joint-disclosure-001"],
+    "challenge_refs": [],
+    "supersession_refs": []
+  }
+}
