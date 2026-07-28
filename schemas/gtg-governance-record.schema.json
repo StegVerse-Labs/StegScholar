@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stegverse.org/schemas/gtg-governance-record.schema.json",
+  "title": "GTG Governance Record",
+  "type": "object",
+  "required": ["schema_version", "transition_id", "candidate_transition", "governance_context", "relational_projection", "activation", "disposition", "commit_time", "continuation"],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "transition_id": {"type": "string", "minLength": 1},
+    "candidate_transition": {
+      "type": "object",
+      "required": ["pre_state_ref", "proposal", "proposed_post_state_ref"],
+      "properties": {
+        "pre_state_ref": {"type": "string"},
+        "proposal": {"type": "object"},
+        "proposed_post_state_ref": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "governance_context": {
+      "type": "object",
+      "required": ["evidence_refs", "authority_refs", "policy_refs", "constraint_refs", "observer_refs", "scale", "commit_state_ref"],
+      "properties": {
+        "evidence_refs": {"type": "array", "items": {"type": "string"}},
+        "authority_refs": {"type": "array", "items": {"type": "string"}},
+        "policy_refs": {"type": "array", "items": {"type": "string"}},
+        "constraint_refs": {"type": "array", "items": {"type": "string"}},
+        "observer_refs": {"type": "array", "items": {"type": "string"}},
+        "scale": {"type": "string"},
+        "commit_state_ref": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "relational_projection": {"type": "array", "items": {"type": "object"}},
+    "activation": {"enum": ["ACTIVE", "INACTIVE", "INCOMPLETE", "NOT_APPLICABLE", "ERROR"]},
+    "activation_basis": {"type": "array", "items": {"type": "string"}},
+    "disposition": {"enum": ["ALLOW", "DENY", "FAIL_CLOSED", "DEFER", "TRANSFORM", "ERROR"]},
+    "transform_target_ref": {"type": ["string", "null"]},
+    "dissent": {"type": "array", "items": {"type": "object"}},
+    "commit_time": {"type": "string", "format": "date-time"},
+    "continuation": {
+      "type": "object",
+      "required": ["receipt_id", "reconstruction_material_refs", "appeal_paths", "correction_paths"],
+      "properties": {
+        "receipt_id": {"type": "string"},
+        "reconstruction_material_refs": {"type": "array", "items": {"type": "string"}},
+        "appeal_paths": {"type": "array", "items": {"type": "string"}},
+        "correction_paths": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "claim_refs": {"type": "array", "items": {"type": "string"}}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"disposition": {"const": "TRANSFORM"}}},
+      "then": {"required": ["transform_target_ref"], "properties": {"transform_target_ref": {"type": "string", "minLength": 1}}}
+    }
+  ],
+  "additionalProperties": false
+}
