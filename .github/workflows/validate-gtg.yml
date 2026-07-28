@@ -1,0 +1,41 @@
+name: Validate GTG
+
+on:
+  push:
+    paths:
+      - "fixtures/gtg/**"
+      - "schemas/gtg-*.json"
+      - "scripts/validate_gtg_fixtures.py"
+      - ".github/workflows/validate-gtg.yml"
+  pull_request:
+    paths:
+      - "fixtures/gtg/**"
+      - "schemas/gtg-*.json"
+      - "scripts/validate_gtg_fixtures.py"
+      - ".github/workflows/validate-gtg.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate deterministic GTG fixtures
+        run: python scripts/validate_gtg_fixtures.py
+      - name: Verify receipt is reproducible
+        run: |
+          cp receipts/gtg/fixture-validation-receipt.json /tmp/first.json
+          python scripts/validate_gtg_fixtures.py
+          cmp /tmp/first.json receipts/gtg/fixture-validation-receipt.json
+      - name: Upload validation receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: gtg-validation-receipt
+          path: receipts/gtg/fixture-validation-receipt.json
+          if-no-files-found: error
