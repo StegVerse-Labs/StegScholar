@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stegverse.org/schemas/tt-transition-cell.schema.json",
+  "title": "Transition Table Cell",
+  "type": "object",
+  "required": ["schema_version", "cell_id", "pre_state_ref", "event", "guards", "authority_refs", "gtg_record_ref", "decision", "commit_validation", "execution", "observation", "receipt"],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "cell_id": {"type": "string", "minLength": 1},
+    "pre_state_ref": {"type": "string"},
+    "event": {"type": "object"},
+    "relational_projection_ref": {"type": ["string", "null"]},
+    "guards": {"type": "array", "items": {"type": "object"}},
+    "authority_refs": {"type": "array", "items": {"type": "string"}},
+    "policy_refs": {"type": "array", "items": {"type": "string"}},
+    "evidence_refs": {"type": "array", "items": {"type": "string"}},
+    "gtg_record_ref": {"type": "string"},
+    "decision": {"enum": ["ALLOW", "DENY", "FAIL_CLOSED", "DEFER", "TRANSFORM", "ERROR"]},
+    "commit_validation": {
+      "type": "object",
+      "required": ["status", "checked_at", "state_ref"],
+      "properties": {
+        "status": {"enum": ["VALID", "INVALID", "STALE", "UNRESOLVED", "ERROR"]},
+        "checked_at": {"type": "string", "format": "date-time"},
+        "state_ref": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "execution": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": {"enum": ["NOT_ATTEMPTED", "EXECUTED", "BLOCKED", "FAILED", "PARTIAL"]},
+        "executor_ref": {"type": ["string", "null"]},
+        "executed_at": {"type": ["string", "null"], "format": "date-time"},
+        "post_state_ref": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "observation": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": {"enum": ["NOT_OBSERVED", "OBSERVED", "PARTIAL", "CONFLICTED", "ERROR"]},
+        "observer_refs": {"type": "array", "items": {"type": "string"}},
+        "observation_refs": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "predecessor_refs": {"type": "array", "items": {"type": "string"}},
+    "supersedes_ref": {"type": ["string", "null"]},
+    "scale": {"type": "string"},
+    "receipt": {
+      "type": "object",
+      "required": ["receipt_id", "created_at", "hash_algorithm", "content_hash"],
+      "properties": {
+        "receipt_id": {"type": "string"},
+        "created_at": {"type": "string", "format": "date-time"},
+        "hash_algorithm": {"const": "SHA-256"},
+        "content_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"decision": {"const": "ALLOW"}, "commit_validation": {"properties": {"status": {"const": "VALID"}}}}},
+      "then": {},
+      "else": {"properties": {"execution": {"properties": {"status": {"not": {"const": "EXECUTED"}}}}}}
+    }
+  ],
+  "additionalProperties": false
+}
