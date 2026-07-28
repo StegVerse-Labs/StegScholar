@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stegverse.org/schemas/rtg-event-ledger.schema.json",
+  "title": "RTG Event Ledger",
+  "type": "object",
+  "required": ["schema_version", "event_id", "scale", "participants", "pre_states", "translation", "cost_vector", "post_states", "ledger_projections", "reconstruction_status"],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "event_id": {"type": "string", "minLength": 1},
+    "scale": {
+      "type": "object",
+      "required": ["label", "resolution"],
+      "properties": {
+        "label": {"type": "string"},
+        "resolution": {"type": "number", "exclusiveMinimum": 0},
+        "units": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "participants": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["participant_id", "world_region_ref"],
+        "properties": {
+          "participant_id": {"type": "string"},
+          "world_region_ref": {"type": "string"},
+          "role": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "pre_states": {"type": "object", "minProperties": 2},
+    "translation": {
+      "type": "object",
+      "required": ["operator_id", "mapping_class", "source_domain", "target_domain"],
+      "properties": {
+        "operator_id": {"type": "string"},
+        "mapping_class": {"enum": ["exact", "lossy", "stochastic", "aggregate", "unknown"]},
+        "source_domain": {"type": "string"},
+        "target_domain": {"type": "string"},
+        "parameters": {"type": "object"},
+        "invariants": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "cost_vector": {
+      "type": "object",
+      "required": ["physical", "informational", "computational", "temporal", "governance"],
+      "properties": {
+        "physical": {"type": "number", "minimum": 0},
+        "informational": {"type": "number", "minimum": 0},
+        "computational": {"type": "number", "minimum": 0},
+        "temporal": {"type": "number", "minimum": 0},
+        "governance": {"type": "number", "minimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "post_states": {"type": "object", "minProperties": 2},
+    "correlations": {"type": "array", "items": {"type": "object"}},
+    "ledger_projections": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["participant_id", "projection_ref", "completeness"],
+        "properties": {
+          "participant_id": {"type": "string"},
+          "projection_ref": {"type": "string"},
+          "completeness": {"type": "number", "minimum": 0, "maximum": 1}
+        },
+        "additionalProperties": false
+      }
+    },
+    "reconstruction_status": {"enum": ["UNTESTED", "PARTIAL", "SUFFICIENT", "NON_IDENTIFIABLE", "FAILED"]},
+    "claim_refs": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}
