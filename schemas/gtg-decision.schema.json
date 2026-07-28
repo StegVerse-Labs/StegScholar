@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stegverse.org/schemas/gtg-decision.schema.json",
+  "title": "GTG Decision Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "decision_id",
+    "candidate_transition_id",
+    "decision_time",
+    "profile_id",
+    "activation",
+    "standing",
+    "evidence",
+    "policy",
+    "constraints",
+    "disposition",
+    "claims",
+    "continuation"
+  ],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "decision_id": {"type": "string", "minLength": 1},
+    "candidate_transition_id": {"type": "string", "minLength": 1},
+    "decision_time": {"type": "string", "format": "date-time"},
+    "profile_id": {"type": "string", "minLength": 1},
+    "activation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["record_ref", "state", "material_relation_present"],
+      "properties": {
+        "record_ref": {"type": "string", "minLength": 1},
+        "state": {"enum": ["ACTIVE", "INACTIVE", "INCOMPLETE", "NOT_APPLICABLE", "ERROR"]},
+        "material_relation_present": {"type": "boolean"}
+      }
+    },
+    "standing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["valid", "resolvable", "authority_refs"],
+      "properties": {
+        "valid": {"type": "boolean"},
+        "resolvable": {"type": "boolean"},
+        "authority_refs": {"type": "array", "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["complete", "fresh", "refs"],
+      "properties": {
+        "complete": {"type": "boolean"},
+        "fresh": {"type": "boolean"},
+        "refs": {"type": "array", "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["applicable", "conflict_present", "refs"],
+      "properties": {
+        "applicable": {"type": "boolean"},
+        "conflict_present": {"type": "boolean"},
+        "refs": {"type": "array", "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["satisfied", "violations", "refs"],
+      "properties": {
+        "satisfied": {"type": "boolean"},
+        "violations": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "refs": {"type": "array", "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "replacement": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["candidate_transition_id", "authorized", "preserves_intent", "lineage_refs"],
+      "properties": {
+        "candidate_transition_id": {"type": "string", "minLength": 1},
+        "authorized": {"type": "boolean"},
+        "preserves_intent": {"type": "boolean"},
+        "lineage_refs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "disposition": {
+      "enum": ["ALLOW", "DENY", "FAIL_CLOSED", "DEFER", "TRANSFORM", "ERROR"]
+    },
+    "precedence_reason": {"type": "string", "minLength": 1},
+    "claims": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^GTG(-[A-Z])?-[0-9]{3}$|^GTG-[A-Z]-[0-9]{3}$"}
+    },
+    "source_determinations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source_id", "disposition", "standing_valid", "evidence_refs"],
+        "properties": {
+          "source_id": {"type": "string", "minLength": 1},
+          "disposition": {"enum": ["ALLOW", "DENY", "FAIL_CLOSED", "DEFER", "TRANSFORM", "ERROR"]},
+          "standing_valid": {"type": "boolean"},
+          "evidence_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+          "dissent": {"type": "string"}
+        }
+      }
+    },
+    "continuation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["receipt_id", "reconstruction_refs", "challenge_refs", "supersedes"],
+      "properties": {
+        "receipt_id": {"type": "string", "minLength": 1},
+        "reconstruction_refs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "challenge_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "supersedes": {"type": ["string", "null"]}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"disposition": {"const": "ALLOW"}}},
+      "then": {
+        "properties": {
+          "activation": {"properties": {"state": {"enum": ["ACTIVE", "NOT_APPLICABLE"]}}},
+          "standing": {"properties": {"valid": {"const": true}}},
+          "evidence": {"properties": {"complete": {"const": true}, "fresh": {"const": true}}},
+          "policy": {"properties": {"applicable": {"const": true}, "conflict_present": {"const": false}}},
+          "constraints": {"properties": {"satisfied": {"const": true}}}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"disposition": {"const": "TRANSFORM"}}},
+      "then": {"required": ["replacement"]}
+    },
+    {
+      "if": {
+        "properties": {
+          "activation": {
+            "properties": {
+              "state": {"const": "NOT_APPLICABLE"},
+              "material_relation_present": {"const": true}
+            },
+            "required": ["state", "material_relation_present"]
+          }
+        }
+      },
+      "then": {"properties": {"disposition": {"enum": ["FAIL_CLOSED", "ERROR"]}}}
+    }
+  ]
+}
