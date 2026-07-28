@@ -1,0 +1,137 @@
+{
+  "schema_version": "0.1.0",
+  "profile": "gtg-research-default-v0.1",
+  "cases": [
+    {
+      "case_id": "GTG-FX-001",
+      "claim_ids": ["GTG-004"],
+      "description": "Relationship is recognized but cannot affect disposition.",
+      "material_relation": true,
+      "activation_tests": {
+        "discoverable": true,
+        "commit_reconstructable": true,
+        "basis_attached": true,
+        "included_in_admissibility": false,
+        "outcome_sensitive": false
+      },
+      "expected_activation": "INACTIVE",
+      "expected_disposition": "FAIL_CLOSED"
+    },
+    {
+      "case_id": "GTG-FX-002",
+      "claim_ids": ["GTG-004", "GTG-A-002"],
+      "description": "All actors are individually authorized but the joint relation violates a shared constraint.",
+      "material_relation": true,
+      "activation_tests": {
+        "discoverable": true,
+        "commit_reconstructable": true,
+        "basis_attached": true,
+        "included_in_admissibility": true,
+        "outcome_sensitive": true
+      },
+      "standing_valid": true,
+      "shared_constraint_satisfied": false,
+      "expected_activation": "ACTIVE",
+      "expected_disposition": "DENY"
+    },
+    {
+      "case_id": "GTG-FX-003",
+      "claim_ids": ["GTG-C-001"],
+      "description": "Relational state was valid at proposal time but cannot be reconstructed at commit time.",
+      "material_relation": true,
+      "activation_tests": {
+        "discoverable": true,
+        "commit_reconstructable": false,
+        "basis_attached": true,
+        "included_in_admissibility": false,
+        "outcome_sensitive": false
+      },
+      "expected_activation": "INCOMPLETE",
+      "expected_disposition": "FAIL_CLOSED"
+    },
+    {
+      "case_id": "GTG-FX-004",
+      "claim_ids": ["GTG-O-004"],
+      "description": "Observer standing is unresolved but remediable.",
+      "material_relation": true,
+      "activation_tests": {
+        "discoverable": true,
+        "commit_reconstructable": true,
+        "basis_attached": true,
+        "included_in_admissibility": true,
+        "outcome_sensitive": true
+      },
+      "standing_valid": false,
+      "standing_defect_resolvable": true,
+      "expected_activation": "ACTIVE",
+      "expected_disposition": "DEFER"
+    },
+    {
+      "case_id": "GTG-FX-005",
+      "claim_ids": ["GTG-O-003"],
+      "description": "Original transition is inadmissible but an authorized replacement preserves declared intent.",
+      "material_relation": true,
+      "activation_tests": {
+        "discoverable": true,
+        "commit_reconstructable": true,
+        "basis_attached": true,
+        "included_in_admissibility": true,
+        "outcome_sensitive": true
+      },
+      "original_admissible": false,
+      "replacement_available": true,
+      "transform_authority_valid": true,
+      "expected_activation": "ACTIVE",
+      "expected_disposition": "TRANSFORM"
+    },
+    {
+      "case_id": "GTG-FX-006",
+      "claim_ids": ["GTG-004"],
+      "description": "Declared relevance rules prove that no material relational projection exists.",
+      "material_relation": false,
+      "not_applicable_justification": "No participant dependency, authority relation, consent relation, shared constraint, or consequence coupling is in scope.",
+      "activation_tests": {
+        "discoverable": true,
+        "commit_reconstructable": true,
+        "basis_attached": false,
+        "included_in_admissibility": false,
+        "outcome_sensitive": false
+      },
+      "expected_activation": "NOT_APPLICABLE",
+      "expected_disposition": "ALLOW"
+    },
+    {
+      "case_id": "GTG-FX-007",
+      "claim_ids": ["GTG-004"],
+      "description": "A materially relevant relation is falsely labeled not applicable.",
+      "material_relation": true,
+      "not_applicable_justification": "Relation ignored by evaluator.",
+      "activation_tests": {
+        "discoverable": true,
+        "commit_reconstructable": true,
+        "basis_attached": true,
+        "included_in_admissibility": false,
+        "outcome_sensitive": false
+      },
+      "expected_activation": "ERROR",
+      "expected_disposition": "FAIL_CLOSED"
+    },
+    {
+      "case_id": "GTG-FX-008",
+      "claim_ids": ["GTG-C-004"],
+      "description": "Same canonical inputs under the same deterministic profile produce the same result.",
+      "material_relation": true,
+      "activation_tests": {
+        "discoverable": true,
+        "commit_reconstructable": true,
+        "basis_attached": true,
+        "included_in_admissibility": true,
+        "outcome_sensitive": true
+      },
+      "standing_valid": true,
+      "shared_constraint_satisfied": true,
+      "expected_activation": "ACTIVE",
+      "expected_disposition": "ALLOW"
+    }
+  ]
+}
