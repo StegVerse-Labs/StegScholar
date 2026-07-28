@@ -1,19 +1,13 @@
 {
-  "schema_version": "0.1.0",
-  "profile": "gtg-research-default-v0.1",
+  "schema_version": "0.2.0",
+  "profile": "gtg-research-default-v0.2",
   "cases": [
     {
       "case_id": "GTG-FX-001",
       "claim_ids": ["GTG-004"],
       "description": "Relationship is recognized but cannot affect disposition.",
       "material_relation": true,
-      "activation_tests": {
-        "discoverable": true,
-        "commit_reconstructable": true,
-        "basis_attached": true,
-        "included_in_admissibility": false,
-        "outcome_sensitive": false
-      },
+      "activation_tests": {"discoverable": true, "commit_reconstructable": true, "basis_attached": true, "included_in_admissibility": false, "outcome_sensitive": false},
       "expected_activation": "INACTIVE",
       "expected_disposition": "FAIL_CLOSED"
     },
@@ -22,13 +16,7 @@
       "claim_ids": ["GTG-004", "GTG-A-002"],
       "description": "All actors are individually authorized but the joint relation violates a shared constraint.",
       "material_relation": true,
-      "activation_tests": {
-        "discoverable": true,
-        "commit_reconstructable": true,
-        "basis_attached": true,
-        "included_in_admissibility": true,
-        "outcome_sensitive": true
-      },
+      "activation_tests": {"discoverable": true, "commit_reconstructable": true, "basis_attached": true, "included_in_admissibility": true, "outcome_sensitive": true},
       "standing_valid": true,
       "shared_constraint_satisfied": false,
       "expected_activation": "ACTIVE",
@@ -39,13 +27,7 @@
       "claim_ids": ["GTG-C-001"],
       "description": "Relational state was valid at proposal time but cannot be reconstructed at commit time.",
       "material_relation": true,
-      "activation_tests": {
-        "discoverable": true,
-        "commit_reconstructable": false,
-        "basis_attached": true,
-        "included_in_admissibility": false,
-        "outcome_sensitive": false
-      },
+      "activation_tests": {"discoverable": true, "commit_reconstructable": false, "basis_attached": true, "included_in_admissibility": false, "outcome_sensitive": false},
       "expected_activation": "INCOMPLETE",
       "expected_disposition": "FAIL_CLOSED"
     },
@@ -54,13 +36,7 @@
       "claim_ids": ["GTG-O-004"],
       "description": "Observer standing is unresolved but remediable.",
       "material_relation": true,
-      "activation_tests": {
-        "discoverable": true,
-        "commit_reconstructable": true,
-        "basis_attached": true,
-        "included_in_admissibility": true,
-        "outcome_sensitive": true
-      },
+      "activation_tests": {"discoverable": true, "commit_reconstructable": true, "basis_attached": true, "included_in_admissibility": true, "outcome_sensitive": true},
       "standing_valid": false,
       "standing_defect_resolvable": true,
       "expected_activation": "ACTIVE",
@@ -71,13 +47,7 @@
       "claim_ids": ["GTG-O-003"],
       "description": "Original transition is inadmissible but an authorized replacement preserves declared intent.",
       "material_relation": true,
-      "activation_tests": {
-        "discoverable": true,
-        "commit_reconstructable": true,
-        "basis_attached": true,
-        "included_in_admissibility": true,
-        "outcome_sensitive": true
-      },
+      "activation_tests": {"discoverable": true, "commit_reconstructable": true, "basis_attached": true, "included_in_admissibility": true, "outcome_sensitive": true},
       "original_admissible": false,
       "replacement_available": true,
       "transform_authority_valid": true,
@@ -90,13 +60,7 @@
       "description": "Declared relevance rules prove that no material relational projection exists.",
       "material_relation": false,
       "not_applicable_justification": "No participant dependency, authority relation, consent relation, shared constraint, or consequence coupling is in scope.",
-      "activation_tests": {
-        "discoverable": true,
-        "commit_reconstructable": true,
-        "basis_attached": false,
-        "included_in_admissibility": false,
-        "outcome_sensitive": false
-      },
+      "activation_tests": {"discoverable": true, "commit_reconstructable": true, "basis_attached": false, "included_in_admissibility": false, "outcome_sensitive": false},
       "expected_activation": "NOT_APPLICABLE",
       "expected_disposition": "ALLOW"
     },
@@ -105,14 +69,9 @@
       "claim_ids": ["GTG-004"],
       "description": "A materially relevant relation is falsely labeled not applicable.",
       "material_relation": true,
+      "force_not_applicable": true,
       "not_applicable_justification": "Relation ignored by evaluator.",
-      "activation_tests": {
-        "discoverable": true,
-        "commit_reconstructable": true,
-        "basis_attached": true,
-        "included_in_admissibility": false,
-        "outcome_sensitive": false
-      },
+      "activation_tests": {"discoverable": true, "commit_reconstructable": true, "basis_attached": true, "included_in_admissibility": false, "outcome_sensitive": false},
       "expected_activation": "ERROR",
       "expected_disposition": "FAIL_CLOSED"
     },
@@ -121,17 +80,59 @@
       "claim_ids": ["GTG-C-004"],
       "description": "Same canonical inputs under the same deterministic profile produce the same result.",
       "material_relation": true,
-      "activation_tests": {
-        "discoverable": true,
-        "commit_reconstructable": true,
-        "basis_attached": true,
-        "included_in_admissibility": true,
-        "outcome_sensitive": true
-      },
+      "activation_tests": {"discoverable": true, "commit_reconstructable": true, "basis_attached": true, "included_in_admissibility": true, "outcome_sensitive": true},
       "standing_valid": true,
       "shared_constraint_satisfied": true,
       "expected_activation": "ACTIVE",
       "expected_disposition": "ALLOW"
+    },
+    {
+      "case_id": "GTG-FX-009",
+      "claim_ids": ["GTG-M-001", "GTG-M-003"],
+      "description": "Applicable governance sources conflict and no valid precedence rule is available.",
+      "material_relation": true,
+      "activation_tests": {"discoverable": true, "commit_reconstructable": true, "basis_attached": true, "included_in_admissibility": true, "outcome_sensitive": true},
+      "source_determinations": ["ALLOW", "DENY"],
+      "conflict_present": true,
+      "precedence_rule_valid": false,
+      "conflict_resolvable": false,
+      "expected_activation": "ACTIVE",
+      "expected_disposition": "FAIL_CLOSED"
+    },
+    {
+      "case_id": "GTG-FX-010",
+      "claim_ids": ["GTG-M-001", "GTG-O-004"],
+      "description": "Applicable governance sources conflict but missing evidence can be obtained.",
+      "material_relation": true,
+      "activation_tests": {"discoverable": true, "commit_reconstructable": true, "basis_attached": true, "included_in_admissibility": true, "outcome_sensitive": true},
+      "source_determinations": ["ALLOW", "DEFER"],
+      "conflict_present": true,
+      "precedence_rule_valid": true,
+      "conflict_resolvable": true,
+      "expected_activation": "ACTIVE",
+      "expected_disposition": "DEFER"
+    },
+    {
+      "case_id": "GTG-FX-011",
+      "claim_ids": ["GTG-A-001"],
+      "description": "Actor is technically capable but lacks execution authority.",
+      "material_relation": true,
+      "activation_tests": {"discoverable": true, "commit_reconstructable": true, "basis_attached": true, "included_in_admissibility": true, "outcome_sensitive": true},
+      "execution_authority_valid": false,
+      "authority_defect_resolvable": false,
+      "expected_activation": "ACTIVE",
+      "expected_disposition": "DENY"
+    },
+    {
+      "case_id": "GTG-FX-012",
+      "claim_ids": ["GTG-C-001", "GTG-C-004"],
+      "description": "Policy evidence is stale at commit time.",
+      "material_relation": true,
+      "activation_tests": {"discoverable": true, "commit_reconstructable": true, "basis_attached": true, "included_in_admissibility": true, "outcome_sensitive": true},
+      "evidence_complete": true,
+      "evidence_fresh": false,
+      "expected_activation": "ACTIVE",
+      "expected_disposition": "FAIL_CLOSED"
     }
   ]
 }
