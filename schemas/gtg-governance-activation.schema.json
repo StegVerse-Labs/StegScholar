@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stegverse.org/schemas/gtg-governance-activation.schema.json",
+  "title": "GTG Governance Activation Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "record_id",
+    "candidate_transition_id",
+    "commit_time",
+    "relational_projection",
+    "governance_basis",
+    "activation_tests",
+    "activation_result",
+    "authority",
+    "continuation"
+  ],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "record_id": {"type": "string", "minLength": 1},
+    "candidate_transition_id": {"type": "string", "minLength": 1},
+    "commit_time": {"type": "string", "format": "date-time"},
+    "relational_projection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["participants", "relation_classes", "relevant_to_transition", "source_references"],
+      "properties": {
+        "participants": {"type": "array", "minItems": 2, "items": {"type": "string", "minLength": 1}},
+        "relation_classes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"enum": ["RESPONSIBILITY", "AUTHORITY", "CONSTRAINT", "CONSEQUENCE", "EVIDENCE", "DEPENDENCY", "CONSENT", "STANDING"]}
+        },
+        "relevant_to_transition": {"type": "boolean"},
+        "source_references": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "governance_basis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["policy_refs", "authority_refs", "constraint_refs", "evidence_refs"],
+      "properties": {
+        "policy_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "authority_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "constraint_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "evidence_refs": {"type": "array", "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "activation_tests": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["discoverable", "commit_reconstructable", "basis_attached", "included_in_admissibility", "outcome_sensitive"],
+      "properties": {
+        "discoverable": {"type": "boolean"},
+        "commit_reconstructable": {"type": "boolean"},
+        "basis_attached": {"type": "boolean"},
+        "included_in_admissibility": {"type": "boolean"},
+        "outcome_sensitive": {"type": "boolean"}
+      }
+    },
+    "activation_result": {"enum": ["ACTIVE", "INACTIVE", "INSUFFICIENT_EVIDENCE", "FAIL_CLOSED"]},
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["observer_standing", "review_standing", "execution_authority", "certification_authority"],
+      "properties": {
+        "observer_standing": {"type": "boolean"},
+        "review_standing": {"type": "boolean"},
+        "execution_authority": {"const": false},
+        "certification_authority": {"const": false}
+      }
+    },
+    "continuation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["survives_actor_termination", "reconstruction_refs", "challenge_refs", "supersession_refs"],
+      "properties": {
+        "survives_actor_termination": {"const": true},
+        "reconstruction_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "challenge_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "supersession_refs": {"type": "array", "items": {"type": "string", "minLength": 1}}
+      }
+    }
+  }
+}
