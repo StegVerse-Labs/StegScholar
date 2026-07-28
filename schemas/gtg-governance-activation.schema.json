@@ -13,6 +13,7 @@
     "governance_basis",
     "activation_tests",
     "activation_result",
+    "activation_justification",
     "authority",
     "continuation"
   ],
@@ -21,31 +22,58 @@
     "record_id": {"type": "string", "minLength": 1},
     "candidate_transition_id": {"type": "string", "minLength": 1},
     "commit_time": {"type": "string", "format": "date-time"},
+    "claim_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^GTG-[A-Z]+-[0-9]{3}$"}
+    },
     "relational_projection": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["participants", "relation_classes", "relevant_to_transition", "source_references"],
+      "required": ["materially_relevant", "participants", "relation_classes", "source_references"],
       "properties": {
-        "participants": {"type": "array", "minItems": 2, "items": {"type": "string", "minLength": 1}},
+        "materially_relevant": {"type": "boolean"},
+        "participants": {"type": "array", "items": {"type": "string", "minLength": 1}},
         "relation_classes": {
           "type": "array",
-          "minItems": 1,
           "uniqueItems": true,
-          "items": {"enum": ["RESPONSIBILITY", "AUTHORITY", "CONSTRAINT", "CONSEQUENCE", "EVIDENCE", "DEPENDENCY", "CONSENT", "STANDING"]}
+          "items": {
+            "enum": [
+              "RESPONSIBILITY",
+              "AUTHORITY",
+              "CONSTRAINT",
+              "CONSEQUENCE",
+              "EVIDENCE",
+              "DEPENDENCY",
+              "CONSENT",
+              "STANDING",
+              "CUSTODY",
+              "DELEGATION",
+              "VULNERABILITY",
+              "COUPLED_RISK",
+              "SHARED_RESOURCE",
+              "CONTINUATION_RIGHT",
+              "CHALLENGE_RIGHT",
+              "OTHER"
+            ]
+          }
         },
-        "relevant_to_transition": {"type": "boolean"},
-        "source_references": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+        "source_references": {"type": "array", "items": {"type": "string", "minLength": 1}}
       }
     },
     "governance_basis": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["policy_refs", "authority_refs", "constraint_refs", "evidence_refs"],
+      "required": ["applicable", "policy_refs", "authority_refs", "constraint_refs", "evidence_refs"],
       "properties": {
+        "applicable": {"type": "boolean"},
         "policy_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
         "authority_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
         "constraint_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
-        "evidence_refs": {"type": "array", "items": {"type": "string", "minLength": 1}}
+        "evidence_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "consent_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "standing_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "continuation_refs": {"type": "array", "items": {"type": "string", "minLength": 1}}
       }
     },
     "activation_tests": {
@@ -60,7 +88,14 @@
         "outcome_sensitive": {"type": "boolean"}
       }
     },
-    "activation_result": {"enum": ["ACTIVE", "INACTIVE", "INSUFFICIENT_EVIDENCE", "FAIL_CLOSED"]},
+    "activation_result": {
+      "enum": ["ACTIVE", "INACTIVE", "INCOMPLETE", "NOT_APPLICABLE", "ERROR"]
+    },
+    "activation_justification": {"type": "string", "minLength": 1},
+    "missing_requirements": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
     "authority": {
       "type": "object",
       "additionalProperties": false,
@@ -68,8 +103,10 @@
       "properties": {
         "observer_standing": {"type": "boolean"},
         "review_standing": {"type": "boolean"},
-        "execution_authority": {"const": false},
-        "certification_authority": {"const": false}
+        "execution_authority": {"type": "boolean"},
+        "transformation_authority": {"type": "boolean"},
+        "certification_authority": {"type": "boolean"},
+        "publication_authority": {"type": "boolean"}
       }
     },
     "continuation": {
@@ -77,11 +114,44 @@
       "additionalProperties": false,
       "required": ["survives_actor_termination", "reconstruction_refs", "challenge_refs", "supersession_refs"],
       "properties": {
-        "survives_actor_termination": {"const": true},
+        "survives_actor_termination": {"type": "boolean"},
         "reconstruction_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
         "challenge_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
         "supersession_refs": {"type": "array", "items": {"type": "string", "minLength": 1}}
       }
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"activation_result": {"const": "ACTIVE"}}, "required": ["activation_result"]},
+      "then": {
+        "properties": {
+          "relational_projection": {"properties": {"materially_relevant": {"const": true}}},
+          "governance_basis": {"properties": {"applicable": {"const": true}}},
+          "activation_tests": {
+            "properties": {
+              "discoverable": {"const": true},
+              "commit_reconstructable": {"const": true},
+              "basis_attached": {"const": true},
+              "included_in_admissibility": {"const": true},
+              "outcome_sensitive": {"const": true}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {"properties": {"activation_result": {"const": "NOT_APPLICABLE"}}, "required": ["activation_result"]},
+      "then": {
+        "properties": {
+          "relational_projection": {"properties": {"materially_relevant": {"const": false}}},
+          "activation_tests": {"properties": {"outcome_sensitive": {"const": false}}}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"activation_result": {"const": "INCOMPLETE"}}, "required": ["activation_result"]},
+      "then": {"required": ["missing_requirements"], "properties": {"missing_requirements": {"minItems": 1}}}
+    }
+  ]
 }
