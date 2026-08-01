@@ -1,0 +1,43 @@
+{
+  "schema_version": "STEGSCHOLAR-GTG-RECONSTRUCTION-MIRROR-v1",
+  "mirror_id": "STEGVERSE-GTG-RECONSTRUCTION-MIRROR-001",
+  "canonical_ownership": {
+    "target_repository": "Admissible-Existence/GTG",
+    "independent_validation_repository": "Admissible-Existence/ae-validation-factory",
+    "stegverse_role": "RESEARCH_AND_PUBLICATION_MIRROR_ONLY"
+  },
+  "levels": {
+    "R3": {
+      "target_commit": "0fdae4a73766f16e3d745ad0fc9f0b3c9ff5cda1",
+      "target_state": "ACTIVE",
+      "factory_commit": "ac53fae0dada9946903d615715425624acaf1ac9",
+      "factory_state": "ACTIVE",
+      "mirror_state": "ACTIVE"
+    },
+    "R4": {
+      "target_commit": "e73234381501a427fcf517f63087b9c873a0af36",
+      "target_state": "ACTIVE",
+      "factory_commit": null,
+      "factory_state": "PENDING",
+      "mirror_state": "PARTIAL"
+    },
+    "R5": {
+      "target_commit": null,
+      "target_state": "NOT_TESTED",
+      "factory_commit": null,
+      "factory_state": "NOT_TESTED",
+      "mirror_state": "NOT_TESTED"
+    }
+  },
+  "claims": {
+    "canonical_authority_owned_by_stegverse": false,
+    "independent_verification_complete": false,
+    "mathematical_closure_established": false,
+    "empirical_validity_established": false,
+    "certification_claimed": false,
+    "execution_authorized": false,
+    "release_ready": false,
+    "archive_ready": false,
+    "universal_admissibility_claimed": false
+  }
+}
