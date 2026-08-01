@@ -1,0 +1,29 @@
+name: Validate GTG reconstruction mirror
+
+on:
+  pull_request:
+    paths:
+      - 'docs/GTG_RECONSTRUCTION_MIRROR_ACTIVATION.md'
+      - 'manifests/gtg-reconstruction-mirror-v1.json'
+      - 'scripts/validate_gtg_reconstruction_mirror.py'
+      - '.github/workflows/validate-gtg-reconstruction-mirror.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'docs/GTG_RECONSTRUCTION_MIRROR_ACTIVATION.md'
+      - 'manifests/gtg-reconstruction-mirror-v1.json'
+      - 'scripts/validate_gtg_reconstruction_mirror.py'
+      - '.github/workflows/validate-gtg-reconstruction-mirror.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/validate_gtg_reconstruction_mirror.py
