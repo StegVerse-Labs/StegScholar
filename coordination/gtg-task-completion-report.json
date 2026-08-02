@@ -2,37 +2,15 @@
   "schema_version": "stegverse-gtg-task-completion-report.v1",
   "program": "GTG_RECONSTRUCTION_MIRROR",
   "task_results": [
-    {
-      "task_id": "SV-GTG-R4-OBSERVE-001",
-      "status": "COMPLETE",
-      "observed_repository": "Admissible-Existence/ae-validation-factory",
-      "observed_commit": "54f5269dd583dcd193222a5f712b0c1654b3e920",
-      "source_target_commit": "e73234381501a427fcf517f63087b9c873a0af36",
-      "workflow_run": 30738765807,
-      "artifact_id": 8830539062,
-      "artifact_digest": "sha256:2ff7026bdfe49720b2ef754f5c167f0e0ae59ca91303f9e202057fc9f299f72a"
-    },
-    {
-      "task_id": "SV-GTG-R4-MIRROR-002",
-      "status": "COMPLETE",
-      "mutation_target": "manifests/gtg-reconstruction-mirror-v1.json#levels.R4",
-      "target_state": "ACTIVE",
-      "factory_state": "ACTIVE",
-      "mirror_state": "ACTIVE"
-    },
-    {
-      "task_id": "SV-GTG-R5-CANONICAL-OBSERVE-012",
-      "status": "BLOCKED",
-      "release_condition": "Admissible-Existence/GTG:GTG_MIRROR_HANDOFF.md#GTG-R5-TARGET-001 reaches COMPLETE_AND_HOSTED_VALID",
-      "next_executable_task": "Admissible-Existence/GTG:GTG_MIRROR_HANDOFF.md#GTG-R5-TARGET-001"
-    }
+    {"task_id":"SV-GTG-R4-OBSERVE-001","status":"COMPLETE","observed_commit":"54f5269dd583dcd193222a5f712b0c1654b3e920","workflow_run":30738765807,"artifact_id":8830539062,"artifact_digest":"sha256:2ff7026bdfe49720b2ef754f5c167f0e0ae59ca91303f9e202057fc9f299f72a"},
+    {"task_id":"SV-GTG-R4-MIRROR-002","status":"COMPLETE","mutation_target":"manifests/gtg-reconstruction-mirror-v1.json#levels.R4","mirror_state":"ACTIVE"},
+    {"task_id":"SV-GTG-R5-CANONICAL-SOURCE-013","status":"COMPLETE","canonical_commit":"dbc42bd14be6ec3f8821189dbd7aa1b1e698f084","canonical_workflow_run":30739464824,"canonical_artifact_id":8830771891,"canonical_artifact_digest":"sha256:bd72d050719a30e4ce281624a1d38fb1591144ded8f7b6b0b1fd5b0a799b02f8"},
+    {"task_id":"SV-GTG-R5-CANONICAL-OBSERVE-012","status":"COMPLETE","factory_commit":"ba3479355749bd996714845ec82f2826ccf1fd36","factory_workflow_run":30739697874,"factory_artifact_id":8830847658,"factory_artifact_digest":"sha256:fa30468184a13a023b3d39fb6e36b3715c11c9d4279c5a23e99a604ea45eb743","mutation_target":"manifests/gtg-reconstruction-mirror-v1.json#levels.R5","mirror_state":"ACTIVE"}
   ],
-  "claims": {
-    "execution_authority": false,
-    "certification_authority": false,
-    "mathematical_closure": false,
-    "independent_verification_complete": false,
-    "release_ready": false,
-    "archive_ready": false
-  }
+  "next_integration_goal": {
+    "goal_id": "GTG-PUBLICATION-PROPAGATION-READINESS",
+    "status": "REVIEW_REQUIRED",
+    "next_task": "Read destination mirror handoffs before any Site, Publisher, admissibility-wiki, stegguardian-wiki, or master-records mutation"
+  },
+  "claims": {"execution_authority":false,"certification_authority":false,"mathematical_closure":false,"independent_verification_complete":false,"release_ready":false,"archive_ready":false}
 }
