@@ -1,28 +1,12 @@
 {
-  "registry_version": "1.3.0",
+  "registry_version": "1.4.0",
   "goal_id": "FUNDING-PIPELINE-001",
   "repository": "StegVerse-Labs/StegScholar",
   "branch": "main",
   "canonical_handoff": "funding/FUNDING_MIRROR_HANDOFF.md",
-  "updated_at": "2026-08-02T05:12:00-05:00",
+  "updated_at": "2026-08-02T06:07:00-05:00",
   "allowed_states": ["UNCLAIMED","CLAIMED_FOR_IMPLEMENTATION","CLAIMED_FOR_VALIDATION","CLAIMED_FOR_INTEGRATION","MACHINE_OWNED","BLOCKED","COMPLETE","SUPERSEDED","MERGED_INTO_CANONICAL_WORKSTREAM","RETRY","REVIEW_REQUIRED","FAILED"],
   "claims": [
-    {
-      "task_id": "FUNDING-CORE-001",
-      "originating_goal": "Implement a grants and external-funding application environment in StegScholar",
-      "repository": "StegVerse-Labs/StegScholar",
-      "branch": "main",
-      "surfaces": ["funding/**", ".github/workflows/funding-state-validation.yml"],
-      "claimant": "repository-native funding lane",
-      "role": "validation",
-      "state": "CLAIMED_FOR_VALIDATION",
-      "claimed_at": "2026-08-02T04:44:00-05:00",
-      "expires_at": "2026-08-16T04:44:00-05:00",
-      "release_condition": "Hosted validator succeeds and inspected run, job and artifact evidence are recorded in the handoff",
-      "expected_evidence": ["validator output", "workflow run id", "workflow job id", "workflow conclusion", "artifact digest"],
-      "collision_boundaries": "No competing funding registry, schema, validator or workflow on main",
-      "next_task_after_release": "FUNDING-NSF-PESOSE-2026-001"
-    },
     {
       "task_id": "FUNDING-NSF-PESOSE-2026-001",
       "originating_goal": "Search broadly for fitting funding and begin the strongest StegVerse application",
@@ -44,11 +28,11 @@
     {
       "task_id": "FUNDING-CORE-001",
       "title": "Validate funding application control surface",
-      "state": "CLAIMED_FOR_VALIDATION",
+      "state": "COMPLETE",
       "owner": "StegVerse-Labs/StegScholar",
       "location": ".github/workflows/funding-state-validation.yml",
-      "next_action": "Run and inspect hosted funding-state validation and record run, job, log and artifact evidence",
-      "validation_state": "PENDING_HOSTED_RUN_NO_COMMIT_STATUS_PRESENT",
+      "next_action": "Re-run validation after material changes to funding/**",
+      "validation_state": "HOSTED_SUCCESS_RUN_30745051944_JOB_91489100017",
       "integration_state": "CONTRACTS_INSTALLED",
       "archival_dependency": false,
       "evidence_location": "funding/FUNDING_MIRROR_HANDOFF.md"
@@ -60,7 +44,7 @@
       "owner": "StegVerse-Labs/StegScholar funding lane",
       "location": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-concept.md",
       "next_action": "Expand the concept into the solicitation-limited project description and obtain product-license, adoption, collaboration-letter, IP, budget and applicant-registration evidence",
-      "validation_state": "SUMMARY_MILESTONES_COMPLIANCE_AND_DRAFT_BUDGET_INSTALLED",
+      "validation_state": "HOSTED_CONTROL_SURFACE_VALIDATED_APPLICATION_REMAINS_DRAFTING",
       "integration_state": "AUTHORITY_CONTRACTS_INSTALLED_RESPONSES_PENDING",
       "archival_dependency": false,
       "evidence_location": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-eligibility.md"
@@ -72,7 +56,7 @@
       "owner": "StegVerse-Labs/StegScholar",
       "location": "funding/contracts/",
       "next_action": "Obtain application-specific responses from each authority when required",
-      "validation_state": "STATIC_SOURCE_INSPECTION_COMPLETE",
+      "validation_state": "HOSTED_FILE_AND_CONTRACT_VALIDATION_COMPLETE",
       "integration_state": "PRODUCER_CONSUMER_ACCEPTANCE_PENDING",
       "archival_dependency": false,
       "evidence_location": "funding/FUNDING_MIRROR_HANDOFF.md"
@@ -84,7 +68,7 @@
       "owner": "StegVerse-Labs/StegScholar",
       "location": "funding/reusable/organization-profile/README.md and funding/schemas/",
       "next_action": "Use the governed profile and schemas for subsequent applications without converting UNVERIFIED fields into claims",
-      "validation_state": "FILES_INSTALLED_JSON_PARSE_PENDING_HOSTED_RUN",
+      "validation_state": "HOSTED_JSON_AND_FILE_VALIDATION_COMPLETE",
       "integration_state": "AVAILABLE_TO_FUNDING_PIPELINE",
       "archival_dependency": false,
       "evidence_location": "funding/FUNDING_MIRROR_HANDOFF.md"
