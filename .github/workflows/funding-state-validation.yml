@@ -25,9 +25,13 @@ jobs:
           python-version: "3.12"
       - name: Validate funding state
         run: python funding/tools/validate_funding_state.py
-      - name: Upload validation receipt
+      - name: Validate OTF ICRP package
+        run: python funding/tools/validate_otf_icrp_package.py
+      - name: Upload validation receipts
         uses: actions/upload-artifact@v4
         with:
           name: funding-state-validation
-          path: funding/evidence/latest-validation.json
+          path: |
+            funding/evidence/latest-validation.json
+            funding/evidence/latest-otf-icrp-validation.json
           if-no-files-found: error
