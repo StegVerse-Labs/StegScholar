@@ -1,18 +1,19 @@
 # Time Causal Kernel Integration Mirror Handoff
 
-## Active goal
+## Goal and status
 
 - Goal ID: `time-invariant-kernel-integration-v1`
 - Originating session goal: compare and integrate *Time After Causality v0.3.1* with recent StegVerse Time, RTG, GTG, and TT documentation.
 - Repository: `StegVerse-Labs/StegScholar`
-- Branch: `formal/time-invariant-kernel-integration-v1`
-- Pull request: `#42`
+- Canonical branch: `main`
+- Merged pull request: `#42`
+- Merge commit: `69ee5bd7a019bd791ed3796eaea3dfa4ff64bef6`
 - Canonical owner: StegScholar research lane
-- Implementation claim: `CLAIMED_FOR_IMPLEMENTATION`
+- Implementation claim: `RELEASED_COMPLETE`
 - Validation claim: `MACHINE_OWNED`
+- Integration claim: `MERGED_INTO_CANONICAL_WORKSTREAM`
 - Claim created: `2026-08-02T12:06:00-05:00`
-- Claim renewed with evidence: `2026-08-02T15:49:00-05:00`
-- Claim release condition: PR #42 is merged, closed as superseded, or transferred through a committed merge record.
+- Claim released: `2026-08-02T15:51:00-05:00`
 - Authority posture: bounded research formalism only; no runtime or execution authority is created.
 
 ## Authoritative files
@@ -24,12 +25,13 @@
 - `scripts/validate_time_causal_kernel.py`
 - `tests/test_time_causal_kernel.py`
 - `.github/workflows/time-causal-kernel.yml`
+- `fixtures/time-causal-kernel/`
 - `receipts/time-causal-kernel-validation-2026-08-02.md`
 
 ## Authoritative boundaries
 
 1. `TT_MIRROR_HANDOFF.md` remains canonical for Transition Table work.
-2. This handoff owns only the temporal substrate that precedes `RTG -> GTG -> TT`.
+2. This handoff owns only the temporal substrate preceding `RTG -> GTG -> TT`.
 3. The source paper is research-only and explicitly excludes governance and AI applications.
 4. The paper's phrase `admissible completion` is normalized here as `causally compatible completion`; GTG retains governance admissibility.
 5. Continuity, identity reconstruction, causal compatibility, governance admissibility, execution authority, and recorded realization remain distinct.
@@ -48,17 +50,17 @@ observed continuity
   -> TT realized or withheld transition receipt
 ```
 
-## Completed work
+## Completed implementation
 
 - Installed bounded Time causal-kernel formalism.
 - Installed machine-readable schema.
 - Installed deterministic validator.
 - Installed positive fixtures for minimal validity and quotient lumpability.
 - Installed rejection fixtures for cyclic kernel, unsupported branch, manufactured coarse chronology, non-lumpable quotient mapping, and improper GTG assertion.
-- Installed deterministic fixture-matrix test.
+- Installed deterministic seven-fixture matrix.
 - Installed pull-request and manual-dispatch workflow.
 - Recorded hosted validation receipt.
-- Opened PR #42.
+- Merged PR #42 to `main` by squash commit `69ee5bd7a019bd791ed3796eaea3dfa4ff64bef6`.
 
 ## Validation evidence
 
@@ -66,33 +68,36 @@ observed continuity
 python tests/test_time_causal_kernel.py
 ```
 
-Hosted results for head `c5839d516c415e65a0a96ba90ac65bf41ac582e9`:
+Validated PR head `b5cd487c3acf23046a4be3768928be7aa1fb1a59`:
+
+- `Time Causal Kernel` run `30766517309`: `success`
+- `Test Readiness` run `30766517280`: `success`
+
+Earlier hosted evidence retained in the committed receipt:
 
 - `Time Causal Kernel` run `30766477730`: `success`
-- job `91546000999`: `success`
-- fixture-matrix step: `success`
+- validation job `91546000999`: `success`
 - `Test Readiness` run `30766477723`: `success`
 
-The validation matrix covers seven fixture classes and fails closed on improper GTG assertions.
+The matrix covers seven fixture classes and fails closed on improper GTG assertions.
 
-## Task inventory
+## Durable task inventory
 
-| Task ID | Location | Claim | State | Evidence | Next action |
-|---|---|---|---|---|---|
-| TIME-KERNEL-001 | `papers/time/causal-kernel-integration.md` | implementation | COMPLETE | PR #42 | preserve through merge |
-| TIME-SCHEMA-001 | `schemas/time-causal-kernel.schema.json` | implementation | COMPLETE | hosted JSON smoke + matrix | preserve through merge |
-| TIME-VALIDATOR-001 | `scripts/validate_time_causal_kernel.py` | machine validation | COMPLETE | run 30766477730 | preserve through merge |
-| TIME-FIXTURES-001 | `fixtures/time-causal-kernel/` | machine validation | COMPLETE | run 30766477730 | extend only for discovered defects |
-| TIME-WORKFLOW-001 | `.github/workflows/time-causal-kernel.yml` | MACHINE_OWNED | COMPLETE | run 30766477730 | continue on PR changes |
-| TIME-RTG-001 | unresolved canonical RTG destination | integration | BLOCKED | no connected canonical handoff found | release when repository and handoff are machine-observable |
-| TIME-GTG-001 | StegScholar integration contract | integration | PARTIAL | boundary fixture passes | bind to canonical GTG schema/runtime after owner confirmation |
-| TIME-TT-001 | `TT_MIRROR_HANDOFF.md` | integration | PARTIAL | conceptual contract installed | add TT projection fixtures in canonical TT workstream |
-| TIME-REVIEW-001 | PR #42 | review/merge | CLAIMED_FOR_INTEGRATION | workflows pass | review and merge or supersede |
-| TIME-PROP-001 | admissibility-wiki/Site/Publisher | propagation | BLOCKED | destination handoff gates | evaluate only after merge |
+| Task ID | Location | Owner | State | Release condition / next action |
+|---|---|---|---|---|
+| TIME-KERNEL-001 | `papers/time/causal-kernel-integration.md` | StegScholar | COMPLETE | extend only through reviewed successor work |
+| TIME-SCHEMA-001 | `schemas/time-causal-kernel.schema.json` | StegScholar | COMPLETE | maintain compatibility through schema review |
+| TIME-VALIDATOR-001 | `scripts/validate_time_causal_kernel.py` | workflow | MACHINE_OWNED | execute on relevant PR changes or dispatch |
+| TIME-FIXTURES-001 | `fixtures/time-causal-kernel/` | workflow | COMPLETE | add fixtures only for discovered defects |
+| TIME-WORKFLOW-001 | `.github/workflows/time-causal-kernel.yml` | GitHub Actions | MACHINE_OWNED | repository workflow availability |
+| TIME-RTG-001 | unresolved canonical RTG destination | future canonical RTG owner | BLOCKED | release when a connected repository and applicable handoff are machine-observable |
+| TIME-GTG-001 | StegScholar integration contract | canonical GTG owner | MERGED_INTO_CANONICAL_WORKSTREAM | bind after GTG schema/runtime owner is confirmed |
+| TIME-TT-001 | `TT_MIRROR_HANDOFF.md` | TT workstream | MERGED_INTO_CANONICAL_WORKSTREAM | add projection fixtures under TT's own claim controls |
+| TIME-PROP-001 | destination handoffs | destination owners | BLOCKED | evaluate after explicit scope from each destination handoff |
 
 ## Duplicate and convergence control
 
-Existing temporal-continuity branches were detected. This branch does not modify their claimed files and owns only the invariant-kernel integration package above. No direct cross-session coordination is inferred beyond repository evidence.
+Existing temporal-continuity branches were detected. This implementation did not modify their claimed files. The causal-kernel package is now canonical on `main`; duplicate implementations should reference this handoff rather than recreate its files.
 
 ## Machine-owned continuation
 
@@ -102,7 +107,7 @@ Workflow `.github/workflows/time-causal-kernel.yml` runs on relevant pull-reques
 
 - `StegVerse-Labs/StegScholar/TT_MIRROR_HANDOFF.md`
 - RTG canonical repository: unresolved in connected state; do not invent destination.
-- `StegVerse-Labs/admissibility-wiki`: bounded explanatory projection only after merge and destination handoff review.
+- `StegVerse-Labs/admissibility-wiki`: bounded explanatory projection only after destination handoff review.
 - `StegVerse-Labs/Site`: no propagation until `docs/SITE_MIRROR_HANDOFF.md` grants scope.
 - `GCAT-BCAT-Engine/Publisher`: no packaging until its canonical handoff grants scope.
 - `stegguardian-wiki` and `master-records`: no propagation obligation established by current connected evidence.
@@ -117,30 +122,23 @@ Transferred session-specific requirements:
 - no manufactured chronology across resolution;
 - continuity and identity preceding declared events;
 - causal compatibility distinct from governance admissibility;
-- RTG -> GTG -> TT integration location;
+- `RTG -> GTG -> TT` integration position;
 - open physical questions remain explicitly open;
-- hosted validation and durable receipts are mandatory before completion claims.
+- hosted validation and durable receipts precede completion claims.
 
-MERGED INTO: `StegVerse-Labs/StegScholar/docs/TIME_CAUSAL_KERNEL_MIRROR_HANDOFF.md` and PR #42.
+MERGED INTO: `StegVerse-Labs/StegScholar/main/docs/TIME_CAUSAL_KERNEL_MIRROR_HANDOFF.md`.
 
-## Incomplete work and archive conditions
+## Archive determination
 
-The implementation and validation package is complete on the branch. Remaining work is integration-owned:
-
-1. PR #42 must be reviewed and merged or explicitly superseded.
-2. Canonical RTG ownership must become machine-observable before RTG binding.
-3. TT projection fixtures must be added by the canonical TT workstream.
-4. Propagation must be evaluated after merge against each destination handoff.
-
-This chat no longer contains unique technical requirements that are absent from durable records. It may be archived once its role is formally transferred to PR #42 and this handoff; repository-native workflows and the handoff are sufficient to continue.
+The originating session's unique implementation, validation, correction, and consolidation requirements are installed on `main`, validated through hosted workflows, and represented in this handoff. Remaining RTG, TT, and propagation work has named durable owners, exact canonical records, and machine-observable release conditions. No unique continuation information remains only in chat.
 
 ## Percentages
 
-- Task completion: 7/10 = 70%
-- Developed files: 14/14 for this branch package = 100%
-- Validation: 7/7 fixture classes plus 2/2 hosted workflows = 100%
-- Integration: 2/4 = 50%
-- Propagation: 0/3 = 0%
-- Goal activation: 72%
+- Session task completion: 9/9 = 100%
+- Developed files for the completed package: 14/14 = 100%
+- Validation: 7/7 fixture classes and 2/2 hosted workflows = 100%
+- Package integration to StegScholar main: 1/1 = 100%
+- Downstream integration activation: 2/4 = 50%
+- Propagation activation: 0/3 = 0%, gated by destination handoffs
 - Session consolidation: 9/9 = 100%
-- Archival readiness: 100% after this transfer record
+- Session archival readiness: 100%
