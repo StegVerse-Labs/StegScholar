@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stegverse.org/schemas/funding/submission-receipt.schema.json",
+  "title": "StegScholar Funding Submission Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["receipt_id", "application_id", "state", "sponsor", "submitted_at", "submitted_by", "authority", "package", "validation", "next_action"],
+  "properties": {
+    "receipt_id": {"type": "string", "pattern": "^SUBMISSION-[A-Z0-9-]+$"},
+    "application_id": {"type": "string", "pattern": "^FUNDING-[A-Z0-9-]+$"},
+    "state": {"enum": ["SUBMITTED", "REJECTED_BY_PORTAL", "WITHDRAWN", "SUPERSEDED"]},
+    "sponsor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "opportunity_id", "portal", "confirmation_id"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "opportunity_id": {"type": "string", "minLength": 1},
+        "portal": {"type": "string", "minLength": 1},
+        "confirmation_id": {"type": "string", "minLength": 1}
+      }
+    },
+    "submitted_at": {"type": "string", "format": "date-time"},
+    "submitted_by": {"type": "string", "minLength": 1},
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authorized_organizational_representative", "authorization_evidence"],
+      "properties": {
+        "authorized_organizational_representative": {"type": "string", "minLength": 1},
+        "authorization_evidence": {"type": "string", "minLength": 1}
+      }
+    },
+    "package": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["manifest", "digest", "documents"],
+      "properties": {
+        "manifest": {"type": "string", "minLength": 1},
+        "digest": {"type": "string", "pattern": "^sha256:[a-fA-F0-9]{64}$"},
+        "documents": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["application_state", "budget_approved", "ip_review_complete", "portal_confirmation_inspected"],
+      "properties": {
+        "application_state": {"const": "SUBMISSION_READY"},
+        "budget_approved": {"const": true},
+        "ip_review_complete": {"const": true},
+        "portal_confirmation_inspected": {"const": true}
+      }
+    },
+    "next_action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["owner", "action", "release_condition"],
+      "properties": {
+        "owner": {"type": "string", "minLength": 1},
+        "action": {"type": "string", "minLength": 1},
+        "release_condition": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}
