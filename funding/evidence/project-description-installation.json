@@ -1,10 +1,18 @@
 {
   "application_id": "FUNDING-NSF-PESOSE-2026-001",
   "artifact": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-project-description.md",
-  "state": "IMPLEMENTED_PENDING_HOSTED_VALIDATION",
+  "state": "IMPLEMENTED_AND_HOSTED_VALIDATED",
   "installed_commit": "dd3e65336cd2a01fafbb670a6125aa16298527d4",
   "validator_commit": "8cb9fcc0b1a1a17534385104ec3e6ab0ed15391a",
   "registry_commit": "6993165b24e0c85b6757ed2058db0a35d1195900",
+  "validation_request_commit": "187196bf0f0aa0b2fdc905ff08cc4b32557aae58",
+  "workflow_run_id": 30758261196,
+  "workflow_job_id": 91524128700,
+  "workflow_conclusion": "success",
+  "artifact_id": 8836617427,
+  "artifact_name": "funding-state-validation",
+  "artifact_digest": "sha256:6fd7baac0d02db6f4c9e03037be7df875b147ca2e4e38fcc17d93672ac8b5fe0",
+  "artifact_expires_at": "2026-10-31T17:09:54Z",
   "submission_ready": false,
   "blocking_authorities": [
     "human corporate and applicant-registration authority",
@@ -12,5 +20,5 @@
     "authorized StegFinCo budget approver",
     "human IP authority or future canonical StegPatents repository"
   ],
-  "next_action": "Execute hosted funding-state validation and record the resulting run, job, artifact, and digest."
+  "next_action": "Complete references and sponsor supporting documents without weakening the existing authority gates."
 }
