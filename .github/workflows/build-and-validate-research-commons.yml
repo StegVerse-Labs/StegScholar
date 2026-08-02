@@ -42,6 +42,8 @@ jobs:
         run: python research_commons/tools/detect_duplicates.py
       - name: Validate Site projection boundary
         run: python research_commons/tools/validate_site_projection.py
+      - name: Build fail-closed Site dispatch packet
+        run: python research_commons/tools/build_site_projection_dispatch.py
       - name: Validate Research Commons control state
         run: python research_commons/tools/check_research_commons_control_state.py
       - name: Upload generated validation artifacts
@@ -52,4 +54,5 @@ jobs:
             research_commons/indexes/publisher-papers/*.json
             research_commons/sources/publisher-papers/registry-hash-receipt.json
             research_commons/reports/duplicate-detection.json
+            research_commons/projection/site-projection-dispatch-packet.json
           if-no-files-found: error
