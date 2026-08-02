@@ -2,7 +2,7 @@
   "schema_version": "stegverse-gtg-task-ledger.v1",
   "repository": "StegVerse-Labs/StegScholar",
   "program": "GTG_RECONSTRUCTION_MIRROR",
-  "anti_stall_rule": "An incomplete program must always expose at least one executable local task. Observation and deterministic completion are StegVerse-owned tasks, never external handoffs.",
+  "anti_stall_rule": "An incomplete program must always expose at least one executable local task. Observation, challenge construction, discovery, reconciliation, and deterministic completion are StegVerse-owned tasks, never external handoffs.",
   "tasks": [
     {
       "task_id": "SV-GTG-R4-OBSERVE-001",
@@ -75,11 +75,37 @@
       "exists_at": "StegVerse-Labs/StegScholar:.github/workflows/complete-gtg-reconstruction-tasks.yml",
       "execution_repository": "StegVerse-Labs/StegScholar",
       "execution_path": "scripts/complete_gtg_tasks.py",
-      "status": "ACTIVE_VALIDATION",
+      "status": "COMPLETE",
       "execution_mode": "SCHEDULED_OBSERVATION_MUTATION_AND_PULL_REQUEST",
       "dependencies": [],
-      "next_action": "Validate that the scheduled workflow completes bounded mutations idempotently and creates no change when evidence is absent.",
-      "completion_evidence": "hosted workflow succeeds and either records no available mutation or opens/updates a bounded completion PR",
+      "next_action": "Preserve the activated deterministic task executor and its idempotent no-op behavior when evidence is absent.",
+      "completion_evidence": "merged in 9ab38710cd3c07f9dd0f380ef9dc8cc37000253c after hosted observer, readiness, and R5 validation success",
+      "on_complete_activate": null
+    },
+    {
+      "task_id": "SV-GTG-R4-CHALLENGE-007",
+      "title": "Validate StegVerse R4 authority-reconstruction challenge corpus",
+      "exists_at": "StegVerse-Labs/StegScholar:coordination/gtg-r4-challenge-task.json#SV-GTG-R4-CHALLENGE-007",
+      "execution_repository": "StegVerse-Labs/StegScholar",
+      "execution_path": "scripts/validate_gtg_r4_challenges.py",
+      "status": "COMPLETE",
+      "execution_mode": "REPOSITORY_MUTATION_AND_HOSTED_VALIDATION",
+      "dependencies": [],
+      "next_action": "Preserve the active R4 challenge corpus and use it as a local non-observation work lane.",
+      "completion_evidence": "merged in dca0b9002851637b2d02851615d229f486d81ec2 after hosted R4 challenge and readiness success",
+      "on_complete_activate": "SV-GTG-TASK-DISCOVERY-008"
+    },
+    {
+      "task_id": "SV-GTG-TASK-DISCOVERY-008",
+      "title": "Discover and reconcile StegVerse GTG tasks",
+      "exists_at": "StegVerse-Labs/StegScholar:coordination/gtg-task-discovery-task.json#SV-GTG-TASK-DISCOVERY-008",
+      "execution_repository": "StegVerse-Labs/StegScholar",
+      "execution_path": "scripts/reconcile_gtg_task_registry.py",
+      "status": "ACTIVE_VALIDATION",
+      "execution_mode": "SCHEDULED_DISCOVERY_RECONCILIATION_AND_REPORT",
+      "dependencies": [],
+      "next_action": "Run .github/workflows/reconcile-gtg-task-registry.yml and reject missing, stale, externalized, or observation-only task graphs.",
+      "completion_evidence": "Reconcile StegVerse GTG task registry workflow succeeds and publishes coordination/gtg-task-discovery-report.json",
       "on_complete_activate": null
     }
   ],
