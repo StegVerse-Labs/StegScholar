@@ -1,0 +1,14 @@
+{
+  "task_id": "SV-GTG-R4-R5-SUBJECT-011",
+  "title": "Validate subject identity continuity across R4 authority and R5 evidence",
+  "exists_at": "StegVerse-Labs/StegScholar:coordination/gtg-r4-r5-subject-continuity-task.json#SV-GTG-R4-R5-SUBJECT-011",
+  "status": "ACTIVE_VALIDATION",
+  "execution_repository": "StegVerse-Labs/StegScholar",
+  "execution_path": "scripts/validate_gtg_r4_r5_subject_continuity.py",
+  "workflow_path": ".github/workflows/validate-gtg-r4-r5-subject-continuity.yml",
+  "next_action": "Run hosted validation over subject identity continuity cases and activate only after terminal success.",
+  "completion_evidence": "Validate StegVerse GTG R4-R5 subject continuity workflow succeeds on the activation commit",
+  "dependency_posture": "NONE",
+  "external_task": false,
+  "claims": {"execution_authority":false,"certification_authority":false,"mathematical_closure":false,"independent_verification_complete":false,"release_ready":false,"archive_ready":false}
+}
