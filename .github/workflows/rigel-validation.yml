@@ -20,13 +20,19 @@ on:
     paths:
       - "papers/recoverability-geometry-rigel-number/simulations/**"
       - ".github/workflows/rigel-validation.yml"
+      - "coordination/rigel-validation-tasks.json"
   pull_request:
     paths:
       - "papers/recoverability-geometry-rigel-number/simulations/**"
       - ".github/workflows/rigel-validation.yml"
+      - "coordination/rigel-validation-tasks.json"
 
 permissions:
-  contents: read
+  contents: write
+
+concurrency:
+  group: rigel-validation-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   test-and-simulate:
@@ -36,6 +42,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -87,6 +95,13 @@ jobs:
             --total-latency 0.45 \
             --output-dir generated/constant-total-latency-ablation
 
+      - name: Evaluate fail-closed validation state
+        run: |
+          python papers/recoverability-geometry-rigel-number/simulations/evaluate_validation_state.py \
+            --baseline-metrics generated/scalar-delayed-control/baseline-evaluation.json \
+            --ablation-summary generated/constant-total-latency-ablation/summary.json \
+            --output generated/validation-state.json
+
       - name: Create validation receipts
         shell: bash
         run: |
@@ -132,7 +147,7 @@ jobs:
                   hashes[str(path)] = {"sha256": digest, "bytes": path.stat().st_size}
 
               receipt = {
-                  "schema_version": "1.1",
+                  "schema_version": "1.2",
                   "benchmark_id": run["benchmark_id"],
                   "generated_at_utc": datetime.now(timezone.utc).isoformat(),
                   "repository": os.environ.get("GITHUB_REPOSITORY"),
@@ -144,6 +159,7 @@ jobs:
                   "command": run["command"],
                   "independent_outcome_label": True,
                   "files": hashes,
+                  "validation_state_path": "generated/validation-state.json",
                   "claim_limit": (
                       "This receipt proves deterministic execution and artifact identity only; "
                       "it does not establish cross-domain validity or a universal Ri=1 threshold."
@@ -154,7 +170,7 @@ jobs:
               )
           PY
 
-      - name: Display summaries
+      - name: Display summaries and state
         run: |
           echo "Scalar benchmark summary"
           cat generated/scalar-delayed-control/summary.json
@@ -162,6 +178,8 @@ jobs:
           cat generated/scalar-delayed-control/baseline-evaluation.json
           echo "Constant-total-latency ablation summary"
           cat generated/constant-total-latency-ablation/summary.json
+          echo "Fail-closed validation state"
+          cat generated/validation-state.json
 
       - name: Upload validation evidence
         uses: actions/upload-artifact@v4
@@ -177,5 +195,29 @@ jobs:
             generated/constant-total-latency-ablation/episodes.csv
             generated/constant-total-latency-ablation/summary.json
             generated/constant-total-latency-ablation/validation-receipt.json
+            generated/validation-state.json
           if-no-files-found: error
           retention-days: 30
+
+      - name: Persist compact validation evidence
+        if: github.event_name != 'pull_request'
+        shell: bash
+        run: |
+          destination="evidence/rigel-validation/latest"
+          mkdir -p "$destination"
+          cp generated/scalar-delayed-control/summary.json "$destination/scalar-summary.json"
+          cp generated/scalar-delayed-control/baseline-evaluation.json "$destination/baseline-evaluation.json"
+          cp generated/scalar-delayed-control/validation-receipt.json "$destination/scalar-validation-receipt.json"
+          cp generated/constant-total-latency-ablation/summary.json "$destination/ablation-summary.json"
+          cp generated/constant-total-latency-ablation/validation-receipt.json "$destination/ablation-validation-receipt.json"
+          cp generated/validation-state.json "$destination/validation-state.json"
+
+          git config user.name "stegverse-validation-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add "$destination"
+          if git diff --cached --quiet; then
+            echo "No compact evidence changes to persist."
+            exit 0
+          fi
+          git commit -m "Persist Rigel validation evidence for run $GITHUB_RUN_ID"
+          git push origin HEAD:main
