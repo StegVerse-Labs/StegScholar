@@ -1,10 +1,10 @@
 {
-  "registry_version": "1.8.0",
+  "registry_version": "1.9.0",
   "goal_id": "FUNDING-PIPELINE-001",
   "repository": "StegVerse-Labs/StegScholar",
   "branch": "main",
   "canonical_handoff": "funding/FUNDING_MIRROR_HANDOFF.md",
-  "updated_at": "2026-08-02T15:58:00-05:00",
+  "updated_at": "2026-08-02T16:05:00-05:00",
   "allowed_states": ["UNCLAIMED","CLAIMED_FOR_IMPLEMENTATION","CLAIMED_FOR_VALIDATION","CLAIMED_FOR_INTEGRATION","MACHINE_OWNED","BLOCKED","COMPLETE","SUPERSEDED","MERGED_INTO_CANONICAL_WORKSTREAM","RETRY","REVIEW_REQUIRED","FAILED"],
   "claims": [
     {
@@ -48,10 +48,10 @@
       "owner": "StegVerse-Labs/StegScholar",
       "location": ".github/workflows/funding-state-validation.yml",
       "next_action": "Re-run validation after material changes to funding/**",
-      "validation_state": "HOSTED_SUCCESS_RUN_30758261196_JOB_91524128700_ARTIFACT_8836617427",
-      "integration_state": "CONTRACTS_INSTALLED",
+      "validation_state": "HOSTED_SUCCESS_RUN_30766410128_JOB_91545822782_ARTIFACT_8839077504",
+      "integration_state": "MULTI_APPLICATION_SPONSOR_AWARE_VALIDATION_ACTIVE",
       "archival_dependency": false,
-      "evidence_location": "funding/evidence/project-description-installation.json"
+      "evidence_location": "funding/evidence/expanded-scan-installation.json"
     },
     {
       "task_id": "FUNDING-NSF-PESOSE-2026-001",
@@ -60,7 +60,7 @@
       "owner": "StegVerse-Labs/StegScholar funding lane",
       "location": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-project-description.md",
       "next_action": "Complete references and sponsor supporting documents while blocked applicant, product, IP and budget authority evidence is resolved",
-      "validation_state": "PROJECT_DESCRIPTION_HOSTED_VALIDATED_RUN_30758261196_JOB_91524128700",
+      "validation_state": "PROJECT_DESCRIPTION_AND_APPLICATION_HOSTED_VALIDATED_RUN_30766410128",
       "integration_state": "STEGFINCO_INTAKE_VALIDATED_AUTHORITY_RESPONSE_PENDING",
       "archival_dependency": false,
       "evidence_location": "funding/evidence/project-description-installation.json"
@@ -72,22 +72,22 @@
       "owner": "StegVerse-Labs/StegScholar OTF ICRP lane",
       "location": "funding/applications/active/FUNDING-OTF-ICRP-2026-001-concept-note.md",
       "next_action": "Install named applicant, CV, relevant experience, ethical eligibility, availability, milestone and budget evidence without inventing affiliations or affected-community experience",
-      "validation_state": "STATIC_DRAFT_INSTALLED_HOSTED_VALIDATION_PENDING",
+      "validation_state": "HOSTED_CONCEPT_AND_SAFETY_VALIDATED_RUN_30766410128_JOB_91545822782",
       "integration_state": "HOST_ORGANIZATION_DEFERRED_TO_STAGE_2_APPLICANT_AUTHORITY_PENDING",
       "archival_dependency": false,
-      "evidence_location": "funding/applications/active/FUNDING-OTF-ICRP-2026-001.json"
+      "evidence_location": "funding/evidence/expanded-scan-installation.json"
     },
     {
       "task_id": "FUNDING-EXPANDED-SCAN-008",
       "title": "Maintain expanded current opportunity portfolio",
-      "state": "MACHINE_OWNED",
+      "state": "COMPLETE",
       "owner": "StegVerse-Labs/StegScholar funding lane",
       "location": "funding/opportunities/2026-08-02-expanded-scan.md",
       "next_action": "Revalidate deadlines and open status before any application state advances or at the next scheduled funding scan",
-      "validation_state": "PRIMARY_SOURCE_WEB_REVIEW_COMPLETE_REPOSITORY_VALIDATION_PENDING",
+      "validation_state": "HOSTED_SUCCESS_RUN_30766410128_JOB_91545822782_ARTIFACT_8839077504_DIGEST_1DF59BCDAA14CBA17947629FCF60252E56A1872DD6ECA0AD8DB12FA71F0E2B10",
       "integration_state": "OTF_ICRP_ACTIVE_SBIR_AND_PARTNER_LANES_REGISTERED",
       "archival_dependency": false,
-      "evidence_location": "funding/opportunities/2026-08-02-expanded-scan.md"
+      "evidence_location": "funding/evidence/expanded-scan-installation.json"
     },
     {
       "task_id": "FUNDING-NSF-SBIR-2026-001",
@@ -96,10 +96,10 @@
       "owner": "Human corporate authority and StegScholar funding lane",
       "location": "funding/applications/candidates/FUNDING-NSF-SBIR-2026-001-assessment.md",
       "next_action": "Provide qualifying U.S. small-business, ownership, PI employment, product-rights and candidate-selection evidence",
-      "validation_state": "TOPIC_FIT_VERIFIED_APPLICANT_ELIGIBILITY_UNVERIFIED",
+      "validation_state": "ASSESSMENT_HOSTED_VALIDATED_APPLICANT_ELIGIBILITY_UNVERIFIED",
       "integration_state": "CONSOLIDATED_AI_AND_CYBERSECURITY_WORKSTREAM",
       "archival_dependency": false,
-      "evidence_location": "funding/applications/candidates/FUNDING-NSF-SBIR-2026-001-assessment.md"
+      "evidence_location": "funding/evidence/expanded-scan-installation.json"
     },
     {
       "task_id": "FUNDING-ACADEMIC-PARTNERS-009",
@@ -108,10 +108,10 @@
       "owner": "StegScholar partnership lane",
       "location": "funding/opportunities/2026-08-02-expanded-scan.md",
       "next_action": "Record a qualifying lead institution, PI appointment and project-specific interest before opening any partner-led application",
-      "validation_state": "PROGRAM_FIT_SCREENED_ELIGIBLE_LEADS_MISSING",
+      "validation_state": "PROGRAM_FIT_HOSTED_VALIDATED_ELIGIBLE_LEADS_MISSING",
       "integration_state": "NO_PARTNER_APPLICATIONS_OPENED",
       "archival_dependency": false,
-      "evidence_location": "funding/opportunities/2026-08-02-expanded-scan.md"
+      "evidence_location": "funding/evidence/expanded-scan-installation.json"
     },
     {
       "task_id": "FUNDING-INTEGRATION-002",
