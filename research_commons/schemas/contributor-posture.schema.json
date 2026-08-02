@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stegverse.org/schemas/contributor-posture.schema.json",
+  "title": "Research Commons Contributor Posture",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contributor_id", "identity_posture", "attribution_posture", "consent_receipt", "public_identity_allowed", "revocation_posture"],
+  "properties": {
+    "contributor_id": {"type": "string", "minLength": 1},
+    "identity_posture": {"enum": ["verified_named", "verified_pseudonymous", "unverified_pseudonymous", "anonymous"]},
+    "display_name": {"type": ["string", "null"]},
+    "attribution_posture": {"enum": ["required", "allowed", "withheld", "prohibited"]},
+    "consent_receipt": {"type": "string", "minLength": 1},
+    "public_identity_allowed": {"type": "boolean"},
+    "contact_disclosure_allowed": {"type": "boolean", "default": false},
+    "revocation_posture": {"enum": ["prospective", "not_revocable_for_existing_publication", "contract_defined"]},
+    "license_ref": {"type": ["string", "null"]},
+    "notes": {"type": ["string", "null"]}
+  }
+}
