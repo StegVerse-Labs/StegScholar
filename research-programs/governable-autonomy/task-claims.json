@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-08-02T22:50:00Z",
+  "updated_at": "2026-08-02T22:58:00Z",
   "allowed_states": [
     "UNCLAIMED",
     "CLAIMED_FOR_IMPLEMENTATION",
@@ -26,24 +26,26 @@
         ".github/workflows/governable-autonomy-validate.yml",
         "STEGSCHOLAR_GOVERNABLE_AUTONOMY_MIRROR_HANDOFF.md"
       ],
-      "claimant": "governable-autonomy-security-validation-lane",
-      "role": "implementation",
-      "state": "CLAIMED_FOR_IMPLEMENTATION",
+      "claimant": "github-actions:governable-autonomy-validate",
+      "role": "validation",
+      "state": "MACHINE_OWNED",
       "claim_created_at": "2026-08-02T22:49:51Z",
-      "claim_expires_at": "2026-08-03T22:49:51Z",
-      "release_condition": "All scoped files are committed, validator passes, hosted workflow result is inspected, issue #46 is updated, and the handoff records the evidence.",
+      "claim_expires_at": "2026-08-04T22:49:51Z",
+      "release_condition": "A hosted Governable Autonomy Validation run completes successfully, its validate job and logs are inspected, its receipt artifact reports COMPLETE, issue #46 is updated, and this claim is marked COMPLETE or released.",
+      "blocked_release_condition": "If no hosted run becomes observable before expiration, mark BLOCKED and create a new explicit validation claim rather than silently extending this claim.",
       "expected_evidence": [
-        "commit SHAs",
-        "validator output",
-        "GitHub Actions run and job conclusion",
-        "issue #46 completion record",
-        "handoff update"
+        "commits 50ce914d01f5700878e9c513af6c66d029a01758, e3dd95f5e8f56f88652e7b919d5fad389fbdeb08, 2585f926cbb9abc760094125ab5e6312c73bbfa3, ad215d2416449a284dda047ac5c1a08ae026c9fb, 58c34a225953c2b363828b6fc2900595bd005f48, f0059c3dfdfe4eb673fb2cf389a38f142413fbda",
+        "GitHub Actions run and validate-job conclusion",
+        "decoded job log",
+        "governable-autonomy-validation-receipt artifact",
+        "issue #46 completion or blocked record",
+        "handoff validation-state update"
       ],
       "collision_boundaries": [
         "No other lane may modify the listed files without first releasing, superseding, or explicitly splitting this claim.",
-        "The funding workstream and Recoverability Geometry track are outside this claim."
+        "The funding workstream, Recoverability Geometry track, and unrelated StegScholar handoffs are outside this claim."
       ],
-      "next_task_after_release": "Issue #7 deterministic BCAT execution-boundary model and issue #12 property tests."
+      "next_task_after_release": "Issue #7 deterministic BCAT execution-boundary model, followed by issue #10, issue #11, and issue #12 property tests."
     }
   ]
 }
