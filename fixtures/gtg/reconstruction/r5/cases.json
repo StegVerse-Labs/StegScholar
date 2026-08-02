@@ -1,0 +1,85 @@
+{
+  "schema_version": "stegverse-gtg-r5-fixtures.v1",
+  "cases": [
+    {
+      "case_id": "SV-R5-001",
+      "required_external_contact": true,
+      "evidence": [{"class": "PROVIDER_RECEIPT", "effect_proven": true, "subject_match": true, "fresh": true, "integrity_bound": true, "custody_complete": true, "contradicted": false}],
+      "authority_effect": false,
+      "execution_authorized": false,
+      "expected": "R5_PASS"
+    },
+    {
+      "case_id": "SV-R5-002",
+      "required_external_contact": true,
+      "evidence": [{"class": "PROVIDER_RECEIPT", "effect_proven": false, "subject_match": true, "fresh": true, "integrity_bound": true, "custody_complete": true, "contradicted": false}],
+      "authority_effect": false,
+      "execution_authorized": false,
+      "expected": "R5_FAIL_CLOSED"
+    },
+    {
+      "case_id": "SV-R5-003",
+      "required_external_contact": true,
+      "evidence": [{"class": "CUSTODY_RECEIPT", "effect_proven": true, "subject_match": true, "fresh": true, "integrity_bound": true, "custody_complete": true, "contradicted": false}],
+      "authority_effect": false,
+      "execution_authorized": false,
+      "expected": "R5_PASS"
+    },
+    {
+      "case_id": "SV-R5-004",
+      "required_external_contact": true,
+      "evidence": [{"class": "CUSTODY_RECEIPT", "effect_proven": true, "subject_match": true, "fresh": true, "integrity_bound": true, "custody_complete": false, "contradicted": false}],
+      "authority_effect": false,
+      "execution_authorized": false,
+      "expected": "R5_PARTIAL"
+    },
+    {
+      "case_id": "SV-R5-005",
+      "required_external_contact": true,
+      "evidence": [{"class": "HUMAN_OBSERVATION", "effect_proven": true, "subject_match": true, "fresh": true, "integrity_bound": true, "custody_complete": true, "contradicted": false}],
+      "authority_effect": false,
+      "execution_authorized": false,
+      "expected": "R5_PASS"
+    },
+    {
+      "case_id": "SV-R5-006",
+      "required_external_contact": true,
+      "evidence": [{"class": "INTERNAL_SIMULATION", "effect_proven": true, "subject_match": true, "fresh": true, "integrity_bound": true, "custody_complete": true, "contradicted": false}],
+      "authority_effect": false,
+      "execution_authorized": false,
+      "expected": "R5_FAIL_CLOSED"
+    },
+    {
+      "case_id": "SV-R5-007",
+      "required_external_contact": true,
+      "evidence": [{"class": "EXTERNAL_STATE_ATTESTATION", "effect_proven": true, "subject_match": true, "fresh": false, "integrity_bound": true, "custody_complete": true, "contradicted": false}],
+      "authority_effect": false,
+      "execution_authorized": false,
+      "expected": "R5_FAIL_CLOSED"
+    },
+    {
+      "case_id": "SV-R5-008",
+      "required_external_contact": true,
+      "evidence": [{"class": "PHYSICAL_MEASUREMENT", "effect_proven": true, "subject_match": false, "fresh": true, "integrity_bound": true, "custody_complete": true, "contradicted": false}],
+      "authority_effect": false,
+      "execution_authorized": false,
+      "expected": "R5_FAIL_CLOSED"
+    },
+    {
+      "case_id": "SV-R5-009",
+      "required_external_contact": true,
+      "evidence": [{"class": "HUMAN_OBSERVATION", "effect_proven": true, "subject_match": true, "fresh": true, "integrity_bound": true, "custody_complete": true, "contradicted": true}],
+      "authority_effect": false,
+      "execution_authorized": false,
+      "expected": "R5_FAIL_CLOSED"
+    },
+    {
+      "case_id": "SV-R5-010",
+      "required_external_contact": true,
+      "evidence": [{"class": "PROVIDER_RECEIPT", "effect_proven": true, "subject_match": true, "fresh": true, "integrity_bound": true, "custody_complete": true, "contradicted": false}],
+      "authority_effect": true,
+      "execution_authorized": true,
+      "expected": "R5_FAIL_CLOSED"
+    }
+  ]
+}
