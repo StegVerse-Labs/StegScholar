@@ -10,6 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 PROJECT_DESCRIPTION = "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-project-description.md"
+OTF_CONCEPT = "funding/applications/active/FUNDING-OTF-ICRP-2026-001-concept-note.md"
 REQUIRED = [
     "funding/FUNDING_MIRROR_HANDOFF.md",
     "funding/coordination/funding-tasks.json",
@@ -26,6 +27,10 @@ REQUIRED = [
     "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-project-summary.md",
     "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-milestones.md",
     "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-budget-request.json",
+    "funding/applications/active/FUNDING-OTF-ICRP-2026-001.json",
+    OTF_CONCEPT,
+    "funding/applications/candidates/FUNDING-NSF-SBIR-2026-001-assessment.md",
+    "funding/opportunities/2026-08-02-expanded-scan.md",
     "funding/reusable/organization-profile/README.md",
     "funding/contracts/stegpatents-source-contract.md",
     "funding/contracts/stegfinco-budget-handoff-contract.md",
@@ -39,6 +44,9 @@ APPLICATION_STATES = {
     "DISCOVERED", "ELIGIBILITY_REVIEW", "GO_NO_GO_REVIEW", "DRAFTING",
     "INTERNAL_REVIEW", "SUBMISSION_READY", "SUBMITTED", "AWARDED",
     "DECLINED", "WITHDRAWN", "BLOCKED", "SUPERSEDED",
+}
+AUTHORITY_FIELDS = {
+    "application_owner", "ip_authority", "budget_authority", "deliverables_authority"
 }
 
 
@@ -112,13 +120,35 @@ def validate_application(app: dict, path: Path) -> None:
         fail(f"{path.relative_to(ROOT)} missing fields: {', '.join(missing)}")
     if app["state"] not in APPLICATION_STATES:
         fail(f"{path.relative_to(ROOT)} has invalid application state {app['state']}")
-    if app["authority"] != {
-        "application_owner": "StegVerse-Labs/StegScholar",
-        "ip_authority": "StegVerse-Labs/StegPatents",
-        "budget_authority": "StegVerse-Labs/StegFinCo",
-        "deliverables_authority": "StegVerse-Labs/StegOps-Deliverables",
-    }:
-        fail(f"{path.relative_to(ROOT)} authority boundary is invalid")
+
+    authority = app.get("authority")
+    if not isinstance(authority, dict) or set(authority) != AUTHORITY_FIELDS:
+        fail(f"{path.relative_to(ROOT)} authority boundary fields are invalid")
+    if authority.get("application_owner") != "StegVerse-Labs/StegScholar":
+        fail(f"{path.relative_to(ROOT)} must retain StegScholar application ownership")
+    if any(not isinstance(authority.get(key), str) or not authority.get(key).strip() for key in AUTHORITY_FIELDS):
+        fail(f"{path.relative_to(ROOT)} contains an empty authority assignment")
+
+    if app["application_id"] == "FUNDING-NSF-PESOSE-2026-001":
+        expected = {
+            "application_owner": "StegVerse-Labs/StegScholar",
+            "ip_authority": "StegVerse-Labs/StegPatents",
+            "budget_authority": "StegVerse-Labs/StegFinCo",
+            "deliverables_authority": "StegVerse-Labs/StegOps-Deliverables",
+        }
+        if authority != expected:
+            fail("PESOSE authority boundary changed without contract migration")
+    elif app["application_id"] == "FUNDING-OTF-ICRP-2026-001":
+        if authority["ip_authority"] != "UNRESOLVED_HUMAN_IP_AUTHORITY":
+            fail("OTF ICRP must preserve unresolved IP authority until review evidence exists")
+        if app["applicant"].get("organization") != "UNVERIFIED_OR_INDIVIDUAL_APPLICANT":
+            fail("OTF ICRP applicant must remain unverified until identity evidence exists")
+
+    deadline = app.get("dates", {}).get("deadline")
+    if not deadline:
+        fail(f"{path.relative_to(ROOT)} has no deadline")
+    datetime.fromisoformat(deadline)
+
     if not app["evidence_refs"]:
         fail(f"{path.relative_to(ROOT)} has no evidence references")
     for ref in app["evidence_refs"] + app["program"].get("research_paths", []):
@@ -131,6 +161,8 @@ def validate_application(app: dict, path: Path) -> None:
             fail(f"{path.relative_to(ROOT)} cannot be SUBMISSION_READY without approved budget")
         if app["publication_classification"] == "DISCLOSURE_REVIEW_REQUIRED":
             fail(f"{path.relative_to(ROOT)} cannot be SUBMISSION_READY before disclosure review")
+        if "UNVERIFIED" in json.dumps(app["applicant"]):
+            fail(f"{path.relative_to(ROOT)} cannot be SUBMISSION_READY with unverified applicant fields")
 
 
 def validate_budget(path: Path) -> None:
@@ -149,9 +181,15 @@ def validate_budget(path: Path) -> None:
         fail("PESOSE draft budget must not claim authority approval")
 
 
-def validate_project_description(path: Path) -> None:
+def require_markers(path: Path, markers: list[str], label: str) -> None:
     text = path.read_text(encoding="utf-8")
-    required_markers = [
+    for marker in markers:
+        if marker not in text:
+            fail(f"{label} missing required marker: {marker}")
+
+
+def validate_project_description(path: Path) -> None:
+    require_markers(path, [
         "DRAFTING — NOT SUBMISSION READY",
         "## 3. Ecosystem discovery and validation",
         "## 4. Governance and managing organization",
@@ -161,21 +199,30 @@ def validate_project_description(path: Path) -> None:
         "## 10. Intellectual merit",
         "## 11. Broader impacts",
         "## 12. Required pre-submission resolutions",
-    ]
-    for marker in required_markers:
-        if marker not in text:
-            fail(f"project description missing required marker: {marker}")
-    prohibited_claims = [
-        "budget is approved",
-        "submission ready",
-        "broad adoption has been established",
-    ]
-    lowered = text.lower()
-    for claim in prohibited_claims:
-        if claim in lowered and claim != "submission ready":
+    ], "project description")
+    lowered = path.read_text(encoding="utf-8").lower()
+    for claim in ("budget is approved", "broad adoption has been established"):
+        if claim in lowered:
             fail(f"project description contains prohibited unsupported claim: {claim}")
     if "sponsor submission is prohibited until" not in lowered:
         fail("project description must preserve fail-closed submission language")
+
+
+def validate_otf_concept(path: Path) -> None:
+    require_markers(path, [
+        "DRAFTING — NOT SUBMISSION READY",
+        "## Research problem",
+        "## Research questions",
+        "## Proposed methods",
+        "## Relevance to internet freedom",
+        "## Ethical safeguards",
+        "## Current evidence gaps",
+        "## Submission prohibition",
+    ], "OTF ICRP concept note")
+    lowered = path.read_text(encoding="utf-8").lower()
+    for required_phrase in ("no collection of message content", "synthetic and controlled data first"):
+        if required_phrase not in lowered:
+            fail(f"OTF ICRP concept note missing safety phrase: {required_phrase}")
 
 
 def main() -> int:
@@ -201,6 +248,7 @@ def main() -> int:
 
     validate_budget(ROOT / "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-budget-request.json")
     validate_project_description(ROOT / PROJECT_DESCRIPTION)
+    validate_otf_concept(ROOT / OTF_CONCEPT)
 
     receipt = {
         "result": "COMPLETE",
@@ -208,6 +256,7 @@ def main() -> int:
         "validated_files": REQUIRED,
         "validated_applications": [str(path.relative_to(ROOT)) for path in application_paths],
         "validated_project_description": PROJECT_DESCRIPTION,
+        "validated_otf_concept": OTF_CONCEPT,
         "task_count": len(registry["tasks"]),
         "claim_count": len(registry["claims"]),
         "next_executable_task": next(
