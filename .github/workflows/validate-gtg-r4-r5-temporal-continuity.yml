@@ -1,0 +1,31 @@
+name: Validate StegVerse GTG R4-R5 temporal continuity
+
+on:
+  pull_request:
+    paths:
+      - 'papers/generalized-transition-governance/reconstruction/r4-r5-temporal-continuity.md'
+      - 'coordination/gtg-r4-r5-temporal-continuity-*.json'
+      - 'scripts/validate_gtg_r4_r5_temporal_continuity.py'
+      - 'coordination/gtg-reconstruction-tasks.json'
+      - '.github/workflows/validate-gtg-r4-r5-temporal-continuity.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'papers/generalized-transition-governance/reconstruction/r4-r5-temporal-continuity.md'
+      - 'coordination/gtg-r4-r5-temporal-continuity-*.json'
+      - 'scripts/validate_gtg_r4_r5_temporal_continuity.py'
+      - 'coordination/gtg-reconstruction-tasks.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/validate_gtg_r4_r5_temporal_continuity.py
