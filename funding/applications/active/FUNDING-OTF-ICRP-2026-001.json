@@ -1,0 +1,50 @@
+{
+  "application_id": "FUNDING-OTF-ICRP-2026-001",
+  "opportunity": {
+    "sponsor": "Open Technology Fund",
+    "name": "Information Controls Research Program 2026",
+    "opportunity_id": "OTF-ICRP-2026",
+    "source_url": "https://www.opentech.fund/research-2/icrp/"
+  },
+  "applicant": {
+    "organization": "UNVERIFIED_OR_INDIVIDUAL_APPLICANT",
+    "principal_contact_role": "Proposed researcher; identity, work authorization and host-organization pathway require authority review"
+  },
+  "program": {
+    "title": "Governed Evidence for Shutdown-Resilient and Censored Communication Environments",
+    "summary": "Research and prototype privacy-preserving methods for collecting, validating and exporting minimal evidence about censorship, shutdown interference and security failures in resilient communications without exposing message content or vulnerable users.",
+    "research_paths": [
+      "funding/applications/active/FUNDING-OTF-ICRP-2026-001-concept-note.md",
+      "funding/opportunities/2026-08-02-expanded-scan.md"
+    ]
+  },
+  "state": "DRAFTING",
+  "authority": {
+    "application_owner": "StegVerse-Labs/StegScholar",
+    "ip_authority": "UNRESOLVED_HUMAN_IP_AUTHORITY",
+    "budget_authority": "APPLICATION_SPECIFIC_AUTHORITY_REQUIRED",
+    "deliverables_authority": "StegVerse-Labs/StegOps-Deliverables"
+  },
+  "dates": {
+    "discovered_at": "2026-08-02T15:42:00-05:00",
+    "deadline": "2026-09-07T23:59:00+00:00",
+    "submitted_at": null
+  },
+  "evidence_refs": [
+    "funding/opportunities/2026-08-02-expanded-scan.md",
+    "funding/applications/active/FUNDING-OTF-ICRP-2026-001-concept-note.md"
+  ],
+  "budget": {
+    "currency": "USD",
+    "requested_amount": null,
+    "status": "NOT_STARTED",
+    "authority_ref": "Application-specific budget authority required after scope and host pathway are resolved"
+  },
+  "publication_classification": "DISCLOSURE_REVIEW_REQUIRED",
+  "next_action": {
+    "owner": "StegVerse-Labs/StegScholar OTF ICRP lane",
+    "location": "funding/applications/active/FUNDING-OTF-ICRP-2026-001-concept-note.md",
+    "action": "Complete concept-note answers, select the individual applicant posture, document relevant experience, and define an ethical host-organization search without inventing affiliations",
+    "release_condition": "Concept note is submission-ready, formally declined, or blocked by applicant or ethical-review evidence"
+  }
+}
