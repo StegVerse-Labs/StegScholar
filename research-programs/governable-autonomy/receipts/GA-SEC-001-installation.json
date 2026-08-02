@@ -1,0 +1,53 @@
+{
+  "receipt_version": "1.0.0",
+  "receipt_id": "GA-SEC-001-INSTALL-20260802",
+  "task_id": "GA-SEC-001",
+  "issue": 46,
+  "repository": "StegVerse-Labs/StegScholar",
+  "branch": "main",
+  "recorded_at": "2026-08-02T22:58:30Z",
+  "result": "REVIEW_REQUIRED",
+  "completed_mutations": [
+    {
+      "path": "SECURITY_BASELINE.md",
+      "commit": "50ce914d01f5700878e9c513af6c66d029a01758"
+    },
+    {
+      "path": "research-programs/governable-autonomy/review-schema.json",
+      "commit": "e3dd95f5e8f56f88652e7b919d5fad389fbdeb08"
+    },
+    {
+      "path": "research-programs/governable-autonomy/task-claims.json",
+      "commit": "4ba07b6b58343f529b539b395cbae2532235bba1"
+    },
+    {
+      "path": "tools/validate_governable_autonomy.py",
+      "commit": "ad215d2416449a284dda047ac5c1a08ae026c9fb"
+    },
+    {
+      "path": ".github/workflows/governable-autonomy-validate.yml",
+      "commit": "58c34a225953c2b363828b6fc2900595bd005f48"
+    },
+    {
+      "path": "STEGSCHOLAR_GOVERNABLE_AUTONOMY_MIRROR_HANDOFF.md",
+      "commit": "f0059c3dfdfe4eb673fb2cf389a38f142413fbda"
+    }
+  ],
+  "validation": {
+    "file_presence": "COMPLETE",
+    "connector_fetch_verification": "PARTIAL",
+    "deterministic_validator_execution": "NOT_OBSERVED",
+    "hosted_workflow_run": "NOT_OBSERVED",
+    "job_logs": "NOT_OBSERVED",
+    "artifact_receipt": "NOT_OBSERVED"
+  },
+  "machine_owner": {
+    "workflow": ".github/workflows/governable-autonomy-validate.yml",
+    "claim_registry": "research-programs/governable-autonomy/task-claims.json",
+    "claim_state": "MACHINE_OWNED",
+    "claim_expires_at": "2026-08-04T22:49:51Z"
+  },
+  "release_condition": "Inspect a successful hosted workflow run, validate job logs, and COMPLETE receipt artifact; then update issue #46, the claim registry, and the handoff.",
+  "failure_policy": "Fail closed. If evidence is unavailable at claim expiration, mark BLOCKED and create a new explicit validation claim. Do not infer success.",
+  "next_executable_task_after_release": "Issue #7 deterministic BCAT execution-boundary model"
+}
