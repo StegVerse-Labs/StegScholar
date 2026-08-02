@@ -25,13 +25,19 @@
       "mirror_state": "ACTIVE"
     },
     "R5": {
-      "target_commit": null,
-      "target_state": "NOT_TESTED",
-      "factory_commit": null,
-      "factory_state": "NOT_TESTED",
+      "target_commit": "dbc42bd14be6ec3f8821189dbd7aa1b1e698f084",
+      "target_state": "ACTIVE",
+      "target_workflow_run": 30739464824,
+      "target_artifact_id": 8830771891,
+      "target_artifact_digest": "sha256:bd72d050719a30e4ce281624a1d38fb1591144ded8f7b6b0b1fd5b0a799b02f8",
+      "factory_commit": "ba3479355749bd996714845ec82f2826ccf1fd36",
+      "factory_state": "ACTIVE",
+      "factory_workflow_run": 30739697874,
+      "factory_artifact_id": 8830847658,
+      "factory_artifact_digest": "sha256:fa30468184a13a023b3d39fb6e36b3715c11c9d4279c5a23e99a604ea45eb743",
       "stegverse_commit": "d8e0a7a0fb91d128b2bfc15fc45142c8174bcd94",
       "stegverse_state": "ACTIVE_INTERNAL_VALIDATION",
-      "mirror_state": "ACTIVE_BOUNDED_RESEARCH"
+      "mirror_state": "ACTIVE"
     }
   },
   "claims": {
