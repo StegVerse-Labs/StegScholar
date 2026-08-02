@@ -1,0 +1,70 @@
+name: Governable Autonomy Validation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "SECURITY_BASELINE.md"
+      - "STEGSCHOLAR_GOVERNABLE_AUTONOMY_MIRROR_HANDOFF.md"
+      - "research-programs/governable-autonomy/**"
+      - "papers/governance-invariant-for-autonomous-systems/**"
+      - "papers/survivable-governance/**"
+      - "papers/survivable-governance-formal-model/**"
+      - "papers/trust-bounded-socio-technical-systems/**"
+      - "papers/ghost-credentials-and-phantom-trust/**"
+      - "papers/boundary-condition-autonomy/**"
+      - "tools/validate_governable_autonomy.py"
+      - ".github/workflows/governable-autonomy-validate.yml"
+  pull_request:
+    paths:
+      - "SECURITY_BASELINE.md"
+      - "STEGSCHOLAR_GOVERNABLE_AUTONOMY_MIRROR_HANDOFF.md"
+      - "research-programs/governable-autonomy/**"
+      - "papers/**"
+      - "tools/validate_governable_autonomy.py"
+      - ".github/workflows/governable-autonomy-validate.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: governable-autonomy-validation-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout immutable source revision
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run fail-closed validator
+        run: python tools/validate_governable_autonomy.py | tee governable-autonomy-validation-receipt.json
+
+      - name: Verify receipt result
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          receipt = json.loads(Path("governable-autonomy-validation-receipt.json").read_text())
+          if receipt.get("result") != "COMPLETE":
+              raise SystemExit("validation receipt did not report COMPLETE")
+          PY
+
+      - name: Upload validation receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: governable-autonomy-validation-receipt-${{ github.sha }}
+          path: governable-autonomy-validation-receipt.json
+          if-no-files-found: error
+          retention-days: 90
