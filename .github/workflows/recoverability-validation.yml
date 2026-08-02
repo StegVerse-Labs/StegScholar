@@ -1,0 +1,115 @@
+name: Recoverability Validation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "papers/recoverability-geometry-rigel-number/**"
+      - ".github/workflows/recoverability-validation.yml"
+  pull_request:
+    paths:
+      - "papers/recoverability-geometry-rigel-number/**"
+      - ".github/workflows/recoverability-validation.yml"
+  workflow_dispatch:
+    inputs:
+      episodes:
+        description: "Episode count for the benchmark"
+        required: false
+        default: "1000"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: recoverability-validation-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PAPER_DIR: papers/recoverability-geometry-rigel-number
+      OUTPUT_DIR: papers/recoverability-geometry-rigel-number/generated/scalar-delayed-control
+      RECEIPT_DIR: papers/recoverability-geometry-rigel-number/generated/validation-receipt
+      EPISODES: ${{ github.event.inputs.episodes || '1000' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Static compile validation
+        run: |
+          set -euo pipefail
+          python -m py_compile \
+            "$PAPER_DIR/simulations/scalar_delayed_control.py" \
+            "$PAPER_DIR/validation/validate_outputs.py"
+
+      - name: Validate task registry JSON
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path("papers/recoverability-geometry-rigel-number/task-registry.json")
+          data = json.loads(path.read_text(encoding="utf-8"))
+          assert data["canonical_handoff"] == "STEGSCHOLAR_MIRROR_HANDOFF.md"
+          assert data["session_consolidation"]["unique_goals_transferred_or_complete"] == data["session_consolidation"]["unique_goals_total"]
+          ids = [task["task_id"] for task in data["tasks"]]
+          assert len(ids) == len(set(ids)), "duplicate task IDs"
+          valid = set(data["status_vocabulary"])
+          for task in data["tasks"]:
+              assert task["claim_state"] in valid, task
+              assert task.get("locations"), task
+              assert task.get("next_action"), task
+          print(f"validated {len(ids)} canonical tasks")
+          PY
+
+      - name: Execute deterministic benchmark
+        run: |
+          set -euo pipefail
+          rm -rf "$OUTPUT_DIR" "$RECEIPT_DIR"
+          python "$PAPER_DIR/simulations/scalar_delayed_control.py" \
+            --episodes "$EPISODES" \
+            --seed 20260714 \
+            --output-dir "$OUTPUT_DIR"
+
+      - name: Validate outputs and create receipt
+        run: |
+          set -euo pipefail
+          mkdir -p "$RECEIPT_DIR"
+          python "$PAPER_DIR/validation/validate_outputs.py" \
+            --output-dir "$OUTPUT_DIR" \
+            --expected-episodes "$EPISODES" \
+            --report "$RECEIPT_DIR/validation-report.json"
+          cp "$OUTPUT_DIR/summary.json" "$RECEIPT_DIR/summary.json"
+          cp "$OUTPUT_DIR/config.json" "$RECEIPT_DIR/config.json"
+          sha256sum \
+            "$OUTPUT_DIR/episodes.csv" \
+            "$OUTPUT_DIR/summary.json" \
+            "$OUTPUT_DIR/config.json" \
+            "$RECEIPT_DIR/validation-report.json" \
+            > "$RECEIPT_DIR/SHA256SUMS"
+          printf '%s\n' \
+            "status=COMPLETE" \
+            "owner=GitHub Actions recoverability-validation lane" \
+            "task_id=RG-003" \
+            "commit=${GITHUB_SHA}" \
+            "run_id=${GITHUB_RUN_ID}" \
+            "episodes=${EPISODES}" \
+            > "$RECEIPT_DIR/execution-receipt.txt"
+
+      - name: Upload validation receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: recoverability-validation-${{ github.sha }}
+          path: |
+            papers/recoverability-geometry-rigel-number/generated/validation-receipt/
+            papers/recoverability-geometry-rigel-number/generated/scalar-delayed-control/summary.json
+            papers/recoverability-geometry-rigel-number/generated/scalar-delayed-control/config.json
+          if-no-files-found: error
+          retention-days: 90
