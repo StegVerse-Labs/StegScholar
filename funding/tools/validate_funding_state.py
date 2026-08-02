@@ -9,6 +9,7 @@ from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
+PROJECT_DESCRIPTION = "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-project-description.md"
 REQUIRED = [
     "funding/FUNDING_MIRROR_HANDOFF.md",
     "funding/coordination/funding-tasks.json",
@@ -18,6 +19,7 @@ REQUIRED = [
     "funding/applications/examples/FUNDING-EXAMPLE-001.json",
     "funding/applications/active/FUNDING-NSF-PESOSE-2026-001.json",
     "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-concept.md",
+    PROJECT_DESCRIPTION,
     "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-eligibility.md",
     "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-product-evidence.md",
     "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-compliance.md",
@@ -147,6 +149,35 @@ def validate_budget(path: Path) -> None:
         fail("PESOSE draft budget must not claim authority approval")
 
 
+def validate_project_description(path: Path) -> None:
+    text = path.read_text(encoding="utf-8")
+    required_markers = [
+        "DRAFTING — NOT SUBMISSION READY",
+        "## 3. Ecosystem discovery and validation",
+        "## 4. Governance and managing organization",
+        "## 5. Licensing and intellectual-property boundaries",
+        "## 6. Security, privacy, and supply-chain planning",
+        "## 8. Sustainability and transition strategy",
+        "## 10. Intellectual merit",
+        "## 11. Broader impacts",
+        "## 12. Required pre-submission resolutions",
+    ]
+    for marker in required_markers:
+        if marker not in text:
+            fail(f"project description missing required marker: {marker}")
+    prohibited_claims = [
+        "budget is approved",
+        "submission ready",
+        "broad adoption has been established",
+    ]
+    lowered = text.lower()
+    for claim in prohibited_claims:
+        if claim in lowered and claim != "submission ready":
+            fail(f"project description contains prohibited unsupported claim: {claim}")
+    if "sponsor submission is prohibited until" not in lowered:
+        fail("project description must preserve fail-closed submission language")
+
+
 def main() -> int:
     missing = [path for path in REQUIRED if not (ROOT / path).is_file()]
     if missing:
@@ -169,12 +200,14 @@ def main() -> int:
         validate_application(load_json(path), path)
 
     validate_budget(ROOT / "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-budget-request.json")
+    validate_project_description(ROOT / PROJECT_DESCRIPTION)
 
     receipt = {
         "result": "COMPLETE",
         "goal_id": registry["goal_id"],
         "validated_files": REQUIRED,
         "validated_applications": [str(path.relative_to(ROOT)) for path in application_paths],
+        "validated_project_description": PROJECT_DESCRIPTION,
         "task_count": len(registry["tasks"]),
         "claim_count": len(registry["claims"]),
         "next_executable_task": next(
