@@ -1,0 +1,20 @@
+{
+  "declaration_id": "invalid-manufactured-chronology",
+  "subject_id": "process-example",
+  "resolution": "fine",
+  "events": ["a1", "b1"],
+  "identity_evidence_refs": ["evidence://identity"],
+  "kernel_relations": [],
+  "branch_orders": [{"branch_id": "fine", "relations": [["a1", "b1"]]}],
+  "operational_quotient": {"equivalence_classes": []},
+  "resolution_maps": [{
+    "map_id": "fine-to-coarse",
+    "from_resolution": "fine",
+    "to_resolution": "coarse",
+    "fine_to_coarse": {"a1": "A", "b1": "B"},
+    "fine_serializations": [["a1", "b1"]],
+    "coarse_serializations": [["B", "A"]],
+    "quotient_distributions": {}
+  }],
+  "gtg_admissibility": null
+}
