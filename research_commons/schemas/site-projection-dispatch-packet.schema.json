@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stegverse.org/schemas/site-projection-dispatch-packet.schema.json",
+  "title": "Research Commons Site Projection Dispatch Packet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["packet_id", "source_repository", "source_commit", "publisher_observation_ref", "registry_ref", "registry_sha256", "projection_manifest_ref", "projection_manifest_sha256", "entries", "dispatch_state", "authority_effect"],
+  "properties": {
+    "packet_id": {"type": "string", "minLength": 1},
+    "source_repository": {"const": "StegVerse-Labs/StegScholar"},
+    "source_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "publisher_observation_ref": {"type": "string", "minLength": 1},
+    "registry_ref": {"type": "string", "minLength": 1},
+    "registry_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "projection_manifest_ref": {"type": "string", "minLength": 1},
+    "projection_manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "entries": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["publisher_id", "commons_page", "eligibility"], "properties": {"publisher_id": {"type": "string"}, "commons_page": {"type": "string"}, "eligibility": {"type": "string"}, "disclaimer": {"type": "string"}}, "additionalProperties": false}},
+    "dispatch_state": {"enum": ["READY_FOR_SITE_REVIEW", "BLOCKED", "SUPERSEDED"]},
+    "blockers": {"type": "array", "items": {"type": "string"}},
+    "authority_effect": {"const": "NONE"}
+  }
+}
