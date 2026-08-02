@@ -26,7 +26,9 @@
       "target_state": "NOT_TESTED",
       "factory_commit": null,
       "factory_state": "NOT_TESTED",
-      "mirror_state": "NOT_TESTED"
+      "stegverse_commit": "d8e0a7a0fb91d128b2bfc15fc45142c8174bcd94",
+      "stegverse_state": "ACTIVE_INTERNAL_VALIDATION",
+      "mirror_state": "ACTIVE_BOUNDED_RESEARCH"
     }
   },
   "claims": {

@@ -36,17 +36,21 @@ def main() -> None:
     if r3.get("target_state") != "ACTIVE" or r3.get("factory_state") != "ACTIVE" or r3.get("mirror_state") != "ACTIVE":
         fail("R3 active posture mismatch")
 
-    if not r4.get("target_commit"):
-        fail("R4 target commit missing")
-    if r4.get("target_state") != "ACTIVE":
-        fail("R4 target must remain active")
+    if not r4.get("target_commit") or r4.get("target_state") != "ACTIVE":
+        fail("R4 target posture mismatch")
     if r4.get("factory_commit") is not None or r4.get("factory_state") != "PENDING" or r4.get("mirror_state") != "PARTIAL":
         fail("R4 must remain partial until factory commit exists")
 
-    if any(r5.get(field) is not None for field in ("target_commit", "factory_commit")):
-        fail("R5 commit asserted before activation")
-    if r5.get("target_state") != "NOT_TESTED" or r5.get("factory_state") != "NOT_TESTED" or r5.get("mirror_state") != "NOT_TESTED":
-        fail("R5 posture overstatement")
+    if r5.get("target_commit") is not None or r5.get("factory_commit") is not None:
+        fail("canonical or factory R5 commit asserted before activation")
+    if r5.get("target_state") != "NOT_TESTED" or r5.get("factory_state") != "NOT_TESTED":
+        fail("canonical R5 posture overstatement")
+    if not r5.get("stegverse_commit"):
+        fail("StegVerse R5 validation commit missing")
+    if r5.get("stegverse_state") != "ACTIVE_INTERNAL_VALIDATION":
+        fail("StegVerse R5 internal state mismatch")
+    if r5.get("mirror_state") != "ACTIVE_BOUNDED_RESEARCH":
+        fail("StegVerse R5 mirror state mismatch")
 
     claims = data.get("claims", {})
     if not claims:
@@ -55,7 +59,7 @@ def main() -> None:
         if value is not False:
             fail(f"prohibited claim enabled: {key}")
 
-    print("GTG RECONSTRUCTION MIRROR: PASS - R3 active, R4 partial, R5 not tested; all authority claims false")
+    print("GTG RECONSTRUCTION MIRROR: PASS - R3 active, R4 partial, StegVerse R5 bounded research active; canonical and independent R5 not tested; all authority claims false")
 
 
 if __name__ == "__main__":
