@@ -15,6 +15,7 @@ import importlib.util
 import json
 import random
 import statistics
+import sys
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Iterable
@@ -24,6 +25,7 @@ SPEC = importlib.util.spec_from_file_location("scalar_delayed_control", MODULE_P
 if SPEC is None or SPEC.loader is None:
     raise RuntimeError(f"Unable to load benchmark module from {MODULE_PATH}")
 BASE = importlib.util.module_from_spec(SPEC)
+sys.modules[SPEC.name] = BASE
 SPEC.loader.exec_module(BASE)
 
 
