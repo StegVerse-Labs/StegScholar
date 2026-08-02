@@ -17,9 +17,12 @@
     "R4": {
       "target_commit": "e73234381501a427fcf517f63087b9c873a0af36",
       "target_state": "ACTIVE",
-      "factory_commit": null,
-      "factory_state": "PENDING",
-      "mirror_state": "PARTIAL"
+      "factory_commit": "54f5269dd583dcd193222a5f712b0c1654b3e920",
+      "factory_state": "ACTIVE",
+      "factory_workflow_run": 30738765807,
+      "factory_artifact_id": 8830539062,
+      "factory_artifact_digest": "sha256:2ff7026bdfe49720b2ef754f5c167f0e0ae59ca91303f9e202057fc9f299f72a",
+      "mirror_state": "ACTIVE"
     },
     "R5": {
       "target_commit": null,
