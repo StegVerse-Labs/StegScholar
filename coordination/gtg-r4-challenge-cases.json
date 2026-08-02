@@ -1,0 +1,22 @@
+{
+  "schema_version": "stegverse-gtg-r4-challenges.v1",
+  "cases": [
+    {"id":"R4-C01","condition":"current_scope_matched","expected":"CHALLENGE_SURVIVES"},
+    {"id":"R4-C02","condition":"expired_delegation","expected":"CHALLENGE_FAIL_CLOSED"},
+    {"id":"R4-C03","condition":"revoked_delegation","expected":"CHALLENGE_FAIL_CLOSED"},
+    {"id":"R4-C04","condition":"missing_revocation_history","expected":"CHALLENGE_PARTIAL"},
+    {"id":"R4-C05","condition":"conflicting_authority_sources","expected":"CHALLENGE_FAIL_CLOSED"},
+    {"id":"R4-C06","condition":"scope_mismatch","expected":"CHALLENGE_FAIL_CLOSED"},
+    {"id":"R4-C07","condition":"subject_mismatch","expected":"CHALLENGE_FAIL_CLOSED"},
+    {"id":"R4-C08","condition":"consent_without_authority","expected":"CHALLENGE_FAIL_CLOSED"},
+    {"id":"R4-C09","condition":"standing_without_delegation","expected":"CHALLENGE_FAIL_CLOSED"},
+    {"id":"R4-C10","condition":"prior_approval_after_change","expected":"CHALLENGE_FAIL_CLOSED"}
+  ],
+  "claims": {
+    "execution_authority": false,
+    "certification_authority": false,
+    "independent_verification_complete": false,
+    "release_ready": false,
+    "archive_ready": false
+  }
+}
