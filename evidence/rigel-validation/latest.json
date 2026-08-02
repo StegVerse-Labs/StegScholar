@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "goal_id": "RIGEL-VALIDATION-001",
+  "latest_verified_run_id": 30739542167,
+  "source_pull_request": 33,
+  "workflow_conclusion": "success",
+  "validation_state": "REVIEW_REQUIRED",
+  "canonical_run_receipt": "evidence/rigel-validation/runs/30739542167/run-receipt.json",
+  "canonical_validation_state": "evidence/rigel-validation/runs/30739542167/validation-state.json",
+  "next_task": {
+    "task_id": "RIGEL-BALANCED-BENCHMARK-008",
+    "location": "papers/recoverability-geometry-rigel-number/simulations/balanced_scalar_benchmark.py"
+  },
+  "updated_at_utc": "2026-08-02T08:22:00Z"
+}
