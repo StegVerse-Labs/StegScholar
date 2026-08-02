@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stegverse.org/schemas/research-reuse-decision.schema.json",
+  "title": "Research Commons Reuse Decision",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["decision_id", "request_id", "decision", "policy_ref", "evidence_refs", "decision_actor", "decided_at", "creates_scientific_validity", "creates_execution_authority"],
+  "properties": {
+    "decision_id": {"type": "string", "minLength": 1},
+    "request_id": {"type": "string", "minLength": 1},
+    "decision": {"enum": ["ALLOW", "DENY", "REVIEW_REQUIRED", "QUARANTINE"]},
+    "policy_ref": {"type": "string", "minLength": 1},
+    "evidence_refs": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "limitations": {"type": "array", "items": {"type": "string"}},
+    "decision_actor": {"type": "string", "minLength": 1},
+    "decided_at": {"type": "string", "format": "date-time"},
+    "valid_for_protocol_id": {"type": ["string", "null"]},
+    "expires_at": {"type": ["string", "null"], "format": "date-time"},
+    "creates_scientific_validity": {"const": false},
+    "creates_execution_authority": {"const": false}
+  }
+}
