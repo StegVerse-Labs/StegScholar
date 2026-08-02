@@ -1,0 +1,50 @@
+{
+  "application_id": "FUNDING-EXAMPLE-001",
+  "opportunity": {
+    "sponsor": "Example Sponsor",
+    "name": "Governed Research Systems Demonstration",
+    "opportunity_id": "EXAMPLE-ONLY",
+    "source_url": "https://example.org/funding/example-only"
+  },
+  "applicant": {
+    "organization": "StegVerse-Labs",
+    "principal_contact_role": "Founder and Research Program Lead"
+  },
+  "program": {
+    "title": "Governed Research and Recoverable Decision Infrastructure",
+    "summary": "A bounded exemplar showing how StegScholar records research evidence, application state, authority boundaries, and deterministic continuation without claiming a real submission.",
+    "research_paths": [
+      "research-programs/governable-autonomy/README.md",
+      "papers/recoverability-geometry-rigel-number/manuscript.md"
+    ]
+  },
+  "state": "DISCOVERED",
+  "authority": {
+    "application_owner": "StegVerse-Labs/StegScholar",
+    "ip_authority": "StegVerse-Labs/StegPatents",
+    "budget_authority": "StegVerse-Labs/StegFinCo",
+    "deliverables_authority": "StegVerse-Labs/StegOps-Deliverables"
+  },
+  "dates": {
+    "discovered_at": "2026-08-02T04:44:00-05:00",
+    "deadline": "2026-12-31T23:59:59-06:00",
+    "submitted_at": null
+  },
+  "evidence_refs": [
+    "research-programs/governable-autonomy/ARTIFACT_MANIFEST.md",
+    "papers/recoverability-geometry-rigel-number/validation-protocol.md"
+  ],
+  "budget": {
+    "currency": "USD",
+    "requested_amount": 0,
+    "status": "NOT_STARTED",
+    "authority_ref": "StegVerse-Labs/StegFinCo:funding-contract-pending"
+  },
+  "publication_classification": "INTERNAL",
+  "next_action": {
+    "owner": "StegVerse-Labs/StegScholar",
+    "location": "funding/applications/examples/FUNDING-EXAMPLE-001.json",
+    "action": "Replace exemplar-only opportunity fields when a real opportunity is admitted",
+    "release_condition": "A verified sponsor opportunity and eligibility record are installed"
+  }
+}
