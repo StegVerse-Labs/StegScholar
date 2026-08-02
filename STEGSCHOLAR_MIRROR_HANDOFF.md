@@ -1,172 +1,190 @@
 # StegScholar Mirror Handoff
 
-## Repository
+## Active goal
 
-- Organization: `StegVerse-Labs`
-- Repository: `StegScholar`
-- Default branch: `main`
-- Continuation target: `papers/recoverability-geometry-rigel-number/`
+- **Goal ID:** `RIGEL-VALIDATION-001`
+- **Goal:** Develop, execute, and falsifiably validate *Recoverability Geometry and the Rigel Number* without presenting the candidate formalism as established universal physics.
+- **Organization:** `StegVerse-Labs`
+- **Repository:** `StegVerse-Labs/StegScholar`
+- **Branch:** `main`
+- **Canonical paper path:** `papers/recoverability-geometry-rigel-number/`
+- **Machine task registry:** `coordination/rigel-validation-tasks.json`
 
-## Current research track
+## Scientific posture
 
-**Working title:** *Recoverability Geometry and the Rigel Number: A Framework for Bounded Interaction with Dynamical Reality*
+The work is a candidate cross-domain systems formalism. Claims concerning physics, cognition, AI, detector systems, ecosystems, synchronization, cosmology, coherence determinants, particle pairing, life, or consciousness remain hypotheses until separately derived and empirically tested.
 
-**Author:** Rigel Randolph
+The current core definitions are:
 
-## Source-of-truth status
+\[
+\alpha=\alpha_o+\alpha_i+\alpha_r,
+\]
 
-This handoff is the authoritative continuation record for the Rigel-number / recoverability-geometry research track in StegScholar.
+\[
+G+C+E=1,\qquad G,C,E\ge 0,
+\]
 
-The current work is a **candidate cross-domain systems formalism**, not an established physical law. Claims concerning physics, cognition, AI, detector systems, ecosystems, synchronization, cosmology, coherence determinants, particle pairing, life, or consciousness remain hypotheses until separately derived and empirically tested.
+\[
+\Psi=V-\kappa\delta_0e^{\lambda\alpha},
+\]
 
-## Durable decisions
+and the candidate dimensionless Rigel number
 
-1. Model interaction latency as an internal pipeline rather than a scalar:
+\[
+Ri=\frac{\lambda\alpha}{\ln\!\left(V/(\kappa\delta_0)\right)}
+  =\frac{\alpha_{pipeline}}{\alpha_{critical}}.
+\]
 
-   \[
-   \alpha = \alpha_o + \alpha_i + \alpha_r
-   \]
+Within the provisional exponential-growth model, `Ri < 1`, `Ri = 1`, and `Ri > 1` denote modeled recoverable, critical, and nonrecoverable regimes. The threshold follows from the model definition and is not yet an independently demonstrated universal empirical constant.
 
-   where:
-   - `alpha_o`: observation / reconstruction latency;
-   - `alpha_i`: inference, commitment, or irreversibility-transition latency;
-   - `alpha_r`: realization, propagation, or actuation latency.
+## Authoritative files
 
-2. Represent governance, constraints, and execution as normalized simplex coordinates:
+- `papers/recoverability-geometry-rigel-number/manuscript.md`
+- `papers/recoverability-geometry-rigel-number/validation-protocol.md`
+- `papers/recoverability-geometry-rigel-number/claims-register.md`
+- `papers/recoverability-geometry-rigel-number/coherence-determinant-extension.md`
+- `papers/recoverability-geometry-rigel-number/validation-progress.md`
+- `papers/recoverability-geometry-rigel-number/simulations/README.md`
+- `coordination/rigel-validation-tasks.json`
+- `.github/workflows/rigel-validation.yml`
+- this handoff
 
-   \[
-   G+C+E=1,\qquad G,C,E\ge 0.
-   \]
+## Completed and committed implementation
 
-3. Define a recoverability margin `V` and lag-amplified burden:
+1. Canonical manuscript and validation protocol are committed.
+2. A standard-library scalar delayed-control benchmark is installed at `papers/recoverability-geometry-rigel-number/simulations/scalar_delayed_control.py`.
+3. Recovery is labeled independently from the candidate equation using a hard safety boundary and terminal target return.
+4. Upper-delay and upper-instability parameter regions are held out for OOD evaluation.
+5. Deterministic implementation tests are installed at `papers/recoverability-geometry-rigel-number/simulations/test_scalar_delayed_control.py`.
+6. Canonical configuration and JSON Schema are installed at:
+   - `papers/recoverability-geometry-rigel-number/simulations/scalar-delayed-control.config.json`
+   - `papers/recoverability-geometry-rigel-number/simulations/scalar-delayed-control.config.schema.json`
+7. Constant-total-latency matched ablation is installed at `papers/recoverability-geometry-rigel-number/simulations/constant_total_latency_ablation.py`.
+8. Leakage-controlled fitted baseline evaluation is installed at `papers/recoverability-geometry-rigel-number/simulations/fit_baselines.py`.
+9. A fail-closed validation-state evaluator is installed at `papers/recoverability-geometry-rigel-number/simulations/evaluate_validation_state.py` in commit `715fcf00e911cb3b3b87a5210e845f23a7d2be3b`.
+10. A machine-owned task registry with explicit owners, locations, successors, and release conditions is installed at `coordination/rigel-validation-tasks.json` in commit `ceec6763799484d3f2782c643c35f69d7cb72159`.
+11. The hosted workflow is installed at `.github/workflows/rigel-validation.yml`. Commit `9aeb9f4cb8f2cfda6827c86854e2505f2bd28e24` adds:
+    - deterministic tests;
+    - canonical simulation;
+    - fitted OOD baselines;
+    - constant-total-latency ablation;
+    - fail-closed status evaluation;
+    - SHA-256 receipts;
+    - artifact upload;
+    - compact evidence persistence to `evidence/rigel-validation/latest/`;
+    - concurrency control and duplicate-change suppression.
 
-   \[
-   \Psi = V - \kappa\delta_0 e^{\lambda\alpha}.
-   \]
+## Automation contract
 
-4. Define the candidate dimensionless **Rigel number**:
+**Owner repository:** `StegVerse-Labs/StegScholar`
 
-   \[
-   Ri = \frac{\lambda\alpha}{\ln\!\left(V/(\kappa\delta_0)\right)}
-      = \frac{\alpha_{pipeline}}{\alpha_{critical}}.
-   \]
+**Trigger:** push to `main` affecting the Rigel simulation lane, workflow, or task registry; pull request path match; or manual dispatch.
 
-   Under the provisional exponential-growth model:
-   - `Ri < 1`: recoverable regime;
-   - `Ri = 1`: modeled critical boundary;
-   - `Ri > 1`: modeled loss of recoverability.
+**Deterministic inputs:** seed `20260714`, declared run sizes, fixed benchmark configuration, source commit.
 
-5. Treat `Ri = 1` as a hypothesis to validate, not a universal empirical constant already demonstrated.
+**Outputs:**
 
-6. Connect the G-C-E simplex provisionally to replicator dynamics, Hamilton-Jacobi reachability, ecological resilience, Kuramoto synchronization, control barrier functions, viability theory, and information/entropy balances.
+- generated episode datasets;
+- scalar summary;
+- fitted baseline evaluation;
+- matched ablation summary;
+- validation receipts with hashes;
+- `validation-state.json` with one of `COMPLETE`, `BLOCKED`, `RETRY`, `REVIEW_REQUIRED`, or `FAILED`;
+- next executable task and exact repository location.
 
-7. Preserve the distinction between:
-   - physics governing the underlying system;
-   - the proposed formalism governing bounded observation, inference, commitment, and action upon that system.
+**Persistent state:** successful non-PR runs must commit compact evidence to `evidence/rigel-validation/latest/`. Missing or malformed evidence produces `FAILED`; it is never treated as success.
 
-## Coherence-determinant extension preserved from the current session
+**Duplicate prevention:** workflow concurrency is grouped by ref; compact evidence is committed only when the staged content changes; evidence-path commits do not retrigger the workflow.
 
-1. Treat **coherence envelope**, **determinant baseline**, **regime boundary**, **transform headroom/exhaustion**, and **boundary intersection/coupling** as candidate research objects requiring operational definitions.
-2. A scaffold such as
+## Current actual classification
 
-   \[
-   R_{eff}\sim\frac{S K_{raw}}{BH}
-   \]
+- Manuscript and theory record: **implemented, unvalidated scientifically**.
+- Scalar simulator: **implemented, repository-run evidence pending inspection**.
+- Deterministic tests: **implemented, hosted result pending inspection**.
+- Fitted baselines: **implemented, output pending hosted execution evidence**.
+- Constant-total-latency ablation: **implemented, output pending hosted execution evidence**.
+- Validation-state automation: **implemented, hosted persistence pending inspection**.
+- Kuramoto benchmark: **missing; blocked until scalar interpretation is durably recorded**.
+- Queue/SCW-like benchmark: **missing; successor to Kuramoto source completion**.
+- Hamilton-Jacobi augmented-state derivation: **missing**.
+- Detector-specific instantiation: **partial manuscript treatment only**.
+- Source-controlled publication figures: **missing**.
+- Primary-source related-work map: **missing**.
+- Compiled publication release: **blocked by validation and publication assets**.
 
-   is not an established invariant. It remains dimensionally undefined until each term is independently measurable and domain-specific mappings are derived.
-3. A single-electron wavefunction is a state description, not universal dynamics. State, Hamiltonian/Lagrangian, symmetries, causal structure, boundary conditions, and composition rules must remain distinct.
-4. The Heisenberg uncertainty principle does not rest on a selected fermion. It follows from noncommuting observables and `hbar`.
-5. Particle content and pairings may alter accessible stable regimes through masses, charges, coupling strengths, mediator ranges, lifetimes, symmetry breaking, confinement, and effective degrees of freedom without changing the underlying laws.
-6. The proposed **Coherence Determinant Tuple** is a research construct, not a Standard Model result. It must be tested against effective field theory, renormalization, phase-transition theory, decoherence, control theory, information geometry, and complex-systems literature.
-7. Claims of a universal minimal triad, exact physics-to-neural isomorphism, coherence conservation, life corridors, consciousness thresholds, spirit/mind/body complementarity, or reliable prediction of unknown physical regimes are not established and must remain outside the first paper unless separately proven.
-8. The strongest defensible research gap is a standardized, cross-domain measurement program for boundary location and movement using tail amplification, variance, perturbation recovery, coupling, entropy, capacity, and transform headroom.
-9. The fastest empirical anchor remains an authorized engineered-system test, initially SCW or a simulation of an SCW-like distributed service. No production load testing is permitted without explicit authorization and safeguards.
-10. The first publishable paper must be narrow, falsifiable, and grounded in established literature. Detector/calorimetry applications should be framed as case studies rather than proof of universality.
-11. Publication affiliation remains **StegVerse Research** unless changed by the author.
-12. Private mentor correspondence and TTU engagement strategy must remain separate from scientific evidence and institutional endorsement.
+## Exact task sequence
 
-## Completed work captured by this handoff
+The canonical task sequence and machine-observable release conditions are in `coordination/rigel-validation-tasks.json`.
 
-- Canonical equations and notation developed.
-- Numerical delayed-control example derived.
-- Cross-domain example mappings drafted for human reaction, drone control, and distributed coordination.
-- Candidate detector/AI pipeline interpretation developed.
-- Initial validation protocol defined.
-- Publication figures and draft papers were generated in a prior runtime, but binary artifacts have not yet been durably committed here.
-- Coherence-determinant extension decisions, cautions, research gap, and validation direction durably recorded.
-- Claims register committed at `papers/recoverability-geometry-rigel-number/claims-register.md`.
-- Coherence-determinant extension committed at `papers/recoverability-geometry-rigel-number/coherence-determinant-extension.md`.
-- Reproducible standard-library scalar delayed-control benchmark committed at `papers/recoverability-geometry-rigel-number/simulations/scalar_delayed_control.py` in commit `46322db84e2d3d71df47cd4b13e04974b5c2c396`.
-- Simulation methodology, units, replay instructions, interpretation constraints, and next benchmark requirements committed at `papers/recoverability-geometry-rigel-number/simulations/README.md` in commit `26675a62afe817e6bdfc3d00dd2c33560a6069f4`.
-- The benchmark defines recovery independently from the Rigel equation using a hard safety boundary plus terminal target return.
-- The benchmark reserves an upper-delay and upper-instability parameter region for out-of-distribution evaluation rather than relying only on random row holdout.
+Current active task:
 
-## Immediate tasks
+- `RIGEL-VERIFY-WORKFLOW-003`
+- location: `evidence/rigel-validation/latest/validation-state.json`
+- owner: `.github/workflows/rigel-validation.yml`
+- release condition: a successful hosted run persists compact summaries, receipts, and validation state.
 
-1. Maintain the canonical Markdown manuscript in `papers/recoverability-geometry-rigel-number/manuscript.md`.
-2. Maintain the validation protocol in `papers/recoverability-geometry-rigel-number/validation-protocol.md`.
-3. Add a rigorous notation, units, and dimensional-analysis table to the manuscript.
-4. Run and verify the delayed-control benchmark; commit configuration, summary, output hashes, and a validation receipt.
-5. Add deterministic tests for delay partitioning, outcome labeling, score direction, and replay stability.
-6. Add fitted decomposed-latency and interaction baselines, bootstrap uncertainty intervals, calibration measures, and leakage controls.
-7. Add constant-total-latency ablations that redistribute delay among observation, commitment, and realization phases.
-8. Determine whether decomposed latency predicts failure better than total latency and `lambda * total latency` in the held-out parameter region.
-9. Add a Kuramoto delayed-coupling benchmark and clearly state equivalence limits.
-10. Add a queue/buffer or SCW-like distributed-service benchmark with independently labeled overflow, deadline, and recovery outcomes.
-11. Add a Hamilton-Jacobi formulation showing how delayed observation changes the reachable/viable set.
-12. Derive a detector-specific instantiation without asserting access to unpublished collider timing data.
-13. Recreate and commit figures as source-controlled SVG or code-generated assets.
-14. Prepare a short, technically narrow outreach note for Dr. Nural Akchurin focused on AI-in-the-loop calorimeter/reconstruction latency.
-15. Create a primary-source related-work and gap map for the coherence-determinant extension.
-16. Define and compare dimensionless candidate observables for coherence-envelope boundaries.
-17. Determine whether the coherence extension predicts boundary movement better than established critical-transition, reachability, queueing, and synchronization models.
+Possible deterministic successors are selected from observed evidence:
 
-## Known blockers and cautions
+- `RIGEL-REPAIR-VALIDATION-EVIDENCE-004` at `.github/workflows/rigel-validation.yml` if evidence is missing or malformed;
+- `RIGEL-STATISTICAL-CROSSCHECK-005` at `papers/recoverability-geometry-rigel-number/simulations/crosscheck_baselines.py` if candidate improvement is observed;
+- `RIGEL-REVISE-PHASE-HYPOTHESIS-006` at `papers/recoverability-geometry-rigel-number/claims-register.md` if fixed-total partitioning changes no outcomes;
+- `RIGEL-REVISE-PREDICTIVE-CLAIM-007` at `papers/recoverability-geometry-rigel-number/claims-register.md` if decomposed latency does not exceed both aggregate baselines.
 
-- The newly committed simulation source has not yet been executed in a verified repository workflow or accompanied by committed generated evidence.
-- No empirical evidence yet demonstrates cross-domain clustering at `Ri approximately 1`.
-- `V`, `lambda`, `delta_0`, and `kappa` require domain-specific operational definitions.
-- The initial scalar benchmark uses one provisional construction of `V` and `delta_0`; success would not establish uniqueness of those definitions.
-- The additive decomposition of latency does not by itself establish statistical independence or separability of phase effects.
-- A phase decomposition can only show added value after constant-total-delay ablations and fitted-baseline comparisons.
-- Fundamental constants such as `hbar`, `G`, `c`, or the cosmological constant are inputs or scale constraints unless a separate variational derivation proves otherwise.
-- Binary figures and prior PDF drafts remain non-authoritative until regenerated and committed.
-- No conservation law for a scalar quantity called coherence has been established.
-- Cross-domain resemblance does not establish mathematical isomorphism.
-- Variance-first degradation can be masked by redundancy, hard gating, adaptive control, or hidden-state transitions.
-- Abrupt collapse must be distinguished from smooth crossover and finite-size effects.
-- Prior-art review for the coherence-determinant extension is incomplete.
+## Validation commands
 
-## Ownership
+```bash
+python papers/recoverability-geometry-rigel-number/simulations/test_scalar_delayed_control.py
 
-- Research direction and authorship: Rigel Randolph.
-- Current repository continuation: StegScholar research track.
-- Simulation source implementation: committed; verification run unassigned.
-- External scientific review: unassigned.
-- Engineered-system validation: unassigned pending target authorization.
+python papers/recoverability-geometry-rigel-number/simulations/scalar_delayed_control.py \
+  --episodes 10000 \
+  --seed 20260714 \
+  --output-dir generated/scalar-delayed-control
 
-## Permitted continuation scope
+python papers/recoverability-geometry-rigel-number/simulations/fit_baselines.py \
+  --episodes-csv generated/scalar-delayed-control/episodes.csv \
+  --output generated/scalar-delayed-control/baseline-evaluation.json \
+  --bootstrap-replicates 500 \
+  --seed 20260714
 
-A continuation session may:
+python papers/recoverability-geometry-rigel-number/simulations/constant_total_latency_ablation.py \
+  --scenarios 2000 \
+  --seed 20260714 \
+  --total-latency 0.45 \
+  --output-dir generated/constant-total-latency-ablation
 
-- refine definitions and derivations;
-- create, execute, and test simulations in authorized environments;
-- add literature-grounded comparisons using primary sources;
-- improve manuscript structure and figures;
-- prepare outreach material without sending it;
-- create claims registers, dataset specifications, issues, tasks, and validation receipts;
-- update this handoff with committed evidence.
+python papers/recoverability-geometry-rigel-number/simulations/evaluate_validation_state.py \
+  --baseline-metrics generated/scalar-delayed-control/baseline-evaluation.json \
+  --ablation-summary generated/constant-total-latency-ablation/summary.json \
+  --output generated/validation-state.json
+```
 
-A continuation session must not:
+## Blockers and authority boundaries
 
-- present the Rigel number as experimentally universal;
-- claim derivation of fundamental physical constants without evidence;
-- present the coherence-determinant tuple as established physics;
-- claim that a selected fermion defines the uncertainty principle;
-- claim exact equivalence among physics, neural systems, computation, life, consciousness, or AGI without proof;
-- submit, contact institutions, or represent endorsement in the author's name without explicit authorization;
-- stress production or third-party systems without explicit authorization and safeguards.
+- Hosted run evidence has not yet been directly inspected and cited in this handoff.
+- A trusted statistical-package cross-check and paired uncertainty are required before any support claim.
+- No production or third-party system may be stressed without explicit authorization and safeguards.
+- No institutional outreach may be sent in the author's name without explicit authorization.
+- No empirical evidence currently establishes cross-domain clustering at `Ri ≈ 1`.
+- `V`, `lambda`, `delta_0`, and `kappa` remain domain-specific operational definitions.
+- Fundamental constants remain inputs or scale constraints absent an independent derivation.
 
-## Archival condition
+## Cross-repository dependencies and propagation
 
-A session working on this track is archivable when its unique decisions, equations, evidence, tasks, claims status, and ownership changes are committed here or in linked repository records, and no session-specific mutation remains unverified.
+No other repository currently owns the canonical Rigel research record. Site, Publisher, admissibility-wiki, stegguardian-wiki, and master-records propagation is **not activated** because publication and validation criteria are not met. Any future propagation must identify StegScholar as source, validate the consumer contract, and preserve source commit and evidence receipts.
+
+## Completion accounting
+
+Required deliverable inventory for the current validation goal: **20**.
+
+- developed production/research files: **13**;
+- scaffolding or stubs: **0**;
+- missing required files or evidence surfaces: **7**;
+- task completion: **12/20 = 60%**;
+- developed-file completion: **13/20 = 65%**;
+- validation completion: **4/10 = 40%** because source-level validation lanes exist but hosted evidence, statistical cross-check, and independent benchmark validation remain incomplete;
+- integration completion: **2/5 = 40%** because workflow and durable task registry are installed, while persisted hosted evidence and publication consumers are inactive;
+- goal activation: **52%**.
+
+## Archive condition
+
+A session working on this track may be archived only when its unique decisions, mutations, evidence, ownership changes, and continuation requirements are committed here or in linked durable records, and no session-owned verification remains pending. Repository incompleteness alone is not a reason to retain a session when all remaining work is machine-owned or durably assigned.
