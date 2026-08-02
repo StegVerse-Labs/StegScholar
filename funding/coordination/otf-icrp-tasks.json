@@ -1,5 +1,5 @@
 {
-  "registry_version": "1.0.0",
+  "registry_version": "1.1.0",
   "goal_id": "FUNDING-OTF-ICRP-2026-001",
   "repository": "StegVerse-Labs/StegScholar",
   "branch": "main",
@@ -19,10 +19,10 @@
       "state": "COMPLETE",
       "owner": "StegScholar OTF ICRP lane",
       "location": "funding/applications/active/FUNDING-OTF-ICRP-2026-001-*",
-      "validation_state": "STATIC_IMPLEMENTED_HOSTED_VALIDATION_PENDING",
-      "integration_state": "APPLICATION_RECORD_BOUND",
+      "validation_state": "HOSTED_SUCCESS_RUN_30768955549_JOB_91552600642_ARTIFACT_8839878425",
+      "integration_state": "APPLICATION_RECORD_BOUND_WORKFLOW_INTEGRATED",
       "archival_dependency": false,
-      "next_action": "Run hosted validation and record artifact evidence"
+      "next_action": "Re-run both validators after any material OTF package change"
     },
     {
       "task_id": "OTF-APPLICANT-002",
@@ -39,7 +39,7 @@
       "state": "REVIEW_REQUIRED",
       "owner": "Named applicant plus qualified ethical reviewer",
       "location": "funding/applications/active/FUNDING-OTF-ICRP-2026-001-ethics-safety-plan.md",
-      "validation_state": "SYNTHETIC_ONLY_FIELD_ACTIVITY_PROHIBITED",
+      "validation_state": "SYNTHETIC_ONLY_FIELD_ACTIVITY_PROHIBITED_HOSTED_VALIDATED",
       "integration_state": "FIELD_PATH_NOT_ACTIVATED",
       "archival_dependency": false,
       "next_action": "Name a review pathway before any participant or field activity"
@@ -49,7 +49,7 @@
       "state": "BLOCKED",
       "owner": "Applicant-specific financial authority",
       "location": "funding/applications/active/FUNDING-OTF-ICRP-2026-001-budget-request.json",
-      "validation_state": "DRAFT_UNAPPROVED_AMOUNT_UNSET",
+      "validation_state": "DRAFT_UNAPPROVED_AMOUNT_UNSET_HOSTED_VALIDATED",
       "integration_state": "AUTHORITY_RESPONSE_MISSING",
       "archival_dependency": false,
       "next_action": "Issue APPROVED, BLOCKED, or NO_GO budget response using authoritative inputs"
@@ -59,10 +59,20 @@
       "state": "BLOCKED",
       "owner": "Named human IP authority",
       "location": "funding/applications/active/FUNDING-OTF-ICRP-2026-001.json",
-      "validation_state": "DISCLOSURE_REVIEW_REQUIRED",
+      "validation_state": "DISCLOSURE_REVIEW_REQUIRED_HOSTED_VALIDATED",
       "integration_state": "NO_CLASSIFICATION",
       "archival_dependency": false,
       "next_action": "Issue application-specific publishable, restricted and withheld classification"
     }
-  ]
+  ],
+  "hosted_evidence": {
+    "initial_failed_run": 30768922744,
+    "initial_failed_job": 91552517780,
+    "failure": "validator expected synthetic-only while the canonical state token is SYNTHETIC_ONLY",
+    "successful_run": 30768955549,
+    "successful_job": 91552600642,
+    "artifact_id": 8839878425,
+    "artifact_digest": "sha256:665373a7572586b48ae3a2b7b57c9f1c62088bbf09c04d0438f555a4ac7795fb",
+    "artifact_expires_at": "2026-10-31T21:55:30Z"
+  }
 }
