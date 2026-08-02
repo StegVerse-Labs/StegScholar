@@ -9,6 +9,7 @@ This register separates established results, results derived inside the current 
 - **ESTABLISHED:** accepted result from existing physics, mathematics, engineering, or biology; requires primary-source citation in the manuscript.
 - **MODEL-DERIVED:** follows algebraically from stated assumptions but is not independently validated.
 - **TESTABLE HYPOTHESIS:** has an operational path to falsification.
+- **NOT SUPPORTED IN CURRENT BENCHMARK:** a completed bounded test did not satisfy the preregistered support condition; the claim may be revised and retested but must not be stated as supported.
 - **ANALOGY:** structurally suggestive comparison without demonstrated equivalence.
 - **SPECULATIVE EXTENSION:** potentially researchable but outside the first paper.
 - **DISALLOWED OVERCLAIM:** must not appear as a conclusion without new derivation and evidence.
@@ -20,8 +21,35 @@ This register separates established results, results derived inside the current 
 | RG-001 | Total interaction latency may be decomposed as observation, commitment, and realization latency. | MODEL-DERIVED accounting identity | Define domain-specific phase boundaries and model overlap/covariance. |
 | RG-002 | The Rigel number equals realized pipeline latency divided by modeled critical latency under the exponential disturbance model. | MODEL-DERIVED | Algebra already shown; independent predictive value remains untested. |
 | RG-003 | `Ri = 1` is a universal empirical transition. | DISALLOWED OVERCLAIM | Requires independent systems with transitions not defined by the same equation. |
-| RG-004 | Decomposed latency predicts failure better than aggregate latency. | TESTABLE HYPOTHESIS | Compare out-of-sample predictive models on simulated and measured datasets. |
-| RG-005 | Phase-specific latency burdens identify distinct mitigation strategies. | TESTABLE HYPOTHESIS | Intervention study varying observation, inference, and realization delays independently. |
+| RG-004 | Decomposed latency predicts failure better than aggregate latency. | NOT SUPPORTED IN CURRENT BENCHMARK | Hosted validation run `30739542167` found best decomposed OOD AUC `0.9621873`, below strongest aggregate baseline `0.9645143`; revise the predictive claim and test a better-balanced benchmark before reconsideration. |
+| RG-005 | Phase-specific latency burdens identify distinct mitigation strategies. | TESTABLE HYPOTHESIS | The matched ablation showed partition-dependent outcomes in `8/250` scenarios (`0.032`), which preserves only a narrow diagnostic hypothesis. Add targeted interventions and confidence analysis. |
+
+## Hosted validation evidence for RG-004 and RG-005
+
+Canonical evidence:
+
+- `evidence/rigel-validation/runs/30739542167/run-receipt.json`
+- `evidence/rigel-validation/runs/30739542167/validation-state.json`
+- `evidence/rigel-validation/latest.json`
+
+Verified execution state:
+
+- workflow: `.github/workflows/rigel-validation.yml`;
+- workflow run: `30739542167`;
+- workflow conclusion: `success`;
+- repository readiness run: `30739542168`, conclusion `success`;
+- artifact ID: `8830800522`;
+- artifact digest: `sha256:24c628a4603ec08e33806f91003145e8743e6972e977da04696278710fb653a9`;
+- validation state: `REVIEW_REQUIRED`;
+- next benchmark task: `RIGEL-BALANCED-BENCHMARK-008`.
+
+Interpretation:
+
+1. The implementation and evidence lane execute successfully in the hosted environment.
+2. Some matched scenarios changed outcome when the same total latency was redistributed among phases.
+3. The preregistered predictive-superiority condition was not met because decomposed latency did not exceed the strongest aggregate baseline in held-out evaluation.
+4. The candidate Rigel-number model performed materially worse than the strongest aggregate baseline in this bounded run.
+5. None of these results establishes a universal `Ri = 1` transition or cross-domain validity.
 
 ## Coherence-envelope claims
 
@@ -86,10 +114,12 @@ The first paper may include:
 - domain-specific operating envelopes;
 - boundary observables;
 - one or two carefully derived applications;
-- explicit falsification criteria.
+- explicit falsification criteria;
+- the negative or mixed result from the first scalar benchmark, provided the bounded setup and high OOD failure rate are disclosed.
 
 The first paper must exclude as conclusions:
 
+- predictive superiority of decomposed latency based on the current scalar benchmark;
 - universal coherence conservation;
 - derivation of physical constants;
 - preferred fermion or unique particle pairing;

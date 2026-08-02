@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "goal_id": "RIGEL-VALIDATION-001",
+  "task_id": "RIGEL-VERIFY-WORKFLOW-003",
+  "repository": "StegVerse-Labs/StegScholar",
+  "pull_request": 33,
+  "workflow": {
+    "name": "Rigel validation",
+    "run_id": 30739542167,
+    "run_number": 10,
+    "head_branch": "formal/rigel-validation-verification-v1",
+    "head_sha": "c47f7a37586e8cd77a389c13d918d2e1da08db10",
+    "job_id": 91474345057,
+    "job_name": "test-and-simulate",
+    "status": "completed",
+    "conclusion": "success",
+    "steps": {
+      "deterministic_tests": "success",
+      "scalar_benchmark": "success",
+      "fitted_baselines": "success",
+      "constant_total_latency_ablation": "success",
+      "fail_closed_state_evaluation": "success",
+      "validation_receipts": "success",
+      "artifact_upload": "success"
+    }
+  },
+  "repository_readiness": {
+    "run_id": 30739542168,
+    "job_id": 91474344959,
+    "conclusion": "success"
+  },
+  "artifact": {
+    "artifact_id": 8830800522,
+    "name": "rigel-validation-3f84730ac157788202e252f169d47ff0cf378f2e",
+    "size_bytes": 209518,
+    "sha256": "24c628a4603ec08e33806f91003145e8743e6972e977da04696278710fb653a9",
+    "expires_at": "2026-09-01T08:19:39Z"
+  },
+  "output_hashes": {
+    "scalar_baseline_evaluation": "7a7ce920393066041ca5b0cbe773f682a4189237194d030c40a90e426f6480ad",
+    "scalar_config": "c80528e79ca18757aab5cc01bea013f1d3fd296a92f7c9df5b5f73272b3e9167",
+    "scalar_episodes": "4dd3c8a5c827f9be4ff37aebb6dc5a77880744865cd2f594d1874c19b1cc75a2",
+    "scalar_summary": "89490a5cfd651fe17f8e0211d5933ba07edcfba227d5e45fa9dc061a236e6589",
+    "ablation_config": "0f7a80eb04ad2fb44e350faae467c73002f57ddceb691da4c166c003c2040a11",
+    "ablation_episodes": "c0a005043d1f48ee699947af32556fa00f7952bcc364bfbcd51670fe10d39980",
+    "ablation_summary": "33c99317c85a1a96ccfa8f02349dbf8318c78fe5a0d1b842e6e036d6269f1eb8"
+  },
+  "key_results": {
+    "ood_count": 200,
+    "ood_failure_rate": 0.955,
+    "auc_total_latency": 0.954043048283886,
+    "auc_lambda_times_total": 0.9645142524723677,
+    "auc_decomposed_latency": 0.9546247818499127,
+    "auc_decomposed_burdens": 0.9621873182082606,
+    "auc_rigel_number": 0.8411867364746946,
+    "best_decomposed_minus_best_aggregate_auc": -0.0023269342641070168,
+    "ablation_partition_dependent_fraction": 0.032,
+    "ablation_scenarios": 250,
+    "validation_state": "REVIEW_REQUIRED"
+  },
+  "claim_limit": "The hosted run validates execution and the bounded benchmark result only. It does not establish a universal Ri=1 threshold, cross-domain validity, publication readiness, or release readiness."
+}

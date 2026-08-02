@@ -4,17 +4,17 @@
 
 - **Goal ID:** `RIGEL-VALIDATION-001`
 - **Goal:** Develop, execute, and falsifiably validate *Recoverability Geometry and the Rigel Number* without presenting the candidate formalism as established universal physics.
+- **Originating session goals:** formalize the framework; create rotatable/publication figures; install the paper in StegScholar; validate and automate continuation.
 - **Organization:** `StegVerse-Labs`
 - **Repository:** `StegVerse-Labs/StegScholar`
 - **Branch:** `main`
 - **Canonical paper path:** `papers/recoverability-geometry-rigel-number/`
 - **Machine task registry:** `coordination/rigel-validation-tasks.json`
+- **Latest verified evidence:** `evidence/rigel-validation/latest.json`
 
 ## Scientific posture
 
-The work is a candidate cross-domain systems formalism. Claims concerning physics, cognition, AI, detector systems, ecosystems, synchronization, cosmology, coherence determinants, particle pairing, life, or consciousness remain hypotheses until separately derived and empirically tested.
-
-The current core definitions are:
+The work is a candidate systems formalism, not an established physical law.
 
 \[
 \alpha=\alpha_o+\alpha_i+\alpha_r,
@@ -28,14 +28,11 @@ G+C+E=1,\qquad G,C,E\ge 0,
 \Psi=V-\kappa\delta_0e^{\lambda\alpha},
 \]
 
-and the candidate dimensionless Rigel number
-
 \[
-Ri=\frac{\lambda\alpha}{\ln\!\left(V/(\kappa\delta_0)\right)}
-  =\frac{\alpha_{pipeline}}{\alpha_{critical}}.
+Ri=\frac{\lambda\alpha}{\ln\!\left(V/(\kappa\delta_0)\right)}.
 \]
 
-Within the provisional exponential-growth model, `Ri < 1`, `Ri = 1`, and `Ri > 1` denote modeled recoverable, critical, and nonrecoverable regimes. The threshold follows from the model definition and is not yet an independently demonstrated universal empirical constant.
+`Ri=1` is the modeled algebraic boundary under the stated exponential-growth assumptions. It is not established as a universal empirical transition.
 
 ## Authoritative files
 
@@ -43,148 +40,164 @@ Within the provisional exponential-growth model, `Ri < 1`, `Ri = 1`, and `Ri > 1
 - `papers/recoverability-geometry-rigel-number/validation-protocol.md`
 - `papers/recoverability-geometry-rigel-number/claims-register.md`
 - `papers/recoverability-geometry-rigel-number/coherence-determinant-extension.md`
-- `papers/recoverability-geometry-rigel-number/validation-progress.md`
-- `papers/recoverability-geometry-rigel-number/simulations/README.md`
-- `coordination/rigel-validation-tasks.json`
+- `papers/recoverability-geometry-rigel-number/simulations/scalar_delayed_control.py`
+- `papers/recoverability-geometry-rigel-number/simulations/test_scalar_delayed_control.py`
+- `papers/recoverability-geometry-rigel-number/simulations/constant_total_latency_ablation.py`
+- `papers/recoverability-geometry-rigel-number/simulations/fit_baselines.py`
+- `papers/recoverability-geometry-rigel-number/simulations/evaluate_validation_state.py`
 - `.github/workflows/rigel-validation.yml`
+- `coordination/rigel-validation-tasks.json`
+- `evidence/rigel-validation/latest.json`
 - this handoff
 
-## Completed and committed implementation
+## Canonical ownership and convergence
 
-1. Canonical manuscript and validation protocol are committed.
-2. A standard-library scalar delayed-control benchmark is installed at `papers/recoverability-geometry-rigel-number/simulations/scalar_delayed_control.py`.
-3. Recovery is labeled independently from the candidate equation using a hard safety boundary and terminal target return.
-4. Upper-delay and upper-instability parameter regions are held out for OOD evaluation.
-5. Deterministic implementation tests are installed at `papers/recoverability-geometry-rigel-number/simulations/test_scalar_delayed_control.py`.
-6. Canonical configuration and JSON Schema are installed at:
-   - `papers/recoverability-geometry-rigel-number/simulations/scalar-delayed-control.config.json`
-   - `papers/recoverability-geometry-rigel-number/simulations/scalar-delayed-control.config.schema.json`
-7. Constant-total-latency matched ablation is installed at `papers/recoverability-geometry-rigel-number/simulations/constant_total_latency_ablation.py`.
-8. Leakage-controlled fitted baseline evaluation is installed at `papers/recoverability-geometry-rigel-number/simulations/fit_baselines.py`.
-9. A fail-closed validation-state evaluator is installed at `papers/recoverability-geometry-rigel-number/simulations/evaluate_validation_state.py` in commit `715fcf00e911cb3b3b87a5210e845f23a7d2be3b`.
-10. A machine-owned task registry with explicit owners, locations, successors, and release conditions is installed at `coordination/rigel-validation-tasks.json` in commit `ceec6763799484d3f2782c643c35f69d7cb72159`.
-11. The hosted workflow is installed at `.github/workflows/rigel-validation.yml`. Commit `9aeb9f4cb8f2cfda6827c86854e2505f2bd28e24` adds:
-    - deterministic tests;
-    - canonical simulation;
-    - fitted OOD baselines;
-    - constant-total-latency ablation;
-    - fail-closed status evaluation;
-    - SHA-256 receipts;
-    - artifact upload;
-    - compact evidence persistence to `evidence/rigel-validation/latest/`;
-    - concurrency control and duplicate-change suppression.
+- **Implementation owner:** `StegVerse-Labs/StegScholar`.
+- **Validation owner:** `.github/workflows/rigel-validation.yml`.
+- **Canonical continuation:** this handoff plus `coordination/rigel-validation-tasks.json`.
+- **Merged session work:** all four originating session goal groups are durably transferred here.
+- **Duplicate execution rule:** no second scalar benchmark, no competing handoff, and no publication propagation before publication readiness.
 
-## Automation contract
+## Verified hosted execution
 
-**Owner repository:** `StegVerse-Labs/StegScholar`
+PR-hosted validation completed after correcting Python 3.12 dynamic module registration in:
 
-**Trigger:** push to `main` affecting the Rigel simulation lane, workflow, or task registry; pull request path match; or manual dispatch.
+- `simulations/test_scalar_delayed_control.py`;
+- `simulations/constant_total_latency_ablation.py`.
 
-**Deterministic inputs:** seed `20260714`, declared run sizes, fixed benchmark configuration, source commit.
+Directly inspected evidence:
 
-**Outputs:**
+- workflow run: `30739542167`;
+- workflow job: `91474345057`;
+- workflow conclusion: `success`;
+- repository readiness run: `30739542168`, conclusion `success`;
+- artifact ID: `8830800522`;
+- artifact digest: `sha256:24c628a4603ec08e33806f91003145e8743e6972e977da04696278710fb653a9`;
+- run receipt: `evidence/rigel-validation/runs/30739542167/run-receipt.json`;
+- validation state: `evidence/rigel-validation/runs/30739542167/validation-state.json`.
 
-- generated episode datasets;
-- scalar summary;
-- fitted baseline evaluation;
-- matched ablation summary;
-- validation receipts with hashes;
-- `validation-state.json` with one of `COMPLETE`, `BLOCKED`, `RETRY`, `REVIEW_REQUIRED`, or `FAILED`;
-- next executable task and exact repository location.
+## Verified bounded result
 
-**Persistent state:** successful non-PR runs must commit compact evidence to `evidence/rigel-validation/latest/`. Missing or malformed evidence produces `FAILED`; it is never treated as success.
+The hosted PR run used 1,000 scalar episodes, 200 OOD episodes, 200 bootstrap replicates, and 250 matched ablation scenarios.
 
-**Duplicate prevention:** workflow concurrency is grouped by ref; compact evidence is committed only when the staged content changes; evidence-path commits do not retrigger the workflow.
+Observed OOD AUC:
 
-## Current actual classification
+- total latency: `0.9540430483`;
+- `lambda * total latency`: `0.9645142525`;
+- decomposed latency: `0.9546247818`;
+- decomposed burdens: `0.9621873182`;
+- candidate Rigel number: `0.8411867365`.
 
-- Manuscript and theory record: **implemented, unvalidated scientifically**.
-- Scalar simulator: **implemented, repository-run evidence pending inspection**.
-- Deterministic tests: **implemented, hosted result pending inspection**.
-- Fitted baselines: **implemented, output pending hosted execution evidence**.
-- Constant-total-latency ablation: **implemented, output pending hosted execution evidence**.
-- Validation-state automation: **implemented, hosted persistence pending inspection**.
-- Kuramoto benchmark: **missing; blocked until scalar interpretation is durably recorded**.
-- Queue/SCW-like benchmark: **missing; successor to Kuramoto source completion**.
-- Hamilton-Jacobi augmented-state derivation: **missing**.
-- Detector-specific instantiation: **partial manuscript treatment only**.
-- Source-controlled publication figures: **missing**.
-- Primary-source related-work map: **missing**.
-- Compiled publication release: **blocked by validation and publication assets**.
+Additional observations:
 
-## Exact task sequence
+- best decomposed minus strongest aggregate AUC: `-0.0023269343`;
+- OOD failure rate: `0.955`;
+- partition-dependent matched scenarios: `8/250`, fraction `0.032`.
 
-The canonical task sequence and machine-observable release conditions are in `coordination/rigel-validation-tasks.json`.
+Result:
 
-Current active task:
+- execution lane: **validated**;
+- phase-allocation effect in this constructed benchmark: **observed but small**;
+- predictive superiority of decomposed latency: **not supported in current benchmark**;
+- candidate Rigel score superiority: **not supported in current benchmark**;
+- universal `Ri=1` or cross-domain validity: **not established**;
+- publication readiness: **false**.
 
-- `RIGEL-VERIFY-WORKFLOW-003`
-- location: `evidence/rigel-validation/latest/validation-state.json`
-- owner: `.github/workflows/rigel-validation.yml`
-- release condition: a successful hosted run persists compact summaries, receipts, and validation state.
+The claims register records `RG-004` as `NOT SUPPORTED IN CURRENT BENCHMARK` and narrows `RG-005` to a bounded diagnostic hypothesis.
 
-Possible deterministic successors are selected from observed evidence:
+## Current component classification
 
-- `RIGEL-REPAIR-VALIDATION-EVIDENCE-004` at `.github/workflows/rigel-validation.yml` if evidence is missing or malformed;
-- `RIGEL-STATISTICAL-CROSSCHECK-005` at `papers/recoverability-geometry-rigel-number/simulations/crosscheck_baselines.py` if candidate improvement is observed;
-- `RIGEL-REVISE-PHASE-HYPOTHESIS-006` at `papers/recoverability-geometry-rigel-number/claims-register.md` if fixed-total partitioning changes no outcomes;
-- `RIGEL-REVISE-PREDICTIVE-CLAIM-007` at `papers/recoverability-geometry-rigel-number/claims-register.md` if decomposed latency does not exceed both aggregate baselines.
+### Complete and validated
+
+- canonical manuscript installation;
+- validation protocol;
+- claims register;
+- scalar simulator;
+- deterministic tests;
+- constant-total-latency ablation;
+- fitted OOD baselines;
+- fail-closed validation-state evaluator;
+- hosted workflow execution;
+- job/log/artifact inspection;
+- durable output hashes and run receipt;
+- task/claim registry.
+
+### Implemented but not publication-ready
+
+- detector case-study framing;
+- cross-domain theory mappings;
+- runtime/interactive figure prototypes.
+
+### Missing or blocked
+
+- balanced scalar benchmark with nondegenerate OOD class balance;
+- paired trusted-package statistical cross-check;
+- delayed Kuramoto benchmark;
+- queue/SCW-like benchmark;
+- Hamilton-Jacobi augmented-state derivation;
+- source-controlled figure generator and SVG;
+- primary-source bibliography and gap map;
+- compiled publication PDF;
+- outbound publication manifest and downstream propagation.
+
+## Machine-owned continuation
+
+Active task:
+
+- **Task ID:** `RIGEL-BALANCED-BENCHMARK-008`
+- **Owner:** `StegVerse-Labs/StegScholar`
+- **Location:** `papers/recoverability-geometry-rigel-number/simulations/balanced_scalar_benchmark.py`
+- **Release condition:** remove the 95.5% OOD failure imbalance, preregister paired comparisons, and emit a new validation receipt.
+
+All successor tasks, owners, locations, states, and release conditions are in `coordination/rigel-validation-tasks.json`.
+
+## Cross-repository propagation
+
+Potential consumers:
+
+- `StegVerse-Labs/Site`;
+- `GCAT-BCAT-Engine/Publisher`;
+- `admissibility-wiki`;
+- `stegguardian-wiki`;
+- `master-records`.
+
+No propagation is claimed. `coordination/rigel-publication-outbound.json` must not be created until publication readiness is true.
 
 ## Validation commands
 
 ```bash
 python papers/recoverability-geometry-rigel-number/simulations/test_scalar_delayed_control.py
-
-python papers/recoverability-geometry-rigel-number/simulations/scalar_delayed_control.py \
-  --episodes 10000 \
-  --seed 20260714 \
-  --output-dir generated/scalar-delayed-control
-
-python papers/recoverability-geometry-rigel-number/simulations/fit_baselines.py \
-  --episodes-csv generated/scalar-delayed-control/episodes.csv \
-  --output generated/scalar-delayed-control/baseline-evaluation.json \
-  --bootstrap-replicates 500 \
-  --seed 20260714
-
-python papers/recoverability-geometry-rigel-number/simulations/constant_total_latency_ablation.py \
-  --scenarios 2000 \
-  --seed 20260714 \
-  --total-latency 0.45 \
-  --output-dir generated/constant-total-latency-ablation
-
-python papers/recoverability-geometry-rigel-number/simulations/evaluate_validation_state.py \
-  --baseline-metrics generated/scalar-delayed-control/baseline-evaluation.json \
-  --ablation-summary generated/constant-total-latency-ablation/summary.json \
-  --output generated/validation-state.json
+python papers/recoverability-geometry-rigel-number/simulations/scalar_delayed_control.py --episodes 10000 --seed 20260714 --output-dir generated/scalar-delayed-control
+python papers/recoverability-geometry-rigel-number/simulations/fit_baselines.py --episodes-csv generated/scalar-delayed-control/episodes.csv --output generated/scalar-delayed-control/baseline-evaluation.json --bootstrap-replicates 500 --seed 20260714
+python papers/recoverability-geometry-rigel-number/simulations/constant_total_latency_ablation.py --scenarios 2000 --seed 20260714 --total-latency 0.45 --output-dir generated/constant-total-latency-ablation
+python papers/recoverability-geometry-rigel-number/simulations/evaluate_validation_state.py --baseline-metrics generated/scalar-delayed-control/baseline-evaluation.json --ablation-summary generated/constant-total-latency-ablation/summary.json --output generated/validation-state.json
 ```
 
-## Blockers and authority boundaries
+## Session consolidation
 
-- Hosted run evidence has not yet been directly inspected and cited in this handoff.
-- A trusted statistical-package cross-check and paired uncertainty are required before any support claim.
-- No production or third-party system may be stressed without explicit authorization and safeguards.
-- No institutional outreach may be sent in the author's name without explicit authorization.
-- No empirical evidence currently establishes cross-domain clustering at `Ri ≈ 1`.
-- `V`, `lambda`, `delta_0`, and `kappa` remain domain-specific operational definitions.
-- Fundamental constants remain inputs or scale constraints absent an independent derivation.
+**MERGED INTO:** `StegVerse-Labs/StegScholar/STEGSCHOLAR_MIRROR_HANDOFF.md` and `StegVerse-Labs/StegScholar/coordination/rigel-validation-tasks.json`.
 
-## Cross-repository dependencies and propagation
+Transferred session goal groups:
 
-No other repository currently owns the canonical Rigel research record. Site, Publisher, admissibility-wiki, stegguardian-wiki, and master-records propagation is **not activated** because publication and validation criteria are not met. Any future propagation must identify StegScholar as source, validate the consumer contract, and preserve source commit and evidence receipts.
+1. formalism and manuscript;
+2. rotatable/publication visualization requirement;
+3. StegScholar installation;
+4. validation, automation, claims discipline, publication, and propagation requirements.
+
+After the verification PR is merged, the originating conversation owns no unique implementation, validation, integration, or observation role.
 
 ## Completion accounting
 
-Required deliverable inventory for the current validation goal: **20**.
+Current goal denominator: `20` canonical deliverables.
 
-- developed production/research files: **13**;
-- scaffolding or stubs: **0**;
-- missing required files or evidence surfaces: **7**;
-- task completion: **12/20 = 60%**;
-- developed-file completion: **13/20 = 65%**;
-- validation completion: **4/10 = 40%** because source-level validation lanes exist but hosted evidence, statistical cross-check, and independent benchmark validation remain incomplete;
-- integration completion: **2/5 = 40%** because workflow and durable task registry are installed, while persisted hosted evidence and publication consumers are inactive;
-- goal activation: **52%**.
+- task completion: `16/20 = 80%`;
+- developed-file completion: `16/20 = 80%`;
+- validation completion: `13/16 = 81%`;
+- integration completion: `1/4 = 25%`;
+- propagation completion: `0/1 = 0%`;
+- goal activation: `68%`;
+- session goal transfer: `4/4 = 100%`.
 
 ## Archive condition
 
-A session working on this track may be archived only when its unique decisions, mutations, evidence, ownership changes, and continuation requirements are committed here or in linked durable records, and no session-owned verification remains pending. Repository incompleteness alone is not a reason to retain a session when all remaining work is machine-owned or durably assigned.
+A session may be archived when its unique requirements are in this handoff or the task registry, any session-owned PR is merged/closed/superseded, no session claim remains active, and continuation can proceed from repository state alone.

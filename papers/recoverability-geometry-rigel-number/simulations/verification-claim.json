@@ -1,0 +1,21 @@
+{
+  "claim_id": "RIGEL-VERIFY-WORKFLOW-003",
+  "goal_id": "RIGEL-VALIDATION-001",
+  "branch": "formal/rigel-validation-verification-v2",
+  "claim_state": "COMPLETE",
+  "claimed_at_utc": "2026-08-02T08:16:00Z",
+  "released_at_utc": "2026-08-02T08:22:00Z",
+  "evidence": {
+    "workflow_run_id": 30739542167,
+    "job_id": 91474345057,
+    "artifact_id": 8830800522,
+    "artifact_sha256": "24c628a4603ec08e33806f91003145e8743e6972e977da04696278710fb653a9",
+    "run_receipt": "evidence/rigel-validation/runs/30739542167/run-receipt.json",
+    "validation_state": "evidence/rigel-validation/runs/30739542167/validation-state.json"
+  },
+  "result": "REVIEW_REQUIRED",
+  "next_task": {
+    "task_id": "RIGEL-BALANCED-BENCHMARK-008",
+    "location": "papers/recoverability-geometry-rigel-number/simulations/balanced_scalar_benchmark.py"
+  }
+}
