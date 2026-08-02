@@ -1,0 +1,15 @@
+{
+  "declaration_id": "time-kernel-example-001",
+  "subject_id": "process-example",
+  "resolution": "event",
+  "events": ["S", "A", "B", "M"],
+  "identity_evidence_refs": ["evidence://process-example/event-identity-v1"],
+  "kernel_relations": [["S", "A"], ["S", "B"], ["A", "M"], ["B", "M"]],
+  "branch_orders": [
+    {"branch_id": "AB", "relations": [["S", "A"], ["S", "B"], ["A", "B"], ["A", "M"], ["B", "M"]]},
+    {"branch_id": "BA", "relations": [["S", "A"], ["S", "B"], ["B", "A"], ["A", "M"], ["B", "M"]]}
+  ],
+  "operational_quotient": {"equivalence_classes": [["SABM"], ["SBAM"]]},
+  "resolution_maps": [],
+  "gtg_admissibility": null
+}
