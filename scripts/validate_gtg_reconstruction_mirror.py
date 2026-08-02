@@ -38,8 +38,19 @@ def main() -> None:
 
     if not r4.get("target_commit") or r4.get("target_state") != "ACTIVE":
         fail("R4 target posture mismatch")
-    if r4.get("factory_commit") is not None or r4.get("factory_state") != "PENDING" or r4.get("mirror_state") != "PARTIAL":
-        fail("R4 must remain partial until factory commit exists")
+    if r4.get("factory_commit") is None:
+        if r4.get("factory_state") != "PENDING" or r4.get("mirror_state") != "PARTIAL":
+            fail("R4 without factory commit must remain pending and partial")
+    else:
+        if r4.get("factory_state") != "ACTIVE" or r4.get("mirror_state") != "ACTIVE":
+            fail("R4 with factory commit must be active")
+        if not isinstance(r4.get("factory_workflow_run"), int):
+            fail("active R4 factory workflow run missing")
+        if not isinstance(r4.get("factory_artifact_id"), int):
+            fail("active R4 factory artifact ID missing")
+        digest = r4.get("factory_artifact_digest")
+        if not isinstance(digest, str) or not digest.startswith("sha256:"):
+            fail("active R4 factory artifact digest missing")
 
     if r5.get("target_commit") is not None or r5.get("factory_commit") is not None:
         fail("canonical or factory R5 commit asserted before activation")
@@ -59,7 +70,7 @@ def main() -> None:
         if value is not False:
             fail(f"prohibited claim enabled: {key}")
 
-    print("GTG RECONSTRUCTION MIRROR: PASS - R3 active, R4 partial, StegVerse R5 bounded research active; canonical and independent R5 not tested; all authority claims false")
+    print("GTG RECONSTRUCTION MIRROR: PASS - R3 active; R4 evidence-consistent; StegVerse R5 bounded research active; canonical and independent R5 not tested; all authority claims false")
 
 
 if __name__ == "__main__":
