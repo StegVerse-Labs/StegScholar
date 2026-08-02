@@ -1,10 +1,10 @@
 {
-  "registry_version": "1.2.0",
+  "registry_version": "1.3.0",
   "goal_id": "FUNDING-PIPELINE-001",
   "repository": "StegVerse-Labs/StegScholar",
   "branch": "main",
   "canonical_handoff": "funding/FUNDING_MIRROR_HANDOFF.md",
-  "updated_at": "2026-08-02T05:03:00-05:00",
+  "updated_at": "2026-08-02T05:12:00-05:00",
   "allowed_states": ["UNCLAIMED","CLAIMED_FOR_IMPLEMENTATION","CLAIMED_FOR_VALIDATION","CLAIMED_FOR_INTEGRATION","MACHINE_OWNED","BLOCKED","COMPLETE","SUPERSEDED","MERGED_INTO_CANONICAL_WORKSTREAM","RETRY","REVIEW_REQUIRED","FAILED"],
   "claims": [
     {
@@ -14,14 +14,14 @@
       "branch": "main",
       "surfaces": ["funding/**", ".github/workflows/funding-state-validation.yml"],
       "claimant": "repository-native funding lane",
-      "role": "implementation and validation",
+      "role": "validation",
       "state": "CLAIMED_FOR_VALIDATION",
       "claimed_at": "2026-08-02T04:44:00-05:00",
       "expires_at": "2026-08-16T04:44:00-05:00",
       "release_condition": "Hosted validator succeeds and inspected run, job and artifact evidence are recorded in the handoff",
       "expected_evidence": ["validator output", "workflow run id", "workflow job id", "workflow conclusion", "artifact digest"],
       "collision_boundaries": "No competing funding registry, schema, validator or workflow on main",
-      "next_task_after_release": "FUNDING-REUSABLE-003"
+      "next_task_after_release": "FUNDING-NSF-PESOSE-2026-001"
     },
     {
       "task_id": "FUNDING-NSF-PESOSE-2026-001",
@@ -48,7 +48,7 @@
       "owner": "StegVerse-Labs/StegScholar",
       "location": ".github/workflows/funding-state-validation.yml",
       "next_action": "Run and inspect hosted funding-state validation and record run, job, log and artifact evidence",
-      "validation_state": "PENDING_HOSTED_RUN",
+      "validation_state": "PENDING_HOSTED_RUN_NO_COMMIT_STATUS_PRESENT",
       "integration_state": "CONTRACTS_INSTALLED",
       "archival_dependency": false,
       "evidence_location": "funding/FUNDING_MIRROR_HANDOFF.md"
@@ -59,9 +59,9 @@
       "state": "CLAIMED_FOR_IMPLEMENTATION",
       "owner": "StegVerse-Labs/StegScholar funding lane",
       "location": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-concept.md",
-      "next_action": "Draft project summary and milestones while resolving license, product maturity, collaboration-letter and applicant-registration gates",
-      "validation_state": "PRODUCT_AND_COMPLIANCE_CROSSWALKS_INSTALLED",
-      "integration_state": "AUTHORITY_CONTRACTS_INSTALLED",
+      "next_action": "Expand the concept into the solicitation-limited project description and obtain product-license, adoption, collaboration-letter, IP, budget and applicant-registration evidence",
+      "validation_state": "SUMMARY_MILESTONES_COMPLIANCE_AND_DRAFT_BUDGET_INSTALLED",
+      "integration_state": "AUTHORITY_CONTRACTS_INSTALLED_RESPONSES_PENDING",
       "archival_dependency": false,
       "evidence_location": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-eligibility.md"
     },
@@ -80,14 +80,14 @@
     {
       "task_id": "FUNDING-REUSABLE-003",
       "title": "Install reusable organization and evidence packages",
-      "state": "MACHINE_OWNED",
+      "state": "COMPLETE",
       "owner": "StegVerse-Labs/StegScholar",
-      "location": "funding/reusable/ and funding/schemas/",
-      "next_action": "Generate organization profile, evidence crosswalk schema and submission receipt schema",
-      "validation_state": "NOT_STARTED",
-      "integration_state": "NOT_APPLICABLE",
+      "location": "funding/reusable/organization-profile/README.md and funding/schemas/",
+      "next_action": "Use the governed profile and schemas for subsequent applications without converting UNVERIFIED fields into claims",
+      "validation_state": "FILES_INSTALLED_JSON_PARSE_PENDING_HOSTED_RUN",
+      "integration_state": "AVAILABLE_TO_FUNDING_PIPELINE",
       "archival_dependency": false,
-      "evidence_location": "funding/coordination/funding-tasks.json"
+      "evidence_location": "funding/FUNDING_MIRROR_HANDOFF.md"
     },
     {
       "task_id": "FUNDING-PESOSE-HUMAN-GATES-004",
@@ -100,6 +100,30 @@
       "integration_state": "NOT_APPLICABLE",
       "archival_dependency": false,
       "evidence_location": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-eligibility.md"
+    },
+    {
+      "task_id": "FUNDING-PESOSE-PRODUCT-EVIDENCE-005",
+      "title": "Resolve licensed product and independent adoption evidence",
+      "state": "BLOCKED",
+      "owner": "StegVerse-Labs/StegCore maintainers and StegScholar funding lane",
+      "location": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-product-evidence.md",
+      "next_action": "Install or identify the governing open-source license, define the implemented product boundary and collect three to five qualifying independent user or contributor letters",
+      "validation_state": "LICENSE_AND_ADOPTION_EVIDENCE_MISSING",
+      "integration_state": "PROVISIONAL_ANCHOR_ONLY",
+      "archival_dependency": false,
+      "evidence_location": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-product-evidence.md"
+    },
+    {
+      "task_id": "FUNDING-PESOSE-AUTHORITY-RESPONSES-006",
+      "title": "Obtain IP and budget authority responses",
+      "state": "BLOCKED",
+      "owner": "StegVerse-Labs/StegPatents and StegVerse-Labs/StegFinCo",
+      "location": "funding/contracts/ and funding/applications/active/FUNDING-NSF-PESOSE-2026-001-budget-request.json",
+      "next_action": "Issue application-specific disclosure classification and approved line-item budget records",
+      "validation_state": "CONTRACTS_PRESENT_RESPONSES_MISSING",
+      "integration_state": "AWAITING_AUTHORITATIVE_RESPONSES",
+      "archival_dependency": false,
+      "evidence_location": "funding/FUNDING_MIRROR_HANDOFF.md"
     }
   ]
 }
