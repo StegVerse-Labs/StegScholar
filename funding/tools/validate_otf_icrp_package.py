@@ -45,7 +45,7 @@ def main() -> int:
 
     for phrase in ("not submission ready", "fail-closed rule", "named individual applicant", "submission authority"):
         require(phrase in eligibility, f"eligibility gate missing: {phrase}")
-    for phrase in ("field activity prohibited", "synthetic-only", "no message-content collection", "stop_work"):
+    for phrase in ("field activity prohibited", "synthetic_only", "no message-content collection", "stop_work"):
         require(phrase in ethics, f"ethics plan missing: {phrase}")
     for phrase in ("month 1", "month 6", "evaluation measures", "stop conditions"):
         require(phrase in milestones, f"milestones missing: {phrase}")
