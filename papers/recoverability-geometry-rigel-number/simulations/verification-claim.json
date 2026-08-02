@@ -1,0 +1,24 @@
+{
+  "claim_id": "RIGEL-VERIFY-WORKFLOW-003",
+  "originating_goal": "RIGEL-VALIDATION-001",
+  "repository": "StegVerse-Labs/StegScholar",
+  "branch": "formal/rigel-validation-verification-v1",
+  "role": "CLAIMED_FOR_VALIDATION",
+  "claimant": "repository-native GitHub Actions validation lane",
+  "claimed_at_utc": "2026-08-02T08:16:00Z",
+  "release_condition": "A pull-request-triggered rigel-validation workflow run completes and its jobs, logs, and artifacts are inspected; the claim is then released as COMPLETE, RETRY, REVIEW_REQUIRED, or FAILED.",
+  "expected_evidence": [
+    "workflow run ID",
+    "job ID and step conclusions",
+    "validation artifact metadata",
+    "baseline-evaluation.json",
+    "ablation-summary.json",
+    "validation-state.json"
+  ],
+  "collision_boundaries": [
+    "Do not create a second implementation of the scalar benchmark",
+    "Do not publish or propagate the paper before validation state is inspected",
+    "Do not claim Ri=1 universality"
+  ],
+  "next_task_after_release": "Use validation-state.json to select the canonical successor in coordination/rigel-validation-tasks.json."
+}
