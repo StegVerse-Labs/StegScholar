@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stegverse.org/schemas/research-reuse-request.schema.json",
+  "title": "Research Commons Reuse Request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["request_id", "source_entry_id", "target_protocol_id", "requested_artifacts", "consent_receipt", "license_posture", "provenance_receipt", "admissibility_state", "creates_execution_authority"],
+  "properties": {
+    "request_id": {"type": "string", "minLength": 1},
+    "source_entry_id": {"type": "string", "minLength": 1},
+    "target_protocol_id": {"type": "string", "minLength": 1},
+    "requested_artifacts": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["protocol", "source_ledger", "dataset", "method", "computed_result", "prompt_exchange", "cost_record"]}},
+    "consent_receipt": {"type": "string", "minLength": 1},
+    "license_posture": {"enum": ["verified", "restricted", "unknown", "denied"]},
+    "provenance_receipt": {"type": "string", "minLength": 1},
+    "requested_by": {"type": ["string", "null"]},
+    "purpose": {"type": "string", "minLength": 1},
+    "admissibility_state": {"const": "PENDING_REVIEW"},
+    "creates_execution_authority": {"const": false}
+  }
+}
