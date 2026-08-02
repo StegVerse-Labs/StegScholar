@@ -1,0 +1,46 @@
+{
+  "schema_version": "stegscholar-gtg-r5-canonical-source-contract.v1",
+  "contract_id": "SV-GTG-R5-CANONICAL-SOURCE-013",
+  "source_repository": "StegVerse-Labs/StegScholar",
+  "destination_repository": "Admissible-Existence/GTG",
+  "canonical_authority_transferred": false,
+  "purpose": "Provide bounded research inputs and adversarial requirements to the canonical GTG R5 implementation without treating StegScholar fixtures as canonical authority.",
+  "source_inputs": [
+    "papers/generalized-transition-governance/reconstruction/r5-reality-contact.md",
+    "fixtures/gtg/reconstruction/r5/cases.json",
+    "scripts/validate_gtg_r5_reality_contact.py",
+    "papers/generalized-transition-governance/reconstruction/r4-r5-boundary.md",
+    "papers/generalized-transition-governance/reconstruction/r4-r5-temporal-continuity.md",
+    "papers/generalized-transition-governance/reconstruction/r4-r5-subject-continuity.md"
+  ],
+  "required_canonical_outputs": [
+    "contracts/GTG_R5_REALITY_CONTACT_RECONSTRUCTION.md",
+    "schemas/gtg-reality-contact-v1.schema.json",
+    "examples/gtg-r5-reality-contact-reconstruction-v1.json",
+    "tools/validate_gtg_r5_reality_contact_reconstruction.py",
+    ".github/workflows/validate-gtg-r5-reality-contact-reconstruction.yml",
+    "receipts/gtg-r5-reality-contact-validation-receipt.json"
+  ],
+  "required_outcomes": [
+    "R5_PASS",
+    "R5_PARTIAL",
+    "R5_FAIL_CLOSED"
+  ],
+  "mandatory_adversarial_classes": [
+    "missing-custody",
+    "stale-observation",
+    "detached-subject",
+    "contradictory-observation",
+    "internal-simulation-only",
+    "request-receipt-without-outcome",
+    "authority-escalation-attempt"
+  ],
+  "claims": {
+    "execution_authority": false,
+    "certification_authority": false,
+    "mathematical_closure": false,
+    "empirical_validity": false,
+    "release_ready": false,
+    "archive_ready": false
+  }
+}
