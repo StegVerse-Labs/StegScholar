@@ -1,0 +1,23 @@
+{
+  "declaration_id": "invalid-lumpability",
+  "subject_id": "process-example",
+  "resolution": "fine",
+  "events": ["a1", "b1"],
+  "identity_evidence_refs": ["evidence://identity"],
+  "kernel_relations": [],
+  "branch_orders": [{"branch_id": "fine", "relations": [["a1", "b1"]]}],
+  "operational_quotient": {"equivalence_classes": [["t1", "t2"]]},
+  "resolution_maps": [{
+    "map_id": "non-lumpable-map",
+    "from_resolution": "fine",
+    "to_resolution": "coarse",
+    "fine_to_coarse": {"a1": "A", "b1": "B"},
+    "fine_serializations": [["a1", "b1"]],
+    "coarse_serializations": [["A", "B"]],
+    "quotient_distributions": {
+      "t1": {"class": "q", "probabilities": {"Q": 0.7, "R": 0.3}},
+      "t2": {"class": "q", "probabilities": {"Q": 0.2, "R": 0.8}}
+    }
+  }],
+  "gtg_admissibility": null
+}
