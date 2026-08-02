@@ -1,6 +1,6 @@
 {
   "goal_id": "FUNDING-EXPANDED-SCAN-008",
-  "state": "IMPLEMENTED_PENDING_HOSTED_VALIDATION",
+  "state": "HOSTED_VALIDATED",
   "installed_at": "2026-08-02T15:58:00-05:00",
   "artifacts": [
     "funding/opportunities/2026-08-02-expanded-scan.md",
@@ -15,8 +15,23 @@
     "nsf_sbir_assessment": "21606e16600ee35f97c62a4516c67b477e6b8fa2",
     "validator": "b3aac7f5cd2cc01b74bbfde9d254c65c5478bc61",
     "registry": "7fae04217ae791d2385547c3d64d56a3daad9090",
-    "handoff": "52183f6ded5b6293c57b1aa0e5b0803ed46cf062"
+    "handoff": "52183f6ded5b6293c57b1aa0e5b0803ed46cf062",
+    "validation_request": "b87fc50b5b87932f8bef22678126e86c15b13174"
+  },
+  "hosted_validation": {
+    "pull_request": 43,
+    "workflow": "Funding State Validation",
+    "run_id": 30766410128,
+    "job_id": 91545822782,
+    "job_conclusion": "success",
+    "validator_step": "success",
+    "artifact_upload_step": "success",
+    "artifact_id": 8839077504,
+    "artifact_name": "funding-state-validation",
+    "artifact_size_bytes": 750,
+    "artifact_digest": "sha256:1df59bcdaa14cba17947629fcf60252e56a1872dd6eca0ad8db12fa71f0e2b10",
+    "artifact_expires_at": "2026-10-31T20:47:33Z"
   },
   "submission_ready": false,
-  "next_action": "Trigger and inspect hosted funding-state validation, then record run, job, artifact and digest."
+  "next_action": "Advance each application only when its applicant, eligibility, ethical, IP, budget, product, partner and submission evidence satisfies its sponsor-specific gate."
 }
