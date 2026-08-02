@@ -27,6 +27,8 @@ implementation_claim: MACHINE_OWNED_OR_BLOCKED
 validation_claim: CLAIMED_FOR_VALIDATION
 claim_created: 2026-08-02T09:53:18Z
 claim_release_condition: hosted validation receipt exists and all remaining work is machine-owned or transferred to named repository owners
+validation_probe_branch: rc/hosted-validation-receipt
+validation_probe_release_condition: PR workflow run, jobs, logs, and artifact inspected; receipt committed; branch closed
 ```
 
 ## Session goal inventory
@@ -73,7 +75,7 @@ claim_release_condition: hosted validation receipt exists and all remaining work
 
 State: `CLAIMED_FOR_VALIDATION`.
 
-Machine-observable release condition: a successful `Build and validate Research Commons` workflow run with inspected job steps and artifact containing generated indexes, registry receipt, duplicate report, and dispatch packet. The current commit had no combined status visible at the time of handoff update; absence is not success.
+Machine-observable release condition: a successful `Build and validate Research Commons` workflow run with inspected job steps and artifact containing generated indexes, registry receipt, duplicate report, and dispatch packet. The validation probe PR exists solely to produce inspectable hosted evidence; it does not create authority.
 
 ### Site projection
 
