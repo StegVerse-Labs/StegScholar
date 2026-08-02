@@ -3,107 +3,139 @@
 ## Active goal
 
 - **Goal ID:** `FUNDING-PIPELINE-001`
-- **Goal:** Establish a governed, machine-verifiable grants and external-funding application process in StegScholar without moving patent authority or financial execution into this repository.
-- **Originating session goal:** Determine and implement the best repository environment, other than expanding StegPatents, for grants and other funding applications.
+- **Goal:** Establish a governed, machine-verifiable grants and external-funding application process in StegScholar and advance the NSF PESOSE Track 1 application without moving patent authority or financial execution into this repository.
+- **Originating session goals:** identify the best grants repository; search broadly for fitting opportunities; begin the strongest application; preserve and automate continuation.
 - **Repository:** `StegVerse-Labs/StegScholar`
 - **Branch:** `main`
 - **Parent authority:** `STEGSCHOLAR_MIRROR_HANDOFF.md`
 - **Canonical workstream handoff:** this file
 - **Task registry:** `funding/coordination/funding-tasks.json`
-- **Application schema:** `funding/schemas/application.schema.json`
-- **Validator:** `funding/tools/validate_funding_state.py`
-- **Workflow:** `.github/workflows/funding-state-validation.yml`
+
+## Canonical application
+
+- **Application ID:** `FUNDING-NSF-PESOSE-2026-001`
+- **Opportunity:** NSF 26-506, PESOSE Track 1
+- **Deadline:** 2026-09-01 at 5:00 p.m. submitting organization local time
+- **State:** `DRAFTING`
+- **Application record:** `funding/applications/active/FUNDING-NSF-PESOSE-2026-001.json`
+- **Narrative:** `funding/applications/active/FUNDING-NSF-PESOSE-2026-001-concept.md`
+- **Eligibility gate:** `funding/applications/active/FUNDING-NSF-PESOSE-2026-001-eligibility.md`
+- **Product evidence:** `funding/applications/active/FUNDING-NSF-PESOSE-2026-001-product-evidence.md`
+- **Compliance map:** `funding/applications/active/FUNDING-NSF-PESOSE-2026-001-compliance.md`
 
 ## Authority boundaries
 
 - StegScholar owns opportunity intake, application narratives, evidence crosswalks, submission state, sponsor requirements, review state, and application receipts.
-- StegPatents remains authoritative for invention disclosures, patent status, ownership, licensing posture, and disclosure classification.
-- StegFinCo remains authoritative for approved budgets, award accounting, drawdowns, matching funds, expenditure controls, and sponsor financial reporting.
-- StegOps-Deliverables is the intended owner of post-award sponsor deliverable packaging and closeout bundles.
-- No downstream publication, award, deployment, or funding receipt is claimed by this workstream.
+- StegPatents remains authoritative for protected disclosures, patent status, ownership, licensing posture, and disclosure classification under `funding/contracts/stegpatents-source-contract.md`.
+- StegFinCo remains authoritative for approved budgets and financial execution under `funding/contracts/stegfinco-budget-handoff-contract.md`.
+- StegOps-Deliverables owns post-award sponsor deliverables after verified award activation under `funding/contracts/stegops-deliverables-consumer-contract.md`.
 
-## Canonical ownership and claim
+## Active claims
 
-- **Task ID:** `FUNDING-CORE-001`
-- **Claim state:** `CLAIMED_FOR_IMPLEMENTATION`
-- **Claimant:** `repository-native funding lane`
-- **Claim created:** `2026-08-02T04:44:00-05:00`
-- **Claim expiration:** when all required core files validate on hosted GitHub Actions, or after 14 days without a new commit touching the claimed surfaces.
-- **Collision boundary:** `funding/**` and `.github/workflows/funding-state-validation.yml`.
-- **Release condition:** validator passes against the committed registry and exemplar application; hosted workflow conclusion is inspected; this handoff is updated with evidence.
+### Core pipeline
 
-## Required core deliverables
+- Task ID: `FUNDING-CORE-001`
+- State: `CLAIMED_FOR_IMPLEMENTATION`
+- Claimant: repository-native funding lane
+- Collision boundary: `funding/**` and `.github/workflows/funding-state-validation.yml`
+- Release condition: hosted validator succeeds and run/job/artifact evidence is recorded.
 
-1. workstream handoff;
-2. deterministic task and claim registry;
+### PESOSE application
+
+- Task ID: `FUNDING-NSF-PESOSE-2026-001`
+- State: `CLAIMED_FOR_IMPLEMENTATION`
+- Claim expiration: 2026-09-01 at 5:00 p.m. Central time
+- Release condition: authorized submission, committed no-go decision, or supersession by a qualified lead applicant.
+- Collision boundary: no competing PESOSE application record or unreviewed submission from another StegVerse repository.
+
+## Completed and committed
+
+### Core control surface
+
+1. funding handoff;
+2. task and claim registry;
 3. application JSON Schema;
-4. complete exemplar application record;
+4. exemplar application;
 5. fail-closed validator;
 6. hosted validation workflow;
-7. reusable organization profile;
-8. evidence crosswalk format;
-9. submission receipt format;
-10. cross-repository source and consumer contracts.
+7. StegPatents source contract;
+8. StegFinCo budget handoff contract;
+9. StegOps-Deliverables consumer contract.
 
-## Installed in this activation
+### Application work
 
-- this handoff;
-- `funding/coordination/funding-tasks.json`;
-- `funding/schemas/application.schema.json`;
-- `funding/applications/examples/FUNDING-EXAMPLE-001.json`;
-- `funding/tools/validate_funding_state.py`;
-- `.github/workflows/funding-state-validation.yml`.
+1. broad opportunity scan;
+2. canonical PESOSE application record;
+3. Track 1 concept narrative;
+4. eligibility and submission gate;
+5. public-product evidence crosswalk;
+6. NSF compliance and seven-page budget map.
+
+## Product evidence finding
+
+`StegVerse-Labs/StegCore` remains the provisional anchor because NSF explicitly encourages PESOSE proposals concerning protocols enabling AI-agent ecosystems. Repository inspection also established material blockers:
+
+- no root `LICENSE` file was found;
+- the README describes v0.1 as documentation-first;
+- code under `src/stegcore/` is described as scaffolding/substrate;
+- users, contributors, dissemination, releases, and three-to-five qualifying collaboration letters are not yet evidenced.
+
+The application must remain `DRAFTING` until these gaps are resolved or a stronger anchor is selected.
 
 ## Incomplete work
 
 - `funding/reusable/organization-profile/README.md`;
 - `funding/schemas/evidence-crosswalk.schema.json`;
 - `funding/schemas/submission-receipt.schema.json`;
-- `funding/contracts/stegpatents-source-contract.md`;
-- `funding/contracts/stegfinco-budget-handoff-contract.md`;
-- `funding/contracts/stegops-deliverables-consumer-contract.md`;
-- hosted workflow run, job, log, and artifact inspection;
-- downstream propagation decision after a real application reaches submission-ready state.
+- `funding/applications/active/FUNDING-NSF-PESOSE-2026-001-project-summary.md`;
+- `funding/applications/active/FUNDING-NSF-PESOSE-2026-001-milestones.md`;
+- `funding/applications/active/FUNDING-NSF-PESOSE-2026-001-budget-request.json`;
+- application-specific StegPatents review record;
+- verified public license and product maturity evidence;
+- three to five independent current-user or contributor collaboration letters;
+- legal applicant, ownership, PI employment, UEI, SAM.gov, submission-system and AOR evidence;
+- hosted workflow run, job, log and artifact inspection.
 
-## Validation command
+## Human-authority blockers and release conditions
+
+- Legal applicant and ownership: released by committed formation and ownership/control evidence or a qualified lead applicant record.
+- PI employment and work eligibility: released by applicant-held evidence.
+- UEI and SAM.gov: released by active registration evidence.
+- Submission authority: released by verified Research.gov or Grants.gov organization registration and AOR authority.
+- Collaboration letters: released by three to five qualifying independent current users or contributors.
+
+## Validation
+
+Command:
 
 ```bash
 python funding/tools/validate_funding_state.py
 ```
 
-The validator must fail closed for missing required files, malformed registry state, duplicate active claims on the same surface, expired claims, invalid application records, missing evidence references, or unassigned incomplete tasks.
+No hosted workflow success, artifact, deployment, submission, award, or propagation is claimed until directly inspected.
 
-## Cross-repository dependencies
+## Propagation
 
-- `StegVerse-Labs/StegPatents`: disclosure-safe IP posture source contract, not yet installed.
-- `StegVerse-Labs/StegFinCo`: budget and award-accounting handoff contract, not yet installed.
-- `StegVerse-Labs/StegOps-Deliverables`: post-award reporting consumer contract, not yet installed.
-- `StegVerse-Labs/Site`, `GCAT-BCAT-Engine/Publisher`, `admissibility-wiki`, `stegguardian-wiki`, and `master-records`: no propagation is authorized until an application or award record has a validated publication classification.
+No propagation is authorized to Site, Publisher, admissibility-wiki, stegguardian-wiki, or master-records before a validated publication or custody classification exists.
 
 ## Session consolidation
 
 **MERGED INTO:** `StegVerse-Labs/StegScholar/funding/FUNDING_MIRROR_HANDOFF.md` and `funding/coordination/funding-tasks.json`.
 
-Transferred requirements:
-
-1. StegScholar is the application and research-evidence authority.
-2. StegFinCo is downstream financial execution authority.
-3. StegPatents remains the protected IP authority.
-4. StegOps-Deliverables is the intended sponsor-deliverables owner.
-5. A future standalone StegGrants repository is considered only after multiple concurrent applications justify extraction.
+All unique session requirements are now durable: repository choice, opportunity scan, PESOSE selection, application design, eligibility boundaries, product evidence gaps, NSF compliance requirements, and cross-repository authority contracts.
 
 ## Completion accounting
 
-Denominator: 10 required core deliverables.
+Current denominator: 18 required funding and PESOSE deliverables.
 
-- task completion: `6/10 = 60%` after this activation is committed;
-- developed files: `6/10 = 60%`;
-- validation: `0/3 = 0%` until static execution and hosted workflow inspection;
-- integration: `0/3 = 0%` cross-repository contracts;
+- task completion: `12/18 = 67%`;
+- developed files: `12/18 = 67%`;
+- validation: `2/6 = 33%` (presence and source inspection; hosted execution pending);
+- integration: `3/3 = 100%` contracts installed, consumer-side acceptance not yet verified;
 - propagation: `0/1 = 0%`;
-- goal activation: `35%`;
-- session consolidation: `5/5 = 100%` requirements transferred.
+- goal activation: `48%`;
+- session consolidation: `7/7 = 100%`.
 
 ## Archive condition
 
-This originating session may be archived when all unique requirements are durable in this handoff and registry, no session-only claim remains, and continuation can proceed from repository state. The funding workstream itself may remain incomplete and machine-owned after session archival.
+The conversation may be archived because every unique requirement and remaining task is preserved in this handoff and registry with exact owners, locations and release conditions. The funding workstream remains active and repository-owned; archival does not imply application submission readiness.
