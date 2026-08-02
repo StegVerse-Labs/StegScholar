@@ -1,0 +1,24 @@
+{
+  "task_id": "SV-GTG-R5-CANONICAL-SOURCE-013",
+  "title": "Prepare and propagate bounded StegScholar inputs for canonical GTG R5",
+  "exists_at": "StegVerse-Labs/StegScholar:coordination/gtg-r5-canonical-source-task.json#SV-GTG-R5-CANONICAL-SOURCE-013",
+  "status": "READY",
+  "execution_repository": "StegVerse-Labs/StegScholar",
+  "execution_path": "coordination/gtg-r5-canonical-source-contract.json",
+  "workflow_path": ".github/workflows/validate-gtg-r5-reality-contact.yml",
+  "execution_mode": "REPOSITORY_MUTATION_AND_CROSS_REPOSITORY_CONTRACT",
+  "dependencies": [],
+  "next_action": "Use the committed source contract to build GTG-R5-TARGET-001 in Admissible-Existence/GTG, then record the canonical commit and receipt without promoting StegScholar research to canonical authority.",
+  "completion_evidence": "Admissible-Existence/GTG contains all required canonical R5 outputs and exact-head hosted validation succeeds",
+  "on_complete_activate": "SV-GTG-R5-CANONICAL-OBSERVE-012",
+  "dependency_posture": "NONE",
+  "external_task": false,
+  "claims": {
+    "execution_authority": false,
+    "certification_authority": false,
+    "mathematical_closure": false,
+    "independent_verification_complete": false,
+    "release_ready": false,
+    "archive_ready": false
+  }
+}
