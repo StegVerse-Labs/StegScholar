@@ -1,0 +1,12 @@
+{
+  "declaration_id": "invalid-unsupported-branch",
+  "subject_id": "process-example",
+  "resolution": "event",
+  "events": ["S", "A", "M"],
+  "identity_evidence_refs": ["evidence://identity"],
+  "kernel_relations": [["S", "A"], ["A", "M"]],
+  "branch_orders": [{"branch_id": "missing-kernel-edge", "relations": [["S", "A"]]}],
+  "operational_quotient": {"equivalence_classes": []},
+  "resolution_maps": [],
+  "gtg_admissibility": null
+}
