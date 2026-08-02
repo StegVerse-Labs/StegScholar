@@ -1,0 +1,16 @@
+{
+  "schema_version": "stegverse-gtg-r4-r5-boundary.v1",
+  "cases": [
+    {"id":"valid-authority-observed-reality","r4":"VALID","r5":"OBSERVED_FRESH_BOUND","expected":"BOUNDARY_SURVIVES"},
+    {"id":"valid-authority-missing-custody","r4":"VALID","r5":"MISSING_CUSTODY","expected":"BOUNDARY_PARTIAL"},
+    {"id":"valid-authority-stale-observation","r4":"VALID","r5":"STALE","expected":"BOUNDARY_PARTIAL"},
+    {"id":"expired-authority-observed-reality","r4":"EXPIRED","r5":"OBSERVED_FRESH_BOUND","expected":"BOUNDARY_FAIL_CLOSED"},
+    {"id":"revoked-authority-observed-reality","r4":"REVOKED","r5":"OBSERVED_FRESH_BOUND","expected":"BOUNDARY_FAIL_CLOSED"},
+    {"id":"valid-authority-detached-subject","r4":"VALID","r5":"DETACHED_SUBJECT","expected":"BOUNDARY_FAIL_CLOSED"},
+    {"id":"valid-authority-contradicted-observation","r4":"VALID","r5":"CONTRADICTED","expected":"BOUNDARY_FAIL_CLOSED"},
+    {"id":"consent-only-observed-reality","r4":"CONSENT_ONLY","r5":"OBSERVED_FRESH_BOUND","expected":"BOUNDARY_FAIL_CLOSED"},
+    {"id":"valid-authority-internal-simulation","r4":"VALID","r5":"INTERNAL_ONLY","expected":"BOUNDARY_PARTIAL"},
+    {"id":"authority-escalation-attempt","r4":"VALID","r5":"OBSERVED_FRESH_BOUND","execution_authorized":true,"expected":"BOUNDARY_FAIL_CLOSED"}
+  ],
+  "claims":{"execution_authority":false,"certification_authority":false,"independent_verification_complete":false,"release_ready":false,"archive_ready":false}
+}

@@ -1,0 +1,31 @@
+name: Validate StegVerse GTG R4-R5 boundary
+
+on:
+  pull_request:
+    paths:
+      - 'papers/generalized-transition-governance/reconstruction/r4-r5-boundary.md'
+      - 'coordination/gtg-r4-r5-boundary-cases.json'
+      - 'coordination/gtg-r4-r5-boundary-task.json'
+      - 'scripts/validate_gtg_r4_r5_boundary.py'
+      - '.github/workflows/validate-gtg-r4-r5-boundary.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'papers/generalized-transition-governance/reconstruction/r4-r5-boundary.md'
+      - 'coordination/gtg-r4-r5-boundary-cases.json'
+      - 'coordination/gtg-r4-r5-boundary-task.json'
+      - 'scripts/validate_gtg_r4_r5_boundary.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/validate_gtg_r4_r5_boundary.py
