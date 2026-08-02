@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stegverse.org/schemas/stegscholar/governable-autonomy-review-record-v1.json",
+  "title": "StegScholar Governable Autonomy Review Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "review_id",
+    "paper_id",
+    "paper_version",
+    "review_type",
+    "review_state",
+    "reviewer_identity_class",
+    "scope",
+    "findings",
+    "evidence_refs",
+    "created_at",
+    "authority",
+    "integrity"
+  ],
+  "properties": {
+    "review_id": {"type": "string", "pattern": "^GA-REV-[0-9]{4}-[0-9]{4,}$"},
+    "paper_id": {"type": "string", "pattern": "^GA-[0-9]{3}$"},
+    "paper_version": {"type": "string", "minLength": 1},
+    "review_type": {
+      "enum": [
+        "author-self-review",
+        "editorial-review",
+        "security-review",
+        "formal-methods-review",
+        "independent-peer-review",
+        "replication",
+        "public-comment",
+        "related-work-comparison"
+      ]
+    },
+    "review_state": {
+      "enum": [
+        "none",
+        "feedback-invited",
+        "comments-received",
+        "revision-in-progress",
+        "independently-reviewed",
+        "replicated",
+        "venue-submitted",
+        "venue-accepted"
+      ]
+    },
+    "reviewer_identity_class": {
+      "enum": ["author", "maintainer", "named-independent-reviewer", "anonymous-verified-reviewer", "public-commenter", "automated-validator"]
+    },
+    "reviewer": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "display_name": {"type": "string"},
+        "organization": {"type": "string"},
+        "persistent_id": {"type": "string"}
+      }
+    },
+    "scope": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["finding_id", "severity", "disposition", "summary"],
+        "properties": {
+          "finding_id": {"type": "string"},
+          "severity": {"enum": ["informational", "low", "moderate", "high", "critical"]},
+          "disposition": {"enum": ["open", "accepted", "rejected-with-rationale", "resolved", "superseded"]},
+          "summary": {"type": "string", "minLength": 1},
+          "evidence_refs": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "evidence_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "created_at": {"type": "string", "format": "date-time"},
+    "supersedes": {"type": "array", "items": {"type": "string"}},
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["may_change_review_state", "may_authorize_release"],
+      "properties": {
+        "may_change_review_state": {"type": "boolean"},
+        "may_authorize_release": {"type": "boolean"},
+        "basis": {"type": "string"}
+      }
+    },
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_commit", "record_sha256_required"],
+      "properties": {
+        "source_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "record_sha256_required": {"const": true},
+        "signature_ref": {"type": "string"}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"review_state": {"const": "independently-reviewed"}}},
+      "then": {
+        "properties": {
+          "review_type": {"const": "independent-peer-review"},
+          "reviewer_identity_class": {"enum": ["named-independent-reviewer", "anonymous-verified-reviewer"]}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"review_state": {"const": "replicated"}}},
+      "then": {"properties": {"review_type": {"const": "replication"}}}
+    }
+  ]
+}
