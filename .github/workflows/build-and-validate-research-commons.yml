@@ -4,6 +4,12 @@ on:
   push:
     paths:
       - "research_commons/**"
+      - "RESEARCH_COMMONS_MIRROR_HANDOFF.md"
+      - ".github/workflows/build-and-validate-research-commons.yml"
+  pull_request:
+    paths:
+      - "research_commons/**"
+      - "RESEARCH_COMMONS_MIRROR_HANDOFF.md"
       - ".github/workflows/build-and-validate-research-commons.yml"
   workflow_dispatch:
 
@@ -18,12 +24,26 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Parse all Research Commons JSON contracts
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          files = list(Path('research_commons').rglob('*.json'))
+          for path in files:
+              json.loads(path.read_text())
+          print(f'parsed {len(files)} JSON files')
+          PY
       - name: Build deterministic indexes and canonical registry receipt
         run: python research_commons/tools/build_publisher_indexes.py
       - name: Validate Publisher paper registry
         run: python research_commons/tools/validate_publisher_papers.py
+      - name: Detect duplicate records
+        run: python research_commons/tools/detect_duplicates.py
       - name: Validate Site projection boundary
         run: python research_commons/tools/validate_site_projection.py
+      - name: Validate Research Commons control state
+        run: python research_commons/tools/check_research_commons_control_state.py
       - name: Upload generated validation artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -31,4 +51,5 @@ jobs:
           path: |
             research_commons/indexes/publisher-papers/*.json
             research_commons/sources/publisher-papers/registry-hash-receipt.json
+            research_commons/reports/duplicate-detection.json
           if-no-files-found: error
