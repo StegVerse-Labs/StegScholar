@@ -1,0 +1,22 @@
+{
+  "goal_id": "FUNDING-EXPANDED-SCAN-008",
+  "state": "IMPLEMENTED_PENDING_HOSTED_VALIDATION",
+  "installed_at": "2026-08-02T15:58:00-05:00",
+  "artifacts": [
+    "funding/opportunities/2026-08-02-expanded-scan.md",
+    "funding/applications/active/FUNDING-OTF-ICRP-2026-001.json",
+    "funding/applications/active/FUNDING-OTF-ICRP-2026-001-concept-note.md",
+    "funding/applications/candidates/FUNDING-NSF-SBIR-2026-001-assessment.md"
+  ],
+  "commits": {
+    "expanded_scan": "23df9ba41f32044c6256dffaa8cc040e69e102a0",
+    "otf_application": "b36078d3ddd24e8e255629b96e299abe8575ae7b",
+    "otf_concept": "772f04511f9b3c7949556d7b2ff2c8c0905f02a7",
+    "nsf_sbir_assessment": "21606e16600ee35f97c62a4516c67b477e6b8fa2",
+    "validator": "b3aac7f5cd2cc01b74bbfde9d254c65c5478bc61",
+    "registry": "7fae04217ae791d2385547c3d64d56a3daad9090",
+    "handoff": "52183f6ded5b6293c57b1aa0e5b0803ed46cf062"
+  },
+  "submission_ready": false,
+  "next_action": "Trigger and inspect hosted funding-state validation, then record run, job, artifact and digest."
+}
