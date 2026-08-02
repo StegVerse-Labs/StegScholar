@@ -29,20 +29,19 @@
 ## Authority boundaries
 
 - StegScholar owns opportunity intake, application narratives, evidence crosswalks, submission state, sponsor requirements, review state and application receipts.
-- StegPatents remains authoritative for protected disclosures, patent status, ownership, licensing posture and disclosure classification under `funding/contracts/stegpatents-source-contract.md`.
+- StegPatents remains authoritative for protected disclosures and disclosure classification under `funding/contracts/stegpatents-source-contract.md`.
 - StegFinCo remains authoritative for approved budgets and financial execution under `funding/contracts/stegfinco-budget-handoff-contract.md`.
 - StegOps-Deliverables owns post-award sponsor deliverables after verified award activation under `funding/contracts/stegops-deliverables-consumer-contract.md`.
 
-## Active claims
+## Claims
 
 ### Core pipeline validation
 
 - Task ID: `FUNDING-CORE-001`
-- State: `CLAIMED_FOR_VALIDATION`
-- Claimant: repository-native funding lane
-- Collision boundary: `funding/**` and `.github/workflows/funding-state-validation.yml`
-- Claim expiration: 2026-08-16 at 04:44 Central time
-- Release condition: hosted validator succeeds and run, job, log and artifact evidence is recorded.
+- State: `COMPLETE`
+- Former claim: released after hosted validation evidence was inspected and recorded.
+- Validation PR: `#40`, branch `funding/validate-pesose-state-20260802`.
+- Validation request commit: `252875e1bb49c642fe226690c0332764ff53848f`.
 
 ### PESOSE application implementation
 
@@ -52,9 +51,33 @@
 - Release condition: authorized submission, committed no-go decision or supersession by a qualified lead applicant.
 - Collision boundary: no competing PESOSE application record or unreviewed submission from another StegVerse repository.
 
-## Complete and committed core package
+## Hosted validation evidence
 
-The original ten-item pipeline denominator is complete at the developed-file level:
+Repository-native validation completed successfully on pull request `#40`.
+
+- workflow: `Funding State Validation`;
+- workflow run ID: `30745051944`;
+- workflow run number: `23`;
+- workflow status observed: completed through job inspection;
+- job ID: `91489100017`;
+- job name: `validate`;
+- job conclusion: `success`;
+- validator step conclusion: `success`;
+- upload-artifact step conclusion: `success`;
+- validator result: `COMPLETE`;
+- validated files: `20`;
+- validated applications: exemplar plus active PESOSE application;
+- task count at validation: `7`;
+- claim count at validation: `2`;
+- artifact name: `funding-state-validation`;
+- artifact ID: `8832590688`;
+- artifact size: `645` bytes;
+- artifact digest: `sha256:fe3b236d1c172478234a90c7ec5df0466c128f1a1610f0fa26c1ced7f6ada130`;
+- artifact expiration: `2026-10-31T11:05:45Z`.
+
+The logs confirm Python 3.12.13 execution, successful deterministic validation, creation of `funding/evidence/latest-validation.json`, and successful artifact upload. This proves the funding control surface and current active application pass the committed validator. It does not prove submission eligibility, product maturity, budget approval, disclosure approval or sponsor acceptance.
+
+## Complete repository-owned package
 
 1. funding handoff;
 2. task and claim registry;
@@ -65,25 +88,22 @@ The original ten-item pipeline denominator is complete at the developed-file lev
 7. reusable organization profile;
 8. evidence crosswalk schema;
 9. submission receipt schema;
-10. cross-repository source and consumer contracts.
-
-The validator now checks the live PESOSE application, all schemas, required contracts, source documents, active claims and provisional budget arithmetic. It prevents `SUBMISSION_READY` when the budget is not approved or disclosure review remains required.
-
-## Application work completed
-
-1. broad opportunity scan;
-2. canonical PESOSE application record;
-3. Track 1 concept narrative;
-4. eligibility and submission gate;
-5. public-product evidence crosswalk;
-6. NSF compliance and seven-page map;
-7. project summary draft;
-8. milestone and evaluation plan;
-9. provisional budget request capped at USD 300,000 and explicitly unapproved.
+10. StegPatents source contract;
+11. StegFinCo budget contract;
+12. StegOps-Deliverables consumer contract;
+13. broad opportunity scan;
+14. canonical PESOSE application record;
+15. Track 1 concept narrative;
+16. eligibility and submission gate;
+17. public-product evidence crosswalk;
+18. NSF compliance map;
+19. project summary draft;
+20. milestone and evaluation plan;
+21. provisional budget request.
 
 ## Product evidence finding
 
-`StegVerse-Labs/StegCore` remains the provisional anchor. Repository inspection established material blockers:
+`StegVerse-Labs/StegCore` remains the provisional anchor. Material blockers remain:
 
 - no root `LICENSE` file was found during inspection;
 - the README describes v0.1 as documentation-first;
@@ -93,14 +113,6 @@ The validator now checks the live PESOSE application, all schemas, required cont
 The application must remain `DRAFTING` until these gaps are resolved or a stronger licensed anchor is selected.
 
 ## Exact incomplete tasks and release conditions
-
-### Hosted validation
-
-- Owner: `StegVerse-Labs/StegScholar`
-- Location: `.github/workflows/funding-state-validation.yml`
-- State: `CLAIMED_FOR_VALIDATION`
-- Current observation: no combined commit status was present for validator commit `dfa9a0f531d2dfbcb3fc76892444bf969c38a5ed` when inspected.
-- Release condition: successful hosted run, inspected job/logs and artifact digest recorded here.
 
 ### Human applicant and submission gates
 
@@ -121,29 +133,29 @@ The application must remain `DRAFTING` until these gaps are resolved or a strong
 - Owners: `StegVerse-Labs/StegPatents` and `StegVerse-Labs/StegFinCo`
 - Locations: `funding/contracts/` and `funding/applications/active/FUNDING-NSF-PESOSE-2026-001-budget-request.json`
 - State: `BLOCKED`
-- Release condition: application-specific disclosure classification and an approved compliant line-item budget and justification.
+- Release condition: application-specific disclosure classification and approved compliant line-item budget and justification.
 
 ### Remaining narrative package
 
 - Owner: StegScholar funding lane
 - Location: `funding/applications/active/FUNDING-NSF-PESOSE-2026-001-concept.md`
 - State: `CLAIMED_FOR_IMPLEMENTATION`
-- Next action: expand the installed concept, summary, milestones and evidence maps into the final solicitation-limited Project Description and supporting documents without inventing eligibility, adoption or maturity evidence.
+- Next action: expand the installed concept, summary, milestones and evidence maps into the final solicitation-limited Project Description without inventing eligibility, adoption or maturity evidence.
 
-## Validation
-
-Command:
+## Validation command
 
 ```bash
 python funding/tools/validate_funding_state.py
 ```
 
-Validation levels currently established:
+Validation levels established:
 
-- file presence: verified through successful repository writes and subsequent reads for authoritative files;
-- JSON source validity: designed into the validator but hosted execution remains unproven;
-- static source inspection: complete for the validator, application, schemas, contracts, summary, milestones and budget request;
-- hosted workflow, job, logs and artifact: pending;
+- file presence: verified;
+- JSON and deterministic state validation: hosted success;
+- workflow and job inspection: complete;
+- log inspection: complete;
+- artifact creation and digest inspection: complete;
+- producer/consumer authority responses: pending;
 - submission, award, deployment or governed activation: not claimed.
 
 ## Propagation
@@ -154,30 +166,20 @@ No propagation is authorized to Site, Publisher, admissibility-wiki, stegguardia
 
 **MERGED INTO:** `StegVerse-Labs/StegScholar/funding/FUNDING_MIRROR_HANDOFF.md` and `funding/coordination/funding-tasks.json`.
 
-Transferred session goals and requirements:
-
-1. StegScholar selected as canonical application and evidence authority.
-2. Broad current funding scan and PESOSE selection.
-3. Canonical application, narrative, eligibility, compliance, evidence, summary, milestones and budget-draft records.
-4. Separation of StegPatents, StegFinCo and StegOps-Deliverables authorities.
-5. Reusable organization profile and machine-readable schemas.
-6. Fail-closed validator and hosted workflow.
-7. Exact human, product, validation, IP and budget blockers with release conditions.
-
-No unique implementation knowledge remains only in the conversation.
+All unique session goals, decisions, implementation history, validation evidence, active claims, blockers and next executable actions are durable. No unique continuation information remains only in the conversation.
 
 ## Completion accounting
 
-Current denominator: 20 developed funding-control and PESOSE application files or deliverables.
+Current denominator: 21 developed funding-control and PESOSE application deliverables.
 
-- task completion: `16/20 = 80%`;
-- developed files: `20/20 = 100%` for the current repository-owned package;
-- validation: `3/6 = 50%` (presence, source inspection and deterministic validation design; hosted execution, artifacts and authority-response validation pending);
+- task completion: `17/21 = 81%`;
+- developed files: `21/21 = 100%` for the current repository-owned package;
+- validation: `5/6 = 83%` (repository control surface hosted-validated; authority-response validation pending);
 - integration: `3/6 = 50%` (contracts installed; producer/consumer responses pending);
-- propagation: `0/1 = 0%` because no propagation is yet authorized;
-- goal activation: `58%` toward authorized PESOSE submission;
+- propagation: `0/1 = 0%` because propagation is not yet authorized;
+- goal activation: `64%` toward authorized PESOSE submission;
 - session consolidation: `7/7 = 100%`.
 
 ## Archive condition
 
-The conversation is archive-ready because all session-specific goals, decisions, implementation history, current claims, exact blockers and next executable actions are durable in this handoff and registry. Archival does not imply that the PESOSE application is submission-ready; repository-native and named human-authority work remains active.
+The conversation is archive-ready because every session-specific goal and all remaining work are durable with exact owners, locations and machine-observable release conditions. Archival does not imply that the PESOSE application is submission-ready.
