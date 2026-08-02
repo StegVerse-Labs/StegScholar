@@ -1,0 +1,15 @@
+{
+  "schema_version": "stegverse-gtg-completion-recipes.v1",
+  "repository": "StegVerse-Labs/StegScholar",
+  "recipes": [
+    {
+      "task_id": "SV-GTG-R4-MIRROR-002",
+      "trigger": "FACTORY_R4_ACTIVE",
+      "manifest_path": "manifests/gtg-reconstruction-mirror-v1.json",
+      "ledger_path": "coordination/gtg-reconstruction-tasks.json",
+      "validator": "scripts/validate_gtg_reconstruction_mirror.py",
+      "branch": "automation/complete-sv-gtg-r4-mirror-002",
+      "title": "Complete observed StegVerse R4 mirror binding"
+    }
+  ]
+}
