@@ -1,0 +1,50 @@
+{
+  "registry_version": "1.0.0",
+  "goal_id": "FUNDING-DEADLINE-WATCH-010",
+  "repository": "StegVerse-Labs/StegScholar",
+  "branch": "main",
+  "canonical_handoff": "funding/FUNDING_MIRROR_HANDOFF.md",
+  "owner": "StegScholar repository-native deadline-watch lane",
+  "state": "MACHINE_OWNED",
+  "trigger": {
+    "schedule": "daily at 13:15 UTC",
+    "manual": true,
+    "repository_changes": [
+      "funding/applications/active/**",
+      "funding/coordination/funding-tasks.json",
+      "funding/tools/check_funding_deadlines.py",
+      ".github/workflows/funding-deadline-watch.yml"
+    ]
+  },
+  "inputs": [
+    "funding/coordination/funding-tasks.json",
+    "funding/applications/active/FUNDING-*.json"
+  ],
+  "outputs": [
+    "funding/evidence/latest-deadline-watch.json",
+    "GitHub Actions artifact funding-deadline-watch"
+  ],
+  "states": ["COMPLETE", "FAILED", "ACTIVE", "EXPIRING_SOON", "EXPIRED", "OPEN", "DUE_SOON", "OVERDUE"],
+  "tasks": [
+    {
+      "task_id": "DEADLINE-WATCH-IMPLEMENTATION-001",
+      "state": "COMPLETE",
+      "owner": "StegVerse-Labs/StegScholar",
+      "location": "funding/tools/check_funding_deadlines.py",
+      "validation_state": "IMPLEMENTED_PENDING_HOSTED_EXECUTION",
+      "integration_state": "WORKFLOW_INSTALLED",
+      "next_action": "Trigger hosted execution and inspect job, logs, artifact and digest",
+      "release_condition": "Hosted execution proves current claims and deadlines are evaluated and a receipt is uploaded"
+    },
+    {
+      "task_id": "DEADLINE-WATCH-OPERATION-002",
+      "state": "MACHINE_OWNED",
+      "owner": "Funding Deadline Watch workflow",
+      "location": ".github/workflows/funding-deadline-watch.yml",
+      "validation_state": "PENDING_FIRST_HOSTED_RUN",
+      "integration_state": "DAILY_SCHEDULE_ACTIVE",
+      "next_action": "Run daily and fail closed on expired claims or overdue nonterminal applications",
+      "release_condition": "Superseded by a canonical portfolio scheduler or all tracked applications reach terminal states"
+    }
+  ]
+}
