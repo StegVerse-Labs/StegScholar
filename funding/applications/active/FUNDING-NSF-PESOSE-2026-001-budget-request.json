@@ -1,0 +1,73 @@
+{
+  "budget_request_id": "BUDGET-FUNDING-NSF-PESOSE-2026-001",
+  "application_id": "FUNDING-NSF-PESOSE-2026-001",
+  "currency": "USD",
+  "period_months": 12,
+  "ceiling": 300000,
+  "state": "DRAFT_UNAPPROVED",
+  "authority": "StegVerse-Labs/StegFinCo",
+  "assumptions": [
+    "No amount is approved until StegFinCo validates applicant identity, personnel, rates, indirect-cost basis and sponsor allowability.",
+    "The final budget must include required experiential or I-Corps for PESOSE activities when mandated by the solicitation.",
+    "Subawards, consultants, participant support and travel require named scope and allowability review.",
+    "Unverified salaries, fringe rates and indirect-cost rates are not embedded in this request."
+  ],
+  "planning_envelope": [
+    {
+      "category": "Personnel and fringe",
+      "provisional_amount": 150000,
+      "purpose": "PI and planning-team effort for ecosystem discovery, governance, security, privacy, licensing, evaluation and project management",
+      "evidence_required": "Named personnel, appointment status, effort, salary basis and fringe rates"
+    },
+    {
+      "category": "Independent expertise and collaboration",
+      "provisional_amount": 45000,
+      "purpose": "Security, privacy, open-source governance, legal/licensing, accessibility and evaluation expertise",
+      "evidence_required": "Scopes of work, procurement or subaward classification, rates and conflict review"
+    },
+    {
+      "category": "Community discovery and participant support",
+      "provisional_amount": 30000,
+      "purpose": "Workshops, structured discovery, accessibility, participant support and community engagement",
+      "evidence_required": "Participant plan, allowability classification and event budget"
+    },
+    {
+      "category": "Travel and experiential activities",
+      "provisional_amount": 20000,
+      "purpose": "Required PESOSE experiential activities, stakeholder meetings and dissemination",
+      "evidence_required": "Required activity details, destinations, travelers and sponsor allowability"
+    },
+    {
+      "category": "Software, security and research infrastructure",
+      "provisional_amount": 20000,
+      "purpose": "Repository security, signing, testing, accessibility, survey/interview tooling and evidence preservation",
+      "evidence_required": "Itemized products or services and allocability rationale"
+    },
+    {
+      "category": "Publication, localization and dissemination",
+      "provisional_amount": 10000,
+      "purpose": "Open documentation, accessible artifacts and initial English, Spanish, Simplified Chinese and Traditional Chinese materials",
+      "evidence_required": "Dissemination plan, vendor or labor basis and publication classification"
+    },
+    {
+      "category": "Indirect costs or reserve pending approved basis",
+      "provisional_amount": 25000,
+      "purpose": "Placeholder within the sponsor ceiling until the applicant indirect-cost basis is verified",
+      "evidence_required": "Negotiated rate agreement, de minimis election or sponsor-approved calculation"
+    }
+  ],
+  "total_provisional_amount": 300000,
+  "validation": {
+    "arithmetic_checked": true,
+    "allowability_checked": false,
+    "personnel_basis_checked": false,
+    "indirect_cost_basis_checked": false,
+    "authority_approved": false
+  },
+  "next_action": {
+    "owner": "StegVerse-Labs/StegFinCo",
+    "location": "StegVerse-Labs/StegFinCo grant-budget intake contract consumer",
+    "action": "Replace planning envelopes with a compliant line-item budget and justification after applicant and personnel evidence are available",
+    "release_condition": "StegFinCo issues an approved budget record with source evidence and the total remains within the sponsor ceiling"
+  }
+}
