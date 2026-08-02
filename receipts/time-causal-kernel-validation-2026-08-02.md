@@ -4,17 +4,43 @@
 - Branch: `formal/time-invariant-kernel-integration-v1`
 - Date: `2026-08-02`
 - Validator: `scripts/validate_time_causal_kernel.py`
-- Fixture: `fixtures/time-causal-kernel/minimal-valid.json`
+- Matrix: `tests/test_time_causal_kernel.py`
+- Hosted workflow: `Time Causal Kernel`
+- Workflow run: `30766477730`
+- Job: `91546000999`
+- Head commit validated: `c5839d516c415e65a0a96ba90ac65bf41ac582e9`
 - Result: `PASS`
-- Observed output: `PASS: time causal kernel fixture is structurally valid`
+
+## Fixture matrix
+
+Expected acceptance:
+
+- `fixtures/time-causal-kernel/minimal-valid.json`
+- `fixtures/time-causal-kernel/lumpability-valid.json`
+
+Expected rejection:
+
+- `fixtures/time-causal-kernel/cyclic-kernel.json`
+- `fixtures/time-causal-kernel/unsupported-branch.json`
+- `fixtures/time-causal-kernel/manufactured-coarse-chronology.json`
+- `fixtures/time-causal-kernel/lumpability-invalid.json`
+- `fixtures/time-causal-kernel/gtg-boundary-invalid.json`
 
 ## Verified invariants
 
-- kernel relation set is acyclic;
-- each branch relation set is acyclic;
-- each branch extends the invariant kernel;
-- temporal substrate does not assert GTG admissibility.
+- kernel relation sets are acyclic;
+- branch relation sets are acyclic;
+- every supported branch extends the invariant kernel;
+- coarse chronology requires a fine-resolution witness;
+- quotient-equivalent representatives must induce identical normalized coarse distributions where lumpability is claimed;
+- temporal substrate objects fail closed if they assert GTG admissibility.
+
+## Hosted evidence
+
+The `Time Causal Kernel` workflow completed successfully. Its `validate` job and `Run causal-kernel fixture matrix` step both concluded `success`.
+
+The repository-wide `Test Readiness` workflow run `30766477723` also completed successfully for the same head commit.
 
 ## Validation boundary
 
-This receipt records deterministic local execution against the committed positive fixture. It does not prove negative fixtures, quotient lumpability, RTG integration, GTG integration, TT projection, workflow success, deployment, publication, or release readiness.
+This receipt proves committed fixture-matrix execution and hosted workflow success. It does not prove RTG binding, GTG runtime integration, TT projection, cross-repository propagation, deployment, publication, governed activation, merge, tag, or release readiness.
