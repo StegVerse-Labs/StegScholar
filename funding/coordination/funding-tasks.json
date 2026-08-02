@@ -1,10 +1,10 @@
 {
-  "registry_version": "1.6.0",
+  "registry_version": "1.7.0",
   "goal_id": "FUNDING-PIPELINE-001",
   "repository": "StegVerse-Labs/StegScholar",
   "branch": "main",
   "canonical_handoff": "funding/FUNDING_MIRROR_HANDOFF.md",
-  "updated_at": "2026-08-02T12:07:00-05:00",
+  "updated_at": "2026-08-02T12:10:00-05:00",
   "allowed_states": ["UNCLAIMED","CLAIMED_FOR_IMPLEMENTATION","CLAIMED_FOR_VALIDATION","CLAIMED_FOR_INTEGRATION","MACHINE_OWNED","BLOCKED","COMPLETE","SUPERSEDED","MERGED_INTO_CANONICAL_WORKSTREAM","RETRY","REVIEW_REQUIRED","FAILED"],
   "claims": [
     {
@@ -18,7 +18,7 @@
       "state": "CLAIMED_FOR_IMPLEMENTATION",
       "claimed_at": "2026-08-02T04:49:00-05:00",
       "expires_at": "2026-09-01T17:00:00-05:00",
-      "release_condition": "Application is submitted by authorized organizational authority, formally declined by a committed go/no-go decision, or superseded by a qualified lead applicant",
+      "release_condition": "Application is submitted by authorized organizational authority, formally declined by a committed no-go decision, or superseded by a qualified lead applicant",
       "expected_evidence": ["eligibility evidence", "licensed public-product crosswalk", "validated project description", "approved budget", "disclosure review", "three to five collaboration letters", "submission receipt or no-go receipt"],
       "collision_boundaries": "No competing PESOSE application record or unreviewed submission from another StegVerse repository",
       "next_task_after_release": "FUNDING-NSF-SATC-PARTNER-002"
@@ -32,10 +32,10 @@
       "owner": "StegVerse-Labs/StegScholar",
       "location": ".github/workflows/funding-state-validation.yml",
       "next_action": "Re-run validation after material changes to funding/**",
-      "validation_state": "HOSTED_SUCCESS_RUN_30745051944_JOB_91489100017",
+      "validation_state": "HOSTED_SUCCESS_RUN_30758261196_JOB_91524128700_ARTIFACT_8836617427",
       "integration_state": "CONTRACTS_INSTALLED",
       "archival_dependency": false,
-      "evidence_location": "funding/FUNDING_MIRROR_HANDOFF.md"
+      "evidence_location": "funding/evidence/project-description-installation.json"
     },
     {
       "task_id": "FUNDING-NSF-PESOSE-2026-001",
@@ -43,11 +43,11 @@
       "state": "CLAIMED_FOR_IMPLEMENTATION",
       "owner": "StegVerse-Labs/StegScholar funding lane",
       "location": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-project-description.md",
-      "next_action": "Validate the new project description in hosted CI, then complete references and supporting sponsor documents while blocked authority evidence is resolved",
-      "validation_state": "PROJECT_DESCRIPTION_INSTALLED_HOSTED_REVALIDATION_PENDING",
+      "next_action": "Complete references and sponsor supporting documents while blocked applicant, product, IP and budget authority evidence is resolved",
+      "validation_state": "PROJECT_DESCRIPTION_HOSTED_VALIDATED_RUN_30758261196_JOB_91524128700",
       "integration_state": "STEGFINCO_INTAKE_VALIDATED_AUTHORITY_RESPONSE_PENDING",
       "archival_dependency": false,
-      "evidence_location": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-project-description.md"
+      "evidence_location": "funding/evidence/project-description-installation.json"
     },
     {
       "task_id": "FUNDING-INTEGRATION-002",
@@ -67,7 +67,7 @@
       "state": "COMPLETE",
       "owner": "StegVerse-Labs/StegScholar",
       "location": "funding/reusable/organization-profile/README.md and funding/schemas/",
-      "next_action": "Use the governed profile and schemas for subsequent applications without converting UNVERIFIED fields into claims",
+      "next_action": "Reuse governed records without converting UNVERIFIED fields into claims",
       "validation_state": "HOSTED_JSON_AND_FILE_VALIDATION_COMPLETE",
       "integration_state": "AVAILABLE_TO_FUNDING_PIPELINE",
       "archival_dependency": false,
@@ -91,7 +91,7 @@
       "state": "BLOCKED",
       "owner": "StegVerse-Labs/StegCore maintainers and StegScholar funding lane",
       "location": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-product-evidence.md",
-      "next_action": "Install or identify the governing open-source license, define the implemented product boundary and collect three to five qualifying independent user or contributor letters",
+      "next_action": "Install the governing license, define the implemented product boundary and collect three to five qualifying letters",
       "validation_state": "LICENSE_AND_ADOPTION_EVIDENCE_MISSING",
       "integration_state": "PROVISIONAL_ANCHOR_ONLY",
       "archival_dependency": false,
@@ -103,7 +103,7 @@
       "state": "BLOCKED",
       "owner": "Authorized StegFinCo budget approver",
       "location": "StegVerse-Labs/StegFinCo/funding-intake/FUNDING-NSF-PESOSE-2026-001-budget-response.json",
-      "next_action": "Provide authoritative applicant, personnel, salary, fringe, indirect-cost and activity assumptions and emit APPROVED, BLOCKED or NO_GO response",
+      "next_action": "Provide authoritative financial assumptions and emit APPROVED, BLOCKED or NO_GO response",
       "validation_state": "REQUEST_HOSTED_VALIDATED_RUN_30749323611_JOB_91500408682_ARTIFACT_8833913602_NOT_APPROVED",
       "integration_state": "INBOUND_REQUEST_ACCEPTED_RESPONSE_PENDING",
       "archival_dependency": false,
@@ -115,7 +115,7 @@
       "state": "BLOCKED",
       "owner": "Human IP authority or future canonical StegPatents repository",
       "location": "funding/dependencies/stegpatents-authority-gap.md",
-      "next_action": "Connect or establish the canonical StegPatents repository and emit an application-specific disclosure classification, or commit a classification from a named authorized human IP reviewer",
+      "next_action": "Establish canonical IP authority and emit an application-specific disclosure classification",
       "validation_state": "STEGPATENTS_REPOSITORY_NOT_DISCOVERABLE",
       "integration_state": "AUTHORITY_CONTRACT_PRESENT_AUTHORITY_SURFACE_MISSING",
       "archival_dependency": false,
