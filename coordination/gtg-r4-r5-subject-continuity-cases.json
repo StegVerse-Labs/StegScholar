@@ -1,0 +1,16 @@
+{
+  "schema_version": "stegverse-gtg-r4-r5-subject-continuity-cases.v1",
+  "cases": [
+    {"case_id":"subject-bound-current","authority_subject":"entity:A","observed_subject":"entity:A","transition_subject":"entity:A","binding_present":true,"binding_current":true,"binding_provenance_complete":true,"contradiction":false,"alias_reassigned":false,"expected":"SUBJECT_CONTINUITY_SURVIVES"},
+    {"case_id":"missing-binding","authority_subject":"entity:A","observed_subject":"sensor:7","transition_subject":"entity:A","binding_present":false,"binding_current":false,"binding_provenance_complete":false,"contradiction":false,"alias_reassigned":false,"expected":"SUBJECT_CONTINUITY_FAIL_CLOSED"},
+    {"case_id":"incomplete-provenance","authority_subject":"entity:A","observed_subject":"device:9","transition_subject":"entity:A","binding_present":true,"binding_current":true,"binding_provenance_complete":false,"contradiction":false,"alias_reassigned":false,"expected":"SUBJECT_CONTINUITY_PARTIAL"},
+    {"case_id":"subject-mismatch","authority_subject":"entity:A","observed_subject":"entity:B","transition_subject":"entity:A","binding_present":true,"binding_current":true,"binding_provenance_complete":true,"contradiction":true,"alias_reassigned":false,"expected":"SUBJECT_CONTINUITY_FAIL_CLOSED"},
+    {"case_id":"transition-detached","authority_subject":"entity:A","observed_subject":"entity:A","transition_subject":"entity:B","binding_present":true,"binding_current":true,"binding_provenance_complete":true,"contradiction":false,"alias_reassigned":false,"expected":"SUBJECT_CONTINUITY_FAIL_CLOSED"},
+    {"case_id":"expired-binding","authority_subject":"entity:A","observed_subject":"device:9","transition_subject":"entity:A","binding_present":true,"binding_current":false,"binding_provenance_complete":true,"contradiction":false,"alias_reassigned":false,"expected":"SUBJECT_CONTINUITY_FAIL_CLOSED"},
+    {"case_id":"alias-reassigned","authority_subject":"entity:A","observed_subject":"alias:blue","transition_subject":"entity:A","binding_present":true,"binding_current":true,"binding_provenance_complete":true,"contradiction":false,"alias_reassigned":true,"expected":"SUBJECT_CONTINUITY_FAIL_CLOSED"},
+    {"case_id":"handle-similarity-only","authority_subject":"acct:alpha","observed_subject":"acct:alpha-1","transition_subject":"acct:alpha","binding_present":false,"binding_current":false,"binding_provenance_complete":false,"contradiction":false,"alias_reassigned":false,"expected":"SUBJECT_CONTINUITY_FAIL_CLOSED"},
+    {"case_id":"role-not-identity","authority_subject":"person:1","observed_subject":"role:operator","transition_subject":"person:1","binding_present":false,"binding_current":false,"binding_provenance_complete":false,"contradiction":false,"alias_reassigned":false,"expected":"SUBJECT_CONTINUITY_FAIL_CLOSED"},
+    {"case_id":"consent-cannot-repair","authority_subject":"entity:A","observed_subject":"entity:B","transition_subject":"entity:A","binding_present":false,"binding_current":false,"binding_provenance_complete":false,"contradiction":true,"alias_reassigned":false,"consent":true,"expected":"SUBJECT_CONTINUITY_FAIL_CLOSED"}
+  ],
+  "claims": {"execution_authority":false,"certification_authority":false,"mathematical_closure":false,"independent_verification_complete":false,"release_ready":false,"archive_ready":false}
+}
