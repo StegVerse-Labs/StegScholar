@@ -1,0 +1,24 @@
+{
+  "task_id": "SV-GTG-R4-CHALLENGE-007",
+  "title": "Validate StegVerse R4 authority-reconstruction challenge corpus",
+  "exists_at": "StegVerse-Labs/StegScholar:coordination/gtg-r4-challenge-task.json#SV-GTG-R4-CHALLENGE-007",
+  "status": "ACTIVE_VALIDATION",
+  "execution_repository": "StegVerse-Labs/StegScholar",
+  "construction_paths": [
+    "papers/generalized-transition-governance/reconstruction/r4-challenge-corpus.md",
+    "coordination/gtg-r4-challenge-cases.json"
+  ],
+  "execution_path": "scripts/validate_gtg_r4_challenges.py",
+  "workflow_path": ".github/workflows/validate-gtg-r4-challenges.yml",
+  "next_action": "Run hosted validation and preserve the bounded results as StegVerse challenge evidence without upgrading canonical or independent R4 claims.",
+  "completion_evidence": "Validate StegVerse GTG R4 challenges workflow succeeds on main",
+  "dependency_posture": "NONE",
+  "external_task": false,
+  "claims": {
+    "execution_authority": false,
+    "certification_authority": false,
+    "independent_verification_complete": false,
+    "release_ready": false,
+    "archive_ready": false
+  }
+}
