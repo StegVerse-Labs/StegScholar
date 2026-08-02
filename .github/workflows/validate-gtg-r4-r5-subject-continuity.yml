@@ -1,0 +1,34 @@
+name: Validate StegVerse GTG R4-R5 subject continuity
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'papers/generalized-transition-governance/reconstruction/r4-r5-subject-continuity.md'
+      - 'coordination/gtg-r4-r5-subject-continuity-cases.json'
+      - 'coordination/gtg-r4-r5-subject-continuity-task.json'
+      - 'coordination/gtg-r4-r5-subject-continuity-validation-receipt.json'
+      - 'scripts/validate_gtg_r4_r5_subject_continuity.py'
+      - '.github/workflows/validate-gtg-r4-r5-subject-continuity.yml'
+  pull_request:
+    paths:
+      - 'papers/generalized-transition-governance/reconstruction/r4-r5-subject-continuity.md'
+      - 'coordination/gtg-r4-r5-subject-continuity-cases.json'
+      - 'coordination/gtg-r4-r5-subject-continuity-task.json'
+      - 'coordination/gtg-r4-r5-subject-continuity-validation-receipt.json'
+      - 'scripts/validate_gtg_r4_r5_subject_continuity.py'
+      - '.github/workflows/validate-gtg-r4-r5-subject-continuity.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/validate_gtg_r4_r5_subject_continuity.py
