@@ -27,18 +27,36 @@
 - `FUNDING-OTF-ICRP-2026-001-milestones.md`
 - `FUNDING-OTF-ICRP-2026-001-budget-request.json`
 - `../../tools/validate_otf_icrp_package.py`
+- `../../coordination/otf-icrp-tasks.json`
 
-## Completed work
+## Completed implementation
 
-- Concept note installed and previously hosted-validated as part of the expanded portfolio.
+- Concept note and application record installed.
 - Applicant eligibility and submission gate installed.
-- Ethics and safety plan installed with current state `SYNTHETIC_ONLY` and field activity prohibited.
+- Ethics and safety plan installed with current state `SYNTHETIC_ONLY`; field activity prohibited.
 - Six-month milestone and evaluation plan installed.
 - Budget request installed with amount unset, state `DRAFT_UNAPPROVED`, and self-approval prohibited.
-- Application record updated to bind all support files.
-- Dedicated fail-closed validator installed and added to the funding workflow.
+- Dedicated fail-closed validator installed and integrated into `.github/workflows/funding-state-validation.yml`.
+- Initial hosted run `30768922744`, job `91552517780`, exposed a validator marker mismatch after the global validator passed. No artifact was uploaded.
+- Validator corrected on main in commit `5798c82d307529dc63301b9f119262a9c6603897` and on validation branch in commit `df2928ce80a205819a73d634f981d8ab87ec57b7`.
 
-## Incomplete work
+## Hosted validation evidence
+
+- PR: `#44`
+- Branch: `funding/validate-otf-package-20260802`
+- Successful run: `30768955549`
+- Job: `91552600642`
+- Global funding validator: `success`
+- OTF ICRP package validator: `success`
+- Artifact upload: `success`
+- Artifact: `8839878425`, `funding-state-validation`
+- Size: `1219` bytes
+- Digest: `sha256:665373a7572586b48ae3a2b7b57c9f1c62088bbf09c04d0438f555a4ac7795fb`
+- Expiration: `2026-10-31T21:55:30Z`
+
+This proves file presence, application binding, fail-closed applicant and disclosure states, unapproved budget state, synthetic-only field controls, milestone markers, workflow execution, and dual-receipt artifact creation. It does not prove applicant identity, qualifications, ethical approval, budget approval, IP clearance, submission, or award.
+
+## Incomplete tasks
 
 - Named applicant identity and protected contact record.
 - CV/resume and evidence of relevant technical, research, internet-freedom or affected-community experience.
@@ -48,14 +66,12 @@
 - Application-specific IP and disclosure classification.
 - Final applicant authorization and submission receipt.
 
-## Validation
+## Validation commands
 
 ```bash
 python funding/tools/validate_otf_icrp_package.py
 python funding/tools/validate_funding_state.py
 ```
-
-Hosted validation remains required after the current package mutations. Success must include workflow, job, logs or steps, uploaded receipts, artifact ID, and digest.
 
 ## Integration and propagation
 
@@ -63,14 +79,23 @@ Hosted validation remains required after the current package mutations. Success 
 - StegOps-Deliverables activates only after a verified award.
 - No Site, Publisher, wiki, or master-records propagation is authorized before submission, award, publication, or custody classification.
 
-## Archive conditions
+## Session consolidation
 
-This session-specific OTF implementation is archive-safe once hosted validation evidence is recorded here and in the task registry. Application submission readiness remains separately blocked by named human authorities.
+MERGED INTO:
+
+- this handoff;
+- `funding/coordination/otf-icrp-tasks.json`;
+- the six authoritative OTF application files;
+- the dedicated validator and hosted artifact evidence above.
 
 ## Completion accounting
 
-- developed files: `8/8` repository-owned OTF package and control files;
-- validation: `1/2` static implementation complete, hosted validation pending;
+- developed files: `9/9` repository-owned OTF package and control files;
+- validation: `2/2` static and hosted validation complete;
 - integration: `1/4` application binding complete; applicant, ethics, budget and IP authority responses pending;
-- goal activation: `60%` toward authorized OTF concept-note submission;
+- goal activation: `68%` toward authorized OTF concept-note submission;
 - session consolidation: `1/1` unique OTF continuation path preserved.
+
+## Archive condition
+
+This session-specific implementation is archive-ready because every remaining task is durably assigned with a release condition. Application submission remains blocked by named human authority evidence.
