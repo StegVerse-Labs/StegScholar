@@ -1,0 +1,16 @@
+{
+  "application_id": "FUNDING-NSF-PESOSE-2026-001",
+  "artifact": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-project-description.md",
+  "state": "IMPLEMENTED_PENDING_HOSTED_VALIDATION",
+  "installed_commit": "dd3e65336cd2a01fafbb670a6125aa16298527d4",
+  "validator_commit": "8cb9fcc0b1a1a17534385104ec3e6ab0ed15391a",
+  "registry_commit": "6993165b24e0c85b6757ed2058db0a35d1195900",
+  "submission_ready": false,
+  "blocking_authorities": [
+    "human corporate and applicant-registration authority",
+    "StegCore product and license authority",
+    "authorized StegFinCo budget approver",
+    "human IP authority or future canonical StegPatents repository"
+  ],
+  "next_action": "Execute hosted funding-state validation and record the resulting run, job, artifact, and digest."
+}
