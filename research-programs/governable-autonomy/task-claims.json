@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0.0",
+  "updated_at": "2026-08-02T22:50:00Z",
+  "allowed_states": [
+    "UNCLAIMED",
+    "CLAIMED_FOR_IMPLEMENTATION",
+    "CLAIMED_FOR_VALIDATION",
+    "CLAIMED_FOR_INTEGRATION",
+    "MACHINE_OWNED",
+    "BLOCKED",
+    "COMPLETE",
+    "SUPERSEDED",
+    "MERGED_INTO_CANONICAL_WORKSTREAM"
+  ],
+  "claims": [
+    {
+      "task_id": "GA-SEC-001",
+      "originating_goal": "Federal security requirements are the minimum requirement and StegScholar must exceed them.",
+      "repository": "StegVerse-Labs/StegScholar",
+      "branch": "main",
+      "surfaces": [
+        "SECURITY_BASELINE.md",
+        "research-programs/governable-autonomy/review-schema.json",
+        "research-programs/governable-autonomy/task-claims.json",
+        "tools/validate_governable_autonomy.py",
+        ".github/workflows/governable-autonomy-validate.yml",
+        "STEGSCHOLAR_GOVERNABLE_AUTONOMY_MIRROR_HANDOFF.md"
+      ],
+      "claimant": "governable-autonomy-security-validation-lane",
+      "role": "implementation",
+      "state": "CLAIMED_FOR_IMPLEMENTATION",
+      "claim_created_at": "2026-08-02T22:49:51Z",
+      "claim_expires_at": "2026-08-03T22:49:51Z",
+      "release_condition": "All scoped files are committed, validator passes, hosted workflow result is inspected, issue #46 is updated, and the handoff records the evidence.",
+      "expected_evidence": [
+        "commit SHAs",
+        "validator output",
+        "GitHub Actions run and job conclusion",
+        "issue #46 completion record",
+        "handoff update"
+      ],
+      "collision_boundaries": [
+        "No other lane may modify the listed files without first releasing, superseding, or explicitly splitting this claim.",
+        "The funding workstream and Recoverability Geometry track are outside this claim."
+      ],
+      "next_task_after_release": "Issue #7 deterministic BCAT execution-boundary model and issue #12 property tests."
+    }
+  ]
+}
