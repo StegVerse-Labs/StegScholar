@@ -1,0 +1,47 @@
+name: Complete GTG reconstruction tasks
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 */6 * * *"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  complete-bounded-tasks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Observe and apply deterministic task recipes
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python scripts/complete_gtg_tasks.py
+      - name: Validate resulting state
+        run: |
+          python scripts/validate_gtg_reconstruction_mirror.py
+          python scripts/run_gtg_task_orchestrator.py
+      - name: Create or update bounded completion pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet; then
+            echo "No executable task mutation was available. Observation completed without halting development."
+            exit 0
+          fi
+          branch="automation/complete-gtg-reconstruction-tasks"
+          git config user.name "stegverse-task-completer"
+          git config user.email "actions@users.noreply.github.com"
+          git switch -C "$branch"
+          git add coordination/gtg-reconstruction-tasks.json coordination/gtg-task-completion-report.json manifests/gtg-reconstruction-mirror-v1.json
+          git commit -m "Complete observed GTG reconstruction tasks"
+          git push --force-with-lease origin "$branch"
+          if ! gh pr view "$branch" >/dev/null 2>&1; then
+            gh pr create --base main --head "$branch" --title "Complete observed GTG reconstruction tasks" --body "Repository-owned completion of deterministic GTG tasks. All authority, certification, closure, release, and archive claims remain false."
+          fi
