@@ -1,0 +1,21 @@
+{
+  "task_id": "SV-GTG-TASK-DISCOVERY-008",
+  "title": "Discover and reconcile StegVerse GTG tasks",
+  "exists_at": "StegVerse-Labs/StegScholar:coordination/gtg-task-discovery-task.json#SV-GTG-TASK-DISCOVERY-008",
+  "status": "ACTIVE_VALIDATION",
+  "execution_repository": "StegVerse-Labs/StegScholar",
+  "execution_path": "scripts/reconcile_gtg_task_registry.py",
+  "workflow_path": ".github/workflows/reconcile-gtg-task-registry.yml",
+  "next_action": "Run hosted reconciliation, reject missing or stale task entries, and publish coordination/gtg-task-discovery-report.json.",
+  "completion_evidence": "Reconcile StegVerse GTG task registry workflow succeeds on the activation commit",
+  "dependency_posture": "NONE",
+  "external_task": false,
+  "claims": {
+    "execution_authority": false,
+    "certification_authority": false,
+    "mathematical_closure": false,
+    "independent_verification_complete": false,
+    "release_ready": false,
+    "archive_ready": false
+  }
+}
