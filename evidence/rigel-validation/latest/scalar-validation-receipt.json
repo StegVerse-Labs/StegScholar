@@ -1,0 +1,33 @@
+{
+  "benchmark_id": "rigel-scalar-delayed-control-v1",
+  "claim_limit": "This receipt proves deterministic execution and artifact identity only; it does not establish cross-domain validity or a universal Ri=1 threshold.",
+  "command": "python papers/recoverability-geometry-rigel-number/simulations/scalar_delayed_control.py --episodes 10000 --seed 20260714 --output-dir generated/scalar-delayed-control; then fit_baselines.py",
+  "commit_sha": "ea6d71f76831743a4dbf29f7ea6e662b520efd2f",
+  "event_name": "push",
+  "files": {
+    "generated/scalar-delayed-control/baseline-evaluation.json": {
+      "bytes": 6571,
+      "sha256": "0f29a43a1182ee87c676633fee7fc5b8f63a914e2850cd266de102c06043ca13"
+    },
+    "generated/scalar-delayed-control/config.json": {
+      "bytes": 576,
+      "sha256": "c7bd7168c0b24cbf108cd5aef1df0c7405fce815f043a87dc5477952999a0c28"
+    },
+    "generated/scalar-delayed-control/episodes.csv": {
+      "bytes": 3524533,
+      "sha256": "afa9f1507747209f841d9235586174616d675092d7680629ecf4831b1da0cdda"
+    },
+    "generated/scalar-delayed-control/summary.json": {
+      "bytes": 1823,
+      "sha256": "3c69cbfbc2720b505336ab935f695eb8dea68ec60876433cb678d7bea317c85e"
+    }
+  },
+  "generated_at_utc": "2026-08-02T08:33:00.761830+00:00",
+  "independent_outcome_label": true,
+  "python": "3.12",
+  "repository": "StegVerse-Labs/StegScholar",
+  "run_attempt": "1",
+  "run_id": "30739847516",
+  "schema_version": "1.2",
+  "validation_state_path": "generated/validation-state.json"
+}

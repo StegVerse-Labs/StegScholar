@@ -1,0 +1,30 @@
+{
+  "claim_boundary": "This state evaluates one constructed scalar benchmark only. It does not establish a universal Ri=1 threshold, cross-domain validity, publication readiness, or release readiness.",
+  "evidence": {
+    "calibration": {
+      "best_decomposed_minus_best_aggregate_ece": -8.123240727334058e-05
+    },
+    "constant_total_latency_ablation": {
+      "partition_dependent_fraction": 0.031,
+      "scenario_count": 2000
+    },
+    "ood_auc": {
+      "best_decomposed_minus_best_aggregate": -0.00015024038461541878,
+      "decomposed_burdens": 0.9246085403311965,
+      "decomposed_latency": 0.9357597155448718,
+      "lambda_times_total": 0.9282727363782052,
+      "rigel_number": 0.8505108173076923,
+      "total_latency": 0.9359099559294872
+    }
+  },
+  "goal_id": "RIGEL-VALIDATION-001",
+  "next_executable_task": {
+    "action": "Record that decomposed latency did not outperform both aggregate baselines in held-out evaluation and revise the predictive claim.",
+    "location": "papers/recoverability-geometry-rigel-number/claims-register.md",
+    "owner_repository": "StegVerse-Labs/StegScholar",
+    "task_id": "RIGEL-REVISE-PREDICTIVE-CLAIM-007"
+  },
+  "reason": "Phase allocation affected some matched outcomes, but fitted decomposed latency did not exceed the strongest aggregate baseline.",
+  "schema_version": "1.0",
+  "status": "REVIEW_REQUIRED"
+}

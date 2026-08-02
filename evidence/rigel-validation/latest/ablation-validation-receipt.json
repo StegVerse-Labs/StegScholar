@@ -1,0 +1,29 @@
+{
+  "benchmark_id": "rigel-constant-total-latency-ablation-v1",
+  "claim_limit": "This receipt proves deterministic execution and artifact identity only; it does not establish cross-domain validity or a universal Ri=1 threshold.",
+  "command": "python papers/recoverability-geometry-rigel-number/simulations/constant_total_latency_ablation.py --scenarios 2000 --seed 20260714 --total-latency 0.45 --output-dir generated/constant-total-latency-ablation",
+  "commit_sha": "ea6d71f76831743a4dbf29f7ea6e662b520efd2f",
+  "event_name": "push",
+  "files": {
+    "generated/constant-total-latency-ablation/config.json": {
+      "bytes": 1055,
+      "sha256": "7fb200c303acb7bdf83e0908c8e7dda63d81259735a2d6a0724c46ae81501eed"
+    },
+    "generated/constant-total-latency-ablation/episodes.csv": {
+      "bytes": 2953602,
+      "sha256": "4deec56624082b5d7b919deac8377e1e5006a76db5c28120779ab28c0ad8b160"
+    },
+    "generated/constant-total-latency-ablation/summary.json": {
+      "bytes": 3387,
+      "sha256": "5b3e0327a7a6edd89aa03a3e9bab6f6be7ad2ff5fc50b0ddc3d76e10fd10c672"
+    }
+  },
+  "generated_at_utc": "2026-08-02T08:33:00.764748+00:00",
+  "independent_outcome_label": true,
+  "python": "3.12",
+  "repository": "StegVerse-Labs/StegScholar",
+  "run_attempt": "1",
+  "run_id": "30739847516",
+  "schema_version": "1.2",
+  "validation_state_path": "generated/validation-state.json"
+}

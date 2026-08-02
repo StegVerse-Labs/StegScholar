@@ -1,0 +1,71 @@
+{
+  "interpretation_rule": "Partition effects are supported in this benchmark only if matched scenarios with identical total latency and plant parameters show reproducible outcome differences. Such differences remain benchmark-specific and do not establish cross-domain universality.",
+  "outcome_patterns": {
+    "balanced:0,commitment_heavy:0,commitment_light:0,observation_heavy:0,observation_light:0,realization_heavy:0,realization_light:0": 1040,
+    "balanced:0,commitment_heavy:0,commitment_light:0,observation_heavy:1,observation_light:0,realization_heavy:0,realization_light:0": 8,
+    "balanced:0,commitment_heavy:1,commitment_light:0,observation_heavy:1,observation_light:0,realization_heavy:0,realization_light:0": 2,
+    "balanced:0,commitment_heavy:1,commitment_light:0,observation_heavy:1,observation_light:0,realization_heavy:1,realization_light:0": 1,
+    "balanced:0,commitment_heavy:1,commitment_light:0,observation_heavy:1,observation_light:0,realization_heavy:1,realization_light:1": 1,
+    "balanced:0,commitment_heavy:1,commitment_light:1,observation_heavy:1,observation_light:0,realization_heavy:1,realization_light:1": 2,
+    "balanced:0,commitment_heavy:1,commitment_light:1,observation_heavy:1,observation_light:1,realization_heavy:1,realization_light:1": 46,
+    "balanced:1,commitment_heavy:0,commitment_light:0,observation_heavy:0,observation_light:0,realization_heavy:0,realization_light:0": 1,
+    "balanced:1,commitment_heavy:0,commitment_light:1,observation_heavy:0,observation_light:0,realization_heavy:0,realization_light:1": 1,
+    "balanced:1,commitment_heavy:1,commitment_light:1,observation_heavy:1,observation_light:1,realization_heavy:1,realization_light:1": 898
+  },
+  "partition_count": 7,
+  "partition_dependent_fraction": 0.031,
+  "partitions": {
+    "balanced": {
+      "count": 2000,
+      "mean_max_abs_x": 3.097325007833099,
+      "mean_terminal_abs_x": 1.6175699058312887,
+      "recovery_rate": 0.45,
+      "safety_violation_rate": 0.035
+    },
+    "commitment_heavy": {
+      "count": 2000,
+      "mean_max_abs_x": 2.8557666609587944,
+      "mean_terminal_abs_x": 1.458680459972763,
+      "recovery_rate": 0.475,
+      "safety_violation_rate": 0.019
+    },
+    "commitment_light": {
+      "count": 2000,
+      "mean_max_abs_x": 2.905823292395413,
+      "mean_terminal_abs_x": 1.4919074206683207,
+      "recovery_rate": 0.4735,
+      "safety_violation_rate": 0.019
+    },
+    "observation_heavy": {
+      "count": 2000,
+      "mean_max_abs_x": 2.8113428336624686,
+      "mean_terminal_abs_x": 1.4280217943069624,
+      "recovery_rate": 0.479,
+      "safety_violation_rate": 0.019
+    },
+    "observation_light": {
+      "count": 2000,
+      "mean_max_abs_x": 2.9160465971818477,
+      "mean_terminal_abs_x": 1.4991969358278279,
+      "recovery_rate": 0.472,
+      "safety_violation_rate": 0.019
+    },
+    "realization_heavy": {
+      "count": 2000,
+      "mean_max_abs_x": 2.8930652890702127,
+      "mean_terminal_abs_x": 1.4836909917034868,
+      "recovery_rate": 0.474,
+      "safety_violation_rate": 0.019
+    },
+    "realization_light": {
+      "count": 2000,
+      "mean_max_abs_x": 2.897885755075338,
+      "mean_terminal_abs_x": 1.4869179226352707,
+      "recovery_rate": 0.474,
+      "safety_violation_rate": 0.019
+    }
+  },
+  "row_count": 14000,
+  "scenario_count": 2000,
+  "scenarios_with_partition_dependent_outcome": 62
+}
