@@ -1,0 +1,87 @@
+{
+  "registry_version": "1.0.0",
+  "goal_id": "FUNDING-PIPELINE-001",
+  "repository": "StegVerse-Labs/StegScholar",
+  "branch": "main",
+  "canonical_handoff": "funding/FUNDING_MIRROR_HANDOFF.md",
+  "updated_at": "2026-08-02T04:44:00-05:00",
+  "allowed_states": [
+    "UNCLAIMED",
+    "CLAIMED_FOR_IMPLEMENTATION",
+    "CLAIMED_FOR_VALIDATION",
+    "CLAIMED_FOR_INTEGRATION",
+    "MACHINE_OWNED",
+    "BLOCKED",
+    "COMPLETE",
+    "SUPERSEDED",
+    "MERGED_INTO_CANONICAL_WORKSTREAM",
+    "RETRY",
+    "REVIEW_REQUIRED",
+    "FAILED"
+  ],
+  "claims": [
+    {
+      "task_id": "FUNDING-CORE-001",
+      "originating_goal": "Implement a grants and external-funding application environment in StegScholar",
+      "repository": "StegVerse-Labs/StegScholar",
+      "branch": "main",
+      "surfaces": [
+        "funding/**",
+        ".github/workflows/funding-state-validation.yml"
+      ],
+      "claimant": "repository-native funding lane",
+      "role": "implementation",
+      "state": "CLAIMED_FOR_IMPLEMENTATION",
+      "claimed_at": "2026-08-02T04:44:00-05:00",
+      "expires_at": "2026-08-16T04:44:00-05:00",
+      "release_condition": "Core validator passes in hosted GitHub Actions and the handoff records inspected run evidence",
+      "expected_evidence": [
+        "validator output",
+        "workflow run id",
+        "workflow job id",
+        "workflow conclusion",
+        "artifact digest"
+      ],
+      "collision_boundaries": "No competing funding registry, schema, validator, or workflow on main",
+      "next_task_after_release": "FUNDING-INTEGRATION-002"
+    }
+  ],
+  "tasks": [
+    {
+      "task_id": "FUNDING-CORE-001",
+      "title": "Install funding application control surface",
+      "state": "CLAIMED_FOR_IMPLEMENTATION",
+      "owner": "StegVerse-Labs/StegScholar",
+      "location": "funding/",
+      "next_action": "Run and inspect hosted funding-state validation",
+      "validation_state": "PENDING_HOSTED_RUN",
+      "integration_state": "NOT_STARTED",
+      "archival_dependency": true,
+      "evidence_location": "funding/FUNDING_MIRROR_HANDOFF.md"
+    },
+    {
+      "task_id": "FUNDING-INTEGRATION-002",
+      "title": "Install IP, budget, and deliverables contracts",
+      "state": "UNCLAIMED",
+      "owner": "StegVerse-Labs/StegScholar",
+      "location": "funding/contracts/",
+      "next_action": "Create source and consumer contracts after core validation",
+      "validation_state": "NOT_STARTED",
+      "integration_state": "NOT_STARTED",
+      "archival_dependency": false,
+      "evidence_location": "funding/FUNDING_MIRROR_HANDOFF.md"
+    },
+    {
+      "task_id": "FUNDING-REUSABLE-003",
+      "title": "Install reusable organization and evidence packages",
+      "state": "MACHINE_OWNED",
+      "owner": "StegVerse-Labs/StegScholar",
+      "location": "funding/reusable/ and funding/schemas/",
+      "next_action": "Generate organization profile, evidence crosswalk schema, and submission receipt schema",
+      "validation_state": "NOT_STARTED",
+      "integration_state": "NOT_APPLICABLE",
+      "archival_dependency": false,
+      "evidence_location": "funding/coordination/funding-tasks.json"
+    }
+  ]
+}
