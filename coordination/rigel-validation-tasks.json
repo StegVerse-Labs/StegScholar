@@ -1,15 +1,20 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "goal_id": "RIGEL-VALIDATION-001",
   "owner_repository": "StegVerse-Labs/StegScholar",
   "branch": "main",
-  "active_task_id": "RIGEL-VERIFY-WORKFLOW-003",
+  "canonical_handoff": "STEGSCHOLAR_MIRROR_HANDOFF.md",
+  "latest_evidence": "evidence/rigel-validation/latest.json",
+  "active_task_id": "RIGEL-BALANCED-BENCHMARK-008",
   "allowed_statuses": [
     "COMPLETE",
     "BLOCKED",
     "RETRY",
     "REVIEW_REQUIRED",
-    "FAILED"
+    "FAILED",
+    "CLAIMED",
+    "SUPERSEDED",
+    "MERGED"
   ],
   "tasks": [
     {
@@ -17,9 +22,7 @@
       "location": "papers/recoverability-geometry-rigel-number/simulations/scalar_delayed_control.py",
       "owner": "repository-native workflow",
       "status": "COMPLETE",
-      "completion_evidence": [
-        "commit:46322db84e2d3d71df47cd4b13e04974b5c2c396"
-      ],
+      "completion_evidence": ["commit:46322db84e2d3d71df47cd4b13e04974b5c2c396"],
       "successor": "RIGEL-AUTOMATED-VALIDATION-002"
     },
     {
@@ -27,79 +30,113 @@
       "location": ".github/workflows/rigel-validation.yml",
       "owner": "repository-native workflow",
       "status": "COMPLETE",
-      "completion_evidence": [
-        "commit:b6526c17c9665085adf623b3fe2294257039d48a"
-      ],
+      "completion_evidence": ["commit:9aeb9f4cb8f2cfda6827c86854e2505f2bd28e24"],
       "successor": "RIGEL-VERIFY-WORKFLOW-003"
     },
     {
       "task_id": "RIGEL-VERIFY-WORKFLOW-003",
-      "location": "evidence/rigel-validation/latest/validation-state.json",
+      "location": "evidence/rigel-validation/runs/30739542167/run-receipt.json",
       "owner": ".github/workflows/rigel-validation.yml",
-      "status": "RETRY",
-      "trigger": "push affecting the Rigel simulation lane or manual workflow dispatch",
-      "release_condition": "A successful hosted run persists compact summaries, receipts, and validation-state.json under evidence/rigel-validation/latest/.",
-      "failure_mode": "FAILED",
-      "successor": "RIGEL-STATISTICAL-CROSSCHECK-005"
+      "status": "COMPLETE",
+      "completion_evidence": [
+        "workflow-run:30739542167",
+        "job:91474345057",
+        "artifact:8830800522",
+        "artifact-sha256:24c628a4603ec08e33806f91003145e8743e6972e977da04696278710fb653a9"
+      ],
+      "successor": "RIGEL-REVISE-PREDICTIVE-CLAIM-007"
     },
     {
       "task_id": "RIGEL-REPAIR-VALIDATION-EVIDENCE-004",
       "location": ".github/workflows/rigel-validation.yml",
       "owner": "repository-native workflow maintainer",
-      "status": "BLOCKED",
-      "trigger": "validation-state.json reports FAILED or hosted workflow fails",
-      "release_condition": "Workflow rerun succeeds and validation evidence is persisted.",
-      "successor": "RIGEL-VERIFY-WORKFLOW-003"
+      "status": "SUPERSEDED",
+      "release_condition": "Superseded by successful workflow run 30739542167 after Python 3.12 import registration fixes.",
+      "successor": null
     },
     {
       "task_id": "RIGEL-STATISTICAL-CROSSCHECK-005",
       "location": "papers/recoverability-geometry-rigel-number/simulations/crosscheck_baselines.py",
       "owner": "StegVerse-Labs/StegScholar",
       "status": "BLOCKED",
-      "release_condition": "RIGEL-VERIFY-WORKFLOW-003 produces a non-FAILED state with fitted metrics.",
+      "release_condition": "A redesigned benchmark produces nondegenerate held-out class balance and paired predictions suitable for trusted-package cross-checking.",
       "required_output": "evidence/rigel-validation/latest/statistical-crosscheck.json",
-      "successor": "RIGEL-KURAMOTO-BENCHMARK-008"
+      "successor": "RIGEL-KURAMOTO-BENCHMARK-009"
     },
     {
       "task_id": "RIGEL-REVISE-PHASE-HYPOTHESIS-006",
       "location": "papers/recoverability-geometry-rigel-number/claims-register.md",
       "owner": "StegVerse Research",
-      "status": "BLOCKED",
-      "release_condition": "validation-state.json reports zero partition-dependent outcomes.",
-      "successor": "RIGEL-KURAMOTO-BENCHMARK-008"
+      "status": "SUPERSEDED",
+      "release_condition": "The observed ablation was nonzero, so the zero-effect branch does not apply to run 30739542167.",
+      "successor": null
     },
     {
       "task_id": "RIGEL-REVISE-PREDICTIVE-CLAIM-007",
       "location": "papers/recoverability-geometry-rigel-number/claims-register.md",
       "owner": "StegVerse Research",
-      "status": "BLOCKED",
-      "release_condition": "validation-state.json reports no held-out gain over both aggregate baselines.",
-      "successor": "RIGEL-KURAMOTO-BENCHMARK-008"
+      "status": "COMPLETE",
+      "completion_evidence": [
+        "evidence/rigel-validation/runs/30739542167/validation-state.json",
+        "claims-register:RG-004=NOT_SUPPORTED_IN_CURRENT_BENCHMARK"
+      ],
+      "successor": "RIGEL-BALANCED-BENCHMARK-008"
     },
     {
-      "task_id": "RIGEL-KURAMOTO-BENCHMARK-008",
+      "task_id": "RIGEL-BALANCED-BENCHMARK-008",
+      "location": "papers/recoverability-geometry-rigel-number/simulations/balanced_scalar_benchmark.py",
+      "owner": "StegVerse-Labs/StegScholar",
+      "status": "CLAIMED",
+      "trigger": "Merge of the validation evidence and claim revision into main.",
+      "release_condition": "A source-controlled benchmark removes the 95.5% OOD failure imbalance, preregisters paired comparisons, and emits a new validation receipt.",
+      "required_output": "evidence/rigel-validation/latest/balanced-benchmark-state.json",
+      "successor": "RIGEL-STATISTICAL-CROSSCHECK-005"
+    },
+    {
+      "task_id": "RIGEL-KURAMOTO-BENCHMARK-009",
       "location": "papers/recoverability-geometry-rigel-number/simulations/delayed_kuramoto.py",
       "owner": "StegVerse-Labs/StegScholar",
       "status": "BLOCKED",
-      "release_condition": "Scalar benchmark interpretation is durably recorded following verified execution.",
-      "successor": "RIGEL-QUEUE-BENCHMARK-009"
+      "release_condition": "Balanced scalar benchmark and statistical cross-check are durably recorded.",
+      "successor": "RIGEL-QUEUE-BENCHMARK-010"
     },
     {
-      "task_id": "RIGEL-QUEUE-BENCHMARK-009",
+      "task_id": "RIGEL-QUEUE-BENCHMARK-010",
       "location": "papers/recoverability-geometry-rigel-number/simulations/queue_recovery.py",
       "owner": "StegVerse-Labs/StegScholar",
       "status": "BLOCKED",
       "release_condition": "Kuramoto benchmark source and independent outcome definition are committed.",
-      "successor": "RIGEL-PUBLICATION-ASSETS-010"
+      "successor": "RIGEL-PUBLICATION-ASSETS-011"
     },
     {
-      "task_id": "RIGEL-PUBLICATION-ASSETS-010",
+      "task_id": "RIGEL-PUBLICATION-ASSETS-011",
       "location": "papers/recoverability-geometry-rigel-number/figures/",
       "owner": "StegVerse-Labs/StegScholar",
       "status": "BLOCKED",
-      "release_condition": "At least one verified benchmark result is available for non-placeholder figures.",
+      "release_condition": "The revised claim boundary and at least one verified benchmark result are reflected in source-controlled figure captions.",
+      "successor": "RIGEL-PUBLICATION-OUTBOUND-012"
+    },
+    {
+      "task_id": "RIGEL-PUBLICATION-OUTBOUND-012",
+      "location": "coordination/rigel-publication-outbound.json",
+      "owner": "StegVerse-Labs/StegScholar",
+      "status": "BLOCKED",
+      "release_condition": "Publication assets, bibliography, and release review are complete.",
+      "required_consumers": [
+        "StegVerse-Labs/Site",
+        "GCAT-BCAT-Engine/Publisher",
+        "admissibility-wiki",
+        "stegguardian-wiki",
+        "master-records"
+      ],
       "successor": null
     }
   ],
+  "session_consolidation": {
+    "originating_session_goals": 4,
+    "transferred_or_complete": 4,
+    "canonical_continuation": "STEGSCHOLAR_MIRROR_HANDOFF.md and coordination/rigel-validation-tasks.json",
+    "unique_chat_dependency_after_merge": false
+  },
   "archive_condition": "All session-specific decisions and evidence are committed; every unresolved task has a repository owner, machine-observable release condition, and successor; no unverified mutation remains owned by the session."
 }
