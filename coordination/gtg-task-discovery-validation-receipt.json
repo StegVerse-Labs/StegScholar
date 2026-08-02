@@ -1,0 +1,27 @@
+{
+  "schema_version": "stegverse-gtg-task-discovery-receipt.v1",
+  "task_id": "SV-GTG-TASK-DISCOVERY-008",
+  "repository": "StegVerse-Labs/StegScholar",
+  "validation_branch": "formal/activate-gtg-task-discovery-v1",
+  "validation_workflow": ".github/workflows/reconcile-gtg-task-registry.yml",
+  "validator": "scripts/reconcile_gtg_task_registry.py",
+  "activation_state": "ACTIVE",
+  "required_terminal_evidence": {
+    "workflow_name": "Reconcile StegVerse GTG task registry",
+    "run_id": 30736159822,
+    "conclusion": "success"
+  },
+  "bounded_posture": {
+    "task_discovery": "ACTIVE",
+    "external_tasks": 0,
+    "development_halted": false
+  },
+  "claims": {
+    "execution_authority": false,
+    "certification_authority": false,
+    "mathematical_closure": false,
+    "independent_verification_complete": false,
+    "release_ready": false,
+    "archive_ready": false
+  }
+}
