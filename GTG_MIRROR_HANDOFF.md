@@ -1,244 +1,134 @@
 # Generalized Transition Governance Mirror Handoff
 
-This file is the current source of truth for continuing Generalized Transition Governance (GTG) work in `StegVerse-Labs/StegScholar`.
+## Active goal
 
-## Current Goal
+- Goal ID: `STEGSCHOLAR-GTG-RECONSTRUCTION-CONTINUITY`
+- Repository: `StegVerse-Labs/StegScholar`
+- Branch: `main`
+- Goal: maintain a bounded StegVerse research, validation, task-observation, and publication mirror for canonical GTG reconstruction work without duplicating canonical authority.
 
-Formalize GTG as the governance layer that determines which candidate state transitions may be admitted, denied, deferred, fail-closed, or transformed when multiple systems, authorities, observers, relationships, and scales interact.
+## Canonical ownership
 
-GTG is downstream of descriptive transition geometry and upstream of executable transition tables:
+- Target authority: `Admissible-Existence/GTG`.
+- Independent recomputation: `Admissible-Existence/ae-validation-factory`.
+- StegVerse role: research projection, challenge construction, cross-level continuity testing, task observation, deterministic bounded mirror mutation, and future publication preparation.
 
-```text
-RTG: what transition relations and intersections exist?
-GTG: which of those relations become operationally governing, admissible, and under whose standing?
-TT: how are those determinations represented and executed as explicit transition rules?
-```
+## Completed and validated StegVerse work
 
-## Current Activation Goal
+- GTG reconstruction mirror activated by PR `#22`, merge `4394b5679345298817d1002767857adae1a6c72b`.
+- Task observer/completer activated by PR `#23`, merge `8580f4eed86befcc54d5f527eb0fa596cfff7f83`.
+- R5 research taxonomy and fixtures activated by PR `#24`, merge `d8e0a7a0fb91d128b2bfc15fc45142c8174bcd94`.
+- Bounded R5 mirror posture activated by PR `#25`, merge `ee3d9ac6292aef4d8c0902fb88a3fa5266aeb4f5`.
+- Self-completing task executor activated by PR `#26`, merge `9ab38710cd3c07f9dd0f380ef9dc8cc37000253c`.
+- R4 challenge layer activated by PR `#27`, merge `dca0b9002851637b2d02851615d229f486d81ec2`.
+- Task discovery/reconciliation activated by PR `#28`, merge `f9edc4a294f73b8aff5000c393452b338005bf71`.
+- R4-R5 boundary layer activated by PR `#29`, merge `65b81c2ef1d4d8167f079f6769699b67bfc62b28`.
+- R4-R5 temporal continuity activated by PR `#30`, merge `bdedf24350aa98e3fff87b38b1130743741ed3e1`.
+- R4-R5 subject continuity activated by PR `#31`, merge `6c48bbed0cfbba1cb33a0c047c2d56e12da599ec`.
 
-```text
-Goal id: gtg-definitions-claims-and-fixtures-v0.1
-State: CANONICAL_DEFINITION_AND_TEST_DESIGN
-Authority posture: research governance formalism only; no certification, legal authority, execution authority, universal ethical law, or universal governance claim is created.
-Manual task requirement: none.
-User manual action required: false.
-```
+## Authoritative StegVerse files
 
-## Completed Activation Milestone
+- `manifests/gtg-reconstruction-mirror-v1.json`
+- `coordination/gtg-reconstruction-tasks.json`
+- `scripts/run_gtg_task_orchestrator.py`
+- `scripts/complete_gtg_tasks.py`
+- `scripts/reconcile_gtg_task_registry.py`
+- `.github/workflows/observe-gtg-reconstruction-tasks.yml`
+- `.github/workflows/complete-gtg-reconstruction-tasks.yml`
+- `.github/workflows/reconcile-gtg-task-registry.yml`
+- R4/R5 doctrine, fixtures, validators, workflows, task records, and validation receipts under `papers/`, `coordination/`, `scripts/`, and `.github/workflows/`.
 
-The relational-governance activation doctrine has now been integrated into the canonical GTG foundation.
-
-```text
-Canonical foundation commit:
-0eac767f4883ce2c2ba66d2ca04e3e747980ca7b
-```
-
-The foundation now includes:
-
-- relational state as a first-class governance-context object;
-- relevant relational projection;
-- governance activation as a typed internal sub-operator of `G`;
-- activation states `ACTIVE`, `INACTIVE`, `INCOMPLETE`, `NOT_APPLICABLE`, and `ERROR`;
-- recognition-versus-governance separation;
-- relationally induced inadmissibility;
-- baseline activation-to-disposition mapping;
-- commit-time relational reconstruction;
-- continuation-record requirements;
-- RTG and TT bindings;
-- canonical-versus-bridge-paper authority boundaries.
-
-## Source-of-Truth Boundaries
-
-1. GTG does not replace domain law, safety rules, policy, consent, or operator authority.
-2. An `ALLOW` result is valid only relative to a declared context, evidence set, authority set, relational state, scale, and commit-time state.
-3. `DENY`, `FAIL_CLOSED`, `DEFER`, and `TRANSFORM` are first-class outcomes, not errors or incomplete `ALLOW` states.
-4. Historical approval does not automatically survive policy, identity, evidence, delegation, relational, or environmental change.
-5. Observation, review, approval, execution, reconstruction, and correction are distinct authorities unless explicitly combined by valid standing.
-6. A governance result may be structurally valid yet substantively wrong; independent review and falsification remain necessary.
-7. GTG must preserve divergent determinations and cannot silently collapse disagreement into consensus.
-8. Cross-scale governance requires declared scale maps and preserved invariants; rules cannot be assumed to transfer unchanged between scales.
-9. Governance applies to transitions, not merely outputs.
-10. No framework may infer authority from visibility, publication, possession, technical capability, or relational awareness alone.
-11. A relationship is not operationally governed merely because it exists, is represented, or is understood.
-12. Canonical GTG doctrine must stabilize before extraction into a comparative bridge paper.
-13. `NOT_APPLICABLE` is distinct from missing relational evidence and must not be used to bypass a materially relevant relationship.
-14. No unmapped activation state may default to `ALLOW`.
-
-## Canonical Working Objects
+## Current canonical bindings
 
 ```text
-Candidate transition: tau
-Current state: S_t
-Proposed post-state: S_t+1
-Relational state: R_t
-Relevant relational projection: Rel(R_t, tau)
-Applicable relational basis: Basis(R_t, tau)
-Context: C_t
-Evidence set: E_t
-Authority set: A_t
-Policy set: P_t
-Constraint set: K_t
-Observer/reviewer set: O_t
-Scale parameter: lambda
-Admissibility function: G
-Governance activation sub-operator: Act
-Governance activation predicate: Activate
-Governance result: g
-Commit-time reconstruction: chi_t
-Standing function: sigma
-Appeal/correction relation: alpha
-Continuation record: C_(t+1)
+GTG R3 target: ACTIVE @ 0fdae4a73766f16e3d745ad0fc9f0b3c9ff5cda1
+FACTORY R3: ACTIVE @ ac53fae0dada9946903d615715425624acaf1ac9
+GTG R4 target: ACTIVE @ e73234381501a427fcf517f63087b9c873a0af36
+FACTORY R4: BLOCKED_OBSERVED / NOT YET MERGED
+GTG R5 target: NOT_TESTED
+FACTORY R5: BLOCKED_ON_CANONICAL_R5
+StegVerse bounded R5 research: ACTIVE_INTERNAL_VALIDATION
 ```
 
-## Canonical Governance and Activation Functions
+## Active task inventory
 
-```text
-Act : (Rel(R_t, tau), Basis(R_t, tau), chi_t) -> a
-```
+### `SV-GTG-R4-OBSERVE-001`
 
-with:
+- Exists at: `coordination/gtg-reconstruction-tasks.json#SV-GTG-R4-OBSERVE-001`.
+- Executor: `scripts/complete_gtg_tasks.py`.
+- Trigger: `.github/workflows/complete-gtg-reconstruction-tasks.yml` schedule or dispatch.
+- Output: `coordination/gtg-task-completion-report.json`.
+- State: `READY`.
 
-```text
-a in {ACTIVE, INACTIVE, INCOMPLETE, NOT_APPLICABLE, ERROR}
-```
+### `SV-GTG-R4-MIRROR-002`
 
-and:
+- Exists at: `coordination/gtg-reconstruction-tasks.json#SV-GTG-R4-MIRROR-002`.
+- Mutation target: `manifests/gtg-reconstruction-mirror-v1.json#levels.R4`.
+- Completion recipe: `coordination/gtg-task-completion-recipes.json#SV-GTG-R4-MIRROR-002`.
+- State: `BLOCKED_OBSERVED`.
+- Machine release condition: merged FACTORY-R4 commit with hosted-valid receipt pinned to canonical GTG R4 commit `e73234381501a427fcf517f63087b9c873a0af36`.
 
-```text
-g = G(tau, Gamma_t, a)
-```
+### `FACTORY-R4-AUTHORITY-001`
 
-with:
+- Owner repository: `Admissible-Existence/ae-validation-factory`.
+- Handoff: `AE_VALIDATION_FACTORY_MIRROR_HANDOFF.md`.
+- Required installation paths are enumerated there.
+- This is cross-repository ownership, not an unspecified external task.
 
-```text
-g in {ALLOW, DENY, FAIL_CLOSED, DEFER, TRANSFORM, ERROR}
-```
+### `GTG-R5-TARGET-001`
 
-A transition may execute only when result, standing, activation state, and commit-time reconstruction jointly satisfy the governing rule.
+- Owner repository: `Admissible-Existence/GTG`.
+- Handoff: `GTG_MIRROR_HANDOFF.md`.
+- Required installation paths are enumerated there.
+- No external blocker exists.
 
-## Core GTG Distinction
+## Automation posture
 
-```text
-Possible transitions != admissible transitions
-Admissible transitions != authorized transitions
-Authorized transitions != executed transitions
-Executed transitions != legitimate transitions after later review
-Recognized relationships != governed relationships
-Individually authorized actors != relationally admissible combined transition
-```
+- Observation, task selection, deterministic mirror mutation, task discovery, and reconciliation are installed.
+- Each unfinished task has an owner repository, trigger, deterministic state, output path, and release condition.
+- Missing evidence remains `BLOCKED` or `REVIEW_REQUIRED`; it is never treated as success.
+- Duplicate execution is prevented by idempotent branch/PR behavior in the completion workflow.
 
-## Resolved Formal Decision
+## Incomplete work
 
-Activation is treated as a typed internal sub-operator of `G`.
+1. FACTORY-R4 implementation and hosted receipt in `Admissible-Existence/ae-validation-factory`.
+2. Automatic R4 mirror update after FACTORY-R4 merge.
+3. Canonical GTG-R5 target implementation in `Admissible-Existence/GTG`.
+4. FACTORY-R5 implementation after canonical R5 release.
+5. Formal publication propagation to Site, Publisher, admissibility-wiki, and stegguardian-wiki remains unauthorized and unverified.
+6. Release, certification, execution authority, mathematical closure, empirical validity, complete independent verification, and archive readiness remain false.
 
-This avoids two errors:
+## Validation
 
-1. treating relational activation as an external approval authority;
-2. requiring artificial relational evidence where no material relational projection exists.
+The repository uses hosted validators for R4 challenge, R5 reality contact, R4-R5 boundary, temporal continuity, subject continuity, task observation, task reconciliation, and readiness. A merge is active only when the exact PR head has terminal hosted success.
 
-`NOT_APPLICABLE` permits full governance evaluation to continue only when declared relevance rules establish that no material relational projection exists. `INACTIVE`, `INCOMPLETE`, and `ERROR` must map through explicit fail-safe disposition rules.
+## Publication and propagation boundary
 
-## Immediate Work Queue
+No propagation is proven to:
 
-1. Create `papers/generalized-transition-governance/formal-definitions.md` with typed definitions for every activation and governance predicate.
-2. Create `papers/generalized-transition-governance/claims-register.md` with bounded claim identifiers and maturity states.
-3. Formalize `Rel`, `Basis`, `Discoverable`, `Reconstructable`, `Applicable`, `Incorporated`, and `OutcomeSensitive`.
-4. Define the proof obligation for `NOT_APPLICABLE` so it cannot become a relational-evidence bypass.
-5. Define relational integrity as a typed combination of invariant, predicate, evidence class, and constraint class rather than forcing one universal type.
-6. Define complete activation-to-disposition precedence, including conflicts among activation, standing, policy, and evidence failures.
-7. Create worked cases where all actors are individually authorized but the combined transition is inadmissible.
-8. Create falsification cases distinguishing relational recognition from operational governance.
-9. Create a machine-readable GTG decision and activation schema.
-10. Create deterministic fixtures and a validator.
-11. Bind GTG outputs to TT cells only after the GTG result is explicit and reconstructable.
-12. Draft `relational-governance-activation-bridge.md` only after definitions, claim IDs, proposition numbering, and disposition semantics stabilize.
+- `StegVerse-Labs/Site`;
+- `GCAT-BCAT-Engine/Publisher`;
+- `StegVerse-Labs/admissibility-wiki`;
+- `StegVerse-002/stegguardian-wiki`;
+- `master-records`.
 
-## Known Remaining Files and Destinations
+Destination handoffs must be read and authority confirmed before any publication mutation.
 
-```text
-StegVerse-Labs/StegScholar:
-- papers/generalized-transition-governance/foundation.md [canonical foundation installed]
-- papers/generalized-transition-governance/relational-governance-activation.md [working note installed]
-- papers/generalized-transition-governance/formal-definitions.md
-- papers/generalized-transition-governance/claims-register.md
-- papers/generalized-transition-governance/conflict-resolution.md
-- papers/generalized-transition-governance/falsification-protocol.md
-- papers/generalized-transition-governance/examples/
-- papers/generalized-transition-governance/relational-governance-activation-bridge.md [deferred]
-- schemas/gtg-decision.schema.json
-- schemas/gtg-governance-activation.schema.json
-- fixtures/gtg/
-- scripts/validate_gtg_fixtures.py
+## Archive conditions
 
-Admissible-Existence/AE:
-- docs/protocols/generalized-transition-governance/specification.md [after StegScholar stabilization]
-- docs/protocols/generalized-transition-governance/conformance.md [after fixtures and validator]
-- schemas/gtg-protocol.schema.json [after research schema stabilization]
+- FACTORY-R4 and FACTORY-R5 active with receipts.
+- Canonical GTG-R5 active with receipt.
+- StegVerse mirror reconciled automatically.
+- Required publication propagation either completed and verified or formally superseded.
+- No task unique to this session remains outside repository handoffs or task registries.
 
-StegVerse-Labs/admissibility-wiki:
-- bounded public formalism projection after StegScholar claim review and destination handoff check
+## Completion percentages
 
-StegVerse-Labs/Site:
-- public explanatory projection only after `docs/SITE_MIRROR_HANDOFF.md` grants scope
+Denominator for this StegScholar goal: 10 installed StegVerse layers plus 4 cross-repository/integration deliverables = 14.
 
-GCAT-BCAT-Engine/Publisher:
-- canonical paper packaging and publication receipts only after Publisher handoff authority is confirmed
-
-StegVerse-002/stegguardian-wiki:
-- dispute, correction, dissent, standing, continuation, and challenge projection only after destination handoff authority is confirmed
-```
-
-## Relationship to RTG and TT
-
-```text
-RTG supplies:
-- participant world-regions
-- intersection events
-- translation operators
-- transition costs
-- distributed ledgers
-- scale maps
-
-GTG supplies:
-- relational governance activation
-- admissibility
-- standing
-- authority separation
-- policy and evidence binding
-- commit-time validity
-- outcome precedence
-- continuation requirements
-- appeals, disputes, and corrections
-
-TT supplies:
-- explicit state-transition cells
-- guards
-- actions
-- receipts
-- deterministic outcome encoding
-- executable or reviewable transition rows
-```
-
-## Planned Bridge Paper
-
-Provisional path:
-
-```text
-papers/generalized-transition-governance/relational-governance-activation-bridge.md
-```
-
-Provisional title:
-
-```text
-Relational Governance Activation: From Relational Integrity to Commit-Time Admissibility
-```
-
-This paper is comparative and explanatory. It must not replace the canonical GTG volume treatment.
-
-## Release Boundary
-
-The GTG package is not ready for tagging or release. Release readiness requires formal definitions, claim statuses, theorem or proposition numbering, deterministic fixtures, conflict tests, governance-activation tests, commit-time reconstruction tests, falsification criteria, cross-volume references, and an internal review receipt.
-
-## Handoff Instruction
-
-Continue from this file before relying on prior chat context. The relational-governance activation foundation is integrated. The next priority is the definitions-and-claims layer followed by schemas, fixtures, and deterministic validation. The complete prior discussion has been reduced into this source of truth and is ready for archiving without any additional part of the thread needed to move forward.
+- Task completion: 10/14 = 71%.
+- Developed-file completion: 10/10 StegVerse layer bundles installed = 100% for current StegVerse-local deliverables.
+- Validation completion: 10/10 installed StegVerse layers hosted-valid = 100%.
+- Integration completion: 1/4 canonical/factory propagation stages complete = 25%.
+- Goal activation: 10/14 = 71%.
+- Archive readiness: false.
