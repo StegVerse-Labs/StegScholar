@@ -1,0 +1,39 @@
+name: Validate Research Commons Control State
+
+on:
+  push:
+    paths:
+      - "RESEARCH_COMMONS_MIRROR_HANDOFF.md"
+      - "research_commons/control/**"
+      - "research_commons/tools/check_research_commons_control_state.py"
+      - ".github/workflows/validate-research-commons-control.yml"
+  pull_request:
+    paths:
+      - "RESEARCH_COMMONS_MIRROR_HANDOFF.md"
+      - "research_commons/control/**"
+      - "research_commons/tools/check_research_commons_control_state.py"
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-control-state:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate handoff and task claims
+        run: |
+          mkdir -p reports
+          python research_commons/tools/check_research_commons_control_state.py | tee reports/research-commons-control-state.json
+      - name: Upload control-state receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: research-commons-control-state
+          path: reports/research-commons-control-state.json
+          if-no-files-found: error
