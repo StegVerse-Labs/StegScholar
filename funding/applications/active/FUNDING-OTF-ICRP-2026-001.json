@@ -15,6 +15,9 @@
     "summary": "Research and prototype privacy-preserving methods for collecting, validating and exporting minimal evidence about censorship, shutdown interference and security failures in resilient communications without exposing message content or vulnerable users.",
     "research_paths": [
       "funding/applications/active/FUNDING-OTF-ICRP-2026-001-concept-note.md",
+      "funding/applications/active/FUNDING-OTF-ICRP-2026-001-eligibility.md",
+      "funding/applications/active/FUNDING-OTF-ICRP-2026-001-ethics-safety-plan.md",
+      "funding/applications/active/FUNDING-OTF-ICRP-2026-001-milestones.md",
       "funding/opportunities/2026-08-02-expanded-scan.md"
     ]
   },
@@ -32,19 +35,23 @@
   },
   "evidence_refs": [
     "funding/opportunities/2026-08-02-expanded-scan.md",
-    "funding/applications/active/FUNDING-OTF-ICRP-2026-001-concept-note.md"
+    "funding/applications/active/FUNDING-OTF-ICRP-2026-001-concept-note.md",
+    "funding/applications/active/FUNDING-OTF-ICRP-2026-001-eligibility.md",
+    "funding/applications/active/FUNDING-OTF-ICRP-2026-001-ethics-safety-plan.md",
+    "funding/applications/active/FUNDING-OTF-ICRP-2026-001-milestones.md",
+    "funding/applications/active/FUNDING-OTF-ICRP-2026-001-budget-request.json"
   ],
   "budget": {
     "currency": "USD",
     "requested_amount": null,
-    "status": "NOT_STARTED",
-    "authority_ref": "Application-specific budget authority required after scope and host pathway are resolved"
+    "status": "DRAFT_UNAPPROVED",
+    "authority_ref": "funding/applications/active/FUNDING-OTF-ICRP-2026-001-budget-request.json"
   },
   "publication_classification": "DISCLOSURE_REVIEW_REQUIRED",
   "next_action": {
-    "owner": "StegVerse-Labs/StegScholar OTF ICRP lane",
-    "location": "funding/applications/active/FUNDING-OTF-ICRP-2026-001-concept-note.md",
-    "action": "Complete concept-note answers, select the individual applicant posture, document relevant experience, and define an ethical host-organization search without inventing affiliations",
-    "release_condition": "Concept note is submission-ready, formally declined, or blocked by applicant or ethical-review evidence"
+    "owner": "Named individual applicant authority",
+    "location": "funding/applications/active/FUNDING-OTF-ICRP-2026-001-eligibility.md",
+    "action": "Provide applicant identity, CV, experience, work eligibility, availability and declarations, then obtain ethical, IP and budget authority responses",
+    "release_condition": "All mandatory eligibility gates are supported and the named applicant authorizes concept-note submission"
   }
 }
