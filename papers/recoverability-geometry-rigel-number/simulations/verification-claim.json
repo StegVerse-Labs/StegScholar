@@ -6,19 +6,29 @@
   "role": "CLAIMED_FOR_VALIDATION",
   "claimant": "repository-native GitHub Actions validation lane",
   "claimed_at_utc": "2026-08-02T08:16:00Z",
-  "release_condition": "A pull-request-triggered rigel-validation workflow run completes and its jobs, logs, and artifacts are inspected; the claim is then released as COMPLETE, RETRY, REVIEW_REQUIRED, or FAILED.",
-  "expected_evidence": [
-    "workflow run ID",
-    "job ID and step conclusions",
-    "validation artifact metadata",
-    "baseline-evaluation.json",
-    "ablation-summary.json",
-    "validation-state.json"
-  ],
+  "released_at_utc": "2026-08-02T08:22:00Z",
+  "claim_state": "COMPLETE",
+  "release_condition": "Satisfied: pull-request-triggered Rigel validation run completed and its jobs, logs, artifact, receipts, and fail-closed validation state were inspected.",
+  "evidence": {
+    "pull_request": 33,
+    "workflow_run_id": 30739542167,
+    "job_id": 91474345057,
+    "artifact_id": 8830800522,
+    "artifact_sha256": "24c628a4603ec08e33806f91003145e8743e6972e977da04696278710fb653a9",
+    "run_receipt": "evidence/rigel-validation/runs/30739542167/run-receipt.json",
+    "validation_state": "evidence/rigel-validation/runs/30739542167/validation-state.json"
+  },
+  "result": "REVIEW_REQUIRED",
+  "result_reason": "Phase allocation affected some matched outcomes, but fitted decomposed latency did not exceed the strongest aggregate baseline.",
   "collision_boundaries": [
     "Do not create a second implementation of the scalar benchmark",
-    "Do not publish or propagate the paper before validation state is inspected",
-    "Do not claim Ri=1 universality"
+    "Do not publish or propagate the paper before publication readiness",
+    "Do not claim Ri=1 universality",
+    "Do not claim predictive superiority of decomposed latency from the current benchmark"
   ],
-  "next_task_after_release": "Use validation-state.json to select the canonical successor in coordination/rigel-validation-tasks.json."
+  "next_task_after_release": {
+    "task_id": "RIGEL-BALANCED-BENCHMARK-008",
+    "location": "papers/recoverability-geometry-rigel-number/simulations/balanced_scalar_benchmark.py",
+    "owner": "StegScholar validation workflow"
+  }
 }
