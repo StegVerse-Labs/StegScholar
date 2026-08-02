@@ -10,6 +10,7 @@ from __future__ import annotations
 import importlib.util
 import math
 import random
+import sys
 import unittest
 from collections import deque
 from pathlib import Path
@@ -19,6 +20,7 @@ SPEC = importlib.util.spec_from_file_location("scalar_delayed_control", MODULE_P
 if SPEC is None or SPEC.loader is None:
     raise RuntimeError(f"Unable to load benchmark module from {MODULE_PATH}")
 MODULE = importlib.util.module_from_spec(SPEC)
+sys.modules[SPEC.name] = MODULE
 SPEC.loader.exec_module(MODULE)
 
 
