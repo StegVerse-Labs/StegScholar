@@ -1,0 +1,51 @@
+{
+  "application_id": "FUNDING-NSF-PESOSE-2026-001",
+  "opportunity": {
+    "sponsor": "U.S. National Science Foundation",
+    "name": "Pathways to Enable Secure Open-Source Ecosystems (PESOSE), Track 1",
+    "opportunity_id": "NSF 26-506",
+    "source_url": "https://www.nsf.gov/funding/opportunities/pesose-pathways-enable-secure-open-source-ecosystems/nsf26-506/solicitation"
+  },
+  "applicant": {
+    "organization": "StegVerse-Labs",
+    "principal_contact_role": "Founder and proposed Principal Investigator; employment and applicant authority unverified"
+  },
+  "program": {
+    "title": "PESOSE: Track 1: Governed Open-Source Infrastructure for Recoverable AI Agent and Secure Communication Ecosystems",
+    "summary": "Scope and plan a sustainable open-source ecosystem around StegVerse protocols and tools for governed AI agents, secure communications, evidence continuity, admissibility, provenance, fail-closed execution, and recoverable authority boundaries.",
+    "research_paths": [
+      "research-programs/governable-autonomy/README.md",
+      "papers/recoverability-geometry-rigel-number/validation-protocol.md"
+    ]
+  },
+  "state": "DRAFTING",
+  "authority": {
+    "application_owner": "StegVerse-Labs/StegScholar",
+    "ip_authority": "StegVerse-Labs/StegPatents",
+    "budget_authority": "StegVerse-Labs/StegFinCo",
+    "deliverables_authority": "StegVerse-Labs/StegOps-Deliverables"
+  },
+  "dates": {
+    "discovered_at": "2026-08-02T04:49:00-05:00",
+    "deadline": "2026-09-01T17:00:00-05:00",
+    "submitted_at": null
+  },
+  "evidence_refs": [
+    "funding/opportunities/2026-08-02-broad-scan.md",
+    "research-programs/governable-autonomy/README.md",
+    "papers/recoverability-geometry-rigel-number/validation-protocol.md"
+  ],
+  "budget": {
+    "currency": "USD",
+    "requested_amount": 300000,
+    "status": "NOT_STARTED",
+    "authority_ref": "StegVerse-Labs/StegFinCo; funding contract not yet installed"
+  },
+  "publication_classification": "DISCLOSURE_REVIEW_REQUIRED",
+  "next_action": {
+    "owner": "StegVerse-Labs/StegScholar funding lane",
+    "location": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-eligibility.md",
+    "action": "Resolve legal applicant, ownership, PI employment, UEI, SAM.gov and submission-authority gates while continuing the seven-page Track 1 narrative draft",
+    "release_condition": "All mandatory applicant registration fields have inspectable evidence or a qualified lead organization is recorded"
+  }
+}
