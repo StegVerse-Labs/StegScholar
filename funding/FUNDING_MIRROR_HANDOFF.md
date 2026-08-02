@@ -3,134 +3,124 @@
 ## Active goal
 
 - Goal ID: `FUNDING-PIPELINE-001`
-- Goal: operate the governed StegScholar funding pipeline and advance `FUNDING-NSF-PESOSE-2026-001` without moving applicant, IP, budget, or sponsor-submission authority into StegScholar.
+- Goal: operate a governed, machine-verifiable StegVerse funding portfolio, advance the NSF PESOSE Track 1 application, and open additional noncompeting high-fit funding lanes without moving applicant, IP, budget, institutional, or sponsor-submission authority into StegScholar.
+- Originating session goals: identify the canonical grants repository; search broadly for fitting opportunities; begin strong applications; validate and automate continuation; preserve authority boundaries; broaden the funding search.
 - Repository: `StegVerse-Labs/StegScholar`
 - Branch: `main`
 - Parent authority: `STEGSCHOLAR_MIRROR_HANDOFF.md`
 - Task registry: `funding/coordination/funding-tasks.json`
 
-## Canonical application
+## Active applications and portfolio lanes
 
-- Application: `FUNDING-NSF-PESOSE-2026-001`
-- Opportunity: NSF 26-506, PESOSE Track 1
+### NSF PESOSE Track 1
+
+- Application ID: `FUNDING-NSF-PESOSE-2026-001`
 - Deadline: `2026-09-01T17:00:00-05:00`
-- State: `DRAFTING`
-- Claim: `CLAIMED_FOR_IMPLEMENTATION`
-- Claim expiration: authorized submission, committed no-go, qualified-lead supersession, or deadline.
-- Collision boundary: no competing PESOSE application or unreviewed StegVerse submission.
+- State: `CLAIMED_FOR_IMPLEMENTATION`
+- Canonical narrative: `funding/applications/active/FUNDING-NSF-PESOSE-2026-001-project-description.md`
+- Release condition: authorized submission, committed no-go, qualified-lead supersession, or deadline.
 
-## Authoritative application files
+### OTF Information Controls Research Program
 
-- `funding/applications/active/FUNDING-NSF-PESOSE-2026-001.json`
-- `funding/applications/active/FUNDING-NSF-PESOSE-2026-001-concept.md`
-- `funding/applications/active/FUNDING-NSF-PESOSE-2026-001-project-description.md`
-- `funding/applications/active/FUNDING-NSF-PESOSE-2026-001-project-summary.md`
-- `funding/applications/active/FUNDING-NSF-PESOSE-2026-001-milestones.md`
-- `funding/applications/active/FUNDING-NSF-PESOSE-2026-001-budget-request.json`
-- `funding/applications/active/FUNDING-NSF-PESOSE-2026-001-eligibility.md`
-- `funding/applications/active/FUNDING-NSF-PESOSE-2026-001-product-evidence.md`
-- `funding/applications/active/FUNDING-NSF-PESOSE-2026-001-compliance.md`
+- Application ID: `FUNDING-OTF-ICRP-2026-001`
+- Deadline: `2026-09-07T23:59:00+00:00`
+- State: `CLAIMED_FOR_IMPLEMENTATION`
+- Application record: `funding/applications/active/FUNDING-OTF-ICRP-2026-001.json`
+- Concept note: `funding/applications/active/FUNDING-OTF-ICRP-2026-001-concept-note.md`
+- Research focus: privacy-preserving evidence for shutdown-resilient and censored communications.
+- Release condition: eligible individual submission, committed no-go, formal decline, or supersession by a stronger OTF application.
+- Collision boundary: no duplicate ICRP concept note using the same research question or applicant identity.
+
+### NSF SBIR/STTR commercial pathway
+
+- Candidate ID: `FUNDING-NSF-SBIR-2026-001`
+- State: `BLOCKED — ELIGIBILITY REVIEW`
+- Canonical assessment: `funding/applications/candidates/FUNDING-NSF-SBIR-2026-001-assessment.md`
+- Consolidated topics: Artificial Intelligence and Cybersecurity and Authentication.
+- Release condition: qualifying U.S. small-business, ownership, PI employment, product-rights and candidate-selection evidence.
+
+### Academic-partner portfolio
+
+The expanded scan preserves SaTC 2.0, Future Computing Research, Mathematical Foundations of Artificial Intelligence, EDU Core Research, CyberTraining and Cybersecurity Innovation for Cyberinfrastructure as partner-led candidates. No application is opened until an eligible lead institution and qualifying PI are recorded.
+
+Canonical scan: `funding/opportunities/2026-08-02-expanded-scan.md`.
 
 ## Authority boundaries
 
-- StegScholar owns opportunity intake, application drafting, evidence maps, sponsor requirements, and application state.
-- StegFinCo owns authoritative budget review and financial execution.
+- StegScholar owns opportunity intake, application drafting, evidence maps, sponsor requirements, application state and submission receipts.
+- StegFinCo owns authoritative budget review and financial execution where its contract applies.
 - Protected-disclosure authority remains blocked at `funding/dependencies/stegpatents-authority-gap.md` until a canonical repository or named human IP authority issues a classification.
-- Human corporate authority owns applicant eligibility, ownership/control, PI employment, federal registration, and AOR submission authority.
+- Human corporate authority owns legal applicant, ownership/control, employment, registrations and submission authority.
+- Academic institutions own institutional eligibility and appointment authority for partner-led NSF applications.
+- The OTF ICRP individual applicant owns identity, CV, experience, availability, work authorization and certifications; a host organization is not selected before a Stage 2 invitation.
 - StegOps-Deliverables activates only after a verified award.
 
 ## Completed implementation
 
-The complete funding control surface, reusable schemas, contracts, opportunity scan, PESOSE application records, project summary, milestones, provisional budget, and substantive Project Description are committed.
+### PESOSE package
 
-Project Description commits:
+The funding control surface, reusable schemas, contracts, opportunity scan, PESOSE application records, project summary, milestones, provisional budget and substantive Project Description are committed and hosted-validated.
 
-- installed: `dd3e65336cd2a01fafbb670a6125aa16298527d4`;
-- validator updated: `8cb9fcc0b1a1a17534385104ec3e6ab0ed15391a`;
-- installation receipt: `eed44d65cf26fa49ea6a8aae0e17cbe93fd7fab8`;
-- task registry reconciliation: `d9f286dc0e89691d8ccc7f0e7bb538022c1ce5fd`.
+Latest Project Description validation:
 
-The Project Description includes ecosystem discovery, managing-organization governance, licensing and IP boundaries, security/privacy/supply-chain planning, community development, sustainability, milestones, intellectual merit, broader impacts, and explicit pre-submission gates. It does not claim mature adoption, an approved budget, or submission readiness.
+- workflow run `30758261196`;
+- job `91524128700`, success;
+- artifact `8836617427`;
+- digest `sha256:6fd7baac0d02db6f4c9e03037be7df875b147ca2e4e38fcc17d93672ac8b5fe0`.
 
-## Hosted validation evidence
-
-### StegScholar control surface and Project Description
-
-- validation PR: `#41`;
-- validation branch: `funding/validate-project-description-20260802`;
-- request commit: `187196bf0f0aa0b2fdc905ff08cc4b32557aae58`;
-- workflow: `Funding State Validation`;
-- run: `30758261196`;
-- job: `91524128700`;
-- job conclusion: `success`;
-- validator step: `success`;
-- artifact-upload step: `success`;
-- artifact: `8836617427`, `funding-state-validation`;
-- artifact size: `666` bytes;
-- digest: `sha256:6fd7baac0d02db6f4c9e03037be7df875b147ca2e4e38fcc17d93672ac8b5fe0`;
-- expiration: `2026-10-31T17:09:54Z`.
-
-The validator requires the Project Description and checks its mandatory sections and fail-closed submission language.
-
-### Prior StegScholar validation
-
-- run `30745051944`;
-- job `91489100017`, success;
-- artifact `8832590688`;
-- digest `sha256:fe3b236d1c172478234a90c7ec5df0466c128f1a1610f0fa26c1ced7f6ada130`.
-
-### StegFinCo intake validation
+### StegFinCo integration
 
 - handoff: `StegVerse-Labs/StegFinCo/FINCO_FUNDING_MIRROR_HANDOFF.md`;
-- run `30749323611`;
+- request validation run `30749323611`;
 - job `91500408682`, success;
 - artifact `8833913602`;
 - digest `sha256:601c0bcab8085be66846459929787c7d86dbaaba14761cefa44ebf7174775f7c`;
-- approval state: `NOT_APPROVED`.
+- state: `NOT_APPROVED`.
 
-The separate StegFinCo repository test defect remains issue `StegVerse-Labs/StegFinCo#4` and does not invalidate the funding-intake validator.
+### Expanded portfolio
+
+Committed expanded-scan and application artifacts:
+
+- expanded opportunity scan: commit `23df9ba41f32044c6256dffaa8cc040e69e102a0`;
+- OTF ICRP application record: commit `b36078d3ddd24e8e255629b96e299abe8575ae7b`;
+- OTF ICRP concept note: commit `772f04511f9b3c7949556d7b2ff2c8c0905f02a7`;
+- NSF SBIR assessment: commit `21606e16600ee35f97c62a4516c67b477e6b8fa2`;
+- sponsor-aware validator: commit `b3aac7f5cd2cc01b74bbfde9d254c65c5478bc61`;
+- portfolio task registry: commit `7fae04217ae791d2385547c3d64d56a3daad9090`.
+
+The OTF concept note includes a research problem, measurable questions, controlled methods, privacy and safety evaluation, technical outputs, internet-freedom relevance, ethical safeguards, applicant/host posture, evidence gaps and a fail-closed submission prohibition.
 
 ## Exact incomplete tasks
 
-### Supporting sponsor documents
+### PESOSE supporting and authority records
 
-- Task: `FUNDING-NSF-PESOSE-2026-001`
-- Owner: StegScholar funding lane
-- Location: `funding/applications/active/`
-- State: `CLAIMED_FOR_IMPLEMENTATION`
-- Next action: complete references and sponsor supporting documents without inventing blocked facts.
+- Application task: `FUNDING-NSF-PESOSE-2026-001` at `funding/applications/active/FUNDING-NSF-PESOSE-2026-001-project-description.md`.
+- Applicant gates: `FUNDING-PESOSE-HUMAN-GATES-004` at `funding/applications/active/FUNDING-NSF-PESOSE-2026-001-eligibility.md`.
+- Product evidence: `FUNDING-PESOSE-PRODUCT-EVIDENCE-005` at `funding/applications/active/FUNDING-NSF-PESOSE-2026-001-product-evidence.md`.
+- Budget response: `FUNDING-PESOSE-BUDGET-AUTHORITY-006` at `StegVerse-Labs/StegFinCo/funding-intake/FUNDING-NSF-PESOSE-2026-001-budget-response.json`.
+- IP classification: `FUNDING-PESOSE-IP-AUTHORITY-007` at `funding/dependencies/stegpatents-authority-gap.md`.
 
-### Applicant and submission authority
+### OTF ICRP evidence
 
-- Task: `FUNDING-PESOSE-HUMAN-GATES-004`
-- Owner: human corporate and applicant-registration authority
-- Location: `funding/applications/active/FUNDING-NSF-PESOSE-2026-001-eligibility.md`
-- State: `BLOCKED`
-- Release condition: legal entity, ownership/control, PI employment, work eligibility, UEI, active SAM.gov, submission system, and AOR evidence.
+- Task: `FUNDING-OTF-ICRP-2026-001`.
+- Owner: StegScholar OTF ICRP lane plus the eventual named individual applicant.
+- Location: `funding/applications/active/FUNDING-OTF-ICRP-2026-001-concept-note.md`.
+- Missing evidence: applicant identity, CV, relevant experience, work authorization and certifications, full-time availability, monthly milestones, project duration, budget, ethical-review pathway, protected-disclosure classification and practitioner or partner evidence.
+- Release condition: concept note becomes submission-ready, receives a committed no-go, or is superseded.
 
-### Product and adoption evidence
+### NSF SBIR eligibility
 
-- Task: `FUNDING-PESOSE-PRODUCT-EVIDENCE-005`
-- Owner: StegCore maintainers and StegScholar funding lane
-- Location: `funding/applications/active/FUNDING-NSF-PESOSE-2026-001-product-evidence.md`
-- State: `BLOCKED`
-- Release condition: governing license, implemented boundary, development/testing/dissemination evidence, and three to five qualifying independent letters.
+- Task: `FUNDING-NSF-SBIR-2026-001`.
+- Owner: human corporate authority and StegScholar funding lane.
+- Location: `funding/applications/candidates/FUNDING-NSF-SBIR-2026-001-assessment.md`.
+- Release condition: qualifying small-business, ownership, PI employment, product rights and one selected Phase I innovation are evidenced.
 
-### Budget authority response
+### Academic partners
 
-- Task: `FUNDING-PESOSE-BUDGET-AUTHORITY-006`
-- Owner: authorized StegFinCo budget approver
-- Location: `StegVerse-Labs/StegFinCo/funding-intake/FUNDING-NSF-PESOSE-2026-001-budget-response.json`
-- State: `BLOCKED`
-- Release condition: authoritative assumptions and an `APPROVED`, `BLOCKED`, or `NO_GO` response.
-
-### Protected-disclosure authority
-
-- Task: `FUNDING-PESOSE-IP-AUTHORITY-007`
-- Owner: named human IP authority or future canonical StegPatents repository
-- Location: `funding/dependencies/stegpatents-authority-gap.md`
-- State: `BLOCKED`
-- Release condition: application-specific disclosure classification.
+- Task: `FUNDING-ACADEMIC-PARTNERS-009`.
+- Owner: StegScholar partnership lane.
+- Location: `funding/opportunities/2026-08-02-expanded-scan.md`.
+- Release condition: a qualifying institution, PI appointment and project-specific interest are recorded before opening any application.
 
 ## Automation
 
@@ -140,11 +130,11 @@ Run:
 python funding/tools/validate_funding_state.py
 ```
 
-The GitHub Actions workflow triggers on material `funding/**` changes, qualifying pull requests, and manual dispatch. It creates an inspectable JSON receipt and uploaded artifact and fails closed when required records or controls are missing.
+The validator now checks both active applications, the OTF concept-note safety controls, sponsor-specific authority assignments, deadlines, evidence references, active claims, the expanded opportunity scan, the SBIR assessment, the PESOSE budget and the Project Description. GitHub Actions triggers on material `funding/**` changes, qualifying pull requests and manual dispatch, producing an inspectable receipt and artifact.
 
 ## Propagation
 
-No propagation is authorized to Site, Publisher, admissibility-wiki, stegguardian-wiki, or master-records before a validated submission, award, publication, or custody classification.
+No propagation is authorized to Site, Publisher, admissibility-wiki, stegguardian-wiki or master-records before a validated submission, award, publication or custody classification.
 
 ## Session consolidation
 
@@ -152,23 +142,26 @@ MERGED INTO:
 
 - `StegVerse-Labs/StegScholar/funding/FUNDING_MIRROR_HANDOFF.md`;
 - `StegVerse-Labs/StegScholar/funding/coordination/funding-tasks.json`;
-- `StegVerse-Labs/StegScholar/funding/evidence/project-description-installation.json`;
+- `StegVerse-Labs/StegScholar/funding/opportunities/2026-08-02-expanded-scan.md`;
+- `StegVerse-Labs/StegScholar/funding/applications/active/FUNDING-OTF-ICRP-2026-001.json`;
+- `StegVerse-Labs/StegScholar/funding/applications/active/FUNDING-OTF-ICRP-2026-001-concept-note.md`;
+- `StegVerse-Labs/StegScholar/funding/applications/candidates/FUNDING-NSF-SBIR-2026-001-assessment.md`;
 - `StegVerse-Labs/StegFinCo/FINCO_FUNDING_MIRROR_HANDOFF.md`.
 
-No session-specific implementation fact or remaining authority boundary exists only in conversation history.
+No session-specific opportunity, selection decision, application draft, blocker, authority boundary or next action remains only in conversation history.
 
 ## Completion accounting
 
-Current denominator: 25 canonical funding, application, integration, and evidence deliverables.
+Current denominator: 30 canonical funding, application, integration, evidence and expanded-portfolio deliverables.
 
-- task completion: `21/25 = 84%`;
-- developed files: `25/25 = 100%` for currently authorized repository-owned artifacts;
-- validation: `8/9 = 89%` because repository and narrative validation are complete while authority-response validation remains pending;
-- integration: `5/8 = 63%`;
-- propagation: `0/1 = 0%`, not yet authorized;
-- goal activation: `72%` toward authorized PESOSE submission;
-- session consolidation: `9/9 = 100%`.
+- task completion: `24/30 = 80%`;
+- developed files: `30/30 = 100%` for currently authorized repository-owned artifacts;
+- validation: `8/10 = 80%` before hosted expanded-portfolio validation and authority-response validation;
+- integration: `6/10 = 60%`;
+- propagation: `0/1 = 0%`, not authorized;
+- goal activation: `48%` toward an active multi-opportunity StegVerse funding portfolio with two drafted applications and durable commercial/academic candidate lanes;
+- session consolidation: `10/10 = 100%`.
 
 ## Archive condition
 
-The conversation is archive-ready because remaining work is fully assigned to canonical repository tasks and named authority boundaries. Archival does not imply sponsor submission readiness.
+This conversation may be archived after hosted validation of the expanded portfolio is inspected and recorded. Archival will not imply that PESOSE, OTF ICRP, NSF SBIR or any partner-led opportunity is submission-ready.
