@@ -5,13 +5,14 @@
   "validation_branch": "formal/activate-gtg-task-discovery-v1",
   "validation_workflow": ".github/workflows/reconcile-gtg-task-registry.yml",
   "validator": "scripts/reconcile_gtg_task_registry.py",
-  "activation_state": "PENDING_HOSTED_SUCCESS",
+  "activation_state": "ACTIVE",
   "required_terminal_evidence": {
     "workflow_name": "Reconcile StegVerse GTG task registry",
+    "run_id": 30736159822,
     "conclusion": "success"
   },
   "bounded_posture": {
-    "task_discovery": "CANDIDATE",
+    "task_discovery": "ACTIVE",
     "external_tasks": 0,
     "development_halted": false
   },
