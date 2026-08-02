@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0",
+  "goal_id": "RIGEL-VALIDATION-001",
+  "owner_repository": "StegVerse-Labs/StegScholar",
+  "branch": "main",
+  "active_task_id": "RIGEL-VERIFY-WORKFLOW-003",
+  "allowed_statuses": [
+    "COMPLETE",
+    "BLOCKED",
+    "RETRY",
+    "REVIEW_REQUIRED",
+    "FAILED"
+  ],
+  "tasks": [
+    {
+      "task_id": "RIGEL-SCALAR-BENCHMARK-001",
+      "location": "papers/recoverability-geometry-rigel-number/simulations/scalar_delayed_control.py",
+      "owner": "repository-native workflow",
+      "status": "COMPLETE",
+      "completion_evidence": [
+        "commit:46322db84e2d3d71df47cd4b13e04974b5c2c396"
+      ],
+      "successor": "RIGEL-AUTOMATED-VALIDATION-002"
+    },
+    {
+      "task_id": "RIGEL-AUTOMATED-VALIDATION-002",
+      "location": ".github/workflows/rigel-validation.yml",
+      "owner": "repository-native workflow",
+      "status": "COMPLETE",
+      "completion_evidence": [
+        "commit:b6526c17c9665085adf623b3fe2294257039d48a"
+      ],
+      "successor": "RIGEL-VERIFY-WORKFLOW-003"
+    },
+    {
+      "task_id": "RIGEL-VERIFY-WORKFLOW-003",
+      "location": "evidence/rigel-validation/latest/validation-state.json",
+      "owner": ".github/workflows/rigel-validation.yml",
+      "status": "RETRY",
+      "trigger": "push affecting the Rigel simulation lane or manual workflow dispatch",
+      "release_condition": "A successful hosted run persists compact summaries, receipts, and validation-state.json under evidence/rigel-validation/latest/.",
+      "failure_mode": "FAILED",
+      "successor": "RIGEL-STATISTICAL-CROSSCHECK-005"
+    },
+    {
+      "task_id": "RIGEL-REPAIR-VALIDATION-EVIDENCE-004",
+      "location": ".github/workflows/rigel-validation.yml",
+      "owner": "repository-native workflow maintainer",
+      "status": "BLOCKED",
+      "trigger": "validation-state.json reports FAILED or hosted workflow fails",
+      "release_condition": "Workflow rerun succeeds and validation evidence is persisted.",
+      "successor": "RIGEL-VERIFY-WORKFLOW-003"
+    },
+    {
+      "task_id": "RIGEL-STATISTICAL-CROSSCHECK-005",
+      "location": "papers/recoverability-geometry-rigel-number/simulations/crosscheck_baselines.py",
+      "owner": "StegVerse-Labs/StegScholar",
+      "status": "BLOCKED",
+      "release_condition": "RIGEL-VERIFY-WORKFLOW-003 produces a non-FAILED state with fitted metrics.",
+      "required_output": "evidence/rigel-validation/latest/statistical-crosscheck.json",
+      "successor": "RIGEL-KURAMOTO-BENCHMARK-008"
+    },
+    {
+      "task_id": "RIGEL-REVISE-PHASE-HYPOTHESIS-006",
+      "location": "papers/recoverability-geometry-rigel-number/claims-register.md",
+      "owner": "StegVerse Research",
+      "status": "BLOCKED",
+      "release_condition": "validation-state.json reports zero partition-dependent outcomes.",
+      "successor": "RIGEL-KURAMOTO-BENCHMARK-008"
+    },
+    {
+      "task_id": "RIGEL-REVISE-PREDICTIVE-CLAIM-007",
+      "location": "papers/recoverability-geometry-rigel-number/claims-register.md",
+      "owner": "StegVerse Research",
+      "status": "BLOCKED",
+      "release_condition": "validation-state.json reports no held-out gain over both aggregate baselines.",
+      "successor": "RIGEL-KURAMOTO-BENCHMARK-008"
+    },
+    {
+      "task_id": "RIGEL-KURAMOTO-BENCHMARK-008",
+      "location": "papers/recoverability-geometry-rigel-number/simulations/delayed_kuramoto.py",
+      "owner": "StegVerse-Labs/StegScholar",
+      "status": "BLOCKED",
+      "release_condition": "Scalar benchmark interpretation is durably recorded following verified execution.",
+      "successor": "RIGEL-QUEUE-BENCHMARK-009"
+    },
+    {
+      "task_id": "RIGEL-QUEUE-BENCHMARK-009",
+      "location": "papers/recoverability-geometry-rigel-number/simulations/queue_recovery.py",
+      "owner": "StegVerse-Labs/StegScholar",
+      "status": "BLOCKED",
+      "release_condition": "Kuramoto benchmark source and independent outcome definition are committed.",
+      "successor": "RIGEL-PUBLICATION-ASSETS-010"
+    },
+    {
+      "task_id": "RIGEL-PUBLICATION-ASSETS-010",
+      "location": "papers/recoverability-geometry-rigel-number/figures/",
+      "owner": "StegVerse-Labs/StegScholar",
+      "status": "BLOCKED",
+      "release_condition": "At least one verified benchmark result is available for non-placeholder figures.",
+      "successor": null
+    }
+  ],
+  "archive_condition": "All session-specific decisions and evidence are committed; every unresolved task has a repository owner, machine-observable release condition, and successor; no unverified mutation remains owned by the session."
+}
