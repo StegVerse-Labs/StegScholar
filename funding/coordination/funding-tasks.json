@@ -1,10 +1,10 @@
 {
-  "registry_version": "1.1.0",
+  "registry_version": "1.2.0",
   "goal_id": "FUNDING-PIPELINE-001",
   "repository": "StegVerse-Labs/StegScholar",
   "branch": "main",
   "canonical_handoff": "funding/FUNDING_MIRROR_HANDOFF.md",
-  "updated_at": "2026-08-02T04:58:00-05:00",
+  "updated_at": "2026-08-02T05:03:00-05:00",
   "allowed_states": ["UNCLAIMED","CLAIMED_FOR_IMPLEMENTATION","CLAIMED_FOR_VALIDATION","CLAIMED_FOR_INTEGRATION","MACHINE_OWNED","BLOCKED","COMPLETE","SUPERSEDED","MERGED_INTO_CANONICAL_WORKSTREAM","RETRY","REVIEW_REQUIRED","FAILED"],
   "claims": [
     {
@@ -14,14 +14,14 @@
       "branch": "main",
       "surfaces": ["funding/**", ".github/workflows/funding-state-validation.yml"],
       "claimant": "repository-native funding lane",
-      "role": "implementation",
-      "state": "CLAIMED_FOR_IMPLEMENTATION",
+      "role": "implementation and validation",
+      "state": "CLAIMED_FOR_VALIDATION",
       "claimed_at": "2026-08-02T04:44:00-05:00",
       "expires_at": "2026-08-16T04:44:00-05:00",
-      "release_condition": "Core validator passes in hosted GitHub Actions and the handoff records inspected run evidence",
+      "release_condition": "Hosted validator succeeds and inspected run, job and artifact evidence are recorded in the handoff",
       "expected_evidence": ["validator output", "workflow run id", "workflow job id", "workflow conclusion", "artifact digest"],
-      "collision_boundaries": "No competing funding registry, schema, validator, or workflow on main",
-      "next_task_after_release": "FUNDING-INTEGRATION-002"
+      "collision_boundaries": "No competing funding registry, schema, validator or workflow on main",
+      "next_task_after_release": "FUNDING-REUSABLE-003"
     },
     {
       "task_id": "FUNDING-NSF-PESOSE-2026-001",
@@ -34,8 +34,8 @@
       "state": "CLAIMED_FOR_IMPLEMENTATION",
       "claimed_at": "2026-08-02T04:49:00-05:00",
       "expires_at": "2026-09-01T17:00:00-05:00",
-      "release_condition": "Application is submitted by authorized organizational authority, formally declined by a go/no-go decision, or superseded by a qualified lead applicant",
-      "expected_evidence": ["eligibility evidence", "public-product crosswalk", "seven-page narrative", "approved budget", "disclosure review", "submission receipt or no-go receipt"],
+      "release_condition": "Application is submitted by authorized organizational authority, formally declined by a committed go/no-go decision, or superseded by a qualified lead applicant",
+      "expected_evidence": ["eligibility evidence", "licensed public-product crosswalk", "seven-page narrative", "approved budget", "disclosure review", "three to five collaboration letters", "submission receipt or no-go receipt"],
       "collision_boundaries": "No competing PESOSE application record or unreviewed submission from another StegVerse repository",
       "next_task_after_release": "FUNDING-NSF-SATC-PARTNER-002"
     }
@@ -43,14 +43,14 @@
   "tasks": [
     {
       "task_id": "FUNDING-CORE-001",
-      "title": "Install funding application control surface",
-      "state": "CLAIMED_FOR_IMPLEMENTATION",
+      "title": "Validate funding application control surface",
+      "state": "CLAIMED_FOR_VALIDATION",
       "owner": "StegVerse-Labs/StegScholar",
-      "location": "funding/",
-      "next_action": "Run and inspect hosted funding-state validation",
+      "location": ".github/workflows/funding-state-validation.yml",
+      "next_action": "Run and inspect hosted funding-state validation and record run, job, log and artifact evidence",
       "validation_state": "PENDING_HOSTED_RUN",
-      "integration_state": "NOT_STARTED",
-      "archival_dependency": true,
+      "integration_state": "CONTRACTS_INSTALLED",
+      "archival_dependency": false,
       "evidence_location": "funding/FUNDING_MIRROR_HANDOFF.md"
     },
     {
@@ -59,21 +59,21 @@
       "state": "CLAIMED_FOR_IMPLEMENTATION",
       "owner": "StegVerse-Labs/StegScholar funding lane",
       "location": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-concept.md",
-      "next_action": "Build public-product evidence crosswalk and NSF compliance/page-budget map while human authority resolves applicant registration gates",
-      "validation_state": "ELIGIBILITY_BLOCKED_DRAFT_ACTIVE",
-      "integration_state": "BUDGET_AND_IP_CONTRACTS_PENDING",
-      "archival_dependency": true,
+      "next_action": "Draft project summary and milestones while resolving license, product maturity, collaboration-letter and applicant-registration gates",
+      "validation_state": "PRODUCT_AND_COMPLIANCE_CROSSWALKS_INSTALLED",
+      "integration_state": "AUTHORITY_CONTRACTS_INSTALLED",
+      "archival_dependency": false,
       "evidence_location": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-eligibility.md"
     },
     {
       "task_id": "FUNDING-INTEGRATION-002",
-      "title": "Install IP, budget, and deliverables contracts",
-      "state": "UNCLAIMED",
+      "title": "Install IP, budget and deliverables contracts",
+      "state": "COMPLETE",
       "owner": "StegVerse-Labs/StegScholar",
       "location": "funding/contracts/",
-      "next_action": "Create source and consumer contracts after core validation",
-      "validation_state": "NOT_STARTED",
-      "integration_state": "NOT_STARTED",
+      "next_action": "Obtain application-specific responses from each authority when required",
+      "validation_state": "STATIC_SOURCE_INSPECTION_COMPLETE",
+      "integration_state": "PRODUCER_CONSUMER_ACCEPTANCE_PENDING",
       "archival_dependency": false,
       "evidence_location": "funding/FUNDING_MIRROR_HANDOFF.md"
     },
@@ -83,11 +83,23 @@
       "state": "MACHINE_OWNED",
       "owner": "StegVerse-Labs/StegScholar",
       "location": "funding/reusable/ and funding/schemas/",
-      "next_action": "Generate organization profile, evidence crosswalk schema, and submission receipt schema",
+      "next_action": "Generate organization profile, evidence crosswalk schema and submission receipt schema",
       "validation_state": "NOT_STARTED",
       "integration_state": "NOT_APPLICABLE",
       "archival_dependency": false,
       "evidence_location": "funding/coordination/funding-tasks.json"
+    },
+    {
+      "task_id": "FUNDING-PESOSE-HUMAN-GATES-004",
+      "title": "Resolve legal applicant and submission authority gates",
+      "state": "BLOCKED",
+      "owner": "Human corporate and applicant registration authority",
+      "location": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-eligibility.md",
+      "next_action": "Commit or reference legal entity, ownership/control, PI employment, UEI, SAM.gov, submission-system and AOR evidence",
+      "validation_state": "MISSING_REQUIRED_EVIDENCE",
+      "integration_state": "NOT_APPLICABLE",
+      "archival_dependency": false,
+      "evidence_location": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-eligibility.md"
     }
   ]
 }
