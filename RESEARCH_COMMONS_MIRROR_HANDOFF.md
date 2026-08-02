@@ -116,6 +116,27 @@ python research_commons/tools/check_publisher_source_drift.py
 python research_commons/tools/check_research_commons_control_state.py
 ```
 
+## Cross-repository dependencies
+
+```text
+GCAT-BCAT-Engine/Publisher
+  owns publication custody, source catalog correction, and manifest/runtime reconciliation
+
+StegVerse-Labs/StegScholar
+  owns Research Commons indexing, posture, lineage, duplicate discovery, reuse review contracts, and fail-closed dispatch generation
+
+StegVerse-Labs/Site
+  owns projection acceptance, deployment, public-path observation, and runtime activation after repository-orchestrator admission
+
+StegVerse-Labs/Site/docs/TIDC_MIRROR_HANDOFF.md
+  owns TIDC scientific execution; Commons may only consume a governed projection and must not create competing evidence authority
+
+StegVerse-Labs/StegPay and GCAT-BCAT-Engine/workflows
+  retain payment-evidence and governed-research execution boundaries; Commons creates no payment authority
+```
+
+No propagation to `admissibility-wiki`, `stegguardian-wiki`, or `master-records` is claimed until a versioned contract names a packet, destination, validator, and receipt.
+
 ## Canonical continuation and session merge
 
 ```text
