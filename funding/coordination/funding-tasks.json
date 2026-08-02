@@ -1,10 +1,10 @@
 {
-  "registry_version": "1.7.0",
+  "registry_version": "1.8.0",
   "goal_id": "FUNDING-PIPELINE-001",
   "repository": "StegVerse-Labs/StegScholar",
   "branch": "main",
   "canonical_handoff": "funding/FUNDING_MIRROR_HANDOFF.md",
-  "updated_at": "2026-08-02T12:10:00-05:00",
+  "updated_at": "2026-08-02T15:58:00-05:00",
   "allowed_states": ["UNCLAIMED","CLAIMED_FOR_IMPLEMENTATION","CLAIMED_FOR_VALIDATION","CLAIMED_FOR_INTEGRATION","MACHINE_OWNED","BLOCKED","COMPLETE","SUPERSEDED","MERGED_INTO_CANONICAL_WORKSTREAM","RETRY","REVIEW_REQUIRED","FAILED"],
   "claims": [
     {
@@ -22,6 +22,22 @@
       "expected_evidence": ["eligibility evidence", "licensed public-product crosswalk", "validated project description", "approved budget", "disclosure review", "three to five collaboration letters", "submission receipt or no-go receipt"],
       "collision_boundaries": "No competing PESOSE application record or unreviewed submission from another StegVerse repository",
       "next_task_after_release": "FUNDING-NSF-SATC-PARTNER-002"
+    },
+    {
+      "task_id": "FUNDING-OTF-ICRP-2026-001",
+      "originating_goal": "Broaden the funding search and begin additional high-fit StegVerse applications",
+      "repository": "StegVerse-Labs/StegScholar",
+      "branch": "main",
+      "surfaces": ["funding/applications/active/FUNDING-OTF-ICRP-2026-001*"],
+      "claimant": "repository-native OTF ICRP lane",
+      "role": "concept-note drafting and ethical eligibility control",
+      "state": "CLAIMED_FOR_IMPLEMENTATION",
+      "claimed_at": "2026-08-02T15:42:00-05:00",
+      "expires_at": "2026-09-07T23:59:00+00:00",
+      "release_condition": "Concept note is submitted by an eligible individual, formally declined, blocked by a committed no-go decision, or superseded by a stronger OTF application",
+      "expected_evidence": ["named applicant", "CV or resume", "eligibility and work-authorization evidence", "internet-freedom relevance evidence", "ethical and safety plan", "concept-note submission receipt or no-go receipt"],
+      "collision_boundaries": "No second OTF ICRP concept note using the same governed-evidence research question or applicant identity",
+      "next_task_after_release": "FUNDING-OTF-IFF-ROLLING-002"
     }
   ],
   "tasks": [
@@ -48,6 +64,54 @@
       "integration_state": "STEGFINCO_INTAKE_VALIDATED_AUTHORITY_RESPONSE_PENDING",
       "archival_dependency": false,
       "evidence_location": "funding/evidence/project-description-installation.json"
+    },
+    {
+      "task_id": "FUNDING-OTF-ICRP-2026-001",
+      "title": "Prepare OTF ICRP 2026 concept note",
+      "state": "CLAIMED_FOR_IMPLEMENTATION",
+      "owner": "StegVerse-Labs/StegScholar OTF ICRP lane",
+      "location": "funding/applications/active/FUNDING-OTF-ICRP-2026-001-concept-note.md",
+      "next_action": "Install named applicant, CV, relevant experience, ethical eligibility, availability, milestone and budget evidence without inventing affiliations or affected-community experience",
+      "validation_state": "STATIC_DRAFT_INSTALLED_HOSTED_VALIDATION_PENDING",
+      "integration_state": "HOST_ORGANIZATION_DEFERRED_TO_STAGE_2_APPLICANT_AUTHORITY_PENDING",
+      "archival_dependency": false,
+      "evidence_location": "funding/applications/active/FUNDING-OTF-ICRP-2026-001.json"
+    },
+    {
+      "task_id": "FUNDING-EXPANDED-SCAN-008",
+      "title": "Maintain expanded current opportunity portfolio",
+      "state": "MACHINE_OWNED",
+      "owner": "StegVerse-Labs/StegScholar funding lane",
+      "location": "funding/opportunities/2026-08-02-expanded-scan.md",
+      "next_action": "Revalidate deadlines and open status before any application state advances or at the next scheduled funding scan",
+      "validation_state": "PRIMARY_SOURCE_WEB_REVIEW_COMPLETE_REPOSITORY_VALIDATION_PENDING",
+      "integration_state": "OTF_ICRP_ACTIVE_SBIR_AND_PARTNER_LANES_REGISTERED",
+      "archival_dependency": false,
+      "evidence_location": "funding/opportunities/2026-08-02-expanded-scan.md"
+    },
+    {
+      "task_id": "FUNDING-NSF-SBIR-2026-001",
+      "title": "Resolve NSF SBIR AI and cybersecurity applicant and candidate selection",
+      "state": "BLOCKED",
+      "owner": "Human corporate authority and StegScholar funding lane",
+      "location": "funding/applications/candidates/FUNDING-NSF-SBIR-2026-001-assessment.md",
+      "next_action": "Provide qualifying U.S. small-business, ownership, PI employment, product-rights and candidate-selection evidence",
+      "validation_state": "TOPIC_FIT_VERIFIED_APPLICANT_ELIGIBILITY_UNVERIFIED",
+      "integration_state": "CONSOLIDATED_AI_AND_CYBERSECURITY_WORKSTREAM",
+      "archival_dependency": false,
+      "evidence_location": "funding/applications/candidates/FUNDING-NSF-SBIR-2026-001-assessment.md"
+    },
+    {
+      "task_id": "FUNDING-ACADEMIC-PARTNERS-009",
+      "title": "Identify eligible academic leads for SaTC, Future CoRe, MFAI, ECR, CyberTraining and CICI",
+      "state": "BLOCKED",
+      "owner": "StegScholar partnership lane",
+      "location": "funding/opportunities/2026-08-02-expanded-scan.md",
+      "next_action": "Record a qualifying lead institution, PI appointment and project-specific interest before opening any partner-led application",
+      "validation_state": "PROGRAM_FIT_SCREENED_ELIGIBLE_LEADS_MISSING",
+      "integration_state": "NO_PARTNER_APPLICATIONS_OPENED",
+      "archival_dependency": false,
+      "evidence_location": "funding/opportunities/2026-08-02-expanded-scan.md"
     },
     {
       "task_id": "FUNDING-INTEGRATION-002",
