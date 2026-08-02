@@ -1,0 +1,33 @@
+name: Funding State Validation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "funding/**"
+      - ".github/workflows/funding-state-validation.yml"
+  pull_request:
+    paths:
+      - "funding/**"
+      - ".github/workflows/funding-state-validation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate funding state
+        run: python funding/tools/validate_funding_state.py
+      - name: Upload validation receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: funding-state-validation
+          path: funding/evidence/latest-validation.json
+          if-no-files-found: error
