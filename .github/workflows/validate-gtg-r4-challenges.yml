@@ -6,12 +6,16 @@ on:
     paths:
       - 'papers/generalized-transition-governance/reconstruction/r4-challenge-corpus.md'
       - 'coordination/gtg-r4-challenge-cases.json'
+      - 'coordination/gtg-r4-challenge-task.json'
+      - 'coordination/gtg-r4-challenge-validation-receipt.json'
       - 'scripts/validate_gtg_r4_challenges.py'
       - '.github/workflows/validate-gtg-r4-challenges.yml'
   pull_request:
     paths:
       - 'papers/generalized-transition-governance/reconstruction/r4-challenge-corpus.md'
       - 'coordination/gtg-r4-challenge-cases.json'
+      - 'coordination/gtg-r4-challenge-task.json'
+      - 'coordination/gtg-r4-challenge-validation-receipt.json'
       - 'scripts/validate_gtg_r4_challenges.py'
       - '.github/workflows/validate-gtg-r4-challenges.yml'
   workflow_dispatch:
@@ -28,3 +32,18 @@ jobs:
         with:
           python-version: '3.12'
       - run: python scripts/validate_gtg_r4_challenges.py
+      - name: Verify bounded activation receipt
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          task = json.loads(Path('coordination/gtg-r4-challenge-task.json').read_text())
+          receipt = json.loads(Path('coordination/gtg-r4-challenge-validation-receipt.json').read_text())
+          assert task['task_id'] == 'SV-GTG-R4-CHALLENGE-007'
+          assert task['external_task'] is False
+          assert task['dependency_posture'] == 'NONE'
+          assert receipt['task_id'] == task['task_id']
+          for value in receipt['claims'].values():
+              assert value is False
+          print('STEGVERSE GTG R4 CHALLENGE RECEIPT: PASS')
+          PY
