@@ -1,0 +1,32 @@
+{
+  "request_id": "OTF-ICRP-BUDGET-001",
+  "application_id": "FUNDING-OTF-ICRP-2026-001",
+  "currency": "USD",
+  "state": "DRAFT_UNAPPROVED",
+  "requested_amount": null,
+  "duration_months": 6,
+  "categories": [
+    {"category": "researcher_compensation", "amount": null, "basis": "Applicant rate and time commitment not yet authorized"},
+    {"category": "technical_infrastructure", "amount": null, "basis": "Controlled test environment and storage assumptions pending"},
+    {"category": "practitioner_and_ethical_review", "amount": null, "basis": "Reviewer identities, rates, and scope pending"},
+    {"category": "travel_or_local_engagement", "amount": null, "basis": "No travel or field activity authorized"},
+    {"category": "publication_and_translation", "amount": null, "basis": "Disclosure-approved dissemination scope pending"},
+    {"category": "host_or_fiscal_sponsor_costs", "amount": null, "basis": "Host organization deferred unless invited to Stage 2"}
+  ],
+  "authority": {
+    "owner": "APPLICATION_SPECIFIC_AUTHORITY_REQUIRED",
+    "approval_state": "NOT_APPROVED",
+    "self_approval_prohibited": true
+  },
+  "required_inputs": [
+    "named applicant",
+    "authorized compensation rate",
+    "time commitment",
+    "technical infrastructure assumptions",
+    "reviewer and practitioner scope",
+    "travel and field-activity decision",
+    "host or fiscal-sponsor pathway",
+    "applicable taxes and indirect costs"
+  ],
+  "next_action": "Authorized applicant-specific financial authority must issue an APPROVED, BLOCKED, or NO_GO response after required inputs are evidenced."
+}
