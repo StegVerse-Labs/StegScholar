@@ -1,0 +1,44 @@
+name: Validate StegVerse GTG R5 reality contact
+
+on:
+  pull_request:
+    paths:
+      - 'papers/generalized-transition-governance/reconstruction/r5-reality-contact.md'
+      - 'fixtures/gtg/reconstruction/r5/**'
+      - 'scripts/validate_gtg_r5_reality_contact.py'
+      - 'coordination/gtg-reconstruction-tasks.json'
+      - '.github/workflows/validate-gtg-r5-reality-contact.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'papers/generalized-transition-governance/reconstruction/r5-reality-contact.md'
+      - 'fixtures/gtg/reconstruction/r5/**'
+      - 'scripts/validate_gtg_r5_reality_contact.py'
+      - 'coordination/gtg-reconstruction-tasks.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/validate_gtg_r5_reality_contact.py
+      - name: Verify bounded posture
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          ledger = json.loads(Path('coordination/gtg-reconstruction-tasks.json').read_text())
+          tasks = {task['task_id']: task for task in ledger['tasks']}
+          assert tasks['SV-GTG-R5-DESIGN-003']['status'] == 'COMPLETE'
+          assert tasks['SV-GTG-R5-FIXTURES-004']['status'] == 'ACTIVE_VALIDATION'
+          for value in ledger['claims'].values():
+              assert value is False
+          print('STEGVERSE GTG R5 POSTURE: PASS')
+          PY

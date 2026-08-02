@@ -12,13 +12,7 @@
       "execution_path": "scripts/run_gtg_task_orchestrator.py",
       "status": "READY",
       "execution_mode": "AUTOMATED_OBSERVATION",
-      "dependencies": [
-        {
-          "repository": "Admissible-Existence/ae-validation-factory",
-          "reference": "issue:8",
-          "required_evidence": "merged FACTORY-R4 commit and bounded receipt"
-        }
-      ],
+      "dependencies": [{"repository": "Admissible-Existence/ae-validation-factory", "reference": "issue:8", "required_evidence": "merged FACTORY-R4 commit and bounded receipt"}],
       "next_action": "Run the repository-owned observer. When a merged FACTORY-R4 receipt is visible, emit R4_MIRROR_UPDATE_READY rather than halting.",
       "completion_evidence": "observer report contains FACTORY_R4_ACTIVE with a commit SHA",
       "on_complete_activate": "SV-GTG-R4-MIRROR-002"
@@ -29,37 +23,50 @@
       "exists_at": "StegVerse-Labs/StegScholar:coordination/gtg-reconstruction-tasks.json#SV-GTG-R4-MIRROR-002",
       "execution_repository": "StegVerse-Labs/StegScholar",
       "execution_path": "manifests/gtg-reconstruction-mirror-v1.json",
-      "status": "BLOCKED",
+      "status": "BLOCKED_OBSERVED",
       "execution_mode": "REPOSITORY_MUTATION",
       "dependencies": ["SV-GTG-R4-OBSERVE-001"],
       "next_action": "Insert the observed FACTORY-R4 commit, change R4 factory posture to ACTIVE, and run scripts/validate_gtg_reconstruction_mirror.py.",
       "completion_evidence": "manifest validates with R4 target and factory both ACTIVE",
-      "on_complete_activate": "SV-GTG-R5-DESIGN-003"
+      "on_complete_activate": null
     },
     {
       "task_id": "SV-GTG-R5-DESIGN-003",
       "title": "Build StegVerse R5 reality-contact mirror taxonomy",
-      "exists_at": "StegVerse-Labs/StegScholar:coordination/gtg-reconstruction-tasks.json#SV-GTG-R5-DESIGN-003",
+      "exists_at": "StegVerse-Labs/StegScholar:papers/generalized-transition-governance/reconstruction/r5-reality-contact.md",
       "execution_repository": "StegVerse-Labs/StegScholar",
       "execution_path": "papers/generalized-transition-governance/reconstruction/r5-reality-contact.md",
-      "status": "READY",
+      "status": "COMPLETE",
       "execution_mode": "REPOSITORY_MUTATION",
       "dependencies": [],
-      "next_action": "Define evidence classes, provenance boundaries, internal-simulation exclusions, and fail-closed promotion rules without claiming R5 PASS.",
-      "completion_evidence": "document, bounded claims, fixtures, and validator references exist",
+      "next_action": "Preserve the bounded taxonomy and use it as the governing input for R5 fixture validation.",
+      "completion_evidence": "papers/generalized-transition-governance/reconstruction/r5-reality-contact.md at branch formal/gtg-r5-reality-contact-v1",
       "on_complete_activate": "SV-GTG-R5-FIXTURES-004"
     },
     {
       "task_id": "SV-GTG-R5-FIXTURES-004",
-      "title": "Create StegVerse R5 mirror fixtures",
-      "exists_at": "StegVerse-Labs/StegScholar:coordination/gtg-reconstruction-tasks.json#SV-GTG-R5-FIXTURES-004",
+      "title": "Create and validate StegVerse R5 mirror fixtures",
+      "exists_at": "StegVerse-Labs/StegScholar:fixtures/gtg/reconstruction/r5/cases.json",
       "execution_repository": "StegVerse-Labs/StegScholar",
-      "execution_path": "fixtures/gtg/reconstruction/r5/",
-      "status": "BLOCKED",
-      "execution_mode": "REPOSITORY_MUTATION",
+      "execution_path": "scripts/validate_gtg_r5_reality_contact.py",
+      "status": "ACTIVE_VALIDATION",
+      "execution_mode": "REPOSITORY_MUTATION_AND_HOSTED_VALIDATION",
       "dependencies": ["SV-GTG-R5-DESIGN-003"],
-      "next_action": "Add provider-receipt, custody, human-observed, internal-only, stale-evidence, and detached-effect cases.",
-      "completion_evidence": "fixture set and expected bounded outcomes validate",
+      "next_action": "Run .github/workflows/validate-gtg-r5-reality-contact.yml and merge only after hosted success.",
+      "completion_evidence": "ten bounded fixtures pass hosted validation and preserve all authority/readiness claims as false",
+      "on_complete_activate": "SV-GTG-R5-MIRROR-005"
+    },
+    {
+      "task_id": "SV-GTG-R5-MIRROR-005",
+      "title": "Record bounded StegVerse R5 mirror posture",
+      "exists_at": "StegVerse-Labs/StegScholar:manifests/gtg-reconstruction-mirror-v1.json#levels.R5",
+      "execution_repository": "StegVerse-Labs/StegScholar",
+      "execution_path": "manifests/gtg-reconstruction-mirror-v1.json",
+      "status": "QUEUED",
+      "execution_mode": "REPOSITORY_MUTATION",
+      "dependencies": ["SV-GTG-R5-FIXTURES-004"],
+      "next_action": "After fixture validation, record StegVerse taxonomy and fixture validation as ACTIVE while retaining canonical R5 and independent R5 as NOT_TESTED.",
+      "completion_evidence": "mirror manifest distinguishes StegVerse internal validation from canonical and independent R5 completion",
       "on_complete_activate": null
     }
   ],

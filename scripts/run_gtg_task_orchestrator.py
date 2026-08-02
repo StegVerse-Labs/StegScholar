@@ -3,7 +3,6 @@ from __future__ import annotations
 
 import json
 import os
-import sys
 import urllib.error
 import urllib.request
 from pathlib import Path
@@ -12,7 +11,16 @@ ROOT = Path(__file__).resolve().parents[1]
 LEDGER = ROOT / "coordination" / "gtg-reconstruction-tasks.json"
 REPORT = ROOT / "coordination" / "gtg-reconstruction-task-report.json"
 
-VALID_STATUSES = {"READY", "RUNNING", "BLOCKED", "COMPLETE"}
+VALID_STATUSES = {
+    "READY",
+    "RUNNING",
+    "ACTIVE_VALIDATION",
+    "QUEUED",
+    "BLOCKED",
+    "BLOCKED_OBSERVED",
+    "COMPLETE",
+}
+ACTIONABLE_STATUSES = {"READY", "RUNNING", "ACTIVE_VALIDATION"}
 
 
 def fail(message: str) -> None:
@@ -60,7 +68,7 @@ def validate_task(task: dict, ids: set[str]) -> None:
     if missing:
         fail(f"{task.get('task_id', '<unknown>')} missing fields: {sorted(missing)}")
     if task["status"] not in VALID_STATUSES:
-        fail(f"{task['task_id']} invalid status")
+        fail(f"{task['task_id']} invalid status: {task['status']}")
     if not task["exists_at"].startswith("StegVerse-Labs/StegScholar:"):
         fail(f"{task['task_id']} has no StegVerse task location")
     if task["execution_repository"] != "StegVerse-Labs/StegScholar":
@@ -85,21 +93,24 @@ def main() -> None:
 
     observation = observe_factory_r4()
     actionable: list[dict] = []
+    effective_statuses: dict[str, str] = {}
     for task in tasks:
         effective_status = task["status"]
         if task["task_id"] == "SV-GTG-R4-OBSERVE-001" and observation["state"] == "FACTORY_R4_ACTIVE":
             effective_status = "COMPLETE"
         if task["task_id"] == "SV-GTG-R4-MIRROR-002" and observation["state"] == "FACTORY_R4_ACTIVE":
             effective_status = "READY"
-        if effective_status == "READY":
+        effective_statuses[task["task_id"]] = effective_status
+        if effective_status in ACTIONABLE_STATUSES:
             actionable.append({
                 "task_id": task["task_id"],
+                "status": effective_status,
                 "exists_at": task["exists_at"],
                 "execution_path": task["execution_path"],
                 "next_action": task["next_action"]
             })
 
-    incomplete = any(task["status"] != "COMPLETE" for task in tasks)
+    incomplete = any(status != "COMPLETE" for status in effective_statuses.values())
     if incomplete and not actionable:
         fail("development would halt: no executable local task is exposed")
 
@@ -107,6 +118,7 @@ def main() -> None:
         "schema_version": "stegverse-gtg-task-report.v1",
         "program": ledger["program"],
         "factory_r4_observation": observation,
+        "effective_statuses": effective_statuses,
         "actionable_tasks": actionable,
         "development_halted": False,
         "archive_ready": False,
