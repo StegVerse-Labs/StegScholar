@@ -1,0 +1,12 @@
+{
+  "declaration_id": "invalid-cyclic-kernel",
+  "subject_id": "process-example",
+  "resolution": "event",
+  "events": ["A", "B"],
+  "identity_evidence_refs": ["evidence://identity"],
+  "kernel_relations": [["A", "B"], ["B", "A"]],
+  "branch_orders": [{"branch_id": "cycle", "relations": [["A", "B"], ["B", "A"]]}],
+  "operational_quotient": {"equivalence_classes": []},
+  "resolution_maps": [],
+  "gtg_admissibility": null
+}

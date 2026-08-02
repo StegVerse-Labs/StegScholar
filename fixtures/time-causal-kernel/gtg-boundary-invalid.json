@@ -1,0 +1,12 @@
+{
+  "declaration_id": "invalid-gtg-boundary",
+  "subject_id": "process-example",
+  "resolution": "event",
+  "events": ["A"],
+  "identity_evidence_refs": ["evidence://identity"],
+  "kernel_relations": [],
+  "branch_orders": [{"branch_id": "single", "relations": []}],
+  "operational_quotient": {"equivalence_classes": []},
+  "resolution_maps": [],
+  "gtg_admissibility": "ALLOW"
+}

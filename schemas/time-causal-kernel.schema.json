@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stegverse.org/schemas/time-causal-kernel.schema.json",
+  "title": "StegVerse Time Causal Kernel",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["declaration_id", "subject_id", "resolution", "events", "identity_evidence_refs", "kernel_relations", "branch_orders", "operational_quotient", "resolution_maps", "gtg_admissibility"],
+  "properties": {
+    "declaration_id": {"type": "string", "minLength": 1},
+    "subject_id": {"type": "string", "minLength": 1},
+    "resolution": {"type": "string", "minLength": 1},
+    "events": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "identity_evidence_refs": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "kernel_relations": {"$ref": "#/$defs/relationSet"},
+    "branch_orders": {
+      "type": "array", "minItems": 1,
+      "items": {"type": "object", "additionalProperties": false, "required": ["branch_id", "relations"],
+        "properties": {"branch_id": {"type": "string", "minLength": 1}, "relations": {"$ref": "#/$defs/relationSet"}}}
+    },
+    "operational_quotient": {
+      "type": "object", "additionalProperties": false, "required": ["equivalence_classes"],
+      "properties": {"equivalence_classes": {"type": "array", "items": {"type": "array", "minItems": 1, "items": {"type": "string"}}}}
+    },
+    "resolution_maps": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["map_id", "from_resolution", "to_resolution", "fine_to_coarse", "fine_serializations", "coarse_serializations", "quotient_distributions"],
+        "properties": {
+          "map_id": {"type": "string", "minLength": 1},
+          "from_resolution": {"type": "string", "minLength": 1},
+          "to_resolution": {"type": "string", "minLength": 1},
+          "fine_to_coarse": {"type": "object", "additionalProperties": {"type": "string"}},
+          "fine_serializations": {"type": "array", "items": {"type": "array", "items": {"type": "string"}}},
+          "coarse_serializations": {"type": "array", "items": {"type": "array", "items": {"type": "string"}}},
+          "quotient_distributions": {"type": "object", "additionalProperties": {"type": "object", "additionalProperties": {"type": "number", "minimum": 0, "maximum": 1}}}
+        }
+      }
+    },
+    "gtg_admissibility": {"type": "null", "description": "Causal-kernel objects never assert GTG admissibility."}
+  },
+  "$defs": {
+    "relationSet": {"type": "array", "uniqueItems": true, "items": {"type": "array", "prefixItems": [{"type": "string"}, {"type": "string"}], "minItems": 2, "maxItems": 2, "items": false}}
+  }
+}

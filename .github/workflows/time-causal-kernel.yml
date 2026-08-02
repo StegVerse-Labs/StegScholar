@@ -1,0 +1,26 @@
+name: Time Causal Kernel
+
+on:
+  pull_request:
+    paths:
+      - 'papers/time/**'
+      - 'schemas/time-causal-kernel.schema.json'
+      - 'fixtures/time-causal-kernel/**'
+      - 'scripts/validate_time_causal_kernel.py'
+      - 'tests/test_time_causal_kernel.py'
+      - '.github/workflows/time-causal-kernel.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run causal-kernel fixture matrix
+        run: python tests/test_time_causal_kernel.py
