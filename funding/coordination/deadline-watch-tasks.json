@@ -1,5 +1,5 @@
 {
-  "registry_version": "1.0.0",
+  "registry_version": "1.1.0",
   "goal_id": "FUNDING-DEADLINE-WATCH-010",
   "repository": "StegVerse-Labs/StegScholar",
   "branch": "main",
@@ -9,6 +9,7 @@
   "trigger": {
     "schedule": "daily at 13:15 UTC",
     "manual": true,
+    "pull_request": true,
     "repository_changes": [
       "funding/applications/active/**",
       "funding/coordination/funding-tasks.json",
@@ -25,24 +26,53 @@
     "GitHub Actions artifact funding-deadline-watch"
   ],
   "states": ["COMPLETE", "FAILED", "ACTIVE", "EXPIRING_SOON", "EXPIRED", "OPEN", "DUE_SOON", "OVERDUE"],
+  "hosted_validation": {
+    "pull_request": 45,
+    "branch": "funding/validate-deadline-watch-20260802",
+    "request_commit": "fa7723e4b3248db5c8a1385982904ef463539d6c",
+    "workflow_commit": "e3a8e489faf1fbb9e305423690202b12bb66df55",
+    "validation_branch_commit": "203d769020f57e6304b159f0cb354a23cc47bcd7",
+    "run_id": 30769208593,
+    "job_id": 91553274727,
+    "conclusion": "success",
+    "artifact_id": 8839953774,
+    "artifact_name": "funding-deadline-watch",
+    "artifact_size_bytes": 1061,
+    "artifact_digest": "sha256:da113b32512289b510ff5c8391188a8f35423153ca80f67aa95b723014e0776f",
+    "artifact_expires_at": "2026-10-31T22:02:20Z",
+    "checked_at": "2026-08-02T22:02:27.918482+00:00",
+    "findings": {
+      "FUNDING-NSF-PESOSE-2026-001": {
+        "claim_state": "ACTIVE",
+        "application_deadline_state": "OPEN",
+        "hours_remaining": 719.96
+      },
+      "FUNDING-OTF-ICRP-2026-001": {
+        "claim_state": "ACTIVE",
+        "application_deadline_state": "OPEN",
+        "hours_remaining": 865.94
+      }
+    },
+    "failures": []
+  },
   "tasks": [
     {
       "task_id": "DEADLINE-WATCH-IMPLEMENTATION-001",
       "state": "COMPLETE",
       "owner": "StegVerse-Labs/StegScholar",
       "location": "funding/tools/check_funding_deadlines.py",
-      "validation_state": "IMPLEMENTED_PENDING_HOSTED_EXECUTION",
-      "integration_state": "WORKFLOW_INSTALLED",
-      "next_action": "Trigger hosted execution and inspect job, logs, artifact and digest",
-      "release_condition": "Hosted execution proves current claims and deadlines are evaluated and a receipt is uploaded"
+      "validation_state": "HOSTED_SUCCESS_RUN_30769208593_JOB_91553274727_ARTIFACT_8839953774",
+      "integration_state": "WORKFLOW_INSTALLED_AND_PR_VALIDATED",
+      "next_action": "Preserve the deterministic watcher and update it when portfolio record formats change",
+      "release_condition": "Superseded by a validated canonical portfolio scheduler"
     },
     {
       "task_id": "DEADLINE-WATCH-OPERATION-002",
       "state": "MACHINE_OWNED",
       "owner": "Funding Deadline Watch workflow",
       "location": ".github/workflows/funding-deadline-watch.yml",
-      "validation_state": "PENDING_FIRST_HOSTED_RUN",
-      "integration_state": "DAILY_SCHEDULE_ACTIVE",
+      "validation_state": "HOSTED_OPERATIONAL_RUN_30769208593",
+      "integration_state": "DAILY_MANUAL_PUSH_AND_PULL_REQUEST_TRIGGERS_ACTIVE",
       "next_action": "Run daily and fail closed on expired claims or overdue nonterminal applications",
       "release_condition": "Superseded by a canonical portfolio scheduler or all tracked applications reach terminal states"
     }
