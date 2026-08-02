@@ -1,0 +1,16 @@
+{
+  "schema_version": "stegverse-gtg-r4-r5-temporal-continuity-cases.v1",
+  "cases": [
+    {"id":"overlap-valid","authority_start":10,"authority_end":30,"evidence_time":20,"evidence_valid_until":25,"boundary_time":22,"revoked_at":null,"expected":"TEMPORAL_CONTINUITY_SURVIVES"},
+    {"id":"authority-expired-before-boundary","authority_start":10,"authority_end":20,"evidence_time":18,"evidence_valid_until":30,"boundary_time":24,"revoked_at":null,"expected":"TEMPORAL_CONTINUITY_FAIL_CLOSED"},
+    {"id":"evidence-stale-before-boundary","authority_start":10,"authority_end":40,"evidence_time":12,"evidence_valid_until":18,"boundary_time":22,"revoked_at":null,"expected":"TEMPORAL_CONTINUITY_FAIL_CLOSED"},
+    {"id":"revoked-before-boundary","authority_start":10,"authority_end":40,"evidence_time":20,"evidence_valid_until":30,"boundary_time":25,"revoked_at":23,"expected":"TEMPORAL_CONTINUITY_FAIL_CLOSED"},
+    {"id":"revoked-after-boundary","authority_start":10,"authority_end":40,"evidence_time":20,"evidence_valid_until":30,"boundary_time":22,"revoked_at":24,"expected":"TEMPORAL_CONTINUITY_SURVIVES"},
+    {"id":"authority-starts-after-boundary","authority_start":24,"authority_end":40,"evidence_time":20,"evidence_valid_until":30,"boundary_time":22,"revoked_at":null,"expected":"TEMPORAL_CONTINUITY_FAIL_CLOSED"},
+    {"id":"missing-authority-end","authority_start":10,"authority_end":null,"evidence_time":20,"evidence_valid_until":30,"boundary_time":22,"revoked_at":null,"expected":"TEMPORAL_CONTINUITY_PARTIAL"},
+    {"id":"missing-evidence-freshness","authority_start":10,"authority_end":40,"evidence_time":20,"evidence_valid_until":null,"boundary_time":22,"revoked_at":null,"expected":"TEMPORAL_CONTINUITY_PARTIAL"},
+    {"id":"contradictory-authority-window","authority_start":30,"authority_end":10,"evidence_time":20,"evidence_valid_until":25,"boundary_time":22,"revoked_at":null,"expected":"TEMPORAL_CONTINUITY_FAIL_CLOSED"},
+    {"id":"contradictory-evidence-window","authority_start":10,"authority_end":40,"evidence_time":30,"evidence_valid_until":20,"boundary_time":22,"revoked_at":null,"expected":"TEMPORAL_CONTINUITY_FAIL_CLOSED"}
+  ],
+  "claims": {"execution_authority":false,"certification_authority":false,"mathematical_closure":false,"independent_verification_complete":false,"release_ready":false,"archive_ready":false}
+}
