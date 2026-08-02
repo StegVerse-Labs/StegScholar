@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0",
+  "recorded_at_utc": "2026-08-02T09:52:00Z",
+  "originating_session_scope": [
+    "formalize coherence boundaries and recoverability",
+    "preserve the Coherence Determinant extension with scientific claim discipline",
+    "test relevance to engineered systems, detector pipelines, and human-AGI governance",
+    "preserve author-controlled Texas Tech University and mentor engagement boundaries",
+    "install executable validation and durable continuation state"
+  ],
+  "disposition": "MERGED",
+  "merged_into": {
+    "handoff": "STEGSCHOLAR_MIRROR_HANDOFF.md",
+    "task_registry": "coordination/rigel-validation-tasks.json",
+    "latest_evidence": "evidence/rigel-validation/latest.json",
+    "canonical_workflow": ".github/workflows/rigel-validation.yml",
+    "merged_pull_request": 34
+  },
+  "authoritative_result": {
+    "workflow_run": 30739542167,
+    "workflow_job": 91474345057,
+    "artifact_id": 8830800522,
+    "artifact_digest": "sha256:24c628a4603ec08e33806f91003145e8743e6972e977da04696278710fb653a9",
+    "validation_state": "REVIEW_REQUIRED",
+    "scientific_result": "Predictive superiority of decomposed latency and the candidate Rigel score was not supported in the current imbalanced scalar benchmark."
+  },
+  "active_continuation": {
+    "task_id": "RIGEL-BALANCED-BENCHMARK-008",
+    "owner": "StegVerse-Labs/StegScholar",
+    "status": "CLAIMED",
+    "location": "papers/recoverability-geometry-rigel-number/simulations/balanced_scalar_benchmark.py",
+    "release_condition": "Remove the 95.5% OOD failure imbalance, preregister paired comparisons, and emit a new validation receipt."
+  },
+  "adjacent_goal_boundaries": {
+    "human_agi": "The formalism may be tested as a shared operational language of limits and recoverability; it is not an AGI-alignment solution.",
+    "detector_calorimetry": "Do not infer real-time timing or event-loss claims from offline energy-reconstruction results; use public or collaborator-approved pipeline evidence.",
+    "institutional_engagement": "Texas Tech University, mentor correspondence, degree history, and outreach strategy are author-controlled context, not scientific evidence or institutional endorsement.",
+    "submission_authority": "No session or repository automation may contact institutions, submit manuscripts, or represent endorsement without explicit authorization from Rigel Randolph."
+  },
+  "duplicate_cleanup": [
+    {
+      "path": ".github/workflows/recoverability-validation.yml",
+      "deletion_commit": "13a24db9981414a70ba2c5384cb3d25df64dcb61",
+      "superseded_by": ".github/workflows/rigel-validation.yml"
+    },
+    {
+      "path": "papers/recoverability-geometry-rigel-number/task-registry.json",
+      "deletion_commit": "942bd3fbe5dac6026ee27c81e2f036d575f310f1",
+      "superseded_by": "coordination/rigel-validation-tasks.json"
+    },
+    {
+      "path": "papers/recoverability-geometry-rigel-number/validation/validate_outputs.py",
+      "deletion_commit": "793f6e9bca3f59c126a04172332eefc5c889bceb",
+      "superseded_by": "papers/recoverability-geometry-rigel-number/simulations/evaluate_validation_state.py"
+    },
+    {
+      "path": "papers/recoverability-geometry-rigel-number/receipts/session-consolidation-2026-08-02.md",
+      "deletion_commit": "4e4620088cf8363c7f5807d59b37d48092aa53d4",
+      "superseded_by": "this convergence record and the canonical handoff"
+    }
+  ],
+  "session_claims": {
+    "implementation": "RELEASED",
+    "validation": "RELEASED",
+    "integration": "RELEASED",
+    "observation": "RELEASED",
+    "unique_chat_dependency": false
+  },
+  "archive_loss_test": {
+    "would_deletion_lose_required_state": false,
+    "reason": "All unique scientific boundaries, adjacent institutional constraints, authoritative evidence, active ownership, blockers, release conditions, and continuation locations are durable in the canonical repository."
+  }
+}
