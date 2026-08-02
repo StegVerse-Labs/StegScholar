@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stegverse.org/schemas/funding/evidence-crosswalk.schema.json",
+  "title": "StegScholar Funding Evidence Crosswalk",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["crosswalk_id", "application_id", "subject", "generated_at", "claims", "decision"],
+  "properties": {
+    "crosswalk_id": {"type": "string", "pattern": "^EVIDENCE-[A-Z0-9-]+$"},
+    "application_id": {"type": "string", "pattern": "^FUNDING-[A-Z0-9-]+$"},
+    "subject": {"type": "string", "minLength": 1},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "claims": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["claim_id", "claim", "state", "evidence", "owner", "next_action"],
+        "properties": {
+          "claim_id": {"type": "string", "minLength": 1},
+          "claim": {"type": "string", "minLength": 1},
+          "state": {"enum": ["VERIFIED", "PARTIAL", "UNVERIFIED", "CONTRADICTED", "NOT_APPLICABLE", "BLOCKED"]},
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["location", "evidence_type", "validation_state"],
+              "properties": {
+                "location": {"type": "string", "minLength": 1},
+                "evidence_type": {"enum": ["FILE", "COMMIT", "WORKFLOW_RUN", "JOB_LOG", "ARTIFACT", "RELEASE", "DEPLOYMENT", "RUNTIME", "PUBLICATION", "SIGNED_RECORD", "EXTERNAL_SOURCE"]},
+                "validation_state": {"enum": ["PRESENT", "INSPECTED", "VALIDATED", "FAILED", "STALE", "UNAVAILABLE"]},
+                "digest": {"type": ["string", "null"]},
+                "notes": {"type": ["string", "null"]}
+              }
+            }
+          },
+          "owner": {"type": "string", "minLength": 1},
+          "next_action": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "rationale", "release_condition"],
+      "properties": {
+        "state": {"enum": ["ACCEPT", "REVIEW_REQUIRED", "BLOCK", "SUPERSEDE"]},
+        "rationale": {"type": "string", "minLength": 1},
+        "release_condition": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}
