@@ -1,10 +1,10 @@
 {
-  "registry_version": "1.4.0",
+  "registry_version": "1.5.0",
   "goal_id": "FUNDING-PIPELINE-001",
   "repository": "StegVerse-Labs/StegScholar",
   "branch": "main",
   "canonical_handoff": "funding/FUNDING_MIRROR_HANDOFF.md",
-  "updated_at": "2026-08-02T06:07:00-05:00",
+  "updated_at": "2026-08-02T08:11:00-05:00",
   "allowed_states": ["UNCLAIMED","CLAIMED_FOR_IMPLEMENTATION","CLAIMED_FOR_VALIDATION","CLAIMED_FOR_INTEGRATION","MACHINE_OWNED","BLOCKED","COMPLETE","SUPERSEDED","MERGED_INTO_CANONICAL_WORKSTREAM","RETRY","REVIEW_REQUIRED","FAILED"],
   "claims": [
     {
@@ -45,7 +45,7 @@
       "location": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-concept.md",
       "next_action": "Expand the concept into the solicitation-limited project description and obtain product-license, adoption, collaboration-letter, IP, budget and applicant-registration evidence",
       "validation_state": "HOSTED_CONTROL_SURFACE_VALIDATED_APPLICATION_REMAINS_DRAFTING",
-      "integration_state": "AUTHORITY_CONTRACTS_INSTALLED_RESPONSES_PENDING",
+      "integration_state": "STE GFINCO_INTAKE_VALIDATED_AUTHORITY_RESPONSE_PENDING",
       "archival_dependency": false,
       "evidence_location": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-eligibility.md"
     },
@@ -57,7 +57,7 @@
       "location": "funding/contracts/",
       "next_action": "Obtain application-specific responses from each authority when required",
       "validation_state": "HOSTED_FILE_AND_CONTRACT_VALIDATION_COMPLETE",
-      "integration_state": "PRODUCER_CONSUMER_ACCEPTANCE_PENDING",
+      "integration_state": "STEGFINCO_REQUEST_INSTALLED_AND_HOSTED_VALIDATED_OTHER_RESPONSES_PENDING",
       "archival_dependency": false,
       "evidence_location": "funding/FUNDING_MIRROR_HANDOFF.md"
     },
@@ -98,16 +98,28 @@
       "evidence_location": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-product-evidence.md"
     },
     {
-      "task_id": "FUNDING-PESOSE-AUTHORITY-RESPONSES-006",
-      "title": "Obtain IP and budget authority responses",
+      "task_id": "FUNDING-PESOSE-BUDGET-AUTHORITY-006",
+      "title": "Obtain approved StegFinCo budget response",
       "state": "BLOCKED",
-      "owner": "StegVerse-Labs/StegPatents and StegVerse-Labs/StegFinCo",
-      "location": "funding/contracts/ and funding/applications/active/FUNDING-NSF-PESOSE-2026-001-budget-request.json",
-      "next_action": "Issue application-specific disclosure classification and approved line-item budget records",
-      "validation_state": "CONTRACTS_PRESENT_RESPONSES_MISSING",
-      "integration_state": "AWAITING_AUTHORITATIVE_RESPONSES",
+      "owner": "Authorized StegFinCo budget approver",
+      "location": "StegVerse-Labs/StegFinCo/funding-intake/FUNDING-NSF-PESOSE-2026-001-budget-response.json",
+      "next_action": "Provide authoritative applicant, personnel, salary, fringe, indirect-cost and activity assumptions and emit APPROVED, BLOCKED or NO_GO response",
+      "validation_state": "REQUEST_HOSTED_VALIDATED_RUN_30749323611_JOB_91500408682_ARTIFACT_8833913602_NOT_APPROVED",
+      "integration_state": "INBOUND_REQUEST_ACCEPTED_RESPONSE_PENDING",
       "archival_dependency": false,
-      "evidence_location": "funding/FUNDING_MIRROR_HANDOFF.md"
+      "evidence_location": "StegVerse-Labs/StegFinCo/FINCO_FUNDING_MIRROR_HANDOFF.md"
+    },
+    {
+      "task_id": "FUNDING-PESOSE-IP-AUTHORITY-007",
+      "title": "Resolve protected-disclosure authority",
+      "state": "BLOCKED",
+      "owner": "Human IP authority or future canonical StegPatents repository",
+      "location": "funding/dependencies/stegpatents-authority-gap.md",
+      "next_action": "Connect or establish the canonical StegPatents repository and emit an application-specific disclosure classification, or commit a classification from a named authorized human IP reviewer",
+      "validation_state": "STEGPATENTS_REPOSITORY_NOT_DISCOVERABLE",
+      "integration_state": "AUTHORITY_CONTRACT_PRESENT_AUTHORITY_SURFACE_MISSING",
+      "archival_dependency": false,
+      "evidence_location": "funding/dependencies/stegpatents-authority-gap.md"
     }
   ]
 }
