@@ -11,6 +11,13 @@ on:
       - "funding/coordination/funding-tasks.json"
       - "funding/tools/check_funding_deadlines.py"
       - ".github/workflows/funding-deadline-watch.yml"
+  pull_request:
+    paths:
+      - "funding/applications/active/**"
+      - "funding/coordination/funding-tasks.json"
+      - "funding/tools/check_funding_deadlines.py"
+      - ".github/workflows/funding-deadline-watch.yml"
+      - "funding/evidence/deadline-watch-validation-request.md"
 
 permissions:
   contents: read
