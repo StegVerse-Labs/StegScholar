@@ -15,7 +15,10 @@
     "summary": "Scope and plan a sustainable open-source ecosystem around StegVerse protocols and tools for governed AI agents, secure communications, evidence continuity, admissibility, provenance, fail-closed execution, and recoverable authority boundaries.",
     "research_paths": [
       "research-programs/governable-autonomy/README.md",
-      "papers/recoverability-geometry-rigel-number/validation-protocol.md"
+      "papers/recoverability-geometry-rigel-number/validation-protocol.md",
+      "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-project-description.md",
+      "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-references-cited.md",
+      "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-supplementary-documents-control.md"
     ]
   },
   "state": "DRAFTING",
@@ -33,19 +36,23 @@
   "evidence_refs": [
     "funding/opportunities/2026-08-02-broad-scan.md",
     "research-programs/governable-autonomy/README.md",
-    "papers/recoverability-geometry-rigel-number/validation-protocol.md"
+    "papers/recoverability-geometry-rigel-number/validation-protocol.md",
+    "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-project-summary.md",
+    "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-references-cited.md",
+    "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-collaboration-letter-intake.md",
+    "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-supplementary-documents-control.md"
   ],
   "budget": {
     "currency": "USD",
     "requested_amount": 300000,
-    "status": "NOT_STARTED",
-    "authority_ref": "StegVerse-Labs/StegFinCo; funding contract not yet installed"
+    "status": "DRAFT_UNAPPROVED",
+    "authority_ref": "StegVerse-Labs/StegFinCo funding intake; hosted validated request exists but no approval response exists"
   },
   "publication_classification": "DISCLOSURE_REVIEW_REQUIRED",
   "next_action": {
     "owner": "StegVerse-Labs/StegScholar funding lane",
-    "location": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-eligibility.md",
-    "action": "Resolve legal applicant, ownership, PI employment, UEI, SAM.gov and submission-authority gates while continuing the seven-page Track 1 narrative draft",
-    "release_condition": "All mandatory applicant registration fields have inspectable evidence or a qualified lead organization is recorded"
+    "location": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-product-evidence.md",
+    "action": "Install verifiable public anchor-product, license, user, contributor, and three-to-five collaboration-letter evidence while applicant, budget, IP, and submission-authority gates remain blocked",
+    "release_condition": "The anchor product and required third-party collaboration evidence are verified or a committed no-go or qualified-lead supersession is recorded"
   }
 }
