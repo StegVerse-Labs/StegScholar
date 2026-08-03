@@ -1,0 +1,66 @@
+{
+  "registry_version": "1.0.0",
+  "goal_id": "FUNDING-PESOSE-SUPPORT-011",
+  "repository": "StegVerse-Labs/StegScholar",
+  "branch": "main",
+  "canonical_handoff": "funding/FUNDING_MIRROR_HANDOFF.md",
+  "parent_application": "FUNDING-NSF-PESOSE-2026-001",
+  "state": "CLAIMED_FOR_VALIDATION",
+  "owner": "StegScholar PESOSE supporting-document lane",
+  "claimed_at": "2026-08-02T21:57:00-05:00",
+  "expires_at": "2026-08-05T21:57:00-05:00",
+  "release_condition": "Hosted validation succeeds and evidence is committed, or the package is marked FAILED with a machine-observable correction task",
+  "collision_boundary": "No changes to named applicant identity, product maturity, financial approval, IP classification, or submission authority",
+  "tasks": [
+    {
+      "task_id": "PESOSE-SUPPORT-SUMMARY-001",
+      "state": "COMPLETE",
+      "owner": "StegVerse-Labs/StegScholar",
+      "location": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-project-summary.md",
+      "validation_state": "KEYWORDS_FINAL_LINE_STATIC_IMPLEMENTED",
+      "integration_state": "BOUND_TO_PESOSE_APPLICATION",
+      "next_action": "Confirm final 2 to 5 prioritized keywords during authorized proposal review",
+      "release_condition": "Named PI and AOR approve final summary"
+    },
+    {
+      "task_id": "PESOSE-SUPPORT-REFERENCES-002",
+      "state": "BLOCKED",
+      "owner": "StegCore maintainers and StegScholar funding lane",
+      "location": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-references-cited.md",
+      "validation_state": "CONTROL_FILE_IMPLEMENTED_ANCHOR_CITATION_BLOCKED",
+      "integration_state": "APPLICATION_RECORD_BOUND",
+      "next_action": "Select and verify one public anchor product, immutable version, license, and citation-ready repository or release location",
+      "release_condition": "Anchor-product evidence and complete project-specific bibliography are installed"
+    },
+    {
+      "task_id": "PESOSE-SUPPORT-LETTERS-003",
+      "state": "BLOCKED",
+      "owner": "Independent current users or contributors and StegScholar intake lane",
+      "location": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-collaboration-letter-intake.md",
+      "validation_state": "INTAKE_CONTROL_IMPLEMENTED_ZERO_QUALIFYING_LETTERS",
+      "integration_state": "APPLICATION_RECORD_BOUND",
+      "next_action": "Identify and verify three to five independent current users or contributors and obtain author-approved letters",
+      "release_condition": "Three to five qualifying signed letters and durable intake receipts exist"
+    },
+    {
+      "task_id": "PESOSE-SUPPORT-MATRIX-004",
+      "state": "COMPLETE",
+      "owner": "StegVerse-Labs/StegScholar",
+      "location": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-supplementary-documents-control.md",
+      "validation_state": "NSF_26_506_CONTROL_MATRIX_IMPLEMENTED",
+      "integration_state": "APPLICATION_RECORD_BOUND",
+      "next_action": "Maintain component states as named authorities supply evidence",
+      "release_condition": "All nonconditional components are approved and conditional components are complete or not applicable"
+    },
+    {
+      "task_id": "PESOSE-SUPPORT-VALIDATION-005",
+      "state": "CLAIMED_FOR_VALIDATION",
+      "owner": "StegScholar hosted validation lane",
+      "location": "funding/tools/validate_pesose_supporting_documents.py",
+      "validation_state": "STATIC_IMPLEMENTED_HOSTED_VALIDATION_PENDING",
+      "integration_state": "FUNDING_STATE_WORKFLOW_STEP_INSTALLED",
+      "next_action": "Trigger hosted workflow and inspect run, job, steps, artifact, digest, and generated receipt",
+      "release_condition": "Hosted validation succeeds and evidence is committed to this registry and the canonical handoff"
+    }
+  ]
+}
