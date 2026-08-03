@@ -1,34 +1,38 @@
 {
-  "registry_version": "1.1.0",
+  "registry_version": "1.2.0",
   "goal_id": "FUNDING-PESOSE-SUPPORT-011",
   "repository": "StegVerse-Labs/StegScholar",
   "branch": "main",
   "canonical_handoff": "funding/applications/active/PESOSE_SUPPORT_MIRROR_HANDOFF.md",
   "parent_handoff": "funding/FUNDING_MIRROR_HANDOFF.md",
   "parent_application": "FUNDING-NSF-PESOSE-2026-001",
-  "state": "COMPLETE",
+  "state": "CLAIMED_FOR_VALIDATION",
   "owner": "StegScholar PESOSE supporting-document lane",
-  "claimed_at": "2026-08-02T21:57:00-05:00",
-  "released_at": "2026-08-02T22:01:49-05:00",
-  "release_condition": "Satisfied by hosted validation run 30780724359 and committed evidence",
-  "collision_boundary": "No changes to named applicant identity, product maturity, financial approval, IP classification, or submission authority",
-  "hosted_validation": {
+  "claim": {
+    "task_id": "PESOSE-ANCHOR-INTEGRATION-006",
+    "role": "cross-repository evidence integration validation",
+    "claimed_at": "2026-08-02T22:07:00-05:00",
+    "expires_at": "2026-08-05T22:07:00-05:00",
+    "release_condition": "Hosted funding validation succeeds after the StegCore evidence request and issue are bound into the PESOSE records",
+    "expected_evidence": "workflow run, successful validators, artifact and digest",
+    "collision_boundary": "No product, license, adoption, contributor, IP, applicant, budget, or submission claim may be advanced",
+    "next_task_after_release": "StegCore issue #47 or committed no-go"
+  },
+  "prior_hosted_validation": {
     "pull_request": 47,
-    "branch": "funding/validate-pesose-support-20260802",
-    "request_commit": "7307016ca7bb9d8cd1df3fba449480c4c86c4e65",
-    "workflow": "Funding State Validation",
     "run_id": 30780724359,
     "job_id": 91584677759,
-    "conclusion": "success",
-    "global_validator": "success",
-    "otf_validator": "success",
-    "pesose_support_validator": "success",
-    "artifact_upload": "success",
     "artifact_id": 8843528209,
-    "artifact_name": "funding-state-validation",
-    "artifact_size_bytes": 1832,
-    "artifact_digest": "sha256:92392195f0ec9cdc2885e60b6b34ec285b6c5fe94014bc0930d74a044f5c6b72",
-    "artifact_expires_at": "2026-11-01T03:01:43Z"
+    "artifact_digest": "sha256:92392195f0ec9cdc2885e60b6b34ec285b6c5fe94014bc0930d74a044f5c6b72"
+  },
+  "cross_repository_dependency": {
+    "repository": "StegVerse-Labs/StegCore",
+    "handoff_read": "docs/STEGCORE_PROOF_ANCHOR_MIRROR_HANDOFF.md",
+    "request_file": "docs/PESOSE_ANCHOR_PRODUCT_EVIDENCE_REQUEST.md",
+    "request_commit": "bfa4665c193d4dfaa52b5d87a6d710c7b8112c56",
+    "issue": 47,
+    "required_output": "evidence/pesose-anchor-product.json or committed NO_GO",
+    "observed_state": "PUBLIC_REPOSITORY_DOCUMENTATION_FIRST_SCAFFOLDING_NO_ROOT_LICENSE_NO_VERIFIED_INDEPENDENT_USERS"
   },
   "tasks": [
     {
@@ -46,9 +50,9 @@
       "state": "BLOCKED",
       "owner": "StegCore maintainers and StegScholar funding lane",
       "location": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-references-cited.md",
-      "validation_state": "HOSTED_CONTROL_VALIDATED_ANCHOR_CITATION_BLOCKED",
-      "integration_state": "APPLICATION_RECORD_BOUND",
-      "next_action": "Select and verify one public anchor product, immutable version, license, and citation-ready repository or release location",
+      "validation_state": "PROVISIONAL_CANDIDATE_IDENTIFIED_LICENSE_RELEASE_AND_USERS_UNVERIFIED",
+      "integration_state": "STEGCORE_REQUEST_COMMITTED_ISSUE_47_OPEN",
+      "next_action": "StegCore issue #47 must emit evidence/pesose-anchor-product.json or a committed no-go",
       "release_condition": "Anchor-product evidence and complete project-specific bibliography are installed"
     },
     {
@@ -57,8 +61,8 @@
       "owner": "Independent current users or contributors and StegScholar intake lane",
       "location": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-collaboration-letter-intake.md",
       "validation_state": "HOSTED_INTAKE_CONTROL_VALIDATED_ZERO_QUALIFYING_LETTERS",
-      "integration_state": "APPLICATION_RECORD_BOUND",
-      "next_action": "Identify and verify three to five independent current users or contributors and obtain author-approved letters",
+      "integration_state": "DEPENDENT_ON_STEGCORE_ISSUE_47_USER_CONTRIBUTOR_EVIDENCE",
+      "next_action": "After verified product users or contributors exist, obtain three to five author-approved letters",
       "release_condition": "Three to five qualifying signed letters and durable intake receipts exist"
     },
     {
@@ -80,6 +84,16 @@
       "integration_state": "FUNDING_STATE_WORKFLOW_ACTIVE",
       "next_action": "Re-run after material PESOSE supporting-document changes",
       "release_condition": "Completed"
+    },
+    {
+      "task_id": "PESOSE-ANCHOR-INTEGRATION-006",
+      "state": "CLAIMED_FOR_VALIDATION",
+      "owner": "StegScholar hosted validation lane",
+      "location": "StegVerse-Labs/StegCore/docs/PESOSE_ANCHOR_PRODUCT_EVIDENCE_REQUEST.md and StegVerse-Labs/StegCore#47",
+      "validation_state": "CROSS_REPOSITORY_RECORDS_COMMITTED_HOSTED_CONSUMER_VALIDATION_PENDING",
+      "integration_state": "SOURCE_REQUEST_AND_CONSUMER_RECORDS_INSTALLED",
+      "next_action": "Trigger hosted funding validation and record artifact evidence",
+      "release_condition": "Hosted consumer validation succeeds and this claim is released"
     }
   ]
 }
