@@ -11,20 +11,24 @@
 
 The PESOSE solicitation requires the Project Description to identify the existing publicly available open-source product through an inline citation and an entry here because URLs may not appear in the Project Description.
 
-**ANCHOR-1 — BLOCKED**
+**ANCHOR-1 — BLOCKED, PROVISIONAL CANDIDATE IDENTIFIED**
 
-- Author or managing organization: `UNVERIFIED`
-- Product title: `UNSELECTED`
-- Public repository or release location: `UNVERIFIED`
-- Version or immutable release identifier: `UNVERIFIED`
-- Governing license: `UNVERIFIED`
-- Publication year: `UNVERIFIED`
-- Access date: `UNVERIFIED`
-- Citation-ready form: `BLOCKED UNTIL PRODUCT AND LICENSE EVIDENCE ARE INSTALLED`
-- Evidence owner: StegCore maintainers and StegScholar funding lane
-- Evidence location: `FUNDING-NSF-PESOSE-2026-001-product-evidence.md`
+- Author or managing organization: `StegVerse-Labs` — repository organization verified; sponsor applicant authority remains unverified.
+- Product title: `StegCore` — provisional candidate only.
+- Public repository: `StegVerse-Labs/StegCore` — public visibility verified.
+- Candidate role: commit-time allow, deny, or defer decision engine.
+- Immutable release identifier: `UNVERIFIED`.
+- Governing license: `UNVERIFIED`; no root `LICENSE` was found during the 2026-08-02 repository inspection.
+- Product maturity: repository README states v0.1 is documentation-first and `src/stegcore/` is scaffolding/substrate for future runtimes.
+- Publication year: `UNVERIFIED`.
+- Access date: `2026-08-02`.
+- Citation-ready form: `BLOCKED UNTIL STEGCORE ISSUE #47 AND EVIDENCE MANIFEST ARE COMPLETE`.
+- StegCore evidence request: `StegVerse-Labs/StegCore/docs/PESOSE_ANCHOR_PRODUCT_EVIDENCE_REQUEST.md`.
+- StegCore task: `StegVerse-Labs/StegCore#47`.
+- Required completion artifact: `StegVerse-Labs/StegCore/evidence/pesose-anchor-product.json` or a committed no-go.
+- StegScholar evidence location: `FUNDING-NSF-PESOSE-2026-001-product-evidence.md`.
 
-No placeholder URL may be copied into a sponsor submission.
+No placeholder URL or provisional citation may be copied into a sponsor submission.
 
 ## Authoritative program and security references
 
@@ -52,7 +56,9 @@ This file may move from `DRAFTING` only when:
 
 1. one publicly accessible anchor product is selected;
 2. its license and immutable version are verified;
-3. each project-specific claim has a citation and evidence owner;
-4. every cited source has complete bibliographic information;
-5. protected-disclosure review confirms that the citation does not expose restricted material; and
-6. the Project Description uses matching inline citation identifiers.
+3. its implemented boundary and reproducible operational evidence are installed;
+4. independent user and contributor evidence exists;
+5. each project-specific claim has a citation and evidence owner;
+6. every cited source has complete bibliographic information;
+7. protected-disclosure review confirms that the citation does not expose restricted material; and
+8. the Project Description uses matching inline citation identifiers.
