@@ -54,9 +54,22 @@ def main() -> int:
         "required anchor-product citation",
         "anchor-1 — blocked",
         "governing license: `unverified`",
-        "no placeholder url may be copied into a sponsor submission",
+        "no placeholder url or provisional citation may be copied into a sponsor submission",
+        "stegverse-labs/stegcore#47",
+        "evidence/pesose-anchor-product.json",
         "citation release gate",
     ), "References Cited")
+
+    product_evidence = FILES["product_evidence"].read_text(encoding="utf-8")
+    require_phrases(product_evidence, (
+        "public repository: yes",
+        "documentation-first",
+        "public root license: not found",
+        "stegverse-labs/stegcore#47",
+        "docs/pesose_anchor_product_evidence_request.md",
+        "evidence/pesose-anchor-product.json",
+        "proposal must remain `drafting`",
+    ), "product evidence")
 
     letters = FILES["letters"].read_text(encoding="utf-8")
     require_phrases(letters, (
@@ -91,12 +104,13 @@ def main() -> int:
         "validated_files": [str(path.relative_to(ROOT)) for path in FILES.values()],
         "application_state": app["state"],
         "summary_keyword_count": len(keyword_values),
-        "anchor_product_citation_state": "BLOCKED_PENDING_PRODUCT_AND_LICENSE_EVIDENCE",
+        "anchor_product_citation_state": "BLOCKED_PENDING_STEGCORE_ISSUE_47_AND_EVIDENCE_MANIFEST",
+        "cross_repository_dependency": "StegVerse-Labs/StegCore#47",
         "collaboration_letter_state": "BLOCKED_PENDING_3_TO_5_QUALIFYING_AUTHORS",
         "title_state": "REVIEW_REQUIRED",
         "budget_state": budget["state"],
         "submission_ready": False,
-        "next_executable_task": "install_verifiable_anchor_product_and_collaboration_evidence",
+        "next_executable_task": "stegcore_issue_47_emit_evidence_manifest_or_no_go",
     }
     out = ROOT / "funding/evidence/latest-pesose-support-validation.json"
     out.parent.mkdir(parents=True, exist_ok=True)
