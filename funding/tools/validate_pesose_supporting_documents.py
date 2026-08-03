@@ -62,10 +62,12 @@ def main() -> int:
 
     product_evidence = FILES["product_evidence"].read_text(encoding="utf-8")
     require_phrases(product_evidence, (
+        "public repository: yes",
+        "documentation-first",
+        "public root license: not found",
         "stegverse-labs/stegcore#47",
         "docs/pesose_anchor_product_evidence_request.md",
         "evidence/pesose-anchor-product.json",
-        "public repository_documentation-first scaffolding no root license".replace("_", " "),
         "proposal must remain `drafting`",
     ), "product evidence")
 
