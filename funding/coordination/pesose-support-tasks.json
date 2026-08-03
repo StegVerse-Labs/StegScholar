@@ -1,29 +1,38 @@
 {
-  "registry_version": "1.2.0",
+  "registry_version": "1.3.0",
   "goal_id": "FUNDING-PESOSE-SUPPORT-011",
   "repository": "StegVerse-Labs/StegScholar",
   "branch": "main",
   "canonical_handoff": "funding/applications/active/PESOSE_SUPPORT_MIRROR_HANDOFF.md",
   "parent_handoff": "funding/FUNDING_MIRROR_HANDOFF.md",
   "parent_application": "FUNDING-NSF-PESOSE-2026-001",
-  "state": "CLAIMED_FOR_VALIDATION",
+  "state": "COMPLETE",
   "owner": "StegScholar PESOSE supporting-document lane",
-  "claim": {
+  "released_claim": {
     "task_id": "PESOSE-ANCHOR-INTEGRATION-006",
-    "role": "cross-repository evidence integration validation",
     "claimed_at": "2026-08-02T22:07:00-05:00",
-    "expires_at": "2026-08-05T22:07:00-05:00",
-    "release_condition": "Hosted funding validation succeeds after the StegCore evidence request and issue are bound into the PESOSE records",
-    "expected_evidence": "workflow run, successful validators, artifact and digest",
-    "collision_boundary": "No product, license, adoption, contributor, IP, applicant, budget, or submission claim may be advanced",
-    "next_task_after_release": "StegCore issue #47 or committed no-go"
+    "released_at": "2026-08-02T22:11:24-05:00",
+    "release_condition": "Satisfied by hosted run 30781173909 after correcting the stale validator wording exposed by failed run 30781078541"
   },
-  "prior_hosted_validation": {
-    "pull_request": 47,
-    "run_id": 30780724359,
-    "job_id": 91584677759,
-    "artifact_id": 8843528209,
-    "artifact_digest": "sha256:92392195f0ec9cdc2885e60b6b34ec285b6c5fe94014bc0930d74a044f5c6b72"
+  "hosted_validation": {
+    "pull_request": 48,
+    "branch": "funding/validate-stegcore-anchor-integration-20260802",
+    "initial_failed_run": 30781078541,
+    "initial_failed_job": 91585684786,
+    "failure": "PESOSE validator depended on superseded placeholder-URL wording; global and OTF validators passed",
+    "validator_main_commits": ["085958b617f4df20dec263ad729816aacd80cae3", "6a2dbd87cb983667a5933ff172396867bb717187"],
+    "validator_branch_commit": "de35754788dec9fa3a8c12c064eeec633b6b7e0d",
+    "successful_run": 30781173909,
+    "successful_job": 91585948951,
+    "global_validator": "success",
+    "otf_validator": "success",
+    "pesose_support_validator": "success",
+    "artifact_upload": "success",
+    "artifact_id": 8843680244,
+    "artifact_name": "funding-state-validation",
+    "artifact_size_bytes": 1884,
+    "artifact_digest": "sha256:428556c3891e22dd33c23739cf0fee18de349e819c97daa51b670871cffa4644",
+    "artifact_expires_at": "2026-11-01T03:11:17Z"
   },
   "cross_repository_dependency": {
     "repository": "StegVerse-Labs/StegCore",
@@ -40,9 +49,9 @@
       "state": "COMPLETE",
       "owner": "StegVerse-Labs/StegScholar",
       "location": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-project-summary.md",
-      "validation_state": "HOSTED_VALIDATED_KEYWORDS_FINAL_LINE_RUN_30780724359",
+      "validation_state": "HOSTED_VALIDATED_KEYWORDS_FINAL_LINE",
       "integration_state": "BOUND_TO_PESOSE_APPLICATION",
-      "next_action": "Confirm final two to five prioritized keywords during authorized proposal review",
+      "next_action": "Confirm final keywords during authorized proposal review",
       "release_condition": "Named PI and AOR approve final summary"
     },
     {
@@ -50,20 +59,20 @@
       "state": "BLOCKED",
       "owner": "StegCore maintainers and StegScholar funding lane",
       "location": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-references-cited.md",
-      "validation_state": "PROVISIONAL_CANDIDATE_IDENTIFIED_LICENSE_RELEASE_AND_USERS_UNVERIFIED",
+      "validation_state": "HOSTED_VALIDATED_BLOCKED_PENDING_STEGCORE_ISSUE_47",
       "integration_state": "STEGCORE_REQUEST_COMMITTED_ISSUE_47_OPEN",
       "next_action": "StegCore issue #47 must emit evidence/pesose-anchor-product.json or a committed no-go",
-      "release_condition": "Anchor-product evidence and complete project-specific bibliography are installed"
+      "release_condition": "Anchor-product evidence and complete bibliography are installed"
     },
     {
       "task_id": "PESOSE-SUPPORT-LETTERS-003",
       "state": "BLOCKED",
       "owner": "Independent current users or contributors and StegScholar intake lane",
       "location": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-collaboration-letter-intake.md",
-      "validation_state": "HOSTED_INTAKE_CONTROL_VALIDATED_ZERO_QUALIFYING_LETTERS",
+      "validation_state": "HOSTED_VALIDATED_ZERO_QUALIFYING_LETTERS",
       "integration_state": "DEPENDENT_ON_STEGCORE_ISSUE_47_USER_CONTRIBUTOR_EVIDENCE",
-      "next_action": "After verified product users or contributors exist, obtain three to five author-approved letters",
-      "release_condition": "Three to five qualifying signed letters and durable intake receipts exist"
+      "next_action": "After verified users or contributors exist, obtain three to five author-approved letters",
+      "release_condition": "Three to five qualifying signed letters and receipts exist"
     },
     {
       "task_id": "PESOSE-SUPPORT-MATRIX-004",
@@ -72,28 +81,28 @@
       "location": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-supplementary-documents-control.md",
       "validation_state": "HOSTED_NSF_26_506_CONTROL_MATRIX_VALIDATED",
       "integration_state": "APPLICATION_RECORD_BOUND",
-      "next_action": "Maintain component states as named authorities supply evidence",
-      "release_condition": "All nonconditional components are approved and conditional components are complete or not applicable"
+      "next_action": "Maintain component states as authorities supply evidence",
+      "release_condition": "All required components are approved or documented not applicable"
     },
     {
       "task_id": "PESOSE-SUPPORT-VALIDATION-005",
       "state": "COMPLETE",
       "owner": "StegScholar hosted validation lane",
       "location": "funding/tools/validate_pesose_supporting_documents.py",
-      "validation_state": "HOSTED_SUCCESS_RUN_30780724359_JOB_91584677759_ARTIFACT_8843528209",
+      "validation_state": "HOSTED_SUCCESS_RUN_30781173909_JOB_91585948951_ARTIFACT_8843680244",
       "integration_state": "FUNDING_STATE_WORKFLOW_ACTIVE",
-      "next_action": "Re-run after material PESOSE supporting-document changes",
+      "next_action": "Re-run after material support-document changes",
       "release_condition": "Completed"
     },
     {
       "task_id": "PESOSE-ANCHOR-INTEGRATION-006",
-      "state": "CLAIMED_FOR_VALIDATION",
+      "state": "COMPLETE",
       "owner": "StegScholar hosted validation lane",
       "location": "StegVerse-Labs/StegCore/docs/PESOSE_ANCHOR_PRODUCT_EVIDENCE_REQUEST.md and StegVerse-Labs/StegCore#47",
-      "validation_state": "CROSS_REPOSITORY_RECORDS_COMMITTED_HOSTED_CONSUMER_VALIDATION_PENDING",
-      "integration_state": "SOURCE_REQUEST_AND_CONSUMER_RECORDS_INSTALLED",
-      "next_action": "Trigger hosted funding validation and record artifact evidence",
-      "release_condition": "Hosted consumer validation succeeds and this claim is released"
+      "validation_state": "HOSTED_CONSUMER_SUCCESS_RUN_30781173909_JOB_91585948951_ARTIFACT_8843680244",
+      "integration_state": "SOURCE_REQUEST_ISSUE_AND_CONSUMER_RECORDS_INSTALLED",
+      "next_action": "StegCore issue #47 owns continuation",
+      "release_condition": "Completed"
     }
   ]
 }
