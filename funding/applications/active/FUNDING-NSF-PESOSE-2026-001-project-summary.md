@@ -20,8 +20,8 @@ A successful planning effort could lower barriers to research and development of
 
 The work may also help organizations evaluate whether proposed AI-agent or communication actions have valid authority and evidence at the point of execution, supporting safer experimentation in public-interest, research, and regulated environments.
 
-Keywords: AI agent ecosystems; cybersecurity; secure communications; open-source governance; provenance
-
 ## Draft-control note
 
 This summary is a repository-installed draft. It is not submission-ready until the legal applicant, PI eligibility, public product and license, user and contributor evidence, budget, disclosure review, and institutional submission authority are verified.
+
+Keywords: AI agent ecosystems; cybersecurity; secure communications; open-source governance; provenance
