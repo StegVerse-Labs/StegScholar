@@ -3,76 +3,119 @@
 ## Active goal
 
 - Goal ID: `FUNDING-PESOSE-SUPPORT-011`
-- Originating goal: complete the nearest-deadline repository-owned PESOSE references and sponsor-supporting-document package without assuming applicant, product, financial, IP, or submission authority.
+- Originating goal: complete and validate NSF PESOSE Track 1 supporting documents and transfer the anchor-product dependency to its canonical product repository without assuming product, applicant, budget, IP, collaboration-author, or submission authority.
 - Repository: `StegVerse-Labs/StegScholar`
 - Branch: `main`
 - Parent application: `FUNDING-NSF-PESOSE-2026-001`
 - Parent handoff: `funding/FUNDING_MIRROR_HANDOFF.md`
 - Task registry: `funding/coordination/pesose-support-tasks.json`
 - Canonical owner: StegScholar PESOSE supporting-document lane.
-- Implementation claim: released after hosted validation.
-- Validation claim: released after hosted validation.
+- Implementation and validation claims: released.
 
 ## Authoritative files
 
 - `FUNDING-NSF-PESOSE-2026-001-project-summary.md`
 - `FUNDING-NSF-PESOSE-2026-001-references-cited.md`
+- `FUNDING-NSF-PESOSE-2026-001-product-evidence.md`
 - `FUNDING-NSF-PESOSE-2026-001-collaboration-letter-intake.md`
 - `FUNDING-NSF-PESOSE-2026-001-supplementary-documents-control.md`
 - `FUNDING-NSF-PESOSE-2026-001.json`
 - `../../tools/validate_pesose_supporting_documents.py`
 - `../../../.github/workflows/funding-state-validation.yml`
 
-## Completed implementation
+## Completed support package
 
-1. Corrected the Project Summary so its final non-empty line begins with `Keywords:` and contains five semicolon-separated terms.
-2. Installed a controlled References Cited draft with an explicit blocked anchor-product citation and license gate.
-3. Installed a collaboration-letter intake requiring three to five independent current users or contributors, evidence of their relationship to the product, and author authorization.
-4. Installed an NSF 26-506 supplementary-document matrix covering title syntax, seven-page Track 1 limit, $300,000/one-year ceiling, prohibition on voluntary committed cost sharing, I-Corps for PESOSE participation, letters, personnel documents, data management, conditional mentoring and subaward records, and submission receipt.
-5. Bound the support package into the application record and changed the application budget state to `DRAFT_UNAPPROVED` with the existing StegFinCo authority reference.
-6. Installed a dedicated fail-closed validator and added it to the hosted funding workflow.
-7. Installed and released the expiring validation claim in `funding/coordination/pesose-support-tasks.json`.
+1. Project Summary final-line keyword compliance.
+2. Controlled References Cited draft.
+3. Three-to-five independent collaboration-letter intake.
+4. NSF 26-506 supplementary-document matrix.
+5. Application and budget-state binding.
+6. Dedicated fail-closed validator integrated into hosted workflow.
+7. Hosted validation run `30780724359`, job `91584677759`, artifact `8843528209`.
 
-## Commits
+## StegCore anchor-product investigation
 
-- Project Summary correction: `0d4e3550455af72fd2b43eade377a16faa81fc96`
-- References Cited: `126e6394d3f8ab9586cbaf3203ab5e60df6b083c`
-- Collaboration-letter intake: `5fc99ffe07d4ab60275b71f2bc3d260e8d716002`
-- Supplementary-document matrix: `4d059367bd5098b606813bbbd772265f0002f068`
-- PESOSE support validator: `3c0db085211179542a570f53f2b923995806db3d`
-- Workflow integration: `aa188a4ec53007f5728405dbf11c4add41ea1cb6`
-- Application binding: `5dfa2d64411343d8f72d25d945bb22f2dae9230a`
-- Initial support registry: `0a5cd1f8e853a8193c7d41f08a5a8df513dc830f`
-- Hosted-evidence registry update: `1a288bd5812f98935028ef7e28200b96b094efb5`
+Repository inspected: `StegVerse-Labs/StegCore`.
 
-## Hosted validation evidence
+Applicable handoff read:
 
-- Pull request: `#47`
-- Branch: `funding/validate-pesose-support-20260802`
-- Request commit: `7307016ca7bb9d8cd1df3fba449480c4c86c4e65`
-- Workflow: `Funding State Validation`
-- Run: `30780724359`
-- Job: `91584677759`
-- Global funding validator: success
-- OTF package validator: success
-- PESOSE supporting-document validator: success
-- Artifact upload: success
-- Artifact: `8843528209`, `funding-state-validation`
-- Size: `1832` bytes
-- Digest: `sha256:92392195f0ec9cdc2885e60b6b34ec285b6c5fe94014bc0930d74a044f5c6b72`
-- Expiration: `2026-11-01T03:01:43Z`
+- `docs/STEGCORE_PROOF_ANCHOR_MIRROR_HANDOFF.md`.
 
-Validation proves the control files, application binding, keyword placement, blocked anchor citation, three-letter minimum, title-review state, budget non-approval, and fail-closed submission state satisfy the committed validators. It does not prove a qualifying applicant, product, license, users, contributors, collaboration letters, approved budget, IP clearance, or submission.
+Direct observations:
+
+- StegCore is public.
+- The proof-anchor handoff designates it as the StegVerse technical proof anchor.
+- The README defines a commit-time allow, deny, or defer decision-engine role.
+- The README states v0.1 is documentation-first.
+- The README states `src/stegcore/` is scaffolding and substrate for future runtimes.
+- No root `LICENSE` was found.
+- No verified immutable sponsor-ready release, independent users, contributors, or collaboration-letter pathway was established.
+
+Conclusion:
+
+StegCore is a provisional candidate proof anchor, not a verified PESOSE anchor product. Repository visibility and architectural intent do not satisfy the product, license, release, user, or contributor gates.
+
+## Cross-repository transfer installed
+
+StegCore destination:
+
+- requirement record: `StegVerse-Labs/StegCore/docs/PESOSE_ANCHOR_PRODUCT_EVIDENCE_REQUEST.md`;
+- commit: `bfa4665c193d4dfaa52b5d87a6d710c7b8112c56`;
+- executable task: `StegVerse-Labs/StegCore#47`;
+- required output: `StegVerse-Labs/StegCore/evidence/pesose-anchor-product.json` or a committed `NO_GO`.
+
+StegScholar consumer updates:
+
+- product evidence commit: `e53e3e8e691468276ddb7032eb5e314ff8c424ba`;
+- References Cited commit: `6b9fc2af7ea7b34eb55e1a2af59fe4c928402e7c`;
+- initial integration registry commit: `fce457115e08efb6d24f584606b8adb20bdc3401`;
+- validator corrections on main: `085958b617f4df20dec263ad729816aacd80cae3`, `6a2dbd87cb983667a5933ff172396867bb717187`;
+- final registry evidence: `f3f73ff70fd932810157b2f2fb8fc12083618449`.
+
+## Hosted integration validation
+
+Validation PR: `#48`.
+
+Initial run:
+
+- run `30781078541`;
+- job `91585684786`;
+- global validator: success;
+- OTF validator: success;
+- PESOSE support validator: failure;
+- cause: validator depended on superseded placeholder-URL wording;
+- artifact upload: skipped.
+
+Correction:
+
+- branch commit `de35754788dec9fa3a8c12c064eeec633b6b7e0d`;
+- validator now checks the current fail-closed wording, StegCore issue reference, required evidence-manifest path, public-repository state, documentation-first/scaffolding posture, and missing root license.
+
+Successful rerun:
+
+- run `30781173909`;
+- job `91585948951`;
+- global validator: success;
+- OTF validator: success;
+- PESOSE support validator: success;
+- artifact upload: success;
+- artifact `8843680244`, `funding-state-validation`;
+- size `1884` bytes;
+- digest `sha256:428556c3891e22dd33c23739cf0fee18de349e819c97daa51b670871cffa4644`;
+- expiration `2026-11-01T03:11:17Z`.
+
+Validation proves the cross-repository request and consumer controls are installed and fail closed. It does not prove that StegCore is licensed, released, mature, adopted, or eligible as the sponsor-facing product.
 
 ## Exact incomplete tasks
 
-### Anchor product and bibliography
+### Anchor product
 
 - Task: `PESOSE-SUPPORT-REFERENCES-002`
 - State: `BLOCKED`
 - Owner: StegCore maintainers and StegScholar funding lane
-- Location: `FUNDING-NSF-PESOSE-2026-001-references-cited.md`
-- Release condition: one public anchor product, immutable version, governing license, public pointer, and complete claim-supporting bibliography are verified.
+- StegCore task: issue `#47`
+- Required StegCore location: `evidence/pesose-anchor-product.json` or committed no-go
+- Release condition: verified bounded product, root license, immutable release, reproducible operation, public pointer, independent users/contributors, disclosure review, and complete bibliography.
 
 ### Collaboration letters
 
@@ -80,13 +123,13 @@ Validation proves the control files, application binding, keyword placement, blo
 - State: `BLOCKED`
 - Owner: independent current users or contributors and StegScholar intake lane
 - Location: `FUNDING-NSF-PESOSE-2026-001-collaboration-letter-intake.md`
-- Release condition: three to five qualifying signed letters and durable intake receipts exist.
+- Release condition: three to five qualifying signed letters and durable receipts.
 
-### Applicant, budget, IP and submission authority
+### Parent authority gates
 
-These remain governed by the parent portfolio registry and existing StegFinCo/IP authority records. This sub-workstream does not own or alter those authorities.
+Applicant, PI, AOR, budget, IP, and submission authority remain governed by the parent portfolio registry. This workstream did not alter them.
 
-## Validation commands
+## Automation
 
 ```bash
 python funding/tools/validate_funding_state.py
@@ -94,9 +137,11 @@ python funding/tools/validate_otf_icrp_package.py
 python funding/tools/validate_pesose_supporting_documents.py
 ```
 
+The funding-state workflow runs these checks on funding changes and pull requests. The deadline watcher separately observes claim expiry and application deadlines.
+
 ## Integration and propagation
 
-- Integrated into the active PESOSE application record and hosted funding-state workflow.
+- StegCore source request, GitHub issue, StegScholar consumer controls, task registry, and hosted validation are complete.
 - No Site, Publisher, wiki, master-records, release, or submission propagation is authorized.
 - Propagation release condition: verified sponsor submission, award, publication, or custody classification.
 
@@ -104,22 +149,26 @@ python funding/tools/validate_pesose_supporting_documents.py
 
 MERGED INTO:
 
-- `funding/applications/active/PESOSE_SUPPORT_MIRROR_HANDOFF.md`
-- `funding/coordination/pesose-support-tasks.json`
-- `funding/FUNDING_MIRROR_HANDOFF.md`
+- `funding/applications/active/PESOSE_SUPPORT_MIRROR_HANDOFF.md`;
+- `funding/coordination/pesose-support-tasks.json`;
+- `StegVerse-Labs/StegCore/docs/PESOSE_ANCHOR_PRODUCT_EVIDENCE_REQUEST.md`;
+- `StegVerse-Labs/StegCore#47`;
+- `funding/FUNDING_MIRROR_HANDOFF.md`.
 
-No unique implementation fact, correction, validation result, blocker, owner, or next action from this PESOSE support task remains only in conversation history.
+No unique investigation result, product limitation, validator failure, correction, blocker, owner, or next action remains only in this conversation.
 
 ## Completion accounting
 
-- task completion: `3/5 = 60%`; two authority/evidence tasks remain blocked;
-- developed files: `8/8 = 100%` for authorized repository-owned support and control artifacts;
-- validation: `4/4 = 100%` for static, dedicated, hosted-job, and artifact validation;
-- integration: `3/5 = 60%`; application and workflow binding complete, product and letters absent;
+Current denominator: 6 support and anchor-integration tasks.
+
+- task completion: `4/6 = 67%`;
+- developed files: `10/10 = 100%` for authorized repository-owned controls and cross-repository transfer records;
+- validation: `5/5 = 100%`;
+- integration: `5/6 = 83%`; source and consumer integration complete, verified product evidence absent;
 - propagation: `0/1 = 0%`, not authorized;
-- goal activation: `72%` toward a sponsor-compliant PESOSE package, excluding unresolved applicant and evidence authorities;
-- session consolidation: `1/1 = 100%`.
+- goal activation: `75%` toward a sponsor-compliant PESOSE support package;
+- session consolidation: `2/2 = 100%`.
 
 ## Archive condition
 
-This session-specific PESOSE support role is archive-ready. The remaining product, bibliography, and collaboration-letter work is durably assigned with machine-observable release conditions.
+This session-specific investigation, transfer, and validation role is archive-ready. StegCore issue #47 and the StegScholar registries own all remaining execution.
