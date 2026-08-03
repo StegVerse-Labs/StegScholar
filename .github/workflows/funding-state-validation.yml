@@ -27,6 +27,8 @@ jobs:
         run: python funding/tools/validate_funding_state.py
       - name: Validate OTF ICRP package
         run: python funding/tools/validate_otf_icrp_package.py
+      - name: Validate PESOSE supporting documents
+        run: python funding/tools/validate_pesose_supporting_documents.py
       - name: Upload validation receipts
         uses: actions/upload-artifact@v4
         with:
@@ -34,4 +36,5 @@ jobs:
           path: |
             funding/evidence/latest-validation.json
             funding/evidence/latest-otf-icrp-validation.json
+            funding/evidence/latest-pesose-support-validation.json
           if-no-files-found: error
