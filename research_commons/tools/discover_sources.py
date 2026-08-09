@@ -3,20 +3,34 @@ from __future__ import annotations
 
 import argparse
 import json
+import time
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
-USER_AGENT = "StegScholar-ResearchCommons/1.0 (https://github.com/StegVerse-Labs/StegScholar)"
+USER_AGENT = "StegScholar-ResearchCommons/1.1 (https://github.com/StegVerse-Labs/StegScholar)"
 
 
-def fetch_crossref(query: str, rows: int) -> list[dict]:
+def fetch_crossref(query: str, rows: int, attempts: int, initial_backoff: float) -> list[dict]:
     params = urllib.parse.urlencode({"query.bibliographic": query, "rows": rows, "select": "DOI,title,author,published,container-title,URL,type"})
     url = f"https://api.crossref.org/works?{params}"
-    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, "Accept": "application/json"})
-    with urllib.request.urlopen(req, timeout=30) as response:
-        payload = json.load(response)
+    last_error: Exception | None = None
+    payload = None
+    for attempt in range(attempts):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, "Accept": "application/json"})
+            with urllib.request.urlopen(req, timeout=30) as response:
+                payload = json.load(response)
+            break
+        except Exception as exc:
+            last_error = exc
+            if attempt + 1 < attempts:
+                time.sleep(initial_backoff * (2 ** attempt))
+    if payload is None:
+        assert last_error is not None
+        raise last_error
+
     out = []
     for item in payload.get("message", {}).get("items", []):
         doi = (item.get("DOI") or "").lower().strip()
@@ -52,13 +66,18 @@ def main() -> int:
 
     plan = json.loads(Path(args.plan).read_text(encoding="utf-8"))
     rows = int(plan.get("max_results_per_query", 20))
+    retry = plan.get("retry_policy", {})
+    attempts = int(retry.get("attempts", 3))
+    initial_backoff = float(retry.get("initial_backoff_seconds", 2))
+    inter_query_delay = float(retry.get("inter_query_delay_seconds", 0.25))
     candidates: list[dict] = []
     errors: list[dict] = []
     for query in plan.get("queries", []):
         try:
-            candidates.extend(fetch_crossref(query, rows))
+            candidates.extend(fetch_crossref(query, rows, attempts, initial_backoff))
         except Exception as exc:
             errors.append({"provider": "crossref", "query": query, "error": str(exc), "state": "RETRY"})
+        time.sleep(inter_query_delay)
 
     deduped: dict[str, dict] = {}
     for item in candidates:
