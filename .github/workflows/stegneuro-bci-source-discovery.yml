@@ -1,0 +1,49 @@
+name: StegNeuro BCI Source Discovery
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 8 * * 1'
+  push:
+    paths:
+      - 'research_commons/protocols/generalized-research-discovery.md'
+      - 'research_commons/topics/STEGNEURO-BCI-001/**'
+      - 'research_commons/tools/discover_sources.py'
+      - '.github/workflows/stegneuro-bci-source-discovery.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate canonical seed registry
+        run: |
+          python -m json.tool research_commons/topics/STEGNEURO-BCI-001/registry.json >/dev/null
+          python -m json.tool research_commons/topics/STEGNEURO-BCI-001/search-plan.json >/dev/null
+      - name: Discover candidate current sources
+        run: |
+          python research_commons/tools/discover_sources.py \
+            --plan research_commons/topics/STEGNEURO-BCI-001/search-plan.json \
+            --out generated/stegneuro-bci/candidate-sources.json
+      - name: Verify fail-closed discovery posture
+        run: |
+          python - <<'PY'
+          import json
+          p = json.load(open('generated/stegneuro-bci/candidate-sources.json'))
+          assert p['authority_effect'] == 'NONE'
+          assert p['auto_merge_into_registry'] is False
+          assert p['state'] == 'REVIEW_REQUIRED'
+          assert p['candidate_count'] > 0
+          print('candidate source discovery: REVIEW_REQUIRED / authority NONE')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stegneuro-bci-source-candidates
+          path: generated/stegneuro-bci/candidate-sources.json
+          if-no-files-found: error
