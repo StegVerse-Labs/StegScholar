@@ -23,9 +23,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Validate canonical seed registry
+      - name: Validate canonical reviewed research inputs
         run: |
           python -m json.tool research_commons/topics/STEGNEURO-BCI-001/registry.json >/dev/null
+          python -m json.tool research_commons/topics/STEGNEURO-BCI-001/reviewed-sources-2026-08-09.json >/dev/null
           python -m json.tool research_commons/topics/STEGNEURO-BCI-001/search-plan.json >/dev/null
       - name: Discover candidate current sources
         run: |
@@ -37,6 +38,7 @@ jobs:
           python research_commons/tools/triage_sources.py \
             --candidates generated/stegneuro-bci/candidate-sources.json \
             --registry research_commons/topics/STEGNEURO-BCI-001/registry.json \
+            --reviewed-additions research_commons/topics/STEGNEURO-BCI-001/reviewed-sources-2026-08-09.json \
             --triage-out generated/stegneuro-bci/source-triage.json \
             --gap-out generated/stegneuro-bci/gap-map.json
       - name: Verify fail-closed discovery posture
@@ -52,6 +54,7 @@ jobs:
           assert p['candidate_count'] > 0
           assert t['authority_effect'] == 'NONE' and t['registry_effect'] == 'NONE'
           assert g['authority_effect'] == 'NONE'
+          assert g['reviewed_source_count'] >= 19
           assert set(i['classification'] for i in t['items']) <= {'ADMIT_SOURCE','REJECT_SOURCE','SUPERSEDED','DUPLICATE','RETRY'}
           print('candidate source discovery + triage: REVIEW_REQUIRED / authority NONE')
           PY
