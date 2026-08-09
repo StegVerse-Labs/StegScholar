@@ -1,27 +1,40 @@
 {
   "topic_id": "STEGNEURO-BCI-001",
-  "providers": ["crossref"],
-  "max_results_per_query": 20,
+  "providers": ["crossref", "pubmed"],
+  "max_results_per_query": 12,
+  "retry_policy": {
+    "attempts": 4,
+    "initial_backoff_seconds": 2,
+    "inter_query_delay_seconds": 0.35
+  },
   "queries": [
     "intracortical brain computer interface speech decoding human",
     "wireless intracortical brain computer interface implant",
+    "fully implanted wireless brain computer interface human",
     "electrocorticography speech brain computer interface human",
     "endovascular brain computer interface stentrode human",
     "endocisternal neural interface recording stimulation wireless",
     "functional ultrasound brain machine interface decoding",
     "focused ultrasound neuromodulation brain computer interface human",
+    "transcranial magnetic stimulation neural recording human",
+    "transcranial electrical stimulation brain computer interface human",
+    "fNIRS brain computer interface dataset human",
+    "optical brain computer interface neural decoding human",
     "EEG imagined speech brain computer interface",
     "MEG language decoding brain computer interface",
     "bidirectional brain computer interface stimulation recording human",
     "brain computer interface calibration drift chronic reliability",
     "brain computer interface decoder language model prior confound",
+    "brain computer interface zero signal decoder prior ablation",
     "brain computer interface safety implant clinical trial",
-    "non invasive speech decoding EEG dataset"
+    "non invasive speech decoding EEG dataset",
+    "brain computer interface spatial temporal resolution comparison modalities"
   ],
   "candidate_policy": {
     "auto_merge_into_registry": false,
     "candidate_state": "REVIEW_REQUIRED",
     "primary_source_preferred": true,
-    "negative_and_limitation_evidence_required": true
+    "negative_and_limitation_evidence_required": true,
+    "metadata_triage_does_not_establish_scientific_support": true
   }
 }
