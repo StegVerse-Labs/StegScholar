@@ -9,8 +9,8 @@ from pathlib import Path
 GAP_DIMENSIONS = {
     "systematic clinical-trial registry mapping for implantable BCIs": ["safety_regulatory", "intracortical_wireless_read", "endovascular_or_endocisternal"],
     "primary-source regulatory and safety evidence by modality": ["safety_regulatory"],
-    "TMS/tES WRITE evidence mapped to StegNeuro envelope fields": ["tms_tes_write", "bidirectional_read_write"],
-    "wireless fully implanted human BCI architecture": ["intracortical_wireless_read", "endovascular_or_endocisternal"],
+    "TMS and tES WRITE evidence mapped to StegNeuro envelope fields": ["tms_tes_write", "bidirectional_read_write"],
+    "wireless fully implanted human BCI architecture evidence": ["intracortical_wireless_read", "endovascular_or_endocisternal"],
     "decoder-prior/confabulation studies with explicit zero-signal or prior-ablation controls": ["decoder_prior_confound", "speech_inner_speech"],
     "direct comparison of READ and WRITE spatial/temporal resolution across modalities": ["bidirectional_read_write", "ecog_surface_read", "noninvasive_eeg_meg", "functional_ultrasound_read", "focused_ultrasound_write", "tms_tes_write"],
     "device-specific calibration drift and chronic reliability datasets": ["calibration_drift_reliability", "reproducible_data"],
@@ -45,6 +45,12 @@ def select_candidates(triage: dict, dimensions: list[str], limit: int = 8) -> li
         })
     items.sort(key=lambda x: (-(x.get("year") or 0), norm(x.get("title") or "")))
     return items[:limit]
+
+
+def semantic_without_timestamp(doc: dict) -> dict:
+    copy = json.loads(json.dumps(doc))
+    copy.pop("generated_at", None)
+    return copy
 
 
 def main() -> int:
@@ -98,6 +104,13 @@ def main() -> int:
 
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
+    if out.exists():
+        try:
+            old = json.loads(out.read_text(encoding="utf-8"))
+            if semantic_without_timestamp(old) == semantic_without_timestamp(receipt):
+                receipt["generated_at"] = old.get("generated_at", receipt["generated_at"])
+        except (json.JSONDecodeError, OSError):
+            pass
     out.write_text(json.dumps(receipt, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(json.dumps({
         "state": receipt["state"],
