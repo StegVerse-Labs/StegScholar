@@ -113,12 +113,17 @@ def main() -> int:
         counts[err.get("state", "RETRY")] += 1
 
     reviewed_text = " ".join(norm(json.dumps(s, ensure_ascii=False)) for s in reviewed)
-    gaps = []
+    dimensions = []
     for key, tokens in COVERAGE.items():
         covered = any(tok in reviewed_text for tok in tokens)
         candidate_count = coverage_candidates.get(key, 0)
         state = "COVERED_REVIEWED" if covered else ("CANDIDATE_AVAILABLE" if candidate_count else "GAP")
-        gaps.append({"dimension": key, "state": state, "reviewed_support": covered, "review_required_candidate_count": candidate_count})
+        dimensions.append({"dimension": key, "state": state, "reviewed_support": covered, "review_required_candidate_count": candidate_count})
+
+    known_gaps = registry.get("known_gaps", [])
+    dispositions = (additions or {}).get("gap_disposition", {})
+    named_gap_state = [{"gap": gap, "state": dispositions.get(gap, "OPEN")} for gap in known_gaps]
+    open_required = [g for g in named_gap_state if g["state"] != "COVERED"]
 
     triage_doc = {
         "topic_id": candidates.get("topic_id"), "state": "REVIEW_REQUIRED",
@@ -128,16 +133,17 @@ def main() -> int:
     }
     gap_doc = {
         "topic_id": candidates.get("topic_id"), "state": "ACTIVE_GAP_MAP", "authority_effect": "NONE",
-        "reviewed_source_count": len(reviewed), "dimensions": gaps,
-        "open_dimensions": [g["dimension"] for g in gaps if g["state"] != "COVERED_REVIEWED"],
-        "registry_known_gaps": registry.get("known_gaps", []),
-        "reviewed_gap_effects": (additions or {}).get("reviewed_gap_effects", {})
+        "reviewed_source_count": len(reviewed),
+        "coarse_coverage_dimensions": dimensions,
+        "named_gap_state": named_gap_state,
+        "open_required_gaps": open_required,
+        "open_required_gap_count": len(open_required)
     }
     Path(args.triage_out).parent.mkdir(parents=True, exist_ok=True)
     Path(args.gap_out).parent.mkdir(parents=True, exist_ok=True)
     Path(args.triage_out).write_text(json.dumps(triage_doc, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     Path(args.gap_out).write_text(json.dumps(gap_doc, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    print(json.dumps({"triage_counts": triage_doc["counts"], "reviewed_sources": len(reviewed), "open_dimensions": len(gap_doc["open_dimensions"])}))
+    print(json.dumps({"triage_counts": triage_doc["counts"], "reviewed_sources": len(reviewed), "open_required_gaps": len(open_required)}))
     return 0
 
 
