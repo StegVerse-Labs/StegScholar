@@ -1,6 +1,6 @@
 # StegNeuro BCI Research Mirror Handoff
 
-Status: ACTIVE — MACHINE DISCOVERY + REVIEWED PRIMARY SOURCES + SUCCESSOR GAP CLOSURE
+Status: ACTIVE — MACHINE DISCOVERY + REVIEWED PRIMARY SOURCES + PERSISTENT GAP CLOSURE
 Updated: 2026-08-09
 Repository: `StegVerse-Labs/StegScholar`
 Branch: `main`
@@ -14,7 +14,7 @@ This handoff is subordinate to the Research Commons handoff and governs only the
 
 ## Goal
 
-Maintain a current, reconstructable research and data-source map for wired, wireless, implanted, minimally invasive, and non-invasive BCIs relevant to StegNeuro device/adaptor claims, Comms-Gateway neural interaction profiles, StegCore neural-governance assumptions, PAT-004 technical evidence, and related papers/formalisms.
+Maintain and continuously advance a current, reconstructable research/data-source map for wired, wireless, implanted, minimally invasive, and non-invasive BCIs relevant to StegNeuro device/adaptor claims, Comms-Gateway neural interaction profiles, StegCore neural-governance assumptions, PAT-004 technical evidence, and related papers/formalisms.
 
 ## Canonical files
 
@@ -26,6 +26,8 @@ research_commons/topics/STEGNEURO-BCI-001/reviewed-sources-2026-08-09.json
 research_commons/topics/STEGNEURO-BCI-001/search-plan.json
 research_commons/tools/discover_sources.py
 research_commons/tools/triage_sources.py
+research_commons/tools/build_continuation_state.py
+research_commons/runtime/STEGNEURO-BCI-001/continuation-latest.json
 .github/workflows/stegneuro-bci-source-discovery.yml
 ```
 
@@ -33,13 +35,12 @@ research_commons/tools/triage_sources.py
 
 Issue `#49` is CLOSED/COMPLETED. Its release condition was satisfied without claiming exhaustive scientific coverage.
 
-Strongest completed hosted evidence for that cycle:
+Strongest predecessor evidence:
 
 ```text
 workflow: StegNeuro BCI Source Discovery
 run: 31297506457
 job: 93204908647
-head: fc622c14024a24c48766da798210e0b2a128c52e
 conclusion: SUCCESS
 artifact: 9033431357
 artifact digest: sha256:4c120c5d6bc80afee76786ef1c325d4283683c5914c170da92dac8227ec5daf8
@@ -56,7 +57,37 @@ authority_effect: NONE
 registry_effect_from_metadata_triage: NONE
 ```
 
-The first discovery run had 56 candidates and 11 provider/query errors. Bounded exponential retry, pacing, and expanded queries were installed; the completed successor validation above had zero provider errors. The metadata triage classifies review-queue disposition only and cannot create scientific authority or auto-promote candidates.
+## Autonomous continuation activation
+
+The former weekly observer is superseded by a six-hour continuation cycle.
+
+```text
+workflow: .github/workflows/stegneuro-bci-source-discovery.yml
+schedule: every 6 hours at minute 17
+manual trigger: workflow_dispatch
+mutation trigger: protocol/topic/discovery/triage/continuation-tool changes
+permissions: contents: write only for persisted continuation receipt
+```
+
+Every cycle:
+
+1. validates the reviewed source registry and search plan;
+2. discovers current candidates;
+3. triages candidate metadata without granting scientific authority;
+4. rebuilds the named evidence gap map;
+5. builds per-gap source-content review queues;
+6. persists `research_commons/runtime/STEGNEURO-BCI-001/continuation-latest.json` when semantic state changes;
+7. uploads candidate, triage, gap, and continuation artifacts.
+
+Latest hosted validation of this autonomous path:
+
+```text
+run: 31306499337
+head: 7b1398c5772c7d98dde8c30f146d1d77732364e2
+conclusion: SUCCESS
+```
+
+The immediately preceding activation run `31306389283` also succeeded and proved the persistent continuation-state write path. The continuation receipt is a repository file, not an expiring chat claim.
 
 ## Reviewed evidence state
 
@@ -84,10 +115,10 @@ release_condition:
   each named gap becomes COVERED
   OR is explicitly BLOCKED/NOT_APPLICABLE with machine-observable reason
   AND promoted evidence is source-content reviewed
-  AND hosted candidate/triage/gap artifacts bind the updated state
+  AND hosted candidate/triage/gap/continuation artifacts bind the updated state
 ```
 
-Named gaps transferred to `#50`:
+Named gaps owned by `#50`:
 
 ```text
 OPEN: systematic clinical-trial registry mapping for implantable BCIs
@@ -102,42 +133,33 @@ OPEN: patent landscape crosswalk
 
 No coarse keyword coverage may silently convert these named OPEN/PARTIAL states to complete.
 
-## Automation
+## Machine/human boundary
 
-Owner: `StegVerse-Labs/StegScholar`.
+Machine execution is authorized to discover, normalize, deduplicate, triage metadata, construct review queues, preserve negative/null search targets, persist continuation state, and identify the next executable evidence task.
 
-Trigger: weekly schedule, workflow dispatch, or mutation to topic/protocol/discovery/triage surfaces.
+Source-content promotion into reviewed scientific evidence remains `REVIEW_REQUIRED`. Metadata alone has `authority_effect: NONE` and `registry_effect: NONE`. This is an explicit evidence-quality boundary, not an excuse to stop machine-owned discovery or queue construction.
 
-Deterministic outputs:
+## Cross-repository consumers and observer
 
-```text
-candidate-sources.json
-source-triage.json
-gap-map.json
-```
-
-The recurring workflow persists missing evidence, RETRY conditions, reviewed coverage, and `authority_effect: NONE`. Missing evidence is never success.
-
-## Cross-repository consumers
-
-- `StegVerse-Labs/StegNeuro/research/bci-evidence-consumer.json` consumes this topic and reviewed additions under fail-closed claim rules.
+- `StegVerse-Labs/StegNeuro/research/bci-evidence-consumer.json` consumes reviewed evidence under fail-closed claim rules.
+- `StegVerse-Labs/StegNeuro#1` plus `.github/workflows/autonomous-continuation.yml` re-evaluates this continuation every six hours so it does not become forgotten state.
 - `StegVerse-Labs/Patents/PAT-004_MIRROR_HANDOFF.md` may consume bounded technical evidence without legal conclusions.
-- `StegVerse-Labs/Comms-Gateway` receives no scientific authority from this topic; it owns interaction semantics only.
+- `StegVerse-Labs/Comms-Gateway` receives no scientific authority from this topic.
 - `StegVerse-Labs/StegCore#73` independently owns the real-hardware/biological activation gate.
 
 ## Session consolidation
 
-The originating session's BCI-search requirement is complete as a session-owned task and has been transferred into repository-native continuation.
-
 ```text
 COMPLETED CURRENT CYCLE: StegVerse-Labs/StegScholar#49
-MERGED INTO CONTINUATION: StegVerse-Labs/StegScholar#50
+MERGED INTO ACTIVE CONTINUATION: StegVerse-Labs/StegScholar#50
 CANONICAL HANDOFF: research_commons/topics/STEGNEURO-BCI-001/STEGNEURO_BCI_MIRROR_HANDOFF.md
+PERSISTENT STATE: research_commons/runtime/STEGNEURO-BCI-001/continuation-latest.json
 MACHINE OBSERVER: .github/workflows/stegneuro-bci-source-discovery.yml
+CROSS-REPO OBSERVER: StegVerse-Labs/StegNeuro#1
 ```
 
-The conversation is not required for the weekly discovery, source-content review queue, or gap closure to continue.
+The originating conversation is not required for discovery, queue generation, dependency re-evaluation, or persisted state continuation.
 
 ## Archive condition
 
-This research lane does not require retention of the originating chat. Open evidence gaps have a named owner, successor issue, recurring machine observer, explicit states, deterministic artifacts, and machine-observable release conditions. Archival of the session does not mean the eight evidence gaps are complete; it means their continuation no longer depends on chat-only state.
+This research lane does not require retention of the originating chat. Open evidence gaps have a named owner, six-hour machine executor, source-content review boundary, deterministic persisted receipt, and explicit release conditions. Archival does not mean the eight gaps are complete; it means their work no longer depends on rediscovery of this conversation.
