@@ -1,0 +1,79 @@
+{
+  "topic_id": "STEGNEURO-BCI-001",
+  "review_date": "2026-08-09",
+  "review_posture": "PRIMARY_SOURCE_CONTENT_REVIEWED_FOR_BOUNDED_FACTS",
+  "authority_effect": "NONE",
+  "sources": [
+    {
+      "id": "doi:10.1001/jamaneurol.2022.4847",
+      "title": "Assessment of Safety of a Fully Implanted Endovascular Brain-Computer Interface for Severe Paralysis in 4 Patients: The Stentrode With Thought-Controlled Digital Switch (SWITCH) Study",
+      "year": 2023,
+      "class": "PRIMARY_RESEARCH",
+      "modality": ["endovascular", "stentrode", "fully_implanted", "wireless"],
+      "direction": ["READ"],
+      "observed_result": "A first-in-human prospective study implanted an endovascular electrode system connected to a subcutaneous receiver-transmitter; four participants completed 12-month follow-up, maintained signal, and controlled a computer, with the article reporting no device-related serious adverse event causing death or permanent increased disability.",
+      "stegverse_relevance": ["human_endovascular", "wireless_transport", "chronic_signal", "safety_evidence", "target_registration"],
+      "limitations": ["small_cohort", "assistive_control_not_semantic_transport", "study_safety_result_does_not_generalize_to_other_devices"],
+      "url": "https://jamanetwork.com/journals/jamaneurology/fullarticle/2799839"
+    },
+    {
+      "id": "doi:10.1038/s41551-025-01501-w",
+      "title": "Minimally invasive implantation of scalable high-density cortical microelectrode arrays for multimodal neural decoding and stimulation",
+      "year": 2025,
+      "class": "PRIMARY_RESEARCH",
+      "modality": ["microECoG", "subdural", "minimally_invasive", "high_density"],
+      "direction": ["READ", "WRITE"],
+      "observed_result": "Thin-film cortical arrays inserted through a cranial micro-slit supported high-channel-count neural recording, decoding, and focal stimulation across animal experiments and human pilot procedures; individual electrodes could be configured for recording or stimulation.",
+      "stegverse_relevance": ["bidirectional", "addressed_target", "high_density", "record_write_separation", "stimulation_envelope"],
+      "limitations": ["human_pilot_scope", "physical_stimulation_not_semantic_writing", "device_specific_safety_bounds"],
+      "url": "https://www.nature.com/articles/s41551-025-01501-w"
+    },
+    {
+      "id": "doi:10.1038/s41380-024-02405-y",
+      "title": "Effects of transcranial magnetic stimulation on the human brain recorded with intracranial electrocorticography",
+      "year": 2024,
+      "class": "PRIMARY_RESEARCH",
+      "modality": ["TMS", "non_invasive_stimulation", "intracranial_ECoG_observation"],
+      "direction": ["WRITE", "READ"],
+      "observed_result": "TMS delivered to dorsolateral prefrontal cortex in neurosurgical participants produced local and connected downstream intracranial evoked potentials measured with ECoG, providing direct human evidence that non-invasive stimulation can produce target- and network-dependent measurable effects.",
+      "stegverse_relevance": ["non_invasive_write", "post_consequence_observation", "target_specificity", "network_propagation"],
+      "limitations": ["stimulation_effect_not_semantic_content", "network_effects_extend_beyond_local_target", "research_setting"],
+      "url": "https://www.nature.com/articles/s41380-024-02405-y"
+    },
+    {
+      "id": "doi:10.1038/s41598-025-96039-x",
+      "title": "Efficacy of kinesthetic motor imagery based brain computer interface combined with tDCS on upper limb function in subacute stroke",
+      "year": 2025,
+      "class": "PRIMARY_RESEARCH",
+      "modality": ["tDCS", "EEG_BCI", "non_invasive"],
+      "direction": ["READ", "WRITE"],
+      "observed_result": "A human rehabilitation study evaluated a motor-imagery BCI combined with transcranial direct-current stimulation, providing evidence for a non-invasive BCI-plus-electrical-stimulation interaction rather than direct semantic neural writing.",
+      "stegverse_relevance": ["non_invasive_write", "closed_loop_rehabilitation", "modality_combination"],
+      "limitations": ["therapeutic_rehabilitation_context", "no_semantic_write_claim", "clinical_outcome_not_transport_bandwidth"],
+      "url": "https://www.nature.com/articles/s41598-025-96039-x"
+    },
+    {
+      "id": "doi:10.1038/s41597-024-04012-6",
+      "title": "A multiple session dataset of NIRS recordings from stroke patients controlling brain-computer interface",
+      "year": 2024,
+      "class": "PRIMARY_DATASET",
+      "modality": ["NIRS", "optical", "non_invasive", "dataset"],
+      "direction": ["READ"],
+      "observed_result": "The published dataset contains more than 50 hours of NIRS recordings from 15 stroke patients across 237 motor-imagery BCI sessions, including online performance and longitudinal multi-session data.",
+      "stegverse_relevance": ["optical_read", "reproducible_data", "cross_session_calibration", "hemodynamic_proxy"],
+      "limitations": ["hemodynamic_proxy_not_neural_state_in_full", "motor_imagery_rehabilitation_context", "limited_participant_count"],
+      "url": "https://www.nature.com/articles/s41597-024-04012-6"
+    }
+  ],
+  "reviewed_gap_effects": {
+    "human_endovascular_primary_trial_results": "COVERED",
+    "TMS_and_tES_WRITE_evidence": "PARTIALLY_COVERED",
+    "optical_and_fNIRS_READ_evidence": "COVERED_FOR_NIRS_DATASET",
+    "wireless_fully_implanted_human_BCI_architecture": "COVERED_FOR_ENDOVASCULAR_STENTRODE_ONLY",
+    "minimally_invasive_bidirectional_cortical_interface": "COVERED_FOR_PUBLISHED_PILOT_SYSTEM",
+    "decoder_prior_zero_signal_controls": "OPEN",
+    "cross_modality_resolution_comparison": "OPEN",
+    "chronic_calibration_reliability": "PARTIAL",
+    "patent_landscape_crosswalk": "OPEN"
+  }
+}
