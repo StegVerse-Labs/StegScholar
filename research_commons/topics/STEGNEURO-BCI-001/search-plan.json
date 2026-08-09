@@ -1,0 +1,27 @@
+{
+  "topic_id": "STEGNEURO-BCI-001",
+  "providers": ["crossref"],
+  "max_results_per_query": 20,
+  "queries": [
+    "intracortical brain computer interface speech decoding human",
+    "wireless intracortical brain computer interface implant",
+    "electrocorticography speech brain computer interface human",
+    "endovascular brain computer interface stentrode human",
+    "endocisternal neural interface recording stimulation wireless",
+    "functional ultrasound brain machine interface decoding",
+    "focused ultrasound neuromodulation brain computer interface human",
+    "EEG imagined speech brain computer interface",
+    "MEG language decoding brain computer interface",
+    "bidirectional brain computer interface stimulation recording human",
+    "brain computer interface calibration drift chronic reliability",
+    "brain computer interface decoder language model prior confound",
+    "brain computer interface safety implant clinical trial",
+    "non invasive speech decoding EEG dataset"
+  ],
+  "candidate_policy": {
+    "auto_merge_into_registry": false,
+    "candidate_state": "REVIEW_REQUIRED",
+    "primary_source_preferred": true,
+    "negative_and_limitation_evidence_required": true
+  }
+}
