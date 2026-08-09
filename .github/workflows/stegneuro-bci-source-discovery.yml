@@ -9,6 +9,7 @@ on:
       - 'research_commons/protocols/generalized-research-discovery.md'
       - 'research_commons/topics/STEGNEURO-BCI-001/**'
       - 'research_commons/tools/discover_sources.py'
+      - 'research_commons/tools/triage_sources.py'
       - '.github/workflows/stegneuro-bci-source-discovery.yml'
 
 permissions:
@@ -31,19 +32,34 @@ jobs:
           python research_commons/tools/discover_sources.py \
             --plan research_commons/topics/STEGNEURO-BCI-001/search-plan.json \
             --out generated/stegneuro-bci/candidate-sources.json
+      - name: Triage metadata and build evidence gap map
+        run: |
+          python research_commons/tools/triage_sources.py \
+            --candidates generated/stegneuro-bci/candidate-sources.json \
+            --registry research_commons/topics/STEGNEURO-BCI-001/registry.json \
+            --triage-out generated/stegneuro-bci/source-triage.json \
+            --gap-out generated/stegneuro-bci/gap-map.json
       - name: Verify fail-closed discovery posture
         run: |
           python - <<'PY'
           import json
           p = json.load(open('generated/stegneuro-bci/candidate-sources.json'))
+          t = json.load(open('generated/stegneuro-bci/source-triage.json'))
+          g = json.load(open('generated/stegneuro-bci/gap-map.json'))
           assert p['authority_effect'] == 'NONE'
           assert p['auto_merge_into_registry'] is False
           assert p['state'] == 'REVIEW_REQUIRED'
           assert p['candidate_count'] > 0
-          print('candidate source discovery: REVIEW_REQUIRED / authority NONE')
+          assert t['authority_effect'] == 'NONE' and t['registry_effect'] == 'NONE'
+          assert g['authority_effect'] == 'NONE'
+          assert set(i['classification'] for i in t['items']) <= {'ADMIT_SOURCE','REJECT_SOURCE','SUPERSEDED','DUPLICATE','RETRY'}
+          print('candidate source discovery + triage: REVIEW_REQUIRED / authority NONE')
           PY
       - uses: actions/upload-artifact@v4
         with:
-          name: stegneuro-bci-source-candidates
-          path: generated/stegneuro-bci/candidate-sources.json
+          name: stegneuro-bci-source-evidence
+          path: |
+            generated/stegneuro-bci/candidate-sources.json
+            generated/stegneuro-bci/source-triage.json
+            generated/stegneuro-bci/gap-map.json
           if-no-files-found: error
