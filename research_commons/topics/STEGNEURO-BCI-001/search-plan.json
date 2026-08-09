@@ -1,11 +1,11 @@
 {
   "topic_id": "STEGNEURO-BCI-001",
-  "providers": ["crossref", "pubmed"],
+  "providers": ["crossref"],
   "max_results_per_query": 12,
   "retry_policy": {
     "attempts": 4,
     "initial_backoff_seconds": 2,
-    "inter_query_delay_seconds": 0.35
+    "inter_query_delay_seconds": 0.5
   },
   "queries": [
     "intracortical brain computer interface speech decoding human",
