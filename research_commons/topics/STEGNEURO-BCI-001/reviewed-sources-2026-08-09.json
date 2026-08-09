@@ -65,15 +65,16 @@
       "url": "https://www.nature.com/articles/s41597-024-04012-6"
     }
   ],
-  "reviewed_gap_effects": {
-    "human_endovascular_primary_trial_results": "COVERED",
-    "TMS_and_tES_WRITE_evidence": "PARTIALLY_COVERED",
-    "optical_and_fNIRS_READ_evidence": "COVERED_FOR_NIRS_DATASET",
-    "wireless_fully_implanted_human_BCI_architecture": "COVERED_FOR_ENDOVASCULAR_STENTRODE_ONLY",
-    "minimally_invasive_bidirectional_cortical_interface": "COVERED_FOR_PUBLISHED_PILOT_SYSTEM",
-    "decoder_prior_zero_signal_controls": "OPEN",
-    "cross_modality_resolution_comparison": "OPEN",
-    "chronic_calibration_reliability": "PARTIAL",
-    "patent_landscape_crosswalk": "OPEN"
+  "gap_disposition": {
+    "systematic clinical-trial registry mapping for implantable BCIs": "OPEN",
+    "primary-source regulatory and safety evidence by modality": "OPEN",
+    "human endovascular BCI primary trial results": "COVERED",
+    "TMS and tES WRITE evidence mapped to StegNeuro envelope fields": "PARTIAL",
+    "optical and fNIRS READ evidence": "COVERED",
+    "wireless fully implanted human BCI architecture evidence": "PARTIAL_ENDOVASCULAR_ONLY",
+    "decoder-prior/confabulation studies with explicit zero-signal or prior-ablation controls": "OPEN",
+    "direct comparison of READ and WRITE spatial/temporal resolution across modalities": "OPEN",
+    "device-specific calibration drift and chronic reliability datasets": "PARTIAL",
+    "patent landscape crosswalk": "OPEN"
   }
 }
