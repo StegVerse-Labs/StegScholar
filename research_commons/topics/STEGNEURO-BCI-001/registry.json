@@ -1,0 +1,192 @@
+{
+  "topic_id": "STEGNEURO-BCI-001",
+  "status": "ACTIVE_INITIAL_SEED",
+  "last_verified": "2026-08-09",
+  "consumer_repositories": [
+    "StegVerse-Labs/StegNeuro",
+    "StegVerse-Labs/Comms-Gateway",
+    "StegVerse-Labs/StegCore"
+  ],
+  "sources": [
+    {
+      "id": "doi:10.1038/s41586-023-06377-x",
+      "title": "A high-performance speech neuroprosthesis",
+      "year": 2023,
+      "class": "PRIMARY_RESEARCH",
+      "modality": ["intracortical", "microelectrode_array", "wired"],
+      "direction": ["READ"],
+      "observed_result": "Attempted speech was decoded to text from intracortical spiking activity in a participant with paralysis.",
+      "stegverse_relevance": ["speech_decoding", "candidate_generation", "read_bandwidth", "decoder_provenance"],
+      "limitations": ["participant_and_task_specific", "decoder_output_is_not_intent_or_authority"],
+      "url": "https://www.nature.com/articles/s41586-023-06377-x"
+    },
+    {
+      "id": "doi:10.1038/s41586-023-06443-4",
+      "title": "A high-performance neuroprosthesis for speech decoding and avatar control",
+      "year": 2023,
+      "class": "PRIMARY_RESEARCH",
+      "modality": ["ECoG", "high_density_surface_array", "wired"],
+      "direction": ["READ"],
+      "observed_result": "High-density cortical recordings supported real-time text, speech-audio and avatar outputs during attempted silent speech.",
+      "stegverse_relevance": ["multimodal_output", "presentation_profile", "candidate_reconstruction"],
+      "limitations": ["decoded_output_is_model_mediated", "no_authority_inference"],
+      "url": "https://www.nature.com/articles/s41586-023-06443-4"
+    },
+    {
+      "id": "doi:10.1038/s41562-024-01867-y",
+      "title": "Representation of internal speech by single neurons in human supramarginal gyrus",
+      "year": 2024,
+      "class": "PRIMARY_RESEARCH",
+      "modality": ["intracortical", "single_neuron", "implanted"],
+      "direction": ["READ"],
+      "observed_result": "Internal and vocalized words showed decodable neural representations in implanted participants for a bounded vocabulary/task.",
+      "stegverse_relevance": ["internal_speech", "intent_boundary", "decoder_scope"],
+      "limitations": ["small_participant_count", "bounded_vocabulary", "internal_speech_is_not_authorization"],
+      "url": "https://www.nature.com/articles/s41562-024-01867-y"
+    },
+    {
+      "id": "doi:10.1038/s42256-024-00824-8",
+      "title": "A neural speech decoding framework leveraging deep learning and speech synthesis",
+      "year": 2024,
+      "class": "PRIMARY_RESEARCH",
+      "modality": ["ECoG", "implanted"],
+      "direction": ["READ"],
+      "observed_result": "A deep-learning ECoG decoder mapped cortical signals into speech parameters and synthesized speech across a cohort of 48 participants.",
+      "stegverse_relevance": ["translation_chain", "model_identity", "causal_decoding", "provenance"],
+      "limitations": ["model_and_training_data_contribute_to_output", "semantic_equivalence_not_established"],
+      "url": "https://www.nature.com/articles/s42256-024-00824-8"
+    },
+    {
+      "id": "doi:10.1038/s42256-023-00714-5",
+      "title": "Decoding speech perception from non-invasive brain recordings",
+      "year": 2023,
+      "class": "PRIMARY_RESEARCH",
+      "modality": ["EEG", "MEG", "non_invasive"],
+      "direction": ["READ"],
+      "observed_result": "Non-invasive recordings supported model-based decoding of perceived speech above baselines across participants.",
+      "stegverse_relevance": ["non_invasive_read", "noise", "cross_participant_training", "semantic_prior_boundary"],
+      "limitations": ["perception_task_not_free_intent", "contextual_model_representations_contribute"],
+      "url": "https://www.nature.com/articles/s42256-023-00714-5"
+    },
+    {
+      "id": "doi:10.1038/s41593-023-01304-9",
+      "title": "Semantic reconstruction of continuous language from non-invasive brain recordings",
+      "year": 2023,
+      "class": "PRIMARY_RESEARCH",
+      "modality": ["fMRI", "non_invasive"],
+      "direction": ["READ"],
+      "observed_result": "Continuous-language meaning was reconstructed from fMRI using an encoding model and language-model-assisted candidate search.",
+      "stegverse_relevance": ["semantic_reconstruction", "decoder_prior", "candidate_not_authority"],
+      "limitations": ["slow_hemodynamic_measurement", "language_model_prior_contributes", "not_direct_message_readout"],
+      "url": "https://www.nature.com/articles/s41593-023-01304-9"
+    },
+    {
+      "id": "doi:10.1038/s41593-023-01500-7",
+      "title": "Decoding motor plans using a closed-loop ultrasonic brain–machine interface",
+      "year": 2024,
+      "class": "PRIMARY_RESEARCH",
+      "modality": ["functional_ultrasound", "fUS", "ultrasound"],
+      "direction": ["READ"],
+      "observed_result": "Functional ultrasound was used in a closed-loop BMI to decode motor plans, demonstrating an ultrasonic neural READ pathway.",
+      "stegverse_relevance": ["ultrasound_read", "closed_loop", "targeting", "latency"],
+      "limitations": ["task_specific", "hemodynamic_proxy_not_neural_state_in_full"],
+      "url": "https://www.nature.com/articles/s41593-023-01500-7"
+    },
+    {
+      "id": "doi:10.1038/s41467-024-48576-8",
+      "title": "Transcranial focused ultrasound to V5 enhances human visual motion brain-computer interface by modulating feature-based attention",
+      "year": 2024,
+      "class": "PRIMARY_RESEARCH",
+      "modality": ["focused_ultrasound", "transcranial", "non_invasive"],
+      "direction": ["WRITE"],
+      "observed_result": "Targeted transcranial focused ultrasound modulated a human BCI task when applied to visual area V5.",
+      "stegverse_relevance": ["ultrasound_write", "targeting", "physical_effect", "pre_post_observation"],
+      "limitations": ["modulation_not_semantic_writing", "physical_focus_not_desired_neural_state"],
+      "url": "https://www.nature.com/articles/s41467-024-48576-8"
+    },
+    {
+      "id": "doi:10.1038/s41551-020-0595-9",
+      "title": "Power-saving design opportunities for wireless intracortical brain–computer interfaces",
+      "year": 2020,
+      "class": "PRIMARY_RESEARCH",
+      "modality": ["intracortical", "wireless", "implant_design"],
+      "direction": ["READ"],
+      "observed_result": "Experimental iBCI data were used to quantify signal-quality, decoder-performance and power trade-offs relevant to wireless implants.",
+      "stegverse_relevance": ["wireless_read", "power_budget", "channel_count", "signal_quality"],
+      "limitations": ["design_tradeoff_study_not_complete_clinical_wireless_system"],
+      "url": "https://www.nature.com/articles/s41551-020-0595-9"
+    },
+    {
+      "id": "doi:10.1038/s41551-024-01281-9",
+      "title": "Endocisternal interfaces for minimally invasive neural stimulation and recording of the brain and spinal cord",
+      "year": 2024,
+      "class": "PRIMARY_RESEARCH",
+      "modality": ["endocisternal", "wireless", "minimally_invasive"],
+      "direction": ["READ", "WRITE"],
+      "observed_result": "A wireless endocisternal interface demonstrated recording and stimulation functions in sheep with repositioning and chronic implantation.",
+      "stegverse_relevance": ["bidirectional", "wireless", "target_access", "calibration", "device_adapter"],
+      "limitations": ["animal_model", "no_human_semantic_transport_claim"],
+      "url": "https://www.nature.com/articles/s41551-024-01281-9"
+    },
+    {
+      "id": "doi:10.1038/s41591-026-04414-6",
+      "title": "Long-term independent use of an intracortical brain–computer interface for speech and cursor control",
+      "year": 2026,
+      "class": "PRIMARY_RESEARCH",
+      "modality": ["intracortical", "percutaneous_wired", "home_use"],
+      "direction": ["READ"],
+      "observed_result": "A participant used an intracortical BCI independently and near-daily for speech and cursor control over an extended period; the published setup used percutaneous wired connections.",
+      "stegverse_relevance": ["chronic_use", "wired_baseline", "calibration_stability", "independent_operation"],
+      "limitations": ["single_participant_context", "wired_connection_remains"],
+      "url": "https://www.nature.com/articles/s41591-026-04414-6"
+    },
+    {
+      "id": "doi:10.1038/s41591-026-04498-0",
+      "title": "A neuroprosthesis for restoring hand movement and sensation in a person with complete tetraplegia",
+      "year": 2026,
+      "class": "PRIMARY_RESEARCH",
+      "modality": ["intracortical", "neuromodulation", "bidirectional_system"],
+      "direction": ["READ", "WRITE"],
+      "observed_result": "A double neural bypass linked intracortical decoding with patterned spinal and cortical stimulation to restore movement and sensation in a participant with tetraplegia.",
+      "stegverse_relevance": ["bidirectional", "closed_loop", "read_write_separation", "post_consequence_observation"],
+      "limitations": ["therapeutic_sensorimotor_system_not_semantic_packet_transport", "individual_clinical_context"],
+      "url": "https://www.nature.com/articles/s41591-026-04498-0"
+    },
+    {
+      "id": "doi:10.1038/s41467-025-65499-0",
+      "title": "Towards decoding individual words from non-invasive brain recordings",
+      "year": 2025,
+      "class": "PRIMARY_RESEARCH",
+      "modality": ["EEG", "MEG", "non_invasive"],
+      "direction": ["READ"],
+      "observed_result": "A multi-dataset pipeline evaluated individual-word decoding from EEG and MEG across hundreds of participants and multiple languages/tasks.",
+      "stegverse_relevance": ["non_invasive_read", "cross_device", "data_scale", "generalization"],
+      "limitations": ["performance_depends_on_device_protocol_and_averaging", "word_decoding_not_authorized_message"],
+      "url": "https://www.nature.com/articles/s41467-025-65499-0"
+    },
+    {
+      "id": "doi:10.1038/s41597-025-05187-2",
+      "title": "An open-access EEG dataset for speech decoding: Exploring the role of articulation and coarticulation",
+      "year": 2025,
+      "class": "PRIMARY_DATASET",
+      "modality": ["EEG", "non_invasive", "dataset"],
+      "direction": ["READ"],
+      "observed_result": "Open EEG datasets provide phoneme, articulation and word-level speech tasks suitable for reproducible decoder benchmarking.",
+      "stegverse_relevance": ["benchmark_data", "reproducibility", "non_invasive_read"],
+      "limitations": ["small_cohorts", "task_dataset_not_real_world_intent"],
+      "url": "https://www.nature.com/articles/s41597-025-05187-2"
+    }
+  ],
+  "known_gaps": [
+    "systematic clinical-trial registry mapping for implantable BCIs",
+    "primary-source regulatory and safety evidence by modality",
+    "human endovascular BCI primary trial results",
+    "TMS and tES WRITE evidence mapped to StegNeuro envelope fields",
+    "optical and fNIRS READ evidence",
+    "wireless fully implanted human BCI architecture evidence",
+    "decoder-prior/confabulation studies with explicit zero-signal or prior-ablation controls",
+    "direct comparison of READ and WRITE spatial/temporal resolution across modalities",
+    "device-specific calibration drift and chronic reliability datasets",
+    "patent landscape crosswalk"
+  ]
+}
