@@ -1,7 +1,7 @@
 {
   "schema": "stegscholar.continuation-state.v1",
   "topic_id": "STEGNEURO-BCI-001",
-  "generated_at": "2026-08-09T09:38:56.120297+00:00",
+  "generated_at": "2026-08-09T09:41:45.745603+00:00",
   "state": "REVIEW_REQUIRED",
   "owner": "StegVerse-Labs/StegScholar#50",
   "observer": ".github/workflows/stegneuro-bci-source-discovery.yml",
@@ -244,163 +244,129 @@
     {
       "gap": "TMS and tES WRITE evidence mapped to StegNeuro envelope fields",
       "gap_state": "PARTIAL",
-      "candidate_dimensions": [],
+      "candidate_dimensions": [
+        "tms_tes_write",
+        "bidirectional_read_write"
+      ],
       "candidate_review_queue": [
         {
-          "doi": "10.46604/emsi.2026.15979",
-          "title": "A Lightweight Real-Time EEG-Based Brain–Computer Interface for Imagined Speech-Controlled Robotics via Machine Learning",
-          "year": 2026,
-          "provider": "crossref",
-          "coverage_dimensions": [
-            "intracortical_wired_read",
-            "noninvasive_eeg_meg",
-            "speech_inner_speech"
-          ],
-          "state": "REVIEW_REQUIRED",
-          "authority_effect": "NONE"
-        },
-        {
-          "doi": "10.31234/osf.io/g34v7_v2",
-          "title": "A Novel Machine Learning Model for Non-Invasive EEG-Based Inner-Speech Translation in ALS",
-          "year": 2026,
+          "doi": "10.64149/j.carcinog.24.3s.428-440",
+          "title": "Non-Invasive EEG-Based Classification of Mental States Using Valence-Arousal Mapping from the DEAP Dataset",
+          "year": 2025,
           "provider": "crossref",
           "coverage_dimensions": [
             "intracortical_wired_read",
             "noninvasive_eeg_meg",
             "reproducible_data",
-            "speech_inner_speech"
+            "speech_inner_speech",
+            "tms_tes_write"
           ],
           "state": "REVIEW_REQUIRED",
           "authority_effect": "NONE"
         },
         {
-          "doi": "10.1038/s41597-026-07244-w",
-          "title": "An Open Non-Invasive EEG Dataset for Spontaneous Auditory Attention Switch Decoding",
-          "year": 2026,
+          "doi": "10.1016/j.brs.2024.12.522",
+          "title": "Volitional deep brain stimulation via neurofeedback: A brain-computer-interface case study",
+          "year": 2025,
           "provider": "crossref",
           "coverage_dimensions": [
+            "bidirectional_read_write"
+          ],
+          "state": "REVIEW_REQUIRED",
+          "authority_effect": "NONE"
+        },
+        {
+          "doi": "10.1109/iscas58744.2024.10558134",
+          "title": "An Intracortical Wireless Bidirectional Brain-Computer Interface with High Data Density",
+          "year": 2024,
+          "provider": "crossref",
+          "coverage_dimensions": [
+            "bidirectional_read_write",
             "intracortical_wired_read",
-            "noninvasive_eeg_meg",
-            "reproducible_data",
-            "speech_inner_speech"
-          ],
-          "state": "REVIEW_REQUIRED",
-          "authority_effect": "NONE"
-        },
-        {
-          "doi": "10.54941/ahfe1007498",
-          "title": "Brain-Computer Interface versus Brain-Computer Interaction",
-          "year": 2026,
-          "provider": "crossref",
-          "coverage_dimensions": [
             "intracortical_wireless_read"
           ],
           "state": "REVIEW_REQUIRED",
           "authority_effect": "NONE"
         },
         {
-          "doi": "10.1109/bci69045.2026.11435059",
-          "title": "Confidence-Aware Neural Decoding of Overt Speech from EEG: Toward Robust Brain–Computer Interfaces",
-          "year": 2026,
+          "doi": "10.1109/cicc57935.2023.10121181",
+          "title": "A Wireless Implantable Opto-Electro Neural Interface ASIC for Simultaneous Neural Recording and Stimulation",
+          "year": 2023,
           "provider": "crossref",
           "coverage_dimensions": [
-            "intracortical_wired_read",
-            "intracortical_wireless_read",
-            "noninvasive_eeg_meg",
-            "speech_inner_speech"
+            "bidirectional_read_write",
+            "endovascular_or_endocisternal",
+            "intracortical_wireless_read"
           ],
           "state": "REVIEW_REQUIRED",
           "authority_effect": "NONE"
         },
         {
-          "doi": "10.64898/2026.02.27.708564",
-          "title": "Cross-subject decoding of human neural data for speech Brain Computer Interfaces",
-          "year": 2026,
+          "doi": "10.1101/2023.06.22.546126",
+          "title": "Closed-loop Control of Functional Electrical Stimulation Using a Selectively Recording and Bidirectional Nerve Cuff Interface",
+          "year": 2023,
           "provider": "crossref",
           "coverage_dimensions": [
-            "intracortical_wired_read",
-            "intracortical_wireless_read",
-            "speech_inner_speech"
+            "bidirectional_read_write"
           ],
           "state": "REVIEW_REQUIRED",
           "authority_effect": "NONE"
         },
         {
-          "doi": "10.1016/j.csl.2026.101939",
-          "title": "Decoding phone pairs from MEG signals across speech modalities",
-          "year": 2026,
+          "doi": "10.1101/2021.03.24.436737",
+          "title": "Degradable endovascular neural interface for minimally invasive neural recording and stimulation",
+          "year": 2021,
           "provider": "crossref",
           "coverage_dimensions": [
-            "intracortical_wired_read",
-            "noninvasive_eeg_meg",
-            "speech_inner_speech"
+            "bidirectional_read_write",
+            "endovascular_or_endocisternal",
+            "intracortical_wireless_read"
           ],
           "state": "REVIEW_REQUIRED",
           "authority_effect": "NONE"
         },
         {
-          "doi": "10.1002/smll.202514286",
-          "title": "Flexible Surface Electrodes for Electrocorticography in Neurological Diseases and Brain‐Computer Interface Applications",
-          "year": 2026,
+          "doi": "10.5220/0010227800002865",
+          "title": "Detection of Error Correlates in the Motor Cortex in a Long Term Clinical Trial of ECoG based Brain Computer Interface",
+          "year": 2021,
           "provider": "crossref",
           "coverage_dimensions": [
             "ecog_surface_read",
             "intracortical_wired_read",
-            "speech_inner_speech"
+            "intracortical_wireless_read",
+            "safety_regulatory",
+            "tms_tes_write"
+          ],
+          "state": "REVIEW_REQUIRED",
+          "authority_effect": "NONE"
+        },
+        {
+          "doi": "10.5220/0010227800260034",
+          "title": "Detection of Error Correlates in the Motor Cortex in a Long Term Clinical Trial of ECoG based Brain Computer Interface",
+          "year": 2021,
+          "provider": "crossref",
+          "coverage_dimensions": [
+            "ecog_surface_read",
+            "intracortical_wired_read",
+            "intracortical_wireless_read",
+            "safety_regulatory",
+            "tms_tes_write"
           ],
           "state": "REVIEW_REQUIRED",
           "authority_effect": "NONE"
         }
       ],
-      "next_action": "SPECIALIZED_PROVIDER_OR_PATENT_SEARCH_REQUIRED",
+      "next_action": "REVIEW_SOURCE_CONTENT",
       "machine_boundary": "metadata may prioritize candidates but may not promote scientific claims"
     },
     {
       "gap": "wireless fully implanted human BCI architecture evidence",
       "gap_state": "PARTIAL_ENDOVASCULAR_ONLY",
-      "candidate_dimensions": [],
+      "candidate_dimensions": [
+        "intracortical_wireless_read",
+        "endovascular_or_endocisternal"
+      ],
       "candidate_review_queue": [
-        {
-          "doi": "10.46604/emsi.2026.15979",
-          "title": "A Lightweight Real-Time EEG-Based Brain–Computer Interface for Imagined Speech-Controlled Robotics via Machine Learning",
-          "year": 2026,
-          "provider": "crossref",
-          "coverage_dimensions": [
-            "intracortical_wired_read",
-            "noninvasive_eeg_meg",
-            "speech_inner_speech"
-          ],
-          "state": "REVIEW_REQUIRED",
-          "authority_effect": "NONE"
-        },
-        {
-          "doi": "10.31234/osf.io/g34v7_v2",
-          "title": "A Novel Machine Learning Model for Non-Invasive EEG-Based Inner-Speech Translation in ALS",
-          "year": 2026,
-          "provider": "crossref",
-          "coverage_dimensions": [
-            "intracortical_wired_read",
-            "noninvasive_eeg_meg",
-            "reproducible_data",
-            "speech_inner_speech"
-          ],
-          "state": "REVIEW_REQUIRED",
-          "authority_effect": "NONE"
-        },
-        {
-          "doi": "10.1038/s41597-026-07244-w",
-          "title": "An Open Non-Invasive EEG Dataset for Spontaneous Auditory Attention Switch Decoding",
-          "year": 2026,
-          "provider": "crossref",
-          "coverage_dimensions": [
-            "intracortical_wired_read",
-            "noninvasive_eeg_meg",
-            "reproducible_data",
-            "speech_inner_speech"
-          ],
-          "state": "REVIEW_REQUIRED",
-          "authority_effect": "NONE"
-        },
         {
           "doi": "10.54941/ahfe1007498",
           "title": "Brain-Computer Interface versus Brain-Computer Interaction",
@@ -440,33 +406,65 @@
           "authority_effect": "NONE"
         },
         {
-          "doi": "10.1016/j.csl.2026.101939",
-          "title": "Decoding phone pairs from MEG signals across speech modalities",
-          "year": 2026,
+          "doi": "10.1109/mems61431.2025.10917753",
+          "title": "A Mems-Based Miniaturized Wireless Fully-Implantable Brain-Computer Interface System",
+          "year": 2025,
           "provider": "crossref",
           "coverage_dimensions": [
-            "intracortical_wired_read",
-            "noninvasive_eeg_meg",
-            "speech_inner_speech"
+            "intracortical_wireless_read"
           ],
           "state": "REVIEW_REQUIRED",
           "authority_effect": "NONE"
         },
         {
-          "doi": "10.1002/smll.202514286",
-          "title": "Flexible Surface Electrodes for Electrocorticography in Neurological Diseases and Brain‐Computer Interface Applications",
-          "year": 2026,
+          "doi": "10.1227/neu.0000000000003585",
+          "title": "A Moment of Reckoning for Implanted Brain-Computer Interface Studies",
+          "year": 2025,
           "provider": "crossref",
           "coverage_dimensions": [
-            "ecog_surface_read",
+            "intracortical_wireless_read"
+          ],
+          "state": "REVIEW_REQUIRED",
+          "authority_effect": "NONE"
+        },
+        {
+          "doi": "10.31579/2578-8868/389",
+          "title": "Connexus Direct Data Interface: Architectural Design and Translational Performance of a High-Bandwidth Intracortical Brain–Computer Interface",
+          "year": 2025,
+          "provider": "crossref",
+          "coverage_dimensions": [
             "intracortical_wired_read",
-            "speech_inner_speech"
+            "intracortical_wireless_read"
+          ],
+          "state": "REVIEW_REQUIRED",
+          "authority_effect": "NONE"
+        },
+        {
+          "doi": "10.1101/2025.05.05.652199",
+          "title": "Intracortical brain-computer interface for navigation in virtual reality in macaque monkeys",
+          "year": 2025,
+          "provider": "crossref",
+          "coverage_dimensions": [
+            "intracortical_wired_read",
+            "intracortical_wireless_read"
+          ],
+          "state": "REVIEW_REQUIRED",
+          "authority_effect": "NONE"
+        },
+        {
+          "doi": "10.1101/2025.09.19.25335875",
+          "title": "Motor Cortex Coverage Predicts Signal Strength of a Stentrode Endovascular Brain-Computer Interface",
+          "year": 2025,
+          "provider": "crossref",
+          "coverage_dimensions": [
+            "endovascular_or_endocisternal",
+            "intracortical_wired_read"
           ],
           "state": "REVIEW_REQUIRED",
           "authority_effect": "NONE"
         }
       ],
-      "next_action": "SPECIALIZED_PROVIDER_OR_PATENT_SEARCH_REQUIRED",
+      "next_action": "REVIEW_SOURCE_CONTENT",
       "machine_boundary": "metadata may prioritize candidates but may not promote scientific claims"
     },
     {
