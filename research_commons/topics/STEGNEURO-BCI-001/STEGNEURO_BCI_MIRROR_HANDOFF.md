@@ -1,13 +1,14 @@
 # StegNeuro BCI Research Mirror Handoff
 
-Status: ACTIVE — MACHINE DISCOVERY + REVIEWED PRIMARY SOURCES + OPEN NAMED GAPS
+Status: ACTIVE — MACHINE DISCOVERY + REVIEWED PRIMARY SOURCES + SUCCESSOR GAP CLOSURE
 Updated: 2026-08-09
 Repository: `StegVerse-Labs/StegScholar`
 Branch: `main`
 Parent authority: `RESEARCH_COMMONS_MIRROR_HANDOFF.md`
 Topic: `STEGNEURO-BCI-001`
 Canonical owner: StegScholar Research Commons
-Active issue: `#49`
+Completed predecessor issue: `#49`
+Active successor issue: `#50`
 
 This handoff is subordinate to the Research Commons handoff and governs only the StegNeuro BCI evidence topic. It does not create scientific, device, activation, patent, or publication authority.
 
@@ -28,30 +29,20 @@ research_commons/tools/triage_sources.py
 .github/workflows/stegneuro-bci-source-discovery.yml
 ```
 
-## Current evidence state
+## Completed current-cycle triage
 
-Reviewed source set: 19 primary research/data sources across the seed registry plus the 2026-08-09 reviewed additions.
+Issue `#49` is CLOSED/COMPLETED. Its release condition was satisfied without claiming exhaustive scientific coverage.
 
-New bounded primary-source review added:
-
-- human fully implanted endovascular Stentrode SWITCH study;
-- minimally invasive high-density cortical microelectrode READ/WRITE system;
-- human TMS with intracranial ECoG observation;
-- BCI + tDCS human rehabilitation study;
-- multi-session NIRS BCI dataset.
-
-These additions close or narrow several evidence gaps but do not establish semantic neural writing, device safety beyond the cited system/study, StegNeuro hardware efficacy, or biological activation.
-
-## Latest hosted discovery and triage
+Strongest completed hosted evidence for that cycle:
 
 ```text
 workflow: StegNeuro BCI Source Discovery
-run: 31297448482
-job: 93204763145
-head: c6e6a4cb3111ad72e1c5ccd7031b50bcf3594f30
+run: 31297506457
+job: 93204908647
+head: fc622c14024a24c48766da798210e0b2a128c52e
 conclusion: SUCCESS
-artifact: 9033411968
-artifact digest: sha256:e42a113b00e237cba9359a72d3db0c62b925abc1fcad6dcf829427b5719ab25e
+artifact: 9033431357
+artifact digest: sha256:4c120c5d6bc80afee76786ef1c325d4283683c5914c170da92dac8227ec5daf8
 candidate_count: 224
 provider_errors: 0
 metadata_triage:
@@ -60,76 +51,62 @@ metadata_triage:
   REJECT_SOURCE: 64
   RETRY: 1
 reviewed_source_count: 19
+open_named_gaps: 8
 authority_effect: NONE
 registry_effect_from_metadata_triage: NONE
 ```
 
-The prior first run had 56 candidates and 11 Crossref 429 errors. Bounded exponential retry, pacing, and expanded queries are now installed; the current run completed with zero provider errors. Search success does not prove candidate correctness or exhaustive coverage.
+The first discovery run had 56 candidates and 11 provider/query errors. Bounded exponential retry, pacing, and expanded queries were installed; the completed successor validation above had zero provider errors. The metadata triage classifies review-queue disposition only and cannot create scientific authority or auto-promote candidates.
 
-## Named evidence-gap state
+## Reviewed evidence state
 
-Authoritative gap dispositions are in `reviewed-sources-2026-08-09.json` and are intentionally stricter than keyword-level coarse coverage.
+Reviewed source set: 19 primary research/data sources across the seed registry plus `reviewed-sources-2026-08-09.json`.
 
-Covered:
+The 2026-08-09 reviewed additions cover or narrow evidence for:
 
-```text
-human endovascular BCI primary trial results
-optical and fNIRS READ evidence
-```
+- a human fully implanted endovascular Stentrode system;
+- minimally invasive high-density cortical READ/WRITE arrays;
+- human TMS with intracranial post-stimulation observation;
+- BCI combined with tDCS in a human rehabilitation study;
+- a longitudinal NIRS BCI dataset.
 
-Partial:
+These sources remain bounded evidence. They do not establish semantic neural writing, generalized device safety, StegNeuro hardware efficacy, or biological activation.
 
-```text
-TMS and tES WRITE evidence mapped to StegNeuro envelope fields
-wireless fully implanted human BCI architecture evidence — endovascular system covered, intracortical/general architecture still open
-device-specific calibration drift and chronic reliability datasets
-```
-
-Open:
+## Active successor claim
 
 ```text
-systematic clinical-trial registry mapping for implantable BCIs
-primary-source regulatory and safety evidence by modality
-decoder-prior/confabulation studies with explicit zero-signal or prior-ablation controls
-direct comparison of READ and WRITE spatial/temporal resolution across modalities
-patent landscape crosswalk
-```
-
-No coarse keyword map may silently convert these named OPEN/PARTIAL gaps to complete.
-
-## Active claim and continuation
-
-```text
-task: STEGNEURO-BCI-001-SOURCE-TRIAGE
+task: STEGNEURO-BCI-002-GAP-CLOSURE
 owner: StegVerse-Labs/StegScholar
-issue: #49
-role: MACHINE_OWNED_DISCOVERY + REPOSITORY_REVIEW
+issue: #50
+role: MACHINE_OWNED_DISCOVERY + REVIEW_REQUIRED_SOURCE_CONTENT
 claim_created: 2026-08-09
 release_condition:
-  current candidate set has durable classification state
-  AND provider errors are resolved/classified
-  AND named evidence gaps have explicit dispositions
-  AND hosted artifact/digest validates the resulting state
+  each named gap becomes COVERED
+  OR is explicitly BLOCKED/NOT_APPLICABLE with machine-observable reason
+  AND promoted evidence is source-content reviewed
+  AND hosted candidate/triage/gap artifacts bind the updated state
 ```
 
-The recurring search itself is MACHINE_OWNED. Promotion of candidate metadata into reviewed scientific source records requires source-content evidence; metadata alone has authority effect NONE.
+Named gaps transferred to `#50`:
 
-## Search protocol
+```text
+OPEN: systematic clinical-trial registry mapping for implantable BCIs
+OPEN: primary-source regulatory and safety evidence by modality
+PARTIAL: TMS/tES WRITE evidence mapped to StegNeuro envelope fields
+PARTIAL: wireless fully implanted human BCI architecture — endovascular system covered only
+OPEN: decoder-prior/confabulation zero-signal or prior-ablation controls
+OPEN: direct READ/WRITE spatial-temporal resolution comparison across modalities
+PARTIAL: device-specific calibration drift and chronic reliability datasets
+OPEN: patent landscape crosswalk
+```
 
-Every cycle deliberately seeks supporting primary evidence, negative/null evidence, competing modalities, failure modes, safety/regulatory evidence, decoder/model-prior confounds, reproducible datasets, and newer work that may supersede current assumptions.
-
-## Cross-repository consumers
-
-- `StegVerse-Labs/StegNeuro/research/bci-evidence-consumer.json` binds to this topic and reviewed additions.
-- `StegVerse-Labs/Patents/PAT-004_MIRROR_HANDOFF.md` may consume bounded technical evidence without legal conclusions.
-- Comms-Gateway receives no scientific authority from this topic.
-- StegCore real-hardware activation remains independently BLOCKED under `StegVerse-Labs/StegCore#73`.
+No coarse keyword coverage may silently convert these named OPEN/PARTIAL states to complete.
 
 ## Automation
 
 Owner: `StegVerse-Labs/StegScholar`.
 
-Trigger: weekly schedule, workflow dispatch, or mutation to the topic/protocol/discovery/triage surfaces.
+Trigger: weekly schedule, workflow dispatch, or mutation to topic/protocol/discovery/triage surfaces.
 
 Deterministic outputs:
 
@@ -139,14 +116,28 @@ source-triage.json
 gap-map.json
 ```
 
-The artifact persists REVIEW_REQUIRED candidates, explicit gap state, and authority effect NONE. Missing evidence is never success.
+The recurring workflow persists missing evidence, RETRY conditions, reviewed coverage, and `authority_effect: NONE`. Missing evidence is never success.
+
+## Cross-repository consumers
+
+- `StegVerse-Labs/StegNeuro/research/bci-evidence-consumer.json` consumes this topic and reviewed additions under fail-closed claim rules.
+- `StegVerse-Labs/Patents/PAT-004_MIRROR_HANDOFF.md` may consume bounded technical evidence without legal conclusions.
+- `StegVerse-Labs/Comms-Gateway` receives no scientific authority from this topic; it owns interaction semantics only.
+- `StegVerse-Labs/StegCore#73` independently owns the real-hardware/biological activation gate.
 
 ## Session consolidation
 
-Session-specific StegNeuro research requirements are durably represented by this handoff, issue #49, the reviewed source record, workflow, search plan, triage tool, and hosted evidence. The conversation does not need to remain active for weekly discovery or the named-gap work to continue.
+The originating session's BCI-search requirement is complete as a session-owned task and has been transferred into repository-native continuation.
 
-MERGED INTO: `StegVerse-Labs/StegScholar/research_commons/topics/STEGNEURO-BCI-001/STEGNEURO_BCI_MIRROR_HANDOFF.md` and `StegVerse-Labs/StegScholar#49`.
+```text
+COMPLETED CURRENT CYCLE: StegVerse-Labs/StegScholar#49
+MERGED INTO CONTINUATION: StegVerse-Labs/StegScholar#50
+CANONICAL HANDOFF: research_commons/topics/STEGNEURO-BCI-001/STEGNEURO_BCI_MIRROR_HANDOFF.md
+MACHINE OBSERVER: .github/workflows/stegneuro-bci-source-discovery.yml
+```
+
+The conversation is not required for the weekly discovery, source-content review queue, or gap closure to continue.
 
 ## Archive condition
 
-The originating conversation may archive when StegNeuro and cross-repository handoffs record this continuation and no chat-only requirement remains. Open evidence gaps do not require retaining a chat session because they have a named repository owner, issue, recurring machine observer, deterministic artifacts, and explicit release conditions.
+This research lane does not require retention of the originating chat. Open evidence gaps have a named owner, successor issue, recurring machine observer, explicit states, deterministic artifacts, and machine-observable release conditions. Archival of the session does not mean the eight evidence gaps are complete; it means their continuation no longer depends on chat-only state.
