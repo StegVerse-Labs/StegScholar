@@ -1,7 +1,7 @@
 {
   "schema": "stegscholar.continuation-state.v1",
   "topic_id": "STEGNEURO-BCI-001",
-  "generated_at": "2026-08-10T13:42:01.057902+00:00",
+  "generated_at": "2026-08-10T19:15:03.774997+00:00",
   "state": "REVIEW_REQUIRED",
   "owner": "StegVerse-Labs/StegScholar#50",
   "observer": ".github/workflows/stegneuro-bci-source-discovery.yml",
@@ -10,9 +10,9 @@
   "reviewed_source_count": 19,
   "open_required_gap_count": 8,
   "triage_counts": {
-    "ADMIT_SOURCE": 156,
+    "ADMIT_SOURCE": 154,
     "DUPLICATE": 3,
-    "REJECT_SOURCE": 64,
+    "REJECT_SOURCE": 65,
     "RETRY": 1
   },
   "provider_error_count": 0,
