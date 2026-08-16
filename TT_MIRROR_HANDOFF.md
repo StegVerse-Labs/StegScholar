@@ -4,7 +4,7 @@ This file is the current source of truth for continuing Transition Table (TT) wo
 
 ## Current Goal
 
-Formalize the Transition Table as the explicit, reconstructable representation layer that binds current state, triggering event, guards, authority, evidence, action, governance result, commit-time validity, and receipts into inspectable transition cells.
+Formalize the Transition Table as the explicit, reconstructable representation layer that binds current state, triggering event, guards, authority, evidence, action, governance result, commit-time validity, consequence, transition identity, observer posture, and receipts into inspectable transition cells and bounded transition elements.
 
 The canonical sequence is:
 
@@ -15,7 +15,7 @@ RTG -> GTG -> TT
 ```text
 RTG describes transition geometry and relational intersections.
 GTG determines admissibility, standing, authority, and governance disposition.
-TT records the exact transition rule, decision path, and realized or withheld state change.
+TT records the exact transition rule, decision path, realized or withheld state change, consequence relation, observation posture, and bounded unresolved transition structure.
 ```
 
 ## Current Activation Goal
@@ -23,8 +23,8 @@ TT records the exact transition rule, decision path, and realized or withheld st
 ```text
 Goal id: tt-canonical-transition-cell-v0.1
 State: FOUNDATIONAL_FORMALISM_DRAFTING
-Authority posture: research and representation formalism only; a table row does not create authority, truth, certification, or execution permission.
-Manual task requirement: none.
+Authority posture: research and representation formalism only; a table row or transition element does not create authority, truth, certification, execution permission, physical proof, or temporal ontology.
+Manual task requirement: none for the consequence/observer extension installed below.
 User manual action required: false.
 ```
 
@@ -40,6 +40,13 @@ User manual action required: false.
 8. Observer, reviewer, approver, executor, and reconstructor roles must be explicit.
 9. Cross-scale projections require declared mappings and cannot silently alter cell semantics.
 10. A row without a receipt is an assertion, not a reconstructable transition record.
+11. No visible target-state change does not prove no transition occurred.
+12. `NOT_OBSERVED` is independent of governance disposition and execution posture.
+13. Black/unknown TT space is bounded unresolved transition structure, not empty space.
+14. Distinct realized transitions require distinct complete identity-bearing signatures; individual scalar components need not be unique.
+15. Primitive transition representation does not require a universal goal, persistence objective, observer-assigned timestamp, or metric duration.
+16. Temporal attribution from reconstructed continuity is not proof that physical time is observer-dependent or nonexistent without observation.
+17. Entropy/physical-inscription bookkeeping requires a declared implementation and system boundary; TT does not assert a universal exact entropy price or unique scalar thermodynamic fingerprint.
 
 ## Canonical Transition Cell
 
@@ -60,6 +67,9 @@ TT_cell = (
   commit_state,
   action,
   post_state,
+  consequence_ref?,
+  transition_element_ref?,
+  projection_relation?,
   observer_refs,
   receipt_refs,
   predecessor,
@@ -68,20 +78,164 @@ TT_cell = (
 )
 ```
 
+The machine-readable cell schema is `schemas/tt-transition-cell.schema.json`.
+
+## Consequence Semantics
+
+For a fully specified deterministic action-plane condition `Omega`:
+
+```text
+R(Omega) = S_post
+```
+
+and:
+
+```text
+exists! S_post such that R(Omega) = S_post
+```
+
+`Consequence(Omega)` is the uniquely realized successor state under those exact declared parameters. This uniqueness claim is conditional on a complete deterministic model; stochastic or under-specified models must preserve their uncertainty.
+
+Governance disposition is not identical to consequence. A disposition participates in reconciliation; consequence is the realized successor state.
+
+## Projection-Preserving Transitions
+
+TT explicitly permits:
+
+```text
+X_pre != X_post
+and
+P_target(X_pre) = P_target(X_post)
+```
+
+Therefore a `DENY` or `FAIL_CLOSED` may be a real transition even where the proposed target projection remains unchanged.
+
+Observer equivalence is separately represented:
+
+```text
+X_pre ~_O X_post
+iff
+H_O(X_pre) = H_O(X_post)
+```
+
+so the following combinations are valid representation targets:
+
+```text
+DENY + NOT_OBSERVED
+FAIL_CLOSED + NOT_OBSERVED
+EXECUTED + NOT_OBSERVED
+```
+
+## Minimal / Black Transition Element
+
+When evidence is insufficient for a complete TT cell, the bounded minimum is represented by `schemas/tt-transition-element.schema.json`:
+
+```text
+TE_min = (
+  transition_id,
+  existence_posture,
+  pre_state_ref?,
+  post_state_ref?,
+  preserved_projection_refs,
+  signature_evidence_refs,
+  observation_posture,
+  attribution_posture,
+  unresolved_fields
+)
+```
+
+The element may preserve `CONFIRMED`, `INFERRED`, or `UNKNOWN` transition-existence posture while refusing unsupported claims about action, cause, governance disposition, signature, or temporal order.
+
+A black element is not evidence that nothing occurred. It is the strongest bounded statement that the transition relation or residue can support without fabricating missing structure.
+
+## Transition Identity
+
+TT adopts the complete-signature identity rule:
+
+```text
+Sigma(tau_i) = Sigma(tau_j)  =>  tau_i = tau_j
+```
+
+or equivalently:
+
+```text
+tau_i != tau_j  =>  Sigma(tau_i) != Sigma(tau_j)
+```
+
+This applies to the complete identity-bearing transition representation. Equal entropy, energy, action, or governance-result scalars do not collapse distinct transitions when another identity-bearing coordinate differs.
+
+## Temporal Attribution Boundary
+
+The bounded formal dependency installed for TT is:
+
+```text
+realized transition
+-> observed or reconstructed relation
+-> continuity ordering
+-> temporal attribution by an observer/model
+```
+
+Goal and persistence are not primitive TT requirements. Persistence requires an identity rule across already-related states; a goal requires a declared preference/objective over states or transitions.
+
+TT does not infer from this dependency that physical time is nonexistent without observers, and it does not claim metric duration or clock emergence.
+
+## Physical Inscription Boundary
+
+TT may bind evidence for physical or informational inscription and may separately reference resolution, target-change, and inscription costs under a declared system boundary.
+
+This is bookkeeping and a research test surface, not a universal thermodynamic law. The stronger claims that every transition has an exact universal entropy price or a uniquely recoverable scalar entropy signature remain disallowed overclaims.
+
+## Installed Consequence / Observer Extension
+
+The following surfaces are installed on `main`:
+
+```text
+papers/transition-table/consequence-and-observer-semantics.md
+papers/transition-table/formal-definitions.md       # sections 22-29 bind the extension
+papers/transition-table/claims-register.md          # consequence, identity, observer, temporal, entropy claims
+schemas/tt-transition-element.schema.json
+schemas/tt-transition-cell.schema.json              # consequence/element/projection references
+fixtures/tt/transition-element-cases.json
+scripts/validate_tt_transition_elements.py
+tests/test_tt_transition_elements.py
+.github/workflows/validate-tt.yml
+```
+
+Deterministic installed cases currently cover:
+
+- target-preserving invisible `DENY`;
+- target-preserving invisible `FAIL_CLOSED`;
+- inferred black transition with unresolved attribution and temporal order;
+- invalid unknown-existence element that overclaims a concrete `DENY` disposition;
+- explicit test that `DENY + NOT_OBSERVED` is valid representation;
+- explicit test that unknown transition existence cannot silently assert `DENY`.
+
+## Validation Evidence
+
+`Validate Transition Table` GitHub Actions run `31931076534` completed successfully at commit:
+
+```text
+c952cdb906a4bc68593e2fe7b7e4e83fc4dd1e09
+```
+
+The workflow runs the dependency-free transition-element validator and the focused TT pytest suite. Earlier workflow attempts exposed a missing test-runner dependency; `.github/workflows/validate-tt.yml` was corrected to install `pytest`, after which run `31931076534` passed.
+
+The handoff update itself should be followed by the workflow triggered from this commit; do not replace the successful `31931076534` evidence with a later run unless that run has itself completed successfully.
+
 ## Minimal Transition Rule
 
 ```text
 (pre_state, trigger, guard) -> (result, action, post_state, receipt)
 ```
 
-The minimal rule is insufficient for governed use unless authority, evidence, policy, context, and commit-time reconstruction are recoverable either directly or by immutable reference.
+The minimal governed rule remains insufficient unless authority, evidence, policy, context, and commit-time reconstruction are recoverable either directly or by immutable reference. `TE_min` is a separate bounded representation for cases where full governed reconstruction is not supportable.
 
 ## Canonical Outcome Semantics
 
 ```text
 ALLOW       -> action may proceed if commit-time state remains valid
-DENY        -> action prohibited under evaluated conditions
-FAIL_CLOSED -> action withheld because a required condition is absent or invalid
+DENY        -> action prohibited under evaluated conditions; target projection may remain invariant
+FAIL_CLOSED -> action withheld because a required condition is absent or invalid; target projection may remain invariant
 DEFER       -> action withheld pending a declared resolvable dependency
 TRANSFORM   -> original action withheld; governed replacement candidate emitted
 ERROR       -> evaluation failure; never equivalent to ALLOW
@@ -116,13 +270,9 @@ Execute(cell) only if:
 
 ## Transition Table as Ledger
 
-The TT is not merely a lookup table. It is an ordered set of transition receipts:
+The TT is not merely a lookup table. It is a linked set of transition receipts and bounded transition elements whose ordering may be complete, partial, or unresolved depending on evidence.
 
-```text
-TT = {cell_1, cell_2, ..., cell_n}
-```
-
-with continuity relations:
+For established continuity relations:
 
 ```text
 cell_i.post_state ~= cell_j.pre_state
@@ -140,38 +290,40 @@ A complete TT history preserves:
 - evaluation errors;
 - corrections;
 - supersessions;
-- observer and authority changes.
+- observer and authority changes;
+- unobserved but evidenced transitions;
+- black/unknown transition loci without unsupported reconstruction;
+- unresolved temporal order where evidence does not justify serialization.
 
 ## Immediate Work Queue
 
-1. Install the TT foundational formalism.
-2. Define canonical cell identity and immutable receipt linkage.
-3. Define guard precedence and outcome determinism.
-4. Define proposal-time versus commit-time state fields.
-5. Define compound and concurrent transition cells.
-6. Define predecessor, successor, correction, and supersession semantics.
-7. Define cross-scale TT projection from RTG scale maps.
-8. Create machine-readable TT cell and table schemas.
-9. Create deterministic fixtures for all governance outcomes.
-10. Create a validator for continuity, authority binding, receipt integrity, and prohibited implicit `ALLOW` behavior.
+The consequence/observer/black-transition extension is installed and has a successful focused validation run. The broader TT v0.1 workstream remains active:
+
+1. Complete canonical cell identity and immutable receipt linkage across the full TT schema.
+2. Complete guard precedence and outcome determinism beyond the focused transition-element validator.
+3. Complete proposal-time versus commit-time state fixtures.
+4. Define and implement compound and concurrent transition cells.
+5. Complete predecessor, successor, correction, and supersession semantics.
+6. Complete cross-scale TT projection from RTG scale maps.
+7. Add full transition-table schema in addition to the existing cell and minimal-element schemas.
+8. Expand deterministic fixtures across all governance outcomes and new identity-collision cases.
+9. Build the full TT validator for continuity, authority binding, receipt integrity, projection semantics, signature identity, and prohibited implicit `ALLOW` behavior.
+10. Add TT falsification protocol and internal review receipt.
 
 ## Known Remaining Files and Destinations
 
 ```text
 StegVerse-Labs/StegScholar:
-- papers/transition-table/foundation.md
-- papers/transition-table/claims-register.md
-- papers/transition-table/formal-definitions.md
 - papers/transition-table/concurrency-and-compound-transitions.md
 - papers/transition-table/falsification-protocol.md
 - papers/transition-table/examples/
-- schemas/transition-cell.schema.json
-- schemas/transition-table.schema.json
-- fixtures/tt/
-- scripts/validate_transition_table.py
+- schemas/tt-transition-table.schema.json
+- expanded fixtures/tt/
+- full scripts/validate_transition_table.py
+- internal TT review receipt
 
 StegVerse-Labs/admissibility-wiki:
-- bounded formalism projection after StegScholar claim review and destination handoff check
+- bounded formalism projection only after StegScholar claim review and destination handoff check
 
 StegVerse-Labs/Site:
 - public explanatory projection only after `docs/SITE_MIRROR_HANDOFF.md` grants scope
@@ -190,15 +342,15 @@ GTG object:
   governance function and admissible solution set
 
 TT object:
-  explicit cell encoding the governed transition and its receipt
+  explicit cell or bounded transition element encoding the governed transition relation, consequence posture, observation/reconstruction posture, and receipts
 ```
 
 A TT implementation must not flatten RTG geometry or GTG authority semantics into an unqualified state change.
 
 ## Release Boundary
 
-The TT package is not ready for tagging or release. Release readiness requires formal definitions, schemas, fixtures, deterministic validation, concurrency tests, correction and supersession tests, falsification criteria, and an internal review receipt.
+The TT package is not ready for tagging or release. The consequence/observer extension is installed and focused-validation-backed, but broader release readiness still requires full-table schema and validator coverage, concurrency tests, correction and supersession tests, falsification criteria, cross-layer cases, and an internal review receipt.
 
 ## Handoff Instruction
 
-Continue from this file before relying on prior chat context. TT work follows GTG and must preserve the distinction between representation, authority, and execution.
+Continue from this file before relying on prior chat context. TT work follows GTG and must preserve the distinctions among representation, authority, execution, consequence, observer visibility, transition identity, temporal attribution, and physical/thermodynamic claims.
