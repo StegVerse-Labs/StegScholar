@@ -1,0 +1,36 @@
+name: Validate Transition Table
+
+on:
+  push:
+    paths:
+      - 'papers/transition-table/**'
+      - 'schemas/tt-*.json'
+      - 'fixtures/tt/**'
+      - 'scripts/validate_tt_transition_elements.py'
+      - 'tests/test_tt_transition_elements.py'
+      - 'TT_MIRROR_HANDOFF.md'
+      - '.github/workflows/validate-tt.yml'
+  pull_request:
+    paths:
+      - 'papers/transition-table/**'
+      - 'schemas/tt-*.json'
+      - 'fixtures/tt/**'
+      - 'scripts/validate_tt_transition_elements.py'
+      - 'tests/test_tt_transition_elements.py'
+      - 'TT_MIRROR_HANDOFF.md'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-tt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate transition-element fixtures
+        run: python scripts/validate_tt_transition_elements.py
+      - name: Run TT tests
+        run: python -m pytest -q tests/test_tt_transition_elements.py
