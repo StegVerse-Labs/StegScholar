@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stegverse.org/schemas/tt-transition-element.schema.json",
+  "title": "Transition Table Minimal Transition Element",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "transition_id",
+    "existence_posture",
+    "preserved_projection_refs",
+    "signature_evidence_refs",
+    "observation_posture",
+    "attribution_posture",
+    "unresolved_fields"
+  ],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "transition_id": {"type": "string", "minLength": 1},
+    "existence_posture": {"enum": ["CONFIRMED", "INFERRED", "UNKNOWN"]},
+    "pre_state_ref": {"type": ["string", "null"]},
+    "post_state_ref": {"type": ["string", "null"]},
+    "preserved_projection_refs": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "signature_evidence_refs": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "observation_posture": {"enum": ["OBSERVED", "PARTIAL", "NOT_OBSERVED", "UNKNOWN"]},
+    "attribution_posture": {"enum": ["KNOWN", "BOUNDED", "UNRESOLVED"]},
+    "governance_disposition": {
+      "type": ["string", "null"],
+      "enum": ["ALLOW", "DENY", "FAIL_CLOSED", "DEFER", "TRANSFORM", "ERROR", "UNKNOWN", null]
+    },
+    "temporal_order_posture": {"enum": ["ORDERED", "PARTIAL_ORDER", "UNKNOWN"]},
+    "predecessor_transition_refs": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "successor_transition_refs": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "identity_signature": {
+      "type": "object",
+      "properties": {
+        "signature_id": {"type": "string", "minLength": 1},
+        "continuity_position_ref": {"type": ["string", "null"]},
+        "reconciliation_ref": {"type": ["string", "null"]},
+        "inscription_refs": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true
+        },
+        "causal_lineage_refs": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true
+        },
+        "scale": {"type": ["string", "null"]}
+      },
+      "required": ["signature_id"],
+      "additionalProperties": false
+    },
+    "entropy_bookkeeping": {
+      "type": "object",
+      "description": "Optional declared-boundary bookkeeping only; not a universal thermodynamic identity or unique entropy fingerprint.",
+      "properties": {
+        "resolution_cost_ref": {"type": ["string", "null"]},
+        "target_change_cost_ref": {"type": ["string", "null"]},
+        "inscription_cost_ref": {"type": ["string", "null"]},
+        "system_boundary_ref": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "unresolved_fields": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "pre_state",
+          "post_state",
+          "action",
+          "cause",
+          "governance_disposition",
+          "temporal_order",
+          "signature",
+          "observer_attribution",
+          "scale",
+          "other"
+        ]
+      },
+      "uniqueItems": true
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"existence_posture": {"const": "UNKNOWN"}}},
+      "then": {
+        "properties": {
+          "governance_disposition": {"enum": ["UNKNOWN", null]}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"attribution_posture": {"const": "UNRESOLVED"}}},
+      "then": {
+        "properties": {
+          "governance_disposition": {"enum": ["UNKNOWN", null, "ALLOW", "DENY", "FAIL_CLOSED", "DEFER", "TRANSFORM", "ERROR"]}
+        }
+      }
+    }
+  ],
+  "additionalProperties": false
+}
