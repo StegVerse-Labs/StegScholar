@@ -10,6 +10,19 @@
     "pre_state_ref": {"type": "string"},
     "event": {"type": "object"},
     "relational_projection_ref": {"type": ["string", "null"]},
+    "transition_element_ref": {"type": ["string", "null"], "description": "Reference to a bounded minimal or complete transition element, including black/unknown transition structure when full cell reconstruction is not possible."},
+    "consequence_ref": {"type": ["string", "null"], "description": "Reference to the realized successor-state consequence when independently established."},
+    "projection_relation": {
+      "type": ["object", "null"],
+      "properties": {
+        "full_state_changed": {"type": ["boolean", "null"]},
+        "preserved_projection_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "changed_projection_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "observer_equivalence_posture": {"enum": ["DISTINGUISHABLE", "EQUIVALENT", "PARTIAL", "UNKNOWN"]}
+      },
+      "required": ["preserved_projection_refs", "changed_projection_refs", "observer_equivalence_posture"],
+      "additionalProperties": false
+    },
     "guards": {"type": "array", "items": {"type": "object"}},
     "authority_refs": {"type": "array", "items": {"type": "string"}},
     "policy_refs": {"type": "array", "items": {"type": "string"}},
