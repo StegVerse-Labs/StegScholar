@@ -282,3 +282,118 @@ A TT implementation fails when it:
 ## 21. Definition maturity
 
 These definitions are `DRAFT_CANONICAL`. Promotion requires schema binding, deterministic fixtures, validator coverage, falsification tests, cross-layer cases, and an internal review receipt.
+
+## 22. Consequence
+
+For a fully specified deterministic action-plane condition `Omega`, define reconciliation:
+
+```text
+R(Omega) = S_post
+```
+
+with exactly one realized successor under those exact declared parameters:
+
+```text
+exists! S_post such that R(Omega) = S_post
+```
+
+`Consequence(Omega)` is that uniquely realized successor state. This uniqueness claim is conditional on the declared model being complete and deterministic; unresolved or stochastic models may not be coerced into uniqueness.
+
+A governance disposition is not itself the consequence. The disposition participates in reconciliation; consequence is the realized successor state.
+
+## 23. Projection-preserving transition
+
+Let `P_k` be a declared state projection. A realized transition may preserve that projection:
+
+```text
+S_pre != S_post
+and
+P_k(S_pre) = P_k(S_post)
+```
+
+`DENY` and `FAIL_CLOSED` therefore remain transitions when the proposed target projection is preserved. Unchanged target appearance must not be interpreted as proof that no transition occurred.
+
+## 24. Observer-relative equivalence
+
+For observer map `H_O`:
+
+```text
+S_a ~_O S_b  iff  H_O(S_a) = H_O(S_b)
+```
+
+A realized transition may satisfy:
+
+```text
+S_pre != S_post
+and
+S_pre ~_O S_post
+```
+
+Therefore `NOT_OBSERVED` is orthogonal to governance disposition and execution status. `DENY + NOT_OBSERVED`, `FAIL_CLOSED + NOT_OBSERVED`, and `EXECUTED + NOT_OBSERVED` are representable states.
+
+## 25. Minimal and black transition elements
+
+When evidence supports a transition-existence claim but not full reconstruction, TT may record a bounded minimal transition element rather than fabricate a full cell.
+
+```text
+TE_min = (
+  transition_id,
+  existence_posture,
+  pre_state_ref?,
+  post_state_ref?,
+  preserved_projection_refs,
+  signature_evidence_refs,
+  observation_posture,
+  attribution_posture,
+  unresolved_fields
+)
+```
+
+A black/unknown element preserves the strongest supported relation while forbidding unsupported action, cause, governance, temporal-order, or unique-attribution claims. Machine-readable binding is defined by `schemas/tt-transition-element.schema.json`.
+
+## 26. Transition identity signature
+
+Define complete transition signature `Sigma(tau)` over identity-bearing coordinates. TT adopts the identity axiom:
+
+```text
+Sigma(tau_i) = Sigma(tau_j)  =>  tau_i = tau_j
+```
+
+or equivalently:
+
+```text
+tau_i != tau_j  =>  Sigma(tau_i) != Sigma(tau_j)
+```
+
+This does not require every scalar component, including entropy production or energy use, to be unique. Observer projections may map distinct complete signatures to the same observed representation.
+
+## 27. Physical inscription and entropy bookkeeping
+
+TT may bind evidence that a realized transition was physically or informationally instantiated. Resolution, target-change, and inscription costs may be tracked under a declared system boundary.
+
+Such bookkeeping is not a universal thermodynamic identity. TT does not claim an exact entropy price for every transition or a uniquely recoverable thermodynamic fingerprint.
+
+## 28. Primitive transition independence and temporal attribution
+
+Primitive transition representation does not require a goal, persistence objective, observer-assigned timestamp, or metric duration.
+
+A bounded observer-relative dependency relation is:
+
+```text
+realized transition
+-> observed or reconstructed relation
+-> continuity ordering
+-> temporal attribution
+```
+
+If observer `O` establishes `S_a <_O S_b`, it may assign a temporal coordinate consistent with that order. This formalizes temporal attribution from reconstructed continuity; it does not assert that physical time is nonexistent without observers or that metric clock emergence has been proved.
+
+Persistence and goal are higher-order relations and must not be used as primitive explanations of transition occurrence unless supplied by an external theory with separate standing.
+
+## 29. Consequence and observer semantics source
+
+The detailed research boundary, black-space semantics, transition-signature rule, projection invariance, entropy caution, and temporal-attribution limits are controlled by:
+
+```text
+papers/transition-table/consequence-and-observer-semantics.md
+```
