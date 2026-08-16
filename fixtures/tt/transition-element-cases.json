@@ -1,0 +1,106 @@
+{
+  "schema_version": "0.1.0",
+  "cases": [
+    {
+      "name": "invisible-deny-target-preserved",
+      "expect_valid": true,
+      "element": {
+        "schema_version": "0.1.0",
+        "transition_id": "tt-te-deny-001",
+        "existence_posture": "CONFIRMED",
+        "pre_state_ref": "state://target/A@before",
+        "post_state_ref": "state://world/A@after-deny",
+        "preserved_projection_refs": ["projection://target/A"],
+        "signature_evidence_refs": ["receipt://decision/deny-001"],
+        "observation_posture": "NOT_OBSERVED",
+        "attribution_posture": "KNOWN",
+        "governance_disposition": "DENY",
+        "temporal_order_posture": "ORDERED",
+        "identity_signature": {
+          "signature_id": "sig://tt-te-deny-001",
+          "continuity_position_ref": "continuity://lane/A/17",
+          "reconciliation_ref": "gtg://decision/deny-001",
+          "inscription_refs": ["receipt://decision/deny-001"],
+          "causal_lineage_refs": ["proposal://A/17"],
+          "scale": "target+governance"
+        },
+        "entropy_bookkeeping": {
+          "resolution_cost_ref": "measurement://resolution/deny-001",
+          "target_change_cost_ref": null,
+          "inscription_cost_ref": "measurement://inscription/deny-001",
+          "system_boundary_ref": "boundary://declared/test-A"
+        },
+        "unresolved_fields": ["observer_attribution"]
+      }
+    },
+    {
+      "name": "invisible-fail-closed-target-preserved",
+      "expect_valid": true,
+      "element": {
+        "schema_version": "0.1.0",
+        "transition_id": "tt-te-fc-001",
+        "existence_posture": "CONFIRMED",
+        "pre_state_ref": "state://target/B@before",
+        "post_state_ref": "state://world/B@after-fail-closed",
+        "preserved_projection_refs": ["projection://target/B"],
+        "signature_evidence_refs": ["receipt://decision/fail-closed-001"],
+        "observation_posture": "NOT_OBSERVED",
+        "attribution_posture": "KNOWN",
+        "governance_disposition": "FAIL_CLOSED",
+        "temporal_order_posture": "ORDERED",
+        "identity_signature": {
+          "signature_id": "sig://tt-te-fc-001",
+          "continuity_position_ref": "continuity://lane/B/21",
+          "reconciliation_ref": "gtg://decision/fail-closed-001",
+          "inscription_refs": ["receipt://decision/fail-closed-001"],
+          "causal_lineage_refs": ["proposal://B/21"],
+          "scale": "target+governance"
+        },
+        "unresolved_fields": ["observer_attribution"]
+      }
+    },
+    {
+      "name": "black-transition-known-existence-unknown-attribution",
+      "expect_valid": true,
+      "element": {
+        "schema_version": "0.1.0",
+        "transition_id": "tt-te-black-001",
+        "existence_posture": "INFERRED",
+        "pre_state_ref": null,
+        "post_state_ref": "state://observed/C@current",
+        "preserved_projection_refs": [],
+        "signature_evidence_refs": ["residue://C/delta-001"],
+        "observation_posture": "PARTIAL",
+        "attribution_posture": "UNRESOLVED",
+        "governance_disposition": "UNKNOWN",
+        "temporal_order_posture": "UNKNOWN",
+        "unresolved_fields": [
+          "pre_state",
+          "action",
+          "cause",
+          "governance_disposition",
+          "temporal_order",
+          "signature"
+        ]
+      }
+    },
+    {
+      "name": "invalid-no-transition-coercion-from-unknown-existence",
+      "expect_valid": false,
+      "element": {
+        "schema_version": "0.1.0",
+        "transition_id": "tt-te-invalid-001",
+        "existence_posture": "UNKNOWN",
+        "pre_state_ref": null,
+        "post_state_ref": null,
+        "preserved_projection_refs": [],
+        "signature_evidence_refs": [],
+        "observation_posture": "NOT_OBSERVED",
+        "attribution_posture": "UNRESOLVED",
+        "governance_disposition": "DENY",
+        "temporal_order_posture": "UNKNOWN",
+        "unresolved_fields": ["pre_state", "post_state", "action", "cause", "temporal_order", "signature"]
+      }
+    }
+  ]
+}
