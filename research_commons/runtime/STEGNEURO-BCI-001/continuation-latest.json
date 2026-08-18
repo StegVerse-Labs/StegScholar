@@ -1,7 +1,7 @@
 {
   "schema": "stegscholar.continuation-state.v1",
   "topic_id": "STEGNEURO-BCI-001",
-  "generated_at": "2026-08-18T01:49:09.291791+00:00",
+  "generated_at": "2026-08-18T07:02:20.679795+00:00",
   "state": "REVIEW_REQUIRED",
   "owner": "StegVerse-Labs/StegScholar#50",
   "observer": ".github/workflows/stegneuro-bci-source-discovery.yml",
@@ -10,9 +10,9 @@
   "reviewed_source_count": 19,
   "open_required_gap_count": 8,
   "triage_counts": {
-    "ADMIT_SOURCE": 157,
+    "ADMIT_SOURCE": 158,
     "DUPLICATE": 3,
-    "REJECT_SOURCE": 63,
+    "REJECT_SOURCE": 62,
     "RETRY": 1
   },
   "provider_error_count": 0,
@@ -691,12 +691,15 @@
           "authority_effect": "NONE"
         },
         {
-          "doi": "10.1016/j.neurom.2026.06.460",
-          "title": "Spatiotemporal Reconfiguration of Functional Brain Networks Following Transcranial Focused Ultrasound Stimulation",
+          "doi": "10.21203/rs.3.rs-10426644/v1",
+          "title": "Reconstructing the brain’s language network from non-invasive EEG enables interpretable speech decoding",
           "year": 2026,
           "provider": "crossref",
           "coverage_dimensions": [
-            "focused_ultrasound_write"
+            "intracortical_wired_read",
+            "noninvasive_eeg_meg",
+            "reproducible_data",
+            "speech_inner_speech"
           ],
           "state": "REVIEW_REQUIRED",
           "authority_effect": "NONE"
@@ -730,6 +733,20 @@
         {
           "doi": "10.1038/s41597-026-07244-w",
           "title": "An Open Non-Invasive EEG Dataset for Spontaneous Auditory Attention Switch Decoding",
+          "year": 2026,
+          "provider": "crossref",
+          "coverage_dimensions": [
+            "intracortical_wired_read",
+            "noninvasive_eeg_meg",
+            "reproducible_data",
+            "speech_inner_speech"
+          ],
+          "state": "REVIEW_REQUIRED",
+          "authority_effect": "NONE"
+        },
+        {
+          "doi": "10.21203/rs.3.rs-10426644/v1",
+          "title": "Reconstructing the brain’s language network from non-invasive EEG enables interpretable speech decoding",
           "year": 2026,
           "provider": "crossref",
           "coverage_dimensions": [
@@ -804,21 +821,6 @@
           "coverage_dimensions": [
             "calibration_drift_reliability",
             "focused_ultrasound_write"
-          ],
-          "state": "REVIEW_REQUIRED",
-          "authority_effect": "NONE"
-        },
-        {
-          "doi": "10.64149/j.carcinog.24.3s.428-440",
-          "title": "Non-Invasive EEG-Based Classification of Mental States Using Valence-Arousal Mapping from the DEAP Dataset",
-          "year": 2025,
-          "provider": "crossref",
-          "coverage_dimensions": [
-            "intracortical_wired_read",
-            "noninvasive_eeg_meg",
-            "reproducible_data",
-            "speech_inner_speech",
-            "tms_tes_write"
           ],
           "state": "REVIEW_REQUIRED",
           "authority_effect": "NONE"
