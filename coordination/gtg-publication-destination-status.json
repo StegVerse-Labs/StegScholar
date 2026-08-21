@@ -1,0 +1,89 @@
+{
+  "schema_version": "stegverse.gtg.publication_destination_status.v1",
+  "task_id": "SV-GTG-PUBLICATION-PROPAGATION-014",
+  "repository": "StegVerse-Labs/StegScholar",
+  "canonical_issue": "StegVerse-Labs/StegScholar#36",
+  "observed_at": "2026-08-21T03:20:00Z",
+  "source_bindings": {
+    "r3_target": "0fdae4a73766f16e3d745ad0fc9f0b3c9ff5cda1",
+    "r3_factory": "ac53fae0dada9946903d615715425624acaf1ac9",
+    "r4_target": "e73234381501a427fcf517f63087b9c873a0af36",
+    "r4_factory": "54f5269dd583dcd193222a5f712b0c1654b3e920",
+    "r5_target": "dbc42bd14be6ec3f8821189dbd7aa1b1e698f084",
+    "r5_factory": "ba3479355749bd996714845ec82f2826ccf1fd36"
+  },
+  "destinations": [
+    {
+      "repository": "StegVerse-Labs/Site",
+      "state": "MACHINE_OWNED",
+      "handoff": "docs/SITE_MIRROR_HANDOFF.md",
+      "live_state": "data/site-orchestration-state.json",
+      "owner": "Site repository task admission/orchestration machine",
+      "reason": "Site orchestration reports external session ownership disabled and new workload admission controlled by repository-native task machinery. Existing GTG session-consolidation record transfers continuation to StegScholar#36 but does not grant direct Site mutation authority.",
+      "required_next_transition": "submit/represent a bounded GTG public-projection candidate through Site's repository-native admission path; mutate Site only after collision-safe admission",
+      "direct_mutation_authorized": false,
+      "authority_effect": false
+    },
+    {
+      "repository": "GCAT-BCAT-Engine/Publisher",
+      "state": "MACHINE_OWNED",
+      "handoff": "docs/PUBLISHER_MIRROR_HANDOFF.md",
+      "live_state": "data/publisher-orchestration-state.json",
+      "owner": ".github/workflows/validate-governed-ecosystem-awareness.yml",
+      "reason": "Publisher has a machine-owned propagation observer and an active parallel-safe paper claim. Incoming work is candidate-only; downstream publication must be admitted without colliding with the existing machine-owned propagation lane.",
+      "required_next_transition": "classify GTG publication as a separate bounded publication-awareness workload under Publisher orchestration before installing a manifest/import receipt",
+      "direct_mutation_authorized": false,
+      "authority_effect": false
+    },
+    {
+      "repository": "StegVerse-Labs/admissibility-wiki",
+      "state": "BLOCKED",
+      "handoff": "ADMISSIBILITY_WIKI_MIRROR_HANDOFF.md",
+      "live_state": "data/admissibility-wiki-orchestration-state.json",
+      "owner": "StegVerse-Labs/admissibility-wiki issue #50 and repository-native canonical validation mesh",
+      "reason": "Repository-wide canonical validation remains FAIL_CLOSED at 51/56 with five exact validators failing, while a separate Riverbraid implementation claim is active. A new GTG reconstruction-level publication must not bypass current repository orchestration or imply admissibility/certification.",
+      "required_next_transition": "obtain a nonconflicting bounded publication/projection admission from admissibility-wiki orchestration; preserve FAIL_CLOSED canonical validation and non-authority semantics",
+      "direct_mutation_authorized": false,
+      "authority_effect": false
+    },
+    {
+      "repository": "StegVerse-002/stegguardian-wiki",
+      "state": "BLOCKED",
+      "handoff": "STEGGUARDIAN_WIKI_MIRROR_HANDOFF.md",
+      "live_state": "data/stegguardian-wiki-orchestration-state.json",
+      "owner": "StegVerse-002/stegguardian-wiki repository orchestration",
+      "reason": "No active Guardian implementation task exists, but the live sequence is BLOCKED_BUT_OBSERVED and cross-repository mutation authority is explicitly false. Guardian interpretation requires repository admission and must not infer enforcement or admissibility from GTG publication.",
+      "required_next_transition": "classify a GTG awareness-only candidate as parallel-safe or dependency-blocked inside Guardian orchestration before any destination mutation",
+      "direct_mutation_authorized": false,
+      "authority_effect": false
+    },
+    {
+      "repository": "master-records/orchestration",
+      "state": "CLAIMED_FOR_INTEGRATION",
+      "handoff": "ORCHESTRATION_MIRROR_HANDOFF.md",
+      "live_state": "master-records/orchestration#2",
+      "owner": "Master-Records custody/reconstruction workstream",
+      "reason": "Master-Records has an active custody/reconstruction goal and issue #2 owns authenticated custody plus reconstructability evidence. GTG pin custody must join that canonical evidence topology rather than create a second custody authority.",
+      "required_next_transition": "define a bounded GTG publication-custody record that preserves target/factory/mirror commit pins and no execution/admissibility authority, then admit it under the existing Master-Records custody workstream",
+      "direct_mutation_authorized": false,
+      "authority_effect": false
+    }
+  ],
+  "summary": {
+    "destination_count": 5,
+    "complete": 0,
+    "machine_owned": 2,
+    "blocked": 2,
+    "claimed_for_integration": 1,
+    "direct_destination_mutations_authorized": 0,
+    "next_action": "continue through each destination's repository-native admission/ownership surface; do not bypass live owners"
+  },
+  "authority": {
+    "publication_is_execution": false,
+    "publication_is_certification": false,
+    "publication_is_mathematical_closure": false,
+    "publication_is_empirical_validity": false,
+    "publication_is_universal_admissibility": false,
+    "classification_grants_cross_repository_mutation": false
+  }
+}
