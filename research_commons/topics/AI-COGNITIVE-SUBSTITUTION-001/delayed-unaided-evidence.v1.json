@@ -1,0 +1,113 @@
+{
+  "lane_id": "AI-COGNITIVE-SUBSTITUTION-001-DELAYED-UNAIDED-v1",
+  "topic_id": "AI-COGNITIVE-SUBSTITUTION-001",
+  "authority_effect": "NONE",
+  "updated_at": "2026-08-26",
+  "lane_state": "IMPLEMENTED_V1_PARTIAL",
+  "purpose": "Separate immediate AI-assisted performance from later unaided retention, reasoning, and transfer, while preserving negative, null, and scaffold-sensitive evidence.",
+  "evidence": [
+    {
+      "source_id": "ACS-DU-001",
+      "source_class": "PEER_REVIEWED_RANDOMIZED_CONTROLLED_TRIAL",
+      "title": "ChatGPT as a cognitive crutch: Evidence from a randomized controlled trial on knowledge retention",
+      "author": "Andre Barcaui",
+      "journal": "Social Sciences & Humanities Open",
+      "year": 2025,
+      "doi": "10.1016/j.ssaho.2025.102287",
+      "design": {
+        "n_randomized": 120,
+        "population": "undergraduates learning AI-related material",
+        "conditions": ["unrestricted ChatGPT study aid", "traditional non-AI study methods"],
+        "delayed_outcome": "surprise knowledge-retention test 45 days after learning"
+      },
+      "reported_results": {
+        "chatgpt_percent_correct": 57.5,
+        "traditional_percent_correct": 68.5,
+        "t": -3.19,
+        "reported_df": 83,
+        "p": 0.002,
+        "cohens_d": 0.68
+      },
+      "classification": {
+        "direction": "NEGATIVE_DELAYED_RETENTION_FOR_UNRESTRICTED_CHATGPT_CONDITION",
+        "later_test_ai_free_or_unassisted": "YES_ACCORDING_TO_STUDY_DESCRIPTION",
+        "durable_capability": "BOUNDED_RETENTION_EVIDENCE_NOT_GENERALIZED_CAPABILITY",
+        "mechanism": "COGNITIVE_OFFLOADING_INTERPRETATION_PROPOSED_NOT_DIRECTLY_PROVEN"
+      },
+      "limitations_to_retain": [
+        "single bounded learning context does not establish population-wide cognitive decline",
+        "retention is not identical to broad reasoning or cross-domain transfer",
+        "mechanistic explanation should not be promoted beyond the measured outcomes"
+      ]
+    },
+    {
+      "source_id": "ACS-DU-002",
+      "source_class": "PEER_REVIEWED_RANDOMIZED_CONTROLLED_TRIAL",
+      "title": "ChatGPT as a Learning Tool for Medical Students: Results From a Randomized Controlled Trial",
+      "year": 2025,
+      "source_surface": "PMC peer-reviewed article",
+      "design": {
+        "population": "first-year Georgetown University medical students",
+        "conditions": ["ChatGPT-4.0", "external online sources", "internal institutional materials"],
+        "initial_quiz_n": {"chatgpt": 10, "external": 12, "internal": 11},
+        "delayed_outcome": "same quiz repeated one week later without access to resources"
+      },
+      "reported_results": {
+        "initial_means": {"chatgpt": 9.60, "external": 9.08, "internal": 6.64},
+        "initial_group_difference_p": "<0.001",
+        "retention_means": {"chatgpt": 6.20, "external": 5.58, "internal": 4.36},
+        "retention_group_difference_p": 0.118
+      },
+      "classification": {
+        "direction": "NULL_DELAYED_RETENTION_DIFFERENCE_AT_ONE_WEEK",
+        "immediate_performance": "CHATGPT_AND_EXTERNAL_RESOURCES_HIGHER_THAN_INTERNAL_MATERIALS",
+        "later_test_ai_free_or_unassisted": "YES",
+        "durable_capability": "NOT_ESTABLISHED"
+      },
+      "limitations_to_retain": ["small sample", "single medical-school context", "same-quiz one-week retention is narrower than novel transfer"]
+    },
+    {
+      "source_id": "ACS-DU-003",
+      "source_class": "PEER_REVIEWED_MULTISITE_CLUSTER_RANDOMIZED_LONGITUDINAL_FIELD_EXPERIMENT",
+      "title": "Human-centered GenAI feedback design in higher education: a multisite experiment on direct, reflective, and hybrid approaches to scientific argumentation",
+      "journal": "International Journal of Educational Technology in Higher Education",
+      "year": 2026,
+      "doi": "10.1186/s41239-026-00614-9",
+      "design": {
+        "analytic_n": 1176,
+        "course_sections": 48,
+        "universities": 4,
+        "science_domains": 3,
+        "conditions": ["peer feedback only", "direct GenAI-supported feedback", "reflective GenAI-supported feedback", "hybrid self-evaluation + peer + GenAI critique"],
+        "outcomes": ["argument-quality gain", "conceptual learning", "delayed AI-free transfer", "feedback uptake", "self-regulated learning"]
+      },
+      "reported_results": {
+        "immediate": "direct GenAI improved immediate argument-quality gain relative to peer feedback; hybrid showed the highest adjusted immediate argument-quality mean",
+        "process": "reflective and hybrid conditions showed stronger feedback uptake and self-regulated learning",
+        "delayed_ai_free_transfer": "reflective and hybrid conditions outperformed direct GenAI-supported feedback"
+      },
+      "classification": {
+        "direction": "SCAFFOLD_DESIGN_MODERATES_DELAYED_AI_FREE_TRANSFER",
+        "later_test_ai_free_or_unassisted": "YES",
+        "supports_scaffold_vs_substitute_distinction": true,
+        "durable_capability": "BOUNDED_DELAYED_TRANSFER_EVIDENCE_NOT_GENERALIZED_CAPABILITY"
+      },
+      "interpretive_boundary": "The evidence supports interaction-design sensitivity: preserving self-evaluation, reflection, peer critique, and learner agency can improve delayed AI-free transfer relative to direct GenAI feedback. It does not establish that every reflective/hybrid AI design is beneficial."
+    }
+  ],
+  "current_synthesis": {
+    "state": "MIXED_DIRECTION_WITH_INTERACTION_DESIGN_MODERATION",
+    "negative_lane": "unrestricted ChatGPT can be associated with worse later retention in a bounded randomized design",
+    "null_lane": "a small medical-student RCT found no significant one-week retention difference",
+    "positive_scaffold_lane": "reflective/hybrid GenAI feedback outperformed direct GenAI feedback on delayed AI-free transfer in a large multisite experiment",
+    "topic_implication": "AI access alone is an insufficient explanatory variable. The research model must represent interaction design, cognitive responsibility retained by the learner, timing, and the exact unaided outcome."
+  },
+  "remaining_required_evidence": [
+    "independent replications of delayed negative retention effects",
+    "delayed novel reasoning transfer rather than same-material retention only",
+    "longer longitudinal follow-up beyond weeks to months",
+    "direct head-to-head answer-generation versus hinting/Socratic/counterexample designs",
+    "age/domain/model-family heterogeneity",
+    "validated dependence and metacognitive outcomes"
+  ]
+}
