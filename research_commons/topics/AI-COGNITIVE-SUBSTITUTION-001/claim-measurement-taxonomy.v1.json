@@ -1,0 +1,101 @@
+{
+  "taxonomy_id": "AI-COGNITIVE-SUBSTITUTION-001-CLAIMS-v1",
+  "topic_id": "AI-COGNITIVE-SUBSTITUTION-001",
+  "authority_effect": "NONE",
+  "states": [
+    "DISCOVERY_ONLY",
+    "PRIMARY_SOURCE_REVIEWED",
+    "SUPPORTED_TASK_LEVEL",
+    "SUPPORTED_LONGITUDINAL",
+    "CONTRADICTED",
+    "NULL_OR_MIXED",
+    "UNRESOLVED",
+    "NOT_ADMISSIBLE"
+  ],
+  "claim_classes": [
+    {
+      "claim_class": "ARTIFACT_QUALITY",
+      "definition": "Quality or correctness of the produced terminal artifact.",
+      "valid_measures": ["human scoring", "rubric scoring", "task accuracy", "originality measures", "linguistic analysis"],
+      "must_not_imply": ["human learning", "independent reasoning", "durable capability"]
+    },
+    {
+      "claim_class": "COGNITIVE_EFFORT_OR_ENGAGEMENT",
+      "definition": "Task-level evidence that cognitive resources are engaged during work.",
+      "valid_measures": ["EEG connectivity", "EEG spectral measures", "eye tracking", "response latency", "behavioral effort measures"],
+      "must_not_imply": ["intelligence loss", "brain damage", "durable impairment"]
+    },
+    {
+      "claim_class": "RECALL",
+      "definition": "Ability to reproduce or recognize recently produced or learned material.",
+      "valid_measures": ["free recall", "cued recall", "quotation accuracy", "delayed recall"],
+      "must_distinguish": ["immediate recall", "delayed retention", "transfer"]
+    },
+    {
+      "claim_class": "METACOGNITION",
+      "definition": "Awareness, monitoring, and regulation of one's own reasoning.",
+      "valid_measures": ["calibration", "confidence accuracy", "error monitoring", "strategy selection", "validated metacognitive scales"],
+      "must_not_reduce_to": ["self-reported liking", "task ownership alone"]
+    },
+    {
+      "claim_class": "DEPENDENCE",
+      "definition": "Persistent reduced ability or willingness to perform without AI after prior AI-supported performance.",
+      "valid_measures": ["withdrawal or switch-condition performance", "repeated unaided trials", "persistence after delayed reassessment"],
+      "requires_for_durable_claim": ["time separation", "unaided reassessment", "appropriate baseline or comparator"]
+    },
+    {
+      "claim_class": "INDEPENDENT_REASONING",
+      "definition": "Ability to reason, discriminate evidence, revise propositions, or solve tasks without machine-generated conclusions.",
+      "valid_measures": ["unaided transfer task", "counterexample discrimination", "reasoning explanation", "novel problem solving", "oral defense"],
+      "must_distinguish": ["familiar task reproduction", "novel transfer", "domain-specific reasoning"]
+    },
+    {
+      "claim_class": "DURABLE_CAPABILITY",
+      "definition": "Persistent change in human ability across time, ideally with transfer beyond the trained task.",
+      "valid_measures": ["longitudinal reassessment", "delayed unaided transfer", "replicated cross-task performance"],
+      "minimum_evidence_expectation": ["delayed measurement", "unaided condition", "baseline/comparator", "construct-valid outcome"],
+      "current_topic_state": "UNRESOLVED"
+    },
+    {
+      "claim_class": "UNOBSERVED_COGNITIVE_SUBSTITUTION",
+      "definition": "Proposed topic construct: AI performs cognitive transitions intended for the human while terminal artifact quality makes that substitution difficult to observe.",
+      "status": "PROPOSED_CONSTRUCT_NOT_VALIDATED",
+      "candidate_indicators": ["machine-generated intermediate reasoning", "absence of human discrimination evidence", "high artifact quality with weak unaided reconstruction", "failure on matched unaided transfer"],
+      "requirements_before_promotion": ["literature support", "operational definition", "discriminant validity", "positive and negative fixtures", "independent review"]
+    }
+  ],
+  "causal_labels": [
+    {
+      "label": "EXPERIMENTAL_BOUNDED_CAUSAL",
+      "meaning": "Randomized or otherwise experimentally assigned condition supports causal interpretation only for the measured task/outcome and study design."
+    },
+    {
+      "label": "CORRELATIONAL",
+      "meaning": "Association without sufficient design for causal attribution."
+    },
+    {
+      "label": "MECHANISTIC_HYPOTHESIS",
+      "meaning": "Proposed mechanism not independently established."
+    },
+    {
+      "label": "SELF_REPORT",
+      "meaning": "Participant-reported experience or behavior; not direct capability measurement."
+    },
+    {
+      "label": "TASK_STATE_OBSERVATION",
+      "meaning": "Measured difference during or immediately after a bounded task; not durable capability evidence."
+    },
+    {
+      "label": "LONGITUDINAL_OUTCOME",
+      "meaning": "Outcome measured across a meaningful time interval with explicit retention or capability interpretation."
+    }
+  ],
+  "promotion_rules": [
+    "Do not promote secondary journalism into a scientific finding.",
+    "Do not infer durable capability loss from task-level neural or behavioral differences alone.",
+    "Do not treat lower EEG connectivity as synonymous with lower intelligence or harm.",
+    "Preserve peer-review status and study limitations with every admitted claim.",
+    "Require contradictory, null, and limitation evidence lanes before topic-level synthesis.",
+    "Separate AI-as-substitute conditions from AI-as-critique, tutoring, counterexample, or scaffold conditions."
+  ]
+}
