@@ -1,0 +1,55 @@
+{
+  "map_id": "AI-COGNITIVE-SUBSTITUTION-001-CONTRADICTIONS-v1",
+  "topic_id": "AI-COGNITIVE-SUBSTITUTION-001",
+  "authority_effect": "NONE",
+  "updated_at": "2026-08-26",
+  "propositions": [
+    {
+      "proposition_id": "ACS-P-001",
+      "proposition": "AI-assisted educational work necessarily reduces learning.",
+      "status": "CONTRADICTED_AS_UNIVERSAL_CLAIM",
+      "supporting_evidence": ["ACS-SRC-002"],
+      "counter_evidence": ["ACS-SRC-005"],
+      "resolution": "AI use must be separated by interaction design. A structured AI pre-lecture scaffold produced learning outcomes comparable to human pre-lecture interaction in Peng et al. (2026), so evidence does not support treating every AI-assisted condition as cognitive substitution."
+    },
+    {
+      "proposition_id": "ACS-P-002",
+      "proposition": "Lower neural connectivity or activation during AI use proves lower cognitive ability.",
+      "status": "NOT_ADMISSIBLE",
+      "supporting_evidence": [],
+      "counter_evidence": ["ACS-SRC-004", "ACS-SRC-006"],
+      "resolution": "Neural engagement/connectivity and cognitive ability are distinct constructs. Methodological critique of Kosmyna et al. and the Frontiers theory review both require conservative interpretation."
+    },
+    {
+      "proposition_id": "ACS-P-003",
+      "proposition": "The Kosmyna et al. essay-writing experiment establishes durable generalized cognitive decline from LLM use.",
+      "status": "NOT_SUPPORTED",
+      "supporting_evidence": [],
+      "counter_evidence": ["ACS-SRC-002", "ACS-SRC-004", "ACS-SRC-006"],
+      "resolution": "The experiment is task-bounded, session 4 is small and optional, the institutional page calls for longitudinal work, and a methodological comment raises design/EEG/reproducibility concerns. Durable generalized capability remains unresolved."
+    },
+    {
+      "proposition_id": "ACS-P-004",
+      "proposition": "AI can function as a learning scaffold rather than a substitute.",
+      "status": "SUPPORTED_IN_AT_LEAST_ONE_BOUNDED_PEER_REVIEWED_DESIGN",
+      "supporting_evidence": ["ACS-SRC-005", "ACS-SRC-006"],
+      "counter_evidence": [],
+      "resolution": "Peng et al. provide experimental evidence that a structured AI pre-lecture interaction can improve learning and neural alignment relative to no interaction. This does not establish all scaffolding designs as beneficial, but it validates scaffold-versus-substitute as an empirically meaningful distinction."
+    },
+    {
+      "proposition_id": "ACS-P-005",
+      "proposition": "Unobserved cognitive substitution is an established scientific construct.",
+      "status": "UNRESOLVED_PROPOSED_CONSTRUCT",
+      "supporting_evidence": ["ACS-SRC-002", "ACS-SRC-006"],
+      "counter_evidence": [],
+      "resolution": "The topic's construct is analytically compatible with scaffold-versus-substitute literature, but the exact term and operational definition have not been validated. It remains proposed until discriminant measures and independent review exist."
+    }
+  ],
+  "required_missing_lanes": [
+    "peer-reviewed delayed unaided transfer studies",
+    "longitudinal studies of persistent capability change",
+    "null studies showing no later performance difference",
+    "head-to-head substitution versus scaffolding interaction designs",
+    "replication across multiple LLMs, tasks, age groups, and domains"
+  ]
+}
