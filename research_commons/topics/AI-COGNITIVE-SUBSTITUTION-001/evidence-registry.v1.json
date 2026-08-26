@@ -1,0 +1,128 @@
+{
+  "registry_id": "AI-COGNITIVE-SUBSTITUTION-001-EVIDENCE-v1",
+  "topic_id": "AI-COGNITIVE-SUBSTITUTION-001",
+  "repository": "StegVerse-Labs/StegScholar",
+  "authority_effect": "NONE",
+  "review_state": "PRIMARY_SOURCE_REVIEW_STARTED",
+  "updated_at": "2026-08-26",
+  "admission_rules": {
+    "secondary_source_may_trigger_discovery": true,
+    "secondary_source_may_authorize_scientific_claim": false,
+    "primary_source_required_for_study_claim": true,
+    "peer_review_required_for_promoted_reviewed_finding": false,
+    "peer_review_status_must_be_preserved": true,
+    "null_contradictory_and_limitation_evidence_required": true
+  },
+  "sources": [
+    {
+      "source_id": "ACS-SRC-001",
+      "source_class": "SECONDARY_JOURNALISM_TRIGGER",
+      "title": "Teachers Warn That Students Are Losing the Ability to Think as They Lean on AI for Everything",
+      "publisher": "Futurism",
+      "published_at": "2026-08-19",
+      "url": "https://futurism.com/future-society/students-lose-ability-think-ai",
+      "custody_state": "REVIEWED_AS_DISCOVERY_SOURCE",
+      "scientific_authority": "NONE",
+      "discovered_records": [
+        "ACS-SRC-002",
+        "ACS-SRC-003"
+      ],
+      "notes": "The article frames AI-assisted writing as a possible threat to thinking and cites an MIT essay-writing study plus a New York Times essay containing expert commentary. Its headline and synthesis are not admitted as scientific findings."
+    },
+    {
+      "source_id": "ACS-SRC-002",
+      "source_class": "PRIMARY_RESEARCH_PREPRINT",
+      "title": "Your Brain on ChatGPT: Accumulation of Cognitive Debt when Using an AI Assistant for Essay Writing Task",
+      "authors": [
+        "Nataliya Kosmyna",
+        "Eugene Hauptmann",
+        "Ye Tong Yuan",
+        "Jessica Situ",
+        "Xian-Hao Liao",
+        "Ashly Vivian Beresnitzky",
+        "Iris Braunstein",
+        "Pattie Maes"
+      ],
+      "institutional_record": "MIT Media Lab",
+      "arxiv_id": "2506.08872",
+      "published_at": "2025-06-10",
+      "urls": [
+        "https://www.media.mit.edu/publications/your-brain-on-chatgpt/",
+        "https://arxiv.org/abs/2506.08872"
+      ],
+      "peer_review_state": "PREPRINT_NOT_ESTABLISHED_AS_PEER_REVIEWED_IN_CURRENT_REVIEW",
+      "custody_state": "PRIMARY_RECORD_REVIEWED_ABSTRACT_AND_INSTITUTIONAL_PROJECT_LIMITATIONS",
+      "design": {
+        "task": "essay writing",
+        "conditions": [
+          "LLM",
+          "Search Engine",
+          "Brain-only"
+        ],
+        "sessions_1_to_3_participants": 54,
+        "session_4_participants": 18,
+        "session_4_switches": [
+          "LLM-to-Brain",
+          "Brain-to-LLM"
+        ],
+        "measures": [
+          "EEG connectivity",
+          "essay NLP characteristics",
+          "human teacher scoring",
+          "AI-judge scoring",
+          "self-reported ownership",
+          "ability to quote produced essay"
+        ]
+      },
+      "observations_admitted": [
+        "The three experimental conditions showed different EEG connectivity patterns during the essay-writing task.",
+        "The LLM condition showed weaker reported connectivity than Search Engine and Brain-only conditions in the study's analyses.",
+        "LLM-condition participants had lower reported ownership and greater difficulty accurately quoting their own essays.",
+        "In session 4, the LLM-to-Brain subgroup showed reduced alpha and beta connectivity relative to the study's comparison framing."
+      ],
+      "claims_not_admitted": [
+        "LLMs make people dumber",
+        "LLMs cause brain damage",
+        "LLMs cause durable cognitive decline across tasks",
+        "lower EEG connectivity proves loss of intelligence",
+        "the experiment establishes long-term population-level impairment"
+      ],
+      "limitations_preserved": [
+        "The study is context-dependent and centered on essay writing in an educational setting.",
+        "The authors state that results cannot be directly generalized to other LLMs.",
+        "Only 18 participants completed session 4.",
+        "The task was not decomposed into subtasks such as idea generation and drafting.",
+        "The reported EEG analysis focused on connectivity patterns rather than spectral power changes.",
+        "EEG has spatial-resolution limitations.",
+        "The institutional project page identifies larger and more diverse samples and longitudinal work as future research needs."
+      ],
+      "topic_relevance": {
+        "artifact_quality": "DIRECTLY_MEASURED_IN_PART",
+        "cognitive_effort_or_engagement": "PROXIED_BY_EEG_CONNECTIVITY",
+        "recall": "DIRECT_TASK_LEVEL_MEASURE_PRESENT",
+        "metacognition": "NOT_DIRECTLY_ESTABLISHED_BY_CURRENT_REVIEW",
+        "dependence": "SESSION_SWITCH_DESIGN_RELEVANT_BUT_DURABLE_DEPENDENCE_NOT_ESTABLISHED",
+        "independent_reasoning": "TASK_SPECIFIC_SWITCH_EVIDENCE_RELEVANT",
+        "durable_capability": "NOT_ESTABLISHED"
+      },
+      "authority_effect": "NONE"
+    },
+    {
+      "source_id": "ACS-SRC-003",
+      "source_class": "SECONDARY_EXPERT_ESSAY",
+      "title": "New York Times essay on student writing and AI",
+      "publisher": "The New York Times",
+      "published_at": "2026-08-17",
+      "url": "https://www.nytimes.com/2026/08/17/us/student-writing-essays-ai.html",
+      "custody_state": "DISCOVERED_URL_NOT_CONTENT_REVIEWED",
+      "scientific_authority": "NONE",
+      "notes": "Futurism attributes expert commentary from Ronald T. Kellogg and Steve Graham to this essay. The linked NYT page was not directly reviewable in the current retrieval path, so expert statements are not promoted as primary empirical findings."
+    }
+  ],
+  "next_source_actions": [
+    "Review the full arXiv preprint methods/results beyond the abstract and institutional project summary.",
+    "Locate any peer-reviewed successor or formal review status for arXiv:2506.08872.",
+    "Identify primary literature supporting or challenging the writing-as-cognition mechanism discussed by the secondary NYT essay.",
+    "Add contradictory, null, intervention, and longitudinal evidence before any topic-level finding is promoted."
+  ]
+}
