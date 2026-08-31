@@ -1,7 +1,7 @@
 {
   "schema": "stegscholar.continuation-state.v1",
   "topic_id": "STEGNEURO-BCI-001",
-  "generated_at": "2026-08-31T13:43:11.216503+00:00",
+  "generated_at": "2026-08-31T22:48:42.736920+00:00",
   "state": "REVIEW_REQUIRED",
   "owner": "StegVerse-Labs/StegScholar#50",
   "observer": ".github/workflows/stegneuro-bci-source-discovery.yml",
@@ -653,6 +653,17 @@
           "authority_effect": "NONE"
         },
         {
+          "doi": "10.2139/ssrn.7361758",
+          "title": "Decoding Brain-Computer Interface (BCI) Signals Using Artificial Intelligence and Machine Learning: A Three-Stage Framework for Brain-to-Text Communication Systems",
+          "year": 2026,
+          "provider": "crossref",
+          "coverage_dimensions": [
+            "functional_ultrasound_read"
+          ],
+          "state": "REVIEW_REQUIRED",
+          "authority_effect": "NONE"
+        },
+        {
           "doi": "10.1016/j.csl.2026.101939",
           "title": "Decoding phone pairs from MEG signals across speech modalities",
           "year": 2026,
@@ -686,20 +697,6 @@
           "coverage_dimensions": [
             "decoder_prior_confound",
             "noninvasive_eeg_meg"
-          ],
-          "state": "REVIEW_REQUIRED",
-          "authority_effect": "NONE"
-        },
-        {
-          "doi": "10.21203/rs.3.rs-10426644/v1",
-          "title": "Reconstructing the brain’s language network from non-invasive EEG enables interpretable speech decoding",
-          "year": 2026,
-          "provider": "crossref",
-          "coverage_dimensions": [
-            "intracortical_wired_read",
-            "noninvasive_eeg_meg",
-            "reproducible_data",
-            "speech_inner_speech"
           ],
           "state": "REVIEW_REQUIRED",
           "authority_effect": "NONE"
@@ -914,6 +911,17 @@
           "authority_effect": "NONE"
         },
         {
+          "doi": "10.2139/ssrn.7361758",
+          "title": "Decoding Brain-Computer Interface (BCI) Signals Using Artificial Intelligence and Machine Learning: A Three-Stage Framework for Brain-to-Text Communication Systems",
+          "year": 2026,
+          "provider": "crossref",
+          "coverage_dimensions": [
+            "functional_ultrasound_read"
+          ],
+          "state": "REVIEW_REQUIRED",
+          "authority_effect": "NONE"
+        },
+        {
           "doi": "10.1016/j.csl.2026.101939",
           "title": "Decoding phone pairs from MEG signals across speech modalities",
           "year": 2026,
@@ -921,19 +929,6 @@
           "coverage_dimensions": [
             "intracortical_wired_read",
             "noninvasive_eeg_meg",
-            "speech_inner_speech"
-          ],
-          "state": "REVIEW_REQUIRED",
-          "authority_effect": "NONE"
-        },
-        {
-          "doi": "10.1002/smll.202514286",
-          "title": "Flexible Surface Electrodes for Electrocorticography in Neurological Diseases and Brain‐Computer Interface Applications",
-          "year": 2026,
-          "provider": "crossref",
-          "coverage_dimensions": [
-            "ecog_surface_read",
-            "intracortical_wired_read",
             "speech_inner_speech"
           ],
           "state": "REVIEW_REQUIRED",
