@@ -11,6 +11,7 @@ created: 2026-09-02
 canonical_owner: StegScholar research lane
 runtime_authority: NONE
 publication_authority: NONE
+canonical_issue: StegVerse-Labs/StegScholar#52
 ```
 
 ## Source of truth
@@ -184,7 +185,7 @@ This founding lane does NOT claim:
 
 ## Immediate queue
 
-1. Create the position paper from the stated thesis.
+1. Position paper created at `papers/governance-native-ai/epistemic-transition-position.md`.
 2. Define entity-state, observer-state, consequence, expectation, demand, preference, residual, observance locus, and model-revision terms.
 3. Formalize at least two competing models:
    - wrapper authority model;
@@ -210,7 +211,7 @@ Research foundation is complete when:
 
 ```text
 foundation_handoff: 1/1
-position_paper: pending
+position_paper: 1/1
 definitions: pending
 falsification_protocol: pending
 schemas: pending
