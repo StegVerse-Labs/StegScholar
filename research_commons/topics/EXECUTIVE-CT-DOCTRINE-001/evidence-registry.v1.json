@@ -1,0 +1,143 @@
+{
+  "topic_id": "EXECUTIVE-CT-DOCTRINE-001",
+  "updated_at": "2026-09-07",
+  "authority_effect": "NONE",
+  "sources": [
+    {
+      "id": "USCT-2026",
+      "class": "OFFICIAL_EXECUTIVE_POLICY",
+      "title": "United States Counterterrorism Strategy 2026",
+      "organization": "The White House",
+      "date": "2026-05",
+      "url": "https://www.whitehouse.gov/wp-content/uploads/2026/05/2026-USCT-Strategy-1.pdf",
+      "review_state": "REVIEWED",
+      "bounded_observations": [
+        "Lists 'Violent Left-Wing Extremists, including Anarchists and Anti-Fascists' as one of three major types of terror groups.",
+        "States CT powers will not be used against Americans who simply disagree with the administration.",
+        "Directs prioritization of violent secular political groups and describes mapping membership and ties to international organizations like Antifa.",
+        "States CT mission is to identify groups with intent and capability to plot attacks against Americans and neutralize them."
+      ]
+    },
+    {
+      "id": "EO-ANTIFA-2025-09-22",
+      "class": "OFFICIAL_EXECUTIVE_ACTION",
+      "title": "Designating Antifa as a Domestic Terrorist Organization",
+      "organization": "The White House",
+      "date": "2025-09-22",
+      "url": "https://www.whitehouse.gov/presidential-actions/2025/09/designating-antifa-as-a-domestic-terrorist-organization/",
+      "review_state": "REVIEWED",
+      "bounded_observations": [
+        "Designates Antifa as a domestic terrorist organization by executive order.",
+        "Directs agencies to investigate, disrupt, and dismantle illegal operations conducted by Antifa or persons claiming to act on its behalf, including material-support investigations."
+      ]
+    },
+    {
+      "id": "NSPM7-2025-09-25",
+      "class": "OFFICIAL_EXECUTIVE_ACTION",
+      "title": "Countering Domestic Terrorism and Organized Political Violence (NSPM-7)",
+      "organization": "The White House",
+      "date": "2025-09-25",
+      "url": "https://www.whitehouse.gov/presidential-actions/2025/09/countering-domestic-terrorism-and-organized-political-violence/",
+      "review_state": "REVIEWED",
+      "bounded_observations": [
+        "Directs JTTFs to coordinate a national strategy to investigate, prosecute, and disrupt entities and individuals engaged in political violence and intimidation.",
+        "Extends investigative attention to recruitment/radicalization, funders, organizations, and networks.",
+        "Allows the Attorney General to recommend domestic-terrorist-organization designation for groups whose members engage in activities meeting 18 U.S.C. §2331(5)."
+      ]
+    },
+    {
+      "id": "USC-18-2331",
+      "class": "STATUTE",
+      "title": "18 U.S.C. § 2331 — Definitions",
+      "organization": "United States Congress",
+      "url": "https://uscode.house.gov/view.xhtml?edition=prelim&f=treesort&jumpTo=true&num=0&req=%28title%3A18+section%3A2331+edition%3Aprelim%29+OR+%28granuleid%3AUSC-prelim-title18-section2331%29",
+      "review_state": "REVIEWED",
+      "bounded_observations": [
+        "Domestic terrorism requires acts dangerous to human life that violate criminal law, specified coercive/governmental intent, and primarily domestic occurrence."
+      ]
+    },
+    {
+      "id": "USC-18-2339A",
+      "class": "STATUTE",
+      "title": "18 U.S.C. § 2339A — Providing material support to terrorists",
+      "organization": "United States Congress",
+      "url": "https://uscode.house.gov/view.xhtml?edition=prelim&f=treesort&num=0&req=granuleid%3AUSC-prelim-title18-section2339A",
+      "review_state": "REVIEWED",
+      "bounded_observations": [
+        "Applies when material support or resources are provided knowing or intending they be used in preparation for or carrying out enumerated federal crimes.",
+        "Defines material support broadly to include property, services, training, communications equipment, personnel, and transportation.",
+        "Does not itself require that the recipient be a State Department-designated foreign terrorist organization."
+      ]
+    },
+    {
+      "id": "DOJ-PRAIRIELAND-CONVICTIONS-2026-03-13",
+      "class": "OFFICIAL_PROSECUTION_RELEASE",
+      "title": "Antifa Cell Members Convicted in Prairieland ICE Detention Center Shooting",
+      "organization": "U.S. Department of Justice / Northern District of Texas",
+      "date": "2026-03-13",
+      "url": "https://www.justice.gov/usao-ndtx/pr/antifa-cell-members-convicted-prairieland-ice-detention-center-shooting",
+      "review_state": "REVIEWED",
+      "bounded_observations": [
+        "Reports jury convictions for riot, providing material support to terrorists, explosive offenses, attempted murder, and obstruction-related counts depending on defendant.",
+        "States some defendants attended a peaceful daytime protest before later conduct alleged and proved at trial.",
+        "Reports seven additional defendants pleaded guilty to a single material-support count."
+      ],
+      "limitations": [
+        "Press release is the government's characterization, not a substitute for charging documents, factual resumes, jury instructions, or judgments."
+      ]
+    },
+    {
+      "id": "DOJ-PRAIRIELAND-SENTENCING-2026-06-23",
+      "class": "OFFICIAL_PROSECUTION_RELEASE",
+      "title": "Leader of Antifa Cell Members in North Texas Sentenced to 100 Years in Prison for Terrorist Attack on ICE Facility",
+      "organization": "U.S. Department of Justice",
+      "date": "2026-06-23",
+      "url": "https://www.justice.gov/opa/pr/leader-antifa-cell-members-north-texas-sentenced-100-years-prison-terrorist-attack-ice",
+      "review_state": "REVIEWED",
+      "bounded_observations": [
+        "Describes the alleged/established cell as part of a larger militant enterprise composed of networks of individuals and small groups primarily ascribing to an ideology.",
+        "Again states some defendants attended a peaceful daytime protest and reported security details.",
+        "Reports sentences and material-support convictions/pleas tied to a broader violent event."
+      ],
+      "limitations": [
+        "Does not establish that peaceful protest alone supplied the statutory predicate for any defendant."
+      ]
+    },
+    {
+      "id": "KERA-PRAIRIELAND-PLEAS-2025-11-19",
+      "class": "REPORTING",
+      "title": "5 Prairieland ICE shooting defendants plead guilty to federal terrorism-related charge",
+      "organization": "KERA News",
+      "date": "2025-11-19",
+      "url": "https://www.keranews.org/criminal-justice/2025-11-19/prairieland-detention-center-shooting-defendants-alvarado-plead-guilty-federal-terrorism-related-charge-antifa",
+      "review_state": "REVIEWED_SECONDARY",
+      "bounded_observations": [
+        "Reports defense counsel's characterization that one defendant admitted property damage but denied violent intent.",
+        "Reports differing conduct allegations among defendants, reinforcing need for defendant-level analysis."
+      ]
+    },
+    {
+      "id": "TPR-PRAIRIELAND-SENTENCING-2026-07-01",
+      "class": "REPORTING",
+      "title": "Ninth Prairieland defendant sentenced; six who pleaded guilty receive prison terms",
+      "organization": "Texas Public Radio",
+      "date": "2026-07-01",
+      "url": "https://www.tpr.org/news/2026-07-01/ninth-prairieland-defendant-sentenced-to-50-years-in-prison-6-who-pleaded-guilty-get-2-9-years",
+      "review_state": "REVIEWED_SECONDARY",
+      "bounded_observations": [
+        "Reports distinct factual roles among plea defendants, including presence at Prairieland, property damage, and post-event assistance to the alleged shooter.",
+        "Reports appeals had begun in the Fifth Circuit after district-court proceedings."
+      ]
+    }
+  ],
+  "named_gaps": [
+    "Prairieland charging instruments and plea factual bases",
+    "Prairieland jury instructions and judgments",
+    "Fifth Circuit appellate briefs/opinions",
+    "defendant-by-defendant conduct matrix",
+    "other 2025-2026 Antifa/anti-fascist federal prosecutions",
+    "peaceful-protester terrorism-related arrest/charge cases",
+    "First Amendment and association limits",
+    "legal effect of domestic-terrorist-organization designation"
+  ]
+}
