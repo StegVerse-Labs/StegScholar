@@ -1,0 +1,46 @@
+{
+  "topic_id": "EXECUTIVE-CT-DOCTRINE-001",
+  "updated_at": "2026-09-07",
+  "search_domains": [
+    "whitehouse.gov",
+    "justice.gov",
+    "uscode.house.gov",
+    "ca5.uscourts.gov",
+    "law.justia.com",
+    "govinfo.gov",
+    "federalregister.gov"
+  ],
+  "queries": [
+    "2026 United States Counterterrorism Strategy Anti-Fascists Antifa",
+    "2025 Designating Antifa as a Domestic Terrorist Organization legal authority",
+    "NSPM-7 Countering Domestic Terrorism Organized Political Violence Antifa",
+    "Prairieland ICE detention center superseding indictment material support 2339A",
+    "Prairieland plea factual resume material support terrorists",
+    "Prairieland jury instructions 2339A",
+    "Prairieland Fifth Circuit appeal Antifa material support",
+    "anti-fascist protest material support terrorists federal prosecution",
+    "Antifa federal indictment peaceful protest 2025 2026",
+    "domestic terrorist organization designation judicial review Antifa",
+    "First Amendment association advocacy domestic terrorism Antifa",
+    "vagueness anti-fascist counterterrorism designation",
+    "18 USC 2339A protest material support terrorism",
+    "18 USC 2331 domestic terrorism protest First Amendment",
+    "terrorism sentencing enhancement political protest ideology"
+  ],
+  "review_policy": {
+    "primary_legal_sources_first": true,
+    "court_documents_preferred_over_press_releases": true,
+    "government_and_defense_positions_kept_separate": true,
+    "defendant_level_analysis_required": true,
+    "peaceful_protest_alone_claim_requires_direct_case_evidence": true,
+    "negative_and_falsifying_evidence_required": true,
+    "no_automatic_legal_conclusion_from_executive_label": true
+  },
+  "refresh_triggers": [
+    "new Fifth Circuit filing or opinion in Prairieland appeals",
+    "new DOJ/DHS/FBI Antifa or anti-fascist prosecution",
+    "new Executive Branch counterterrorism directive or implementing guidance",
+    "new federal court ruling on domestic terrorist organization designation",
+    "new arrest/charge involving protest activity and terrorism-related statutes"
+  ]
+}
