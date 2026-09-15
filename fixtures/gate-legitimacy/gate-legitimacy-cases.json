@@ -1,0 +1,317 @@
+{
+  "schema_version": "0.1.0",
+  "cases": [
+    {
+      "case_id": "GL-VALID-001",
+      "expected_state": "LEGITIMATE",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_id": "glr-valid-001",
+        "gate_id": "gate-a",
+        "candidate_ref": "candidate-a",
+        "candidate_disposition_ref": "gtg:deny-candidate-a",
+        "governing_standard": {
+          "standard_ref": "policy:standard-a",
+          "provenance_ref": "prov:standard-a",
+          "authority_ref": "authority:standard-a",
+          "conflict_refs": [],
+          "status": "VALID"
+        },
+        "evidence_rules": {
+          "rule_set_ref": "rules:a",
+          "provenance_ref": "prov:rules-a",
+          "controller_ref": "controller:rules-a",
+          "frozen_before_candidate_evaluation": true,
+          "status": "VALID"
+        },
+        "evaluator": {
+          "evaluator_ref": "evaluator:a",
+          "standing_ref": "standing:evaluator-a",
+          "conflict_refs": [],
+          "same_as_standard_controller": false,
+          "same_as_evidence_rule_controller": false,
+          "same_as_execution_path_controller": false,
+          "status": "VALID"
+        },
+        "execution_path": {
+          "path_ref": "path:a",
+          "controller_ref": "controller:path-a",
+          "conflict_refs": [],
+          "status": "VALID"
+        },
+        "challenge_review": {
+          "challenge_available": true,
+          "challenge_ref": "challenge:a",
+          "independent_review_required": false,
+          "independent_review_satisfied": false,
+          "independent_review_ref": null
+        },
+        "assessment": {
+          "legitimacy_state": "LEGITIMATE",
+          "reason_codes": ["ALL_REQUIRED_PREDICATES_SATISFIED"]
+        },
+        "authority_effect": "NONE"
+      }
+    },
+    {
+      "case_id": "GL-MISSING-STANDARD-PROVENANCE-001",
+      "expected_state": "ILLEGITIMATE",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_id": "glr-missing-standard-prov",
+        "gate_id": "gate-b",
+        "candidate_ref": "candidate-b",
+        "candidate_disposition_ref": null,
+        "governing_standard": {
+          "standard_ref": "policy:standard-b",
+          "provenance_ref": null,
+          "authority_ref": "authority:standard-b",
+          "conflict_refs": [],
+          "status": "INVALID"
+        },
+        "evidence_rules": {
+          "rule_set_ref": "rules:b",
+          "provenance_ref": "prov:rules-b",
+          "controller_ref": "controller:rules-b",
+          "frozen_before_candidate_evaluation": true,
+          "status": "VALID"
+        },
+        "evaluator": {
+          "evaluator_ref": "evaluator:b",
+          "standing_ref": "standing:evaluator-b",
+          "conflict_refs": [],
+          "same_as_standard_controller": false,
+          "same_as_evidence_rule_controller": false,
+          "same_as_execution_path_controller": false,
+          "status": "VALID"
+        },
+        "execution_path": {
+          "path_ref": "path:b",
+          "controller_ref": "controller:path-b",
+          "conflict_refs": [],
+          "status": "VALID"
+        },
+        "challenge_review": {
+          "challenge_available": true,
+          "challenge_ref": "challenge:b",
+          "independent_review_required": false,
+          "independent_review_satisfied": false,
+          "independent_review_ref": null
+        },
+        "assessment": {
+          "legitimacy_state": "ILLEGITIMATE",
+          "reason_codes": ["MISSING_STANDARD_PROVENANCE"]
+        },
+        "authority_effect": "NONE"
+      }
+    },
+    {
+      "case_id": "GL-POSTHOC-EVIDENCE-RULES-001",
+      "expected_state": "ILLEGITIMATE",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_id": "glr-posthoc-rules",
+        "gate_id": "gate-c",
+        "candidate_ref": "candidate-c",
+        "candidate_disposition_ref": null,
+        "governing_standard": {
+          "standard_ref": "policy:standard-c",
+          "provenance_ref": "prov:standard-c",
+          "authority_ref": "authority:standard-c",
+          "conflict_refs": [],
+          "status": "VALID"
+        },
+        "evidence_rules": {
+          "rule_set_ref": "rules:c",
+          "provenance_ref": "prov:rules-c",
+          "controller_ref": "controller:rules-c",
+          "frozen_before_candidate_evaluation": false,
+          "status": "INVALID"
+        },
+        "evaluator": {
+          "evaluator_ref": "evaluator:c",
+          "standing_ref": "standing:evaluator-c",
+          "conflict_refs": [],
+          "same_as_standard_controller": false,
+          "same_as_evidence_rule_controller": false,
+          "same_as_execution_path_controller": false,
+          "status": "VALID"
+        },
+        "execution_path": {
+          "path_ref": "path:c",
+          "controller_ref": "controller:path-c",
+          "conflict_refs": [],
+          "status": "VALID"
+        },
+        "challenge_review": {
+          "challenge_available": true,
+          "challenge_ref": "challenge:c",
+          "independent_review_required": false,
+          "independent_review_satisfied": false,
+          "independent_review_ref": null
+        },
+        "assessment": {
+          "legitimacy_state": "ILLEGITIMATE",
+          "reason_codes": ["EVIDENCE_RULES_NOT_PREDECLARED"]
+        },
+        "authority_effect": "NONE"
+      }
+    },
+    {
+      "case_id": "GL-EVALUATOR-RULE-CONTROLLER-CONFLICT-001",
+      "expected_state": "CONFLICTED",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_id": "glr-rule-conflict",
+        "gate_id": "gate-d",
+        "candidate_ref": "candidate-d",
+        "candidate_disposition_ref": null,
+        "governing_standard": {
+          "standard_ref": "policy:standard-d",
+          "provenance_ref": "prov:standard-d",
+          "authority_ref": "authority:standard-d",
+          "conflict_refs": [],
+          "status": "VALID"
+        },
+        "evidence_rules": {
+          "rule_set_ref": "rules:d",
+          "provenance_ref": "prov:rules-d",
+          "controller_ref": "evaluator:d",
+          "frozen_before_candidate_evaluation": true,
+          "status": "VALID"
+        },
+        "evaluator": {
+          "evaluator_ref": "evaluator:d",
+          "standing_ref": "standing:evaluator-d",
+          "conflict_refs": ["conflict:evaluator-controls-rules"],
+          "same_as_standard_controller": false,
+          "same_as_evidence_rule_controller": true,
+          "same_as_execution_path_controller": false,
+          "status": "CONFLICTED"
+        },
+        "execution_path": {
+          "path_ref": "path:d",
+          "controller_ref": "controller:path-d",
+          "conflict_refs": [],
+          "status": "VALID"
+        },
+        "challenge_review": {
+          "challenge_available": true,
+          "challenge_ref": "challenge:d",
+          "independent_review_required": true,
+          "independent_review_satisfied": false,
+          "independent_review_ref": null
+        },
+        "assessment": {
+          "legitimacy_state": "CONFLICTED",
+          "reason_codes": ["EVALUATOR_CONTROLS_EVIDENCE_RULES", "INDEPENDENT_REVIEW_REQUIRED"]
+        },
+        "authority_effect": "NONE"
+      }
+    },
+    {
+      "case_id": "GL-EVALUATOR-EXECUTION-CONTROLLER-CONFLICT-001",
+      "expected_state": "CONFLICTED",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_id": "glr-execution-conflict",
+        "gate_id": "gate-e",
+        "candidate_ref": "candidate-e",
+        "candidate_disposition_ref": null,
+        "governing_standard": {
+          "standard_ref": "policy:standard-e",
+          "provenance_ref": "prov:standard-e",
+          "authority_ref": "authority:standard-e",
+          "conflict_refs": [],
+          "status": "VALID"
+        },
+        "evidence_rules": {
+          "rule_set_ref": "rules:e",
+          "provenance_ref": "prov:rules-e",
+          "controller_ref": "controller:rules-e",
+          "frozen_before_candidate_evaluation": true,
+          "status": "VALID"
+        },
+        "evaluator": {
+          "evaluator_ref": "evaluator:e",
+          "standing_ref": "standing:evaluator-e",
+          "conflict_refs": ["conflict:evaluator-controls-execution"],
+          "same_as_standard_controller": false,
+          "same_as_evidence_rule_controller": false,
+          "same_as_execution_path_controller": true,
+          "status": "CONFLICTED"
+        },
+        "execution_path": {
+          "path_ref": "path:e",
+          "controller_ref": "evaluator:e",
+          "conflict_refs": ["conflict:common-control"],
+          "status": "CONFLICTED"
+        },
+        "challenge_review": {
+          "challenge_available": true,
+          "challenge_ref": "challenge:e",
+          "independent_review_required": true,
+          "independent_review_satisfied": false,
+          "independent_review_ref": null
+        },
+        "assessment": {
+          "legitimacy_state": "CONFLICTED",
+          "reason_codes": ["EVALUATOR_CONTROLS_EXECUTION_PATH", "INDEPENDENT_REVIEW_REQUIRED"]
+        },
+        "authority_effect": "NONE"
+      }
+    },
+    {
+      "case_id": "GL-CONFLICT-MITIGATED-BY-INDEPENDENT-REVIEW-001",
+      "expected_state": "LEGITIMATE",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_id": "glr-mitigated-conflict",
+        "gate_id": "gate-f",
+        "candidate_ref": "candidate-f",
+        "candidate_disposition_ref": "gtg:deny-candidate-f",
+        "governing_standard": {
+          "standard_ref": "policy:standard-f",
+          "provenance_ref": "prov:standard-f",
+          "authority_ref": "authority:standard-f",
+          "conflict_refs": [],
+          "status": "VALID"
+        },
+        "evidence_rules": {
+          "rule_set_ref": "rules:f",
+          "provenance_ref": "prov:rules-f",
+          "controller_ref": "evaluator:f",
+          "frozen_before_candidate_evaluation": true,
+          "status": "VALID"
+        },
+        "evaluator": {
+          "evaluator_ref": "evaluator:f",
+          "standing_ref": "standing:evaluator-f",
+          "conflict_refs": ["conflict:evaluator-controls-rules"],
+          "same_as_standard_controller": false,
+          "same_as_evidence_rule_controller": true,
+          "same_as_execution_path_controller": false,
+          "status": "CONFLICTED"
+        },
+        "execution_path": {
+          "path_ref": "path:f",
+          "controller_ref": "controller:path-f",
+          "conflict_refs": [],
+          "status": "VALID"
+        },
+        "challenge_review": {
+          "challenge_available": true,
+          "challenge_ref": "challenge:f",
+          "independent_review_required": true,
+          "independent_review_satisfied": true,
+          "independent_review_ref": "review:independent-f"
+        },
+        "assessment": {
+          "legitimacy_state": "LEGITIMATE",
+          "reason_codes": ["MATERIAL_CONFLICT_DISCLOSED", "INDEPENDENT_REVIEW_SATISFIED"]
+        },
+        "authority_effect": "NONE"
+      }
+    }
+  ]
+}
