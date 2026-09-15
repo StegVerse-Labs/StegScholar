@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stegverse.org/schemas/gate-legitimacy-record.schema.json",
+  "title": "Gate Legitimacy Record",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "record_id",
+    "gate_id",
+    "governing_standard",
+    "evidence_rules",
+    "evaluator",
+    "execution_path",
+    "challenge_review",
+    "assessment",
+    "authority_effect"
+  ],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "record_id": {"type": "string", "minLength": 1},
+    "gate_id": {"type": "string", "minLength": 1},
+    "candidate_ref": {"type": ["string", "null"]},
+    "candidate_disposition_ref": {"type": ["string", "null"], "description": "Optional external reference only; gate legitimacy does not determine candidate disposition."},
+    "governing_standard": {
+      "type": "object",
+      "required": ["standard_ref", "provenance_ref", "authority_ref", "status"],
+      "properties": {
+        "standard_ref": {"type": ["string", "null"]},
+        "provenance_ref": {"type": ["string", "null"]},
+        "authority_ref": {"type": ["string", "null"]},
+        "conflict_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "status": {"enum": ["VALID", "INVALID", "CONFLICTED", "UNRESOLVED"]}
+      },
+      "additionalProperties": false
+    },
+    "evidence_rules": {
+      "type": "object",
+      "required": ["rule_set_ref", "provenance_ref", "controller_ref", "frozen_before_candidate_evaluation", "status"],
+      "properties": {
+        "rule_set_ref": {"type": ["string", "null"]},
+        "provenance_ref": {"type": ["string", "null"]},
+        "controller_ref": {"type": ["string", "null"]},
+        "frozen_before_candidate_evaluation": {"type": "boolean"},
+        "status": {"enum": ["VALID", "INVALID", "CONFLICTED", "UNRESOLVED"]}
+      },
+      "additionalProperties": false
+    },
+    "evaluator": {
+      "type": "object",
+      "required": ["evaluator_ref", "standing_ref", "conflict_refs", "same_as_standard_controller", "same_as_evidence_rule_controller", "same_as_execution_path_controller", "status"],
+      "properties": {
+        "evaluator_ref": {"type": ["string", "null"]},
+        "standing_ref": {"type": ["string", "null"]},
+        "conflict_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "same_as_standard_controller": {"type": "boolean"},
+        "same_as_evidence_rule_controller": {"type": "boolean"},
+        "same_as_execution_path_controller": {"type": "boolean"},
+        "status": {"enum": ["VALID", "INVALID", "CONFLICTED", "UNRESOLVED"]}
+      },
+      "additionalProperties": false
+    },
+    "execution_path": {
+      "type": "object",
+      "required": ["path_ref", "controller_ref", "status"],
+      "properties": {
+        "path_ref": {"type": ["string", "null"]},
+        "controller_ref": {"type": ["string", "null"]},
+        "conflict_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "status": {"enum": ["VALID", "INVALID", "CONFLICTED", "UNRESOLVED"]}
+      },
+      "additionalProperties": false
+    },
+    "challenge_review": {
+      "type": "object",
+      "required": ["challenge_available", "independent_review_required", "independent_review_satisfied"],
+      "properties": {
+        "challenge_available": {"type": "boolean"},
+        "challenge_ref": {"type": ["string", "null"]},
+        "independent_review_required": {"type": "boolean"},
+        "independent_review_satisfied": {"type": "boolean"},
+        "independent_review_ref": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "assessment": {
+      "type": "object",
+      "required": ["legitimacy_state", "reason_codes"],
+      "properties": {
+        "legitimacy_state": {"enum": ["LEGITIMATE", "ILLEGITIMATE", "CONFLICTED", "UNRESOLVED"]},
+        "reason_codes": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+      },
+      "additionalProperties": false
+    },
+    "authority_effect": {"const": "NONE"}
+  },
+  "additionalProperties": false
+}
