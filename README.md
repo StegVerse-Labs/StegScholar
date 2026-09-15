@@ -72,6 +72,27 @@ IndependentReview(r) != GovernanceAuthority(r)
 
 Mandatory integration into the Governable Autonomy review schema, canonical GTG schema, or TT cell schema remains separate compatibility/integration work.
 
+## Architecture-neutral admissibility
+
+`ARCHITECTURE-NEUTRAL-ADMISSIBILITY-001` is the remaining Millings-derived refinement. It tests a narrow candidate-level invariant: a system may not use architectural nonconformity as the sole denial basis when the candidate independently satisfies the same governing requirement through valid evidence.
+
+Current source surfaces:
+- `papers/generalized-transition-governance/architecture-neutral-admissibility.md`
+- `schemas/architecture-neutral-admissibility-record.schema.json`
+- `fixtures/architecture-neutral-admissibility/cases.json`
+- `scripts/validate_architecture_neutral_admissibility.py`
+- `tests/test_architecture_neutral_admissibility.py`
+
+The formalism preserves these boundaries:
+
+```text
+ArchitectureDifferent(c) != SubstantivelyInadmissible(c)
+ConformityOnlyDenial(c) = INVALID_DENIAL_BASIS
+ArchitectureNeutrality(c) != ALLOW(c)
+```
+
+Evidence, authority, standing, safety/constraints, policy, and commit-time failure remain valid substantive denial grounds. Unresolved required state fails closed. The record has `authority_effect: NONE`; it does not emit a GTG disposition or create execution authority.
+
 ## Research Themes
 - Trust as a system state
 - Auditability and irrecoverable audit loss
