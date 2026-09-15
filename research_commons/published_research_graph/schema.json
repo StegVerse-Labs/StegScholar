@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stegverse.org/schemas/research-commons-published-research-graph.v1.json",
+  "title": "Research Commons Published Research Graph",
+  "type": "object",
+  "required": ["graph_version", "documents", "relations", "authority_boundary"],
+  "properties": {
+    "graph_version": {"const": "1.0.0"},
+    "authority_boundary": {"type": "string", "minLength": 1},
+    "documents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["document_id", "source_class", "title", "version_identity", "provenance", "authority_effect"],
+        "properties": {
+          "document_id": {"type": "string", "pattern": "^RC-DOC-[A-Z0-9-]+$"},
+          "source_class": {"enum": ["stegverse_publisher", "external_published_research"]},
+          "title": {"type": "string", "minLength": 1},
+          "doi": {"type": ["string", "null"]},
+          "canonical_url": {"type": ["string", "null"]},
+          "content_hash": {"type": ["string", "null"]},
+          "version_identity": {"type": "string", "minLength": 1},
+          "claims": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["claim_id", "locator", "text_digest"],
+              "properties": {
+                "claim_id": {"type": "string", "pattern": "^RC-CLM-[A-Z0-9-]+$"},
+                "locator": {"type": "string", "minLength": 1},
+                "text_digest": {"type": "string", "minLength": 1}
+              },
+              "additionalProperties": false
+            }
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["evidence_id", "locator", "evidence_class"],
+              "properties": {
+                "evidence_id": {"type": "string", "pattern": "^RC-EVD-[A-Z0-9-]+$"},
+                "locator": {"type": "string", "minLength": 1},
+                "evidence_class": {"enum": ["citation", "data", "result", "method", "argument", "artifact", "other"]}
+              },
+              "additionalProperties": false
+            }
+          },
+          "provenance": {
+            "type": "object",
+            "required": ["source_authority", "observed_at", "custody_retained_by_source"],
+            "properties": {
+              "source_authority": {"type": "string", "minLength": 1},
+              "observed_at": {"type": "string", "format": "date-time"},
+              "custody_retained_by_source": {"const": true}
+            },
+            "additionalProperties": false
+          },
+          "authority_effect": {"const": "NONE"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["relation_id", "subject", "predicate", "object", "assertion_mode", "state", "confidence", "provenance", "review", "authority_effect"],
+        "properties": {
+          "relation_id": {"type": "string", "pattern": "^RC-REL-[A-Z0-9-]+$"},
+          "subject": {"type": "string", "minLength": 1},
+          "predicate": {"enum": ["cites", "supports", "corroborates", "contradicts", "challenges", "extends", "refines", "replicates", "fails_to_replicate", "uses_method_from", "uses_data_from", "shares_evidence_with", "derives_from", "supersedes", "independently_converges_with", "conceptually_related"]},
+          "object": {"type": "string", "minLength": 1},
+          "assertion_mode": {"enum": ["explicit_source", "machine_discovered", "human_asserted"]},
+          "state": {"enum": ["candidate", "admitted", "rejected", "superseded"]},
+          "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+          "evidence_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+          "provenance": {
+            "type": "object",
+            "required": ["asserted_by", "observed_at", "basis"],
+            "properties": {
+              "asserted_by": {"type": "string", "minLength": 1},
+              "observed_at": {"type": "string", "format": "date-time"},
+              "basis": {"type": "string", "minLength": 1}
+            },
+            "additionalProperties": false
+          },
+          "review": {
+            "type": "object",
+            "required": ["required_for_admission", "review_state"],
+            "properties": {
+              "required_for_admission": {"type": "boolean"},
+              "review_state": {"enum": ["not_required", "pending", "accepted", "rejected"]},
+              "reviewed_by": {"type": ["string", "null"]},
+              "reviewed_at": {"type": ["string", "null"], "format": "date-time"}
+            },
+            "additionalProperties": false
+          },
+          "authority_effect": {"const": "NONE"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
