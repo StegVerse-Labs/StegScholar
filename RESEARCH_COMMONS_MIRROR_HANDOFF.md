@@ -7,7 +7,6 @@ Canonical continuation record for the Research Commons workstream in `StegVerse-
 Goal Task ID: `RC-CTRL-001`
 goal_id: RC-CTRL-001
 Canonical branch: `main`
-Active implementation branch: `rc-ctrl-001-published-research-graph`
 Canonical owner: StegVerse-Labs/StegScholar repository-native workstream
 
 Read before mutation:
@@ -26,105 +25,54 @@ Read before mutation:
 
 `RC-CTRL-001` owns governed Research Commons ingestion, research indexing and relation lineage, validation, reuse boundaries, and Site projection without transferring publication or scientific authority.
 
-The 2026-09-15 continuation extends the existing Publisher-only reusable relation graph into a source-neutral Published Research Graph. This is an extension of RC-008 under the existing `RC-CTRL-001` workstream; no separable child Goal Task is required because ownership, authority boundaries, validation, and repository destination remain the same.
+The 2026-09-15 continuation extended the existing Publisher-only reusable relation graph into a source-neutral Published Research Graph. This remains an extension of RC-008 under `RC-CTRL-001`; no separable child Goal Task was required because ownership, authority boundaries, validation, and repository destination remained the same.
 
 ## Durable prior state
 
-Previously validated Research Commons implementation includes:
-- Publisher-paper registry and five Commons pages;
-- nine Publisher relation records;
-- reconciliation state and deterministic indexes;
-- duplicate detection;
-- reuse request/decision and contributor-posture schemas;
-- Site dispatch and acceptance contracts;
-- fail-closed projection generation;
-- repository-native validation and drift workflows.
+Previously validated Research Commons implementation includes Publisher-paper registry/pages, Publisher relation records, reconciliation and deterministic indexes, duplicate detection, reuse request/decision and contributor-posture schemas, Site dispatch/acceptance contracts, fail-closed projection generation, and repository-native validation/drift workflows.
 
-Prior hosted validation evidence remains:
+Historical Publisher-only validation remains recorded by PR #39 / workflow run `30743296790` / artifact `8832017929`.
 
-```text
-pull_request: 39
-head_sha: 2eb5a024dca537c02cf1dc65b1c4b4a37e6c78a4
-workflow: Build and validate Research Commons
-run_id: 30743296790
-conclusion: success
-artifact_id: 8832017929
-artifact_digest: sha256:ad1b972edb6d7913e3fc6c017b22cf0e451bfba0534fc321e05cdcc5a39b5c87
-```
+## Published Research Graph extension — merged 2026-09-15
 
-That evidence covers the historical Publisher projection only; it is not evidence for the 2026-09-15 Published Research Graph extension.
+Implementation PR: `StegVerse-Labs/StegScholar#66`
+Validated PR head: `6555f9dbd44074293382b3e4c479cbdde1578b50`
+Merge SHA: `5daf590c4c439b3c425eca1ab25f359d85345de3`
+Hosted validation: `Build and validate Research Commons` run `34992566832`, run number 65, conclusion `success`.
+Additional exact-head checks: Test Readiness run `34992566835` success; Research Commons Control State run `34992566883` success; Architecture Neutral Admissibility run `34992566857` success; Independent Review run `34992566925` success.
 
-## Published Research Graph extension — 2026-09-15
+The hosted Research Commons job proved JSON parsing, Publisher index build, Publisher validation, source-neutral Published Research Graph validation, duplicate detection, Site projection boundary validation, fail-closed dispatch build, Research Commons control-state validation, and validation-artifact upload all succeeded at the validated PR head.
 
-Implementation branch starts from exact `main` head `81b79b760078f9e988814378d83a250bc0435065`.
-
-Added:
+Implemented surfaces:
 - `research_commons/published_research_graph/schema.json`
 - `research_commons/published_research_graph/graph.json`
 - `research_commons/tools/validate_published_research_graph.py`
-- Published Research Graph validation step in `.github/workflows/build-and-validate-research-commons.yml`
-- README documentation for the source-neutral graph and authority boundaries.
+- `.github/workflows/build-and-validate-research-commons.yml`
+- `README.md`
 
 ### Identity model
 
-The graph separates:
-- document identity: stable `RC-DOC-*` identity plus source-native version identity and optional DOI, canonical URL, and content hash;
-- claim identity: `RC-CLM-*` plus source locator and text digest;
-- evidence identity: `RC-EVD-*` plus source locator and evidence class;
-- relation identity: `RC-REL-*` plus typed subject/object relation, provenance, confidence, review state, and authority effect.
-
-External published research must carry at least one durable source locator from DOI, canonical URL, or content hash. Source custody remains with the source authority.
+The graph separates document (`RC-DOC-*`), claim (`RC-CLM-*`), evidence (`RC-EVD-*`), and relation (`RC-REL-*`) identity. Document identity preserves source-native version identity and may carry DOI, canonical URL, and content hash. External published research requires at least one durable source locator from DOI, canonical URL, or content hash. Source custody remains with the source authority.
 
 ### Relation vocabulary
 
-Supported typed relations are:
-
-```text
-cites
-supports
-corroborates
-contradicts
-challenges
-extends
-refines
-replicates
-fails_to_replicate
-uses_method_from
-uses_data_from
-shares_evidence_with
-derives_from
-supersedes
-independently_converges_with
-conceptually_related
-```
+Supported relations are `cites`, `supports`, `corroborates`, `contradicts`, `challenges`, `extends`, `refines`, `replicates`, `fails_to_replicate`, `uses_method_from`, `uses_data_from`, `shares_evidence_with`, `derives_from`, `supersedes`, `independently_converges_with`, and `conceptually_related`.
 
 Relations distinguish `explicit_source`, `human_asserted`, and `machine_discovered` assertion modes and `candidate`, `admitted`, `rejected`, and `superseded` states.
 
 ### Candidate/admitted invariant
 
-Machine-discovered relations are not authoritative discoveries. They enter as `candidate` with pending review. A machine-discovered relation may be `admitted` only when accepted review evidence records reviewer identity and review time. The deterministic validator rejects a machine-discovered admitted relation lacking that review evidence.
+Machine-discovered relations enter as `candidate` with pending review. A machine-discovered relation may become `admitted` only with accepted review evidence including reviewer identity and review time. The deterministic validator rejects machine-discovered admitted relations lacking that evidence.
 
-Existing Publisher `related_to` records are projected only as `conceptually_related` and are not semantically strengthened. The source Publisher relation file remains intact.
+Existing Publisher `related_to` records are projected only as `conceptually_related`; their meaning is not strengthened and the Publisher source relation file remains intact.
 
 ### Scientific and authority boundary
 
-Every graph document and relation has `authority_effect: NONE`.
-
-A graph node or edge does not establish:
-- scientific truth or correctness;
-- causation;
-- priority or authorship;
-- successful replication;
-- publication standing or publication custody;
-- reuse admissibility;
-- governance authority;
-- execution authority.
-
-Graph admission means only that the relation record passed the graph's declared provenance/review requirements.
+Every graph document and relation has `authority_effect: NONE`. A graph node or edge does not establish scientific truth, causation, priority/authorship, successful replication, publication standing/custody, reuse admissibility, governance authority, or execution authority. Graph admission means only that the relation record passed declared provenance/review requirements.
 
 ## Existing Site projection blocker
 
-The pre-existing Site projection remains independently blocked pending Publisher reconciliation/authorization. The Published Research Graph extension does not bypass or resolve that gate.
+The pre-existing Site projection remains independently blocked pending Publisher reconciliation/authorization. This graph extension does not bypass or resolve that gate.
 
 ```text
 dispatch_state: BLOCKED
@@ -135,11 +83,9 @@ blockers:
 authority_effect: NONE
 ```
 
-Release sequence remains Publisher reconciliation -> Research Commons validation -> separate projection authorization -> Site review/admission -> deployment evidence -> public-path observation.
-
 ## Validation
 
-Repository validation now includes:
+Canonical validation includes:
 
 ```text
 python research_commons/tools/build_publisher_indexes.py
@@ -151,25 +97,23 @@ python research_commons/tools/build_site_projection_dispatch.py
 python research_commons/tools/check_research_commons_control_state.py
 ```
 
-Do not claim this extension validated, merged, or released until exact-head GitHub Actions evidence is green and the PR is merged with expected-head protection.
-
 ## Cross-repository dependencies
 
 - `GCAT-BCAT-Engine/Publisher`: publication custody, source catalog, and Publisher reconciliation authority.
-- `StegVerse-Labs/StegScholar`: graph identity, provenance, relation lineage, review-state validation, and Research Commons custody of graph records.
+- `StegVerse-Labs/StegScholar`: graph identity, provenance, relation lineage, review-state validation, and Research Commons graph custody.
 - `StegVerse-Labs/Site`: projection acceptance/deployment only after its own orchestrator admission.
 - `admissibility-wiki`, `stegguardian-wiki`, and `master-records`: no propagation asserted without a versioned destination contract and receipt.
 
 ## Coordination state
 
-`RC-004` remains machine-owned source-drift observation. `RC-005` remains blocked Site projection. The source-neutral graph extension remains inside `RC-CTRL-001`/RC-008 and does not create a competing handoff or publication authority.
+`RC-004` remains machine-owned source-drift observation. `RC-005` remains blocked Site projection. The source-neutral graph extension is merged into `main` under `RC-CTRL-001`/RC-008. No competing handoff or child Goal Task was created.
 
-No propagation to `admissibility-wiki`, `stegguardian-wiki`, `master-records`, or Site is asserted by this branch.
+No Site, admissibility-wiki, stegguardian-wiki, or master-records propagation is claimed by this completed repository-local extension.
 
 ## Archive conditions
 
-This active implementation continuation is not archive-ready until PR #66 reaches exact-head green validation, merges with expected-head protection, and this handoff records the merge SHA plus hosted validation evidence. The earlier originating Research Commons session remains historically archive-ready; this section governs only the 2026-09-15 extension.
+The 2026-09-15 source-neutral graph implementation is repository-complete after merge and hosted exact-head validation. Archive/checkout of this bounded continuation is permissible once the post-merge handoff-only commit is observed green under the Research Commons control/build workflows; ongoing RC-004 and RC-005 repository-native states continue independently.
 
 ## Next executable action
 
-Obtain exact-head `Build and validate Research Commons` success on PR #66, inspect and repair any failures on the same branch, then merge only against the expected validated head. After merge, reconcile this handoff with the merge SHA and hosted run evidence.
+Use the source-neutral graph ingestion contract to admit the first authentic external published-research document with DOI/canonical URL/content-hash provenance, then exercise an explicit relation and a machine-discovered candidate relation without promoting the candidate unless review evidence satisfies the admitted-state invariant.
