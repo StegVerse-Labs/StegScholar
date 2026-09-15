@@ -18,6 +18,22 @@ It preserves provenance, consent, license terms, knowledge posture, disagreement
 
 First exemplar: `research_commons/topics/TIDC-001/`.
 
+## Published Research Graph
+
+`research_commons/published_research_graph/` is the source-neutral relation layer for StegVerse and external published research. It assigns stable document, claim, evidence, and relation identities while preserving source custody and version provenance.
+
+Document identity may retain DOI, canonical URL, content hash, and source-native version identity. Relations are typed and evidence-bearing, with explicit provenance, confidence, review state, and `authority_effect: NONE`.
+
+Machine-discovered relations must enter as `candidate`; they cannot become `admitted` without accepted review evidence. Explicit source relations may be admitted without implying scientific truth. No graph edge establishes causation, priority, replication, publication authority, governance authority, execution authority, or reuse admissibility.
+
+The current Publisher-paper relation set remains intact under `research_commons/sources/publisher-papers/`; the Published Research Graph generalizes that capability instead of replacing Publisher custody.
+
+Validation:
+
+```text
+python research_commons/tools/validate_published_research_graph.py
+```
+
 ## External-framework comparisons
 
 StegScholar may host provenance-preserving comparisons between independently authored external frameworks and StegVerse research formalisms. Functional convergence must not be represented as shared authorship, derivation, certification, or technical identity.
