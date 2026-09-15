@@ -1,0 +1,39 @@
+name: Validate Independent Review
+
+on:
+  pull_request:
+    paths:
+      - 'papers/transition-table/independent-review-predicate.md'
+      - 'schemas/independent-review-record.schema.json'
+      - 'fixtures/independent-review/**'
+      - 'scripts/validate_independent_review.py'
+      - 'tests/test_independent_review.py'
+      - 'INDEPENDENT_REVIEW_PREDICATE_MIRROR_HANDOFF.md'
+      - 'README.md'
+      - '.github/workflows/validate-independent-review.yml'
+  push:
+    paths:
+      - 'papers/transition-table/independent-review-predicate.md'
+      - 'schemas/independent-review-record.schema.json'
+      - 'fixtures/independent-review/**'
+      - 'scripts/validate_independent_review.py'
+      - 'tests/test_independent_review.py'
+      - 'INDEPENDENT_REVIEW_PREDICATE_MIRROR_HANDOFF.md'
+      - 'README.md'
+      - '.github/workflows/validate-independent-review.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate fixtures
+        run: python scripts/validate_independent_review.py
+      - name: Run tests
+        run: python -m unittest tests.test_independent_review
