@@ -32,7 +32,7 @@ Derived refinement tasks:
 - `ARCHITECTURE_NEUTRAL_ADMISSIBILITY_MIRROR_HANDOFF.md`
 - `INDEPENDENT_REVIEW_PREDICATE_MIRROR_HANDOFF.md`
 
-Continuation-renewal and execution-to-consequence reconciliation remain part of the existing `TT_MIRROR_HANDOFF.md` workstream rather than duplicate Goal Tasks.
+All three Millings-derived refinement tasks are now complete. Continuation-renewal and execution-to-consequence reconciliation remain part of the existing `TT_MIRROR_HANDOFF.md` workstream rather than duplicate Goal Tasks.
 
 ## Gate legitimacy formalism
 
@@ -74,9 +74,9 @@ Mandatory integration into the Governable Autonomy review schema, canonical GTG 
 
 ## Architecture-neutral admissibility
 
-`ARCHITECTURE-NEUTRAL-ADMISSIBILITY-001` is the remaining Millings-derived refinement. It tests a narrow candidate-level invariant: a system may not use architectural nonconformity as the sole denial basis when the candidate independently satisfies the same governing requirement through valid evidence.
+`ARCHITECTURE-NEUTRAL-ADMISSIBILITY-001` completed the third and final bounded Millings-derived refinement. The validated formalism establishes a narrow candidate-level invariant: architectural nonconformity cannot be the sole denial basis when the candidate independently satisfies the same governing requirement through valid evidence.
 
-Current source surfaces:
+Canonical source surfaces:
 - `papers/generalized-transition-governance/architecture-neutral-admissibility.md`
 - `schemas/architecture-neutral-admissibility-record.schema.json`
 - `fixtures/architecture-neutral-admissibility/cases.json`
@@ -91,7 +91,7 @@ ConformityOnlyDenial(c) = INVALID_DENIAL_BASIS
 ArchitectureNeutrality(c) != ALLOW(c)
 ```
 
-Evidence, authority, standing, safety/constraints, policy, and commit-time failure remain valid substantive denial grounds. Unresolved required state fails closed. The record has `authority_effect: NONE`; it does not emit a GTG disposition or create execution authority.
+Evidence, authority, standing, safety/constraints, policy, and commit-time failure remain valid substantive denial grounds. Unresolved required state fails closed. The record has `authority_effect: NONE`; it does not emit a GTG disposition or create execution authority. Mandatory GTG-wide integration remains separate compatibility work.
 
 ## Research Themes
 - Trust as a system state
