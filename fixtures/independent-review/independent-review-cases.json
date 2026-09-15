@@ -1,0 +1,101 @@
+{
+  "schema_version": "0.1.0",
+  "cases": [
+    {
+      "case_id": "fully-independent",
+      "review_available": true,
+      "dimensions": {
+        "common_control": {"state": "SEPARATE", "evidence_refs": ["ev-org"]},
+        "rule_authorship": {"state": "SEPARATE", "evidence_refs": ["ev-rule"]},
+        "financial_interest": {"state": "SEPARATE", "evidence_refs": ["ev-fin"]},
+        "evaluator_identity": {"state": "SEPARATE", "evidence_refs": ["ev-id"]},
+        "execution_path_control": {"state": "SEPARATE", "evidence_refs": ["ev-path"]}
+      },
+      "expected_state": "INDEPENDENT"
+    },
+    {
+      "case_id": "common-control-conflict",
+      "review_available": true,
+      "dimensions": {
+        "common_control": {"state": "CONFLICT", "evidence_refs": ["ev-common-control"]},
+        "rule_authorship": {"state": "SEPARATE", "evidence_refs": ["ev-rule"]},
+        "financial_interest": {"state": "SEPARATE", "evidence_refs": ["ev-fin"]},
+        "evaluator_identity": {"state": "SEPARATE", "evidence_refs": ["ev-id"]},
+        "execution_path_control": {"state": "SEPARATE", "evidence_refs": ["ev-path"]}
+      },
+      "expected_state": "NOT_INDEPENDENT"
+    },
+    {
+      "case_id": "rule-author-conflict",
+      "review_available": true,
+      "dimensions": {
+        "common_control": {"state": "SEPARATE", "evidence_refs": ["ev-org"]},
+        "rule_authorship": {"state": "CONFLICT", "evidence_refs": ["ev-rule-author"]},
+        "financial_interest": {"state": "SEPARATE", "evidence_refs": ["ev-fin"]},
+        "evaluator_identity": {"state": "SEPARATE", "evidence_refs": ["ev-id"]},
+        "execution_path_control": {"state": "SEPARATE", "evidence_refs": ["ev-path"]}
+      },
+      "expected_state": "NOT_INDEPENDENT"
+    },
+    {
+      "case_id": "financial-interest-conflict",
+      "review_available": true,
+      "dimensions": {
+        "common_control": {"state": "SEPARATE", "evidence_refs": ["ev-org"]},
+        "rule_authorship": {"state": "SEPARATE", "evidence_refs": ["ev-rule"]},
+        "financial_interest": {"state": "CONFLICT", "evidence_refs": ["ev-material-interest"]},
+        "evaluator_identity": {"state": "SEPARATE", "evidence_refs": ["ev-id"]},
+        "execution_path_control": {"state": "SEPARATE", "evidence_refs": ["ev-path"]}
+      },
+      "expected_state": "NOT_INDEPENDENT"
+    },
+    {
+      "case_id": "same-evaluator-conflict",
+      "review_available": true,
+      "dimensions": {
+        "common_control": {"state": "SEPARATE", "evidence_refs": ["ev-org"]},
+        "rule_authorship": {"state": "SEPARATE", "evidence_refs": ["ev-rule"]},
+        "financial_interest": {"state": "SEPARATE", "evidence_refs": ["ev-fin"]},
+        "evaluator_identity": {"state": "CONFLICT", "evidence_refs": ["ev-same-id"]},
+        "execution_path_control": {"state": "SEPARATE", "evidence_refs": ["ev-path"]}
+      },
+      "expected_state": "NOT_INDEPENDENT"
+    },
+    {
+      "case_id": "execution-path-control-conflict",
+      "review_available": true,
+      "dimensions": {
+        "common_control": {"state": "SEPARATE", "evidence_refs": ["ev-org"]},
+        "rule_authorship": {"state": "SEPARATE", "evidence_refs": ["ev-rule"]},
+        "financial_interest": {"state": "SEPARATE", "evidence_refs": ["ev-fin"]},
+        "evaluator_identity": {"state": "SEPARATE", "evidence_refs": ["ev-id"]},
+        "execution_path_control": {"state": "CONFLICT", "evidence_refs": ["ev-path-control"]}
+      },
+      "expected_state": "NOT_INDEPENDENT"
+    },
+    {
+      "case_id": "missing-dimension-evidence",
+      "review_available": true,
+      "dimensions": {
+        "common_control": {"state": "SEPARATE", "evidence_refs": ["ev-org"]},
+        "rule_authorship": {"state": "SEPARATE", "evidence_refs": ["ev-rule"]},
+        "financial_interest": {"state": "UNRESOLVED", "evidence_refs": []},
+        "evaluator_identity": {"state": "SEPARATE", "evidence_refs": ["ev-id"]},
+        "execution_path_control": {"state": "SEPARATE", "evidence_refs": ["ev-path"]}
+      },
+      "expected_state": "UNRESOLVED"
+    },
+    {
+      "case_id": "review-not-available",
+      "review_available": false,
+      "dimensions": {
+        "common_control": {"state": "UNRESOLVED", "evidence_refs": []},
+        "rule_authorship": {"state": "UNRESOLVED", "evidence_refs": []},
+        "financial_interest": {"state": "UNRESOLVED", "evidence_refs": []},
+        "evaluator_identity": {"state": "UNRESOLVED", "evidence_refs": []},
+        "execution_path_control": {"state": "UNRESOLVED", "evidence_refs": []}
+      },
+      "expected_state": "UNRESOLVED"
+    }
+  ]
+}
