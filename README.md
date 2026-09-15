@@ -49,6 +49,27 @@ The model preserves governing-standard provenance, evidence-rule provenance and 
 
 `GateLegitimate(g)` does not imply `CandidateAllowed(c)`. The record has `authority_effect: NONE`; it cannot mint governance/execution authority, override GTG, or prove execution/consequence. Mandatory integration into canonical GTG/TT schemas, if desired, remains separate compatibility/integration work.
 
+## Independent review predicate
+
+`INDEPENDENT-REVIEW-PREDICATE-001` formalizes the difference between merely available review and structurally independent review. Existing Governable Autonomy review labels remain useful declarations, but independent-review status must be supported by evidence across common control, challenged-rule authorship/control, material financial interest, reviewer/original-evaluator identity, and execution-path control.
+
+Current source surfaces:
+- `papers/transition-table/independent-review-predicate.md`
+- `schemas/independent-review-record.schema.json`
+- `fixtures/independent-review/independent-review-cases.json`
+- `scripts/validate_independent_review.py`
+- `tests/test_independent_review.py`
+
+The deterministic predicate preserves these separations:
+
+```text
+review_available != independent_review_available
+reviewer_identity_label != reviewer_independence_proof
+IndependentReview(r) != GovernanceAuthority(r)
+```
+
+`UNRESOLVED` never defaults to independence, and disclosed conflict is not treated as mitigation by itself. The record has `authority_effect: NONE`; it cannot mint transition authority, override GTG, or prove execution or consequence. The completed gate-legitimacy formalism may reference an independent-review result as evidence without inheriting authority from it.
+
 ## Research Themes
 - Trust as a system state
 - Auditability and irrecoverable audit loss
