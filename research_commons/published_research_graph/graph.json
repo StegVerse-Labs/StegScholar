@@ -1,0 +1,99 @@
+{
+  "graph_version": "1.0.0",
+  "documents": [
+    {
+      "document_id": "RC-DOC-SV-COST-REDUCTION-2026",
+      "source_class": "stegverse_publisher",
+      "title": "StegVerse Autonomous Mathematical Problem Solving",
+      "doi": null,
+      "canonical_url": null,
+      "content_hash": null,
+      "version_identity": "publisher:sv-cost-reduction-2026@2.0.0",
+      "claims": [],
+      "evidence": [],
+      "provenance": {"source_authority": "GCAT-BCAT-Engine/Publisher", "observed_at": "2026-09-15T15:36:32Z", "custody_retained_by_source": true},
+      "authority_effect": "NONE"
+    },
+    {
+      "document_id": "RC-DOC-SV-IICT-2026",
+      "source_class": "stegverse_publisher",
+      "title": "Irreversibility-Inference Convergence Theorem",
+      "doi": null,
+      "canonical_url": null,
+      "content_hash": null,
+      "version_identity": "publisher:sv-iict-2026@0.1.0",
+      "claims": [],
+      "evidence": [],
+      "provenance": {"source_authority": "GCAT-BCAT-Engine/Publisher", "observed_at": "2026-09-15T15:36:32Z", "custody_retained_by_source": true},
+      "authority_effect": "NONE"
+    },
+    {
+      "document_id": "RC-DOC-EXT001-2026",
+      "source_class": "stegverse_publisher",
+      "title": "EXT001: External Problem Demonstration",
+      "doi": null,
+      "canonical_url": null,
+      "content_hash": null,
+      "version_identity": "publisher:ext001-2026@1.0.0",
+      "claims": [],
+      "evidence": [],
+      "provenance": {"source_authority": "GCAT-BCAT-Engine/Publisher", "observed_at": "2026-09-15T15:36:32Z", "custody_retained_by_source": true},
+      "authority_effect": "NONE"
+    },
+    {
+      "document_id": "RC-DOC-SV-GCAT-BCAT-ADMISSIBILITY-2026",
+      "source_class": "stegverse_publisher",
+      "title": "GCAT/BCAT Admissibility: Complete Invariant Characterization",
+      "doi": null,
+      "canonical_url": null,
+      "content_hash": null,
+      "version_identity": "publisher:sv-gcat-bcat-admissibility-2026@0.9.0",
+      "claims": [],
+      "evidence": [],
+      "provenance": {"source_authority": "GCAT-BCAT-Engine/Publisher", "observed_at": "2026-09-15T15:36:32Z", "custody_retained_by_source": true},
+      "authority_effect": "NONE"
+    },
+    {
+      "document_id": "RC-DOC-SV-GOD-FRAMEWORK-2026",
+      "source_class": "stegverse_publisher",
+      "title": "Geometrically Ontological Divergence: The GOD Framework",
+      "doi": null,
+      "canonical_url": null,
+      "content_hash": null,
+      "version_identity": "publisher:sv-god-framework-2026@0.5.0",
+      "claims": [],
+      "evidence": [],
+      "provenance": {"source_authority": "GCAT-BCAT-Engine/Publisher", "observed_at": "2026-09-15T15:36:32Z", "custody_retained_by_source": true},
+      "authority_effect": "NONE"
+    }
+  ],
+  "relations": [
+    {
+      "relation_id": "RC-REL-PUB-001",
+      "subject": "RC-DOC-SV-GCAT-BCAT-ADMISSIBILITY-2026",
+      "predicate": "conceptually_related",
+      "object": "RC-DOC-SV-IICT-2026",
+      "assertion_mode": "explicit_source",
+      "state": "admitted",
+      "confidence": 1.0,
+      "evidence_refs": [],
+      "provenance": {"asserted_by": "research_commons/sources/publisher-papers/relations.json", "observed_at": "2026-09-15T15:36:32Z", "basis": "Existing Publisher relation related_to; migrated without strengthening scientific meaning."},
+      "review": {"required_for_admission": false, "review_state": "not_required", "reviewed_by": null, "reviewed_at": null},
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "RC-REL-PUB-002",
+      "subject": "RC-DOC-SV-GOD-FRAMEWORK-2026",
+      "predicate": "conceptually_related",
+      "object": "RC-DOC-SV-GCAT-BCAT-ADMISSIBILITY-2026",
+      "assertion_mode": "explicit_source",
+      "state": "admitted",
+      "confidence": 1.0,
+      "evidence_refs": [],
+      "provenance": {"asserted_by": "research_commons/sources/publisher-papers/relations.json", "observed_at": "2026-09-15T15:36:32Z", "basis": "Existing Publisher relation related_to; migrated without strengthening scientific meaning."},
+      "review": {"required_for_admission": false, "review_state": "not_required", "reviewed_by": null, "reviewed_at": null},
+      "authority_effect": "NONE"
+    }
+  ],
+  "authority_boundary": "The Published Research Graph records identity, provenance, discoverability, and bounded relation assertions. A graph edge does not establish scientific truth, causation, priority, replication, publication authority, governance authority, execution authority, or reuse admissibility. Machine-discovered relations enter only as candidate state and require review before admission."
+}
