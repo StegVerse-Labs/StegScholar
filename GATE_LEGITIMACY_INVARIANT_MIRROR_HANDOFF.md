@@ -2,27 +2,29 @@
 
 Updated: 2026-09-15
 Goal Task ID: `GATE-LEGITIMACY-INVARIANT-001`
-COSV: `40000100100000`
-Status: `ACTIVE / CLAIMED_IMPLEMENTATION`
+COSV: `71000000100100`
+Status: `RETIRED / COMPLETED`
 Parent comparison: `MILLINGS-RTG-GTG-TT-COMPARISON-001` (`RETIRED / COMPLETED`)
 
 ## Goal
 
 Determine whether StegVerse governance gates require a first-class, inspectable legitimacy record and falsification protocol covering standard provenance, evidence-rule provenance, evaluator standing/conflicts, execution-path control, challenge paths, and review independence.
 
-## Selection rationale
+## Result
 
-This child is selected before `INDEPENDENT-REVIEW-PREDICATE-001` because gate legitimacy defines the broader object within which reviewer independence is one possible evidence dimension. It is selected before `ARCHITECTURE-NEUTRAL-ADMISSIBILITY-001` because the latter can remain independently falsifiable after gate legitimacy is established. This ordering creates no dependency claim for either sibling and does not modify their `ACTIVE / UNCLAIMED` state.
+Accepted as a bounded StegVerse research formalism: gate legitimacy is a distinct evidence invariant and must remain separate from candidate admissibility.
 
-## Collision check-in
+```text
+GateLegitimate(g) != CandidateAllowed(c)
+```
 
-Canonical source, open PRs, and active branches were checked for the exact task identity and equivalent implementation terminology. No competing branch, open PR, or pre-existing first-class `gate_legitimacy` record/falsification protocol was observed. Existing GTG authority/standing, evidence provenance, dissent, appeal/correction, and TT consequence/receipt semantics are adjacent substrate, not duplicates.
+The deterministic cases established independent failure classes for missing standard provenance, post-hoc evidence-rule mutation, evaluator/evidence-rule-controller overlap, and evaluator/execution-path-controller overlap. A disclosed conflict can be mitigated by independently evidenced review without granting authority to the legitimacy record, and a legitimate gate can still reference a candidate DENY.
 
-## Scope
+## Selection and collision check
 
-This is research/formalism only. It must not create a new governance authority source or make gate-legitimacy metadata override an otherwise valid GTG disposition.
+This child was selected before the two sibling Millings-derived refinements because it defines the broader gate-level evidence object within which later reviewer-independence evidence may be referenced. Canonical source, open PRs, and active branches were checked before claim. No competing branch, open PR, or equivalent first-class gate-legitimacy record/falsification protocol was observed. Sibling tasks were not claimed or modified.
 
-Current claimed surfaces:
+## Installed source
 
 - `papers/transition-table/gate-legitimacy-invariant.md`
 - `schemas/gate-legitimacy-record.schema.json`
@@ -31,35 +33,38 @@ Current claimed surfaces:
 - `tests/test_gate_legitimacy.py`
 - `README.md`
 
-## Core proposition under test
+## Validation and merge evidence
 
-A governance gate may be structurally present yet illegitimate as a decision surface if the governing standard, evidence rules, evaluator standing, execution-path control, or challenge/review conditions are not independently inspectable enough to distinguish substantive governance from self-authored or self-protecting gatekeeping.
+StegScholar PR #60 exact head `d074b0f2335b545b98daf5ff78013b5f71a6f7a5` completed:
 
-Gate legitimacy is therefore separate from candidate admissibility:
+- Validate Transition Table: SUCCESS (run `34983008458`)
+- Test Readiness: SUCCESS (run `34983008386`)
+- Governable Autonomy Validation: SUCCESS (run `34983008495`)
 
-`GateLegitimate(g) != CandidateAllowed(c)`
+PR #60 merged at `223150373bcf73bfee6de163372e4fb9b045d380`.
 
-A legitimate gate may DENY a candidate on substantive grounds. An illegitimate gate may not acquire validity merely because its disposition happens to be desirable.
+## Integration boundary
 
-## Required outputs
+This task establishes and validates the record/formalism but does not silently inject it into every GTG/TT transition. The bounded future integration point is:
 
-- proposed `gate_legitimacy` object and field semantics;
-- negative cases showing why source provenance alone is insufficient;
-- tests for missing/conflicting standard authority, post-hoc evidence-rule control, evaluator conflict, and execution-path control;
-- explicit distinction between gate legitimacy and candidate admissibility;
-- adoption/rejection criteria for RTG/GTG/TT integration.
+- GTG may consume a gate-legitimacy reference as evidence when the applicable policy requires gate-legitimacy evaluation;
+- TT may retain that reference in the transition evidence trail;
+- a non-LEGITIMATE required gate state must never default to ALLOW;
+- the record itself never emits an ALLOW/DENY disposition and never mints authority.
+
+Any source mutation that makes gate legitimacy mandatory across canonical GTG/TT schemas is separate integration work and must perform its own collision/compatibility review.
 
 ## Authority ceiling
 
-The gate-legitimacy record is evidence about the fitness of a gate to participate in governance. It does not:
+The gate-legitimacy record has `authority_effect: NONE`. It does not mint governance or execution authority, override GTG, prove execution/consequence, certify an external framework, or reopen the retired Millings parent.
 
-- mint governance or execution authority;
-- issue an ALLOW/DENY disposition;
-- override GTG;
-- prove execution or consequence;
-- certify an external framework;
-- reopen the retired Millings parent.
+## Completion state
 
-## Completion threshold
-
-Complete only when the proposed object is either rejected with a falsification-backed rationale or accepted with deterministic fixtures, validator coverage, and a documented integration boundary. Source completion alone does not claim canonical adoption until validation and merge evidence are observed.
+```text
+coordination_state: RETIRED
+checkout_state: COMPLETED
+completion.claimed: true
+completion.validated: true
+archive_ready: true
+COSV: 71000000100100
+```
