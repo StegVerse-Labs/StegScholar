@@ -22,9 +22,17 @@ First exemplar: `research_commons/topics/TIDC-001/`.
 
 StegScholar may host provenance-preserving comparisons between independently authored external frameworks and StegVerse research formalisms. Functional convergence must not be represented as shared authorship, derivation, certification, or technical identity.
 
-Current comparison candidate:
+Completed comparison:
 - `papers/external-frameworks/millings-method-rtg-gtg-tt-comparison.md`
-- continuation truth: `MILLINGS_METHOD_RTG_GTG_TT_COMPARISON_MIRROR_HANDOFF.md`
+- terminal handoff: `MILLINGS_METHOD_RTG_GTG_TT_COMPARISON_MIRROR_HANDOFF.md`
+- refinement disposition: `papers/external-frameworks/millings-method-refinement-disposition.md`
+
+Derived refinement tasks:
+- `GATE_LEGITIMACY_INVARIANT_MIRROR_HANDOFF.md`
+- `ARCHITECTURE_NEUTRAL_ADMISSIBILITY_MIRROR_HANDOFF.md`
+- `INDEPENDENT_REVIEW_PREDICATE_MIRROR_HANDOFF.md`
+
+Continuation-renewal and execution-to-consequence reconciliation remain part of the existing `TT_MIRROR_HANDOFF.md` workstream rather than duplicate Goal Tasks.
 
 ## Research Themes
 - Trust as a system state
