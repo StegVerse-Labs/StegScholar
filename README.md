@@ -34,6 +34,19 @@ Derived refinement tasks:
 
 Continuation-renewal and execution-to-consequence reconciliation remain part of the existing `TT_MIRROR_HANDOFF.md` workstream rather than duplicate Goal Tasks.
 
+## Gate legitimacy formalism
+
+`GATE-LEGITIMACY-INVARIANT-001` is the active first refinement selected from the completed Millings comparison. It tests whether governance needs a first-class, non-authorizing record for the legitimacy of the gate itself, separate from the admissibility of the candidate being evaluated.
+
+Current source surfaces:
+- `papers/transition-table/gate-legitimacy-invariant.md`
+- `schemas/gate-legitimacy-record.schema.json`
+- `fixtures/gate-legitimacy/gate-legitimacy-cases.json`
+- `scripts/validate_gate_legitimacy.py`
+- `tests/test_gate_legitimacy.py`
+
+The model preserves governing-standard provenance, evidence-rule provenance and predeclaration, evaluator standing/conflicts, execution-path control, and challenge/review conditions. `GateLegitimate(g)` does not imply `CandidateAllowed(c)`: a legitimate gate can still deny a candidate on substantive grounds. The record has `authority_effect: NONE`; it cannot mint governance/execution authority, override GTG, or prove execution/consequence.
+
 ## Research Themes
 - Trust as a system state
 - Auditability and irrecoverable audit loss
