@@ -63,7 +63,7 @@ Canonical source surfaces:
 
 The model preserves governing-standard provenance, evidence-rule provenance and predeclaration, evaluator standing/conflicts, execution-path control, and challenge/review conditions. Deterministic fixtures cover missing standard provenance, post-hoc evidence-rule mutation, evaluator/evidence-rule-controller overlap, evaluator/execution-path-controller overlap, independently mitigated conflict, and the legitimate-gate / candidate-DENY separation.
 
-`GateLegitimate(g)` does not imply `CandidateAllowed(c)`. The record has `authority_effect: NONE`; it cannot mint governance/execution authority, override GTG, or prove execution/consequence. Mandatory integration into canonical GTG/TT schemas, if desired, remains separate compatibility/integration work.
+`GateLegitimate(g)` does not imply `CandidateAllowed(c)`. The record has `authority_effect: NONE`; it cannot mint governance/execution authority, override GTG, or prove execution/consequence.
 
 ## Independent review predicate
 
@@ -84,13 +84,11 @@ reviewer_identity_label != reviewer_independence_proof
 IndependentReview(r) != GovernanceAuthority(r)
 ```
 
-`UNRESOLVED` never defaults to independence, and disclosed conflict is not treated as mitigation by itself. A conflict can be represented as resolved only after independently evidenced separation. The record has `authority_effect: NONE`; it cannot mint transition authority, override GTG, or prove execution or consequence. The completed gate-legitimacy formalism may reference an independent-review result as evidence without inheriting authority from it.
-
-Mandatory integration into the Governable Autonomy review schema, canonical GTG schema, or TT cell schema remains separate compatibility/integration work.
+`UNRESOLVED` never defaults to independence, and disclosed conflict is not treated as mitigation by itself. The record has `authority_effect: NONE` and cannot mint transition authority or override GTG.
 
 ## Architecture-neutral admissibility
 
-`ARCHITECTURE-NEUTRAL-ADMISSIBILITY-001` completed the third and final bounded Millings-derived refinement. The validated formalism establishes a narrow candidate-level invariant: architectural nonconformity cannot be the sole denial basis when the candidate independently satisfies the same governing requirement through valid evidence.
+`ARCHITECTURE-NEUTRAL-ADMISSIBILITY-001` completed the third bounded Millings-derived refinement. Architectural nonconformity cannot be the sole denial basis when a candidate independently satisfies the same governing requirement through valid evidence.
 
 Canonical source surfaces:
 - `papers/generalized-transition-governance/architecture-neutral-admissibility.md`
@@ -99,15 +97,25 @@ Canonical source surfaces:
 - `scripts/validate_architecture_neutral_admissibility.py`
 - `tests/test_architecture_neutral_admissibility.py`
 
-The formalism preserves these boundaries:
-
 ```text
 ArchitectureDifferent(c) != SubstantivelyInadmissible(c)
 ConformityOnlyDenial(c) = INVALID_DENIAL_BASIS
 ArchitectureNeutrality(c) != ALLOW(c)
 ```
 
-Evidence, authority, standing, safety/constraints, policy, and commit-time failure remain valid substantive denial grounds. Unresolved required state fails closed. The record has `authority_effect: NONE`; it does not emit a GTG disposition or create execution authority. Mandatory GTG-wide integration remains separate compatibility work.
+Evidence, authority, standing, safety/constraints, policy, and commit-time failure remain valid substantive denial grounds. Unresolved required state fails closed. The record has `authority_effect: NONE`.
+
+## Post-completion GTG/TT compatibility review
+
+`GTG-TT-MILLINGS-FORMALISM-COMPATIBILITY-REVIEW-001` reviews the three retired formalisms against the current GTG decision/governance schemas and TT transition-cell schema.
+
+The review finds one material integration gap: GTG currently has generic evidence/challenge references but no typed, correlation-checked binding that identifies which gate-legitimacy, independent-review, or architecture-neutrality record applies to the exact governance decision. TT already has the correct ownership relationship through `gtg_record_ref`, so duplicating those assurance records into TT would create drift rather than deterministic value.
+
+Review surfaces:
+- `papers/rtg-gtg-tt/millings-derived-formalism-compatibility-review.md`
+- `GTG_TT_MILLINGS_FORMALISM_COMPATIBILITY_REVIEW_MIRROR_HANDOFF.md`
+
+The minimum derived implementation task is `GTG-ASSURANCE-REFERENCE-INTEGRATION-001`, with handoff `GTG_ASSURANCE_REFERENCE_INTEGRATION_MIRROR_HANDOFF.md`. It is scoped to an optional typed GTG assurance object, profile-scoped applicability, record/candidate/gate correlation, `authority_effect: NONE` enforcement, and GTG->TT compatibility tests. No TT schema duplication is authorized by the review.
 
 ## Research Themes
 - Trust as a system state
