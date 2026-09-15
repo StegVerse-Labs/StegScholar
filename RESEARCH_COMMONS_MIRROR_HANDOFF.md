@@ -2,112 +2,128 @@
 
 ## Authority and scope
 
-This is the canonical continuation record for the Research Commons Wiki on `StegVerse-Labs/StegScholar` branch `main`.
+Canonical continuation record for the Research Commons workstream in `StegVerse-Labs/StegScholar`.
+
+Goal Task ID: `RC-CTRL-001`
+Canonical branch: `main`
+Active implementation branch: `rc-ctrl-001-published-research-graph`
+Canonical owner: StegVerse-Labs/StegScholar repository-native workstream
 
 Read before mutation:
 1. `RESEARCH_COMMONS_MIRROR_HANDOFF.md`
 2. `research_commons/control/task-registry.json`
-3. `docs/receipts/research-commons-hosted-validation-30743296790.md`
-4. `research_commons/sources/publisher-papers/registry.json`
+3. `research_commons/sources/publisher-papers/registry.json`
+4. `research_commons/sources/publisher-papers/relations.json`
 5. `research_commons/sources/publisher-papers/reconciliation.json`
-6. `research_commons/projection/site-publisher-papers-manifest.json`
-7. issue #37, issue #38, and issue #21
-8. `GCAT-BCAT-Engine/Publisher/docs/PUBLISHER_MIRROR_HANDOFF.md`
-9. before any Site mutation, `StegVerse-Labs/Site/docs/SITE_MIRROR_HANDOFF.md` and its repository orchestrator
+6. `research_commons/published_research_graph/schema.json`
+7. `research_commons/published_research_graph/graph.json`
+8. issue #21, issue #37, and issue #38
+9. `GCAT-BCAT-Engine/Publisher/docs/PUBLISHER_MIRROR_HANDOFF.md`
+10. before any Site mutation, `StegVerse-Labs/Site/docs/SITE_MIRROR_HANDOFF.md`
 
 ## Active goal
 
-```text
-goal_id: RC-CTRL-001
-goal: complete and activate the governed Research Commons ingestion, Publisher-paper indexing, validation, and Site projection lane without transferring publication or scientific authority
-originating_session_goal: create the Research Commons Wiki, add Publisher/papers, and build the governed reuse and projection path
-repository: StegVerse-Labs/StegScholar
-branch: main
-canonical_owner: StegVerse-Labs/StegScholar repository-native workstream
-implementation_claim: MACHINE_OWNED_OR_BLOCKED
-validation_claim: COMPLETE_AND_RELEASED
-claim_created: 2026-08-02T09:53:18Z
-claim_released: 2026-08-02T10:15:00Z
-claim_release_evidence: workflow run 30743296790; job 91484432172; artifact 8832017929; receipt docs/receipts/research-commons-hosted-validation-30743296790.md
-```
+`RC-CTRL-001` owns governed Research Commons ingestion, research indexing and relation lineage, validation, reuse boundaries, and Site projection without transferring publication or scientific authority.
 
-## Session goal inventory
+The 2026-09-15 continuation extends the existing Publisher-only reusable relation graph into a source-neutral Published Research Graph. This is an extension of RC-008 under the existing `RC-CTRL-001` workstream; no separable child Goal Task is required because ownership, authority boundaries, validation, and repository destination remain the same.
 
-| ID | Goal | Destination | State | Evidence | Next action |
-|---|---|---|---|---|---|
-| RC-001 | Research Commons Wiki foundation | `research_commons/` | MERGED_INTO_CANONICAL_WORKSTREAM | issue #21, schemas, topic, registry, pages | repository-native issue #21 work |
-| RC-002 | Publisher papers ingestion | `research_commons/sources/publisher-papers/` | COMPLETE_AND_VALIDATED | workflow run 30743296790 and receipt | refresh on observed Publisher drift |
-| RC-003 | deterministic indexing and receipts | `research_commons/indexes/` | COMPLETE_AND_VALIDATED | artifact 8832017929 | regenerate on source change |
-| RC-004 | Publisher source drift observer | scheduled workflow | MACHINE_OWNED | `.github/workflows/check-research-commons-publisher-drift.yml` | continue scheduled observation |
-| RC-005 | Site projection | `research_commons/projection/` and issue #38 | BLOCKED | inspected packet and explicit blockers | await Publisher reconciliation and projection authorization |
-| RC-006 | sharing consent and discount governance | Research Engine/StegPay owners | MERGED_INTO_CANONICAL_WORKSTREAM | issue #21 and cross-repository contracts | no duplicate local payment authority |
-| RC-007 | TIDC-001 Commons projection | `research_commons/topics/TIDC-001/` | MERGED_INTO_CANONICAL_WORKSTREAM | Site TIDC handoff owns science; issue #21 owns Commons projection | consume only governed projections |
-| RC-008 | reusable relation graph | `relations.json` | COMPLETE_FOR_PUBLISHER_SET | hosted registry validation reports 9 relations | expand under issue #21 as new entries arrive |
-| RC-009 | duplicate detection | `research_commons/tools/detect_duplicates.py` | COMPLETE_AND_VALIDATED | artifact report state COMPLETE, zero duplicates | run automatically on changes |
-| RC-010 | protocol-specific reuse admissibility | reuse request/decision schemas | COMPLETE_AND_VALIDATED | hosted JSON parsing and validation receipt | integrate into future admission workflow under issue #21 |
-| RC-011 | contributor attribution/pseudonymity | contributor posture schema | COMPLETE_AND_VALIDATED | hosted JSON parsing and validation receipt | integrate into future templates under issue #21 |
-| RC-012 | session consolidation | this handoff, registry, issues, receipts | COMPLETE | all session-specific claims released | archive originating session |
+## Durable prior state
 
-## Completed implementation and evidence
+Previously validated Research Commons implementation includes:
+- Publisher-paper registry and five Commons pages;
+- nine Publisher relation records;
+- reconciliation state and deterministic indexes;
+- duplicate detection;
+- reuse request/decision and contributor-posture schemas;
+- Site dispatch and acceptance contracts;
+- fail-closed projection generation;
+- repository-native validation and drift workflows.
 
-Committed implementation includes:
-
-- Publisher-paper registry, five Commons pages, relation graph, reconciliation state, source observation, deterministic indexes, and projection manifest;
-- reuse request and decision schemas;
-- contributor identity posture schema;
-- Site dispatch packet and acceptance receipt schemas;
-- deterministic duplicate detector;
-- fail-closed Site dispatch builder;
-- unified build-and-validation workflow;
-- claim registry, collision controls, canonical issues, and implementation receipts.
-
-Hosted validation evidence:
+Prior hosted validation evidence remains:
 
 ```text
 pull_request: 39
 head_sha: 2eb5a024dca537c02cf1dc65b1c4b4a37e6c78a4
 workflow: Build and validate Research Commons
-run_number: 19
 run_id: 30743296790
 conclusion: success
-job_id: 91484432172
 artifact_id: 8832017929
 artifact_digest: sha256:ad1b972edb6d7913e3fc6c017b22cf0e451bfba0534fc321e05cdcc5a39b5c87
 ```
 
-The inspected artifact contained category, knowledge-posture, and Publisher-status indexes; the duplicate report; the registry hash receipt; and the Site dispatch packet.
+That evidence covers the historical Publisher projection only; it is not evidence for the 2026-09-15 Published Research Graph extension.
 
-Observed results:
+## Published Research Graph extension — 2026-09-15
+
+Implementation branch starts from exact `main` head `81b79b760078f9e988814378d83a250bc0435065`.
+
+Added:
+- `research_commons/published_research_graph/schema.json`
+- `research_commons/published_research_graph/graph.json`
+- `research_commons/tools/validate_published_research_graph.py`
+- Published Research Graph validation step in `.github/workflows/build-and-validate-research-commons.yml`
+- README documentation for the source-neutral graph and authority boundaries.
+
+### Identity model
+
+The graph separates:
+- document identity: stable `RC-DOC-*` identity plus source-native version identity and optional DOI, canonical URL, and content hash;
+- claim identity: `RC-CLM-*` plus source locator and text digest;
+- evidence identity: `RC-EVD-*` plus source locator and evidence class;
+- relation identity: `RC-REL-*` plus typed subject/object relation, provenance, confidence, review state, and authority effect.
+
+External published research must carry at least one durable source locator from DOI, canonical URL, or content hash. Source custody remains with the source authority.
+
+### Relation vocabulary
+
+Supported typed relations are:
 
 ```text
-Publisher registry validation: PASS
-entries: 5
-relations: 9
-duplicate detector: COMPLETE
-exact duplicates: 0
-normalized-title duplicates: 0
-registry digest: db1c30c62e09cd84c684a15d584bdfd7ce403ea54291ac9d3448bad0ae063149
-Site dispatch state: BLOCKED
-authority effect: NONE
+cites
+supports
+corroborates
+contradicts
+challenges
+extends
+refines
+replicates
+fails_to_replicate
+uses_method_from
+uses_data_from
+shares_evidence_with
+derives_from
+supersedes
+independently_converges_with
+conceptually_related
 ```
 
-## Active claims and collision control
+Relations distinguish `explicit_source`, `human_asserted`, and `machine_discovered` assertion modes and `candidate`, `admitted`, `rejected`, and `superseded` states.
 
-No chat-session implementation, validation, integration, propagation, reconciliation, or observation claim remains.
+### Candidate/admitted invariant
 
-Current durable states are:
+Machine-discovered relations are not authoritative discoveries. They enter as `candidate` with pending review. A machine-discovered relation may be `admitted` only when accepted review evidence records reviewer identity and review time. The deterministic validator rejects a machine-discovered admitted relation lacking that review evidence.
 
-- `RC-004`: `MACHINE_OWNED` by GitHub Actions;
-- `RC-005`: `BLOCKED` under issue #38 with an exact machine-observable release condition;
-- future feature expansion: owned by issue #21 and this repository-native workstream;
-- Publisher reconciliation: owned by `GCAT-BCAT-Engine/Publisher`;
-- Site acceptance and runtime activation: owned by `StegVerse-Labs/Site` only after its orchestrator admits the packet.
+Existing Publisher `related_to` records are projected only as `conceptually_related` and are not semantically strengthened. The source Publisher relation file remains intact.
 
-Claims expire or release according to `research_commons/control/task-registry.json`. No competing handoff should be created.
+### Scientific and authority boundary
 
-## Current blocker and release condition
+Every graph document and relation has `authority_effect: NONE`.
 
-The inspected Site dispatch packet correctly reports:
+A graph node or edge does not establish:
+- scientific truth or correctness;
+- causation;
+- priority or authorship;
+- successful replication;
+- publication standing or publication custody;
+- reuse admissibility;
+- governance authority;
+- execution authority.
+
+Graph admission means only that the relation record passed the graph's declared provenance/review requirements.
+
+## Existing Site projection blocker
+
+The pre-existing Site projection remains independently blocked pending Publisher reconciliation/authorization. The Published Research Graph extension does not bypass or resolve that gate.
 
 ```text
 dispatch_state: BLOCKED
@@ -118,99 +134,30 @@ blockers:
 authority_effect: NONE
 ```
 
-Release sequence:
+Release sequence remains Publisher reconciliation -> Research Commons validation -> separate projection authorization -> Site review/admission -> deployment evidence -> public-path observation.
 
-```text
-Publisher reconciliation or explicit governed discrepancy decision
--> Research Commons source refresh and validation
--> separate projection authorization
--> hash-bound packet READY_FOR_SITE_REVIEW
--> Site repository-orchestrator admission
--> Site acceptance receipt
--> deployment evidence
--> public-path runtime observation
-```
+## Validation
 
-Missing evidence is not success. The blocker does not require retention of the originating chat session because it has a named repository owner, durable issue, installed automation, deterministic output, and machine-observable release condition.
-
-## Automation
-
-Owner: `StegVerse-Labs/StegScholar`
-
-- `.github/workflows/build-and-validate-research-commons.yml`
-- `.github/workflows/check-research-commons-publisher-drift.yml`
-- `.github/workflows/validate-research-commons-publisher-papers.yml`
-- `.github/workflows/validate-research-commons-control.yml`
-
-The workflows persist deterministic reports and distinguish complete, blocked, review-required, failed, claimed, superseded, and merged states without granting publication or activation authority.
-
-## Validation commands
+Repository validation now includes:
 
 ```text
 python research_commons/tools/build_publisher_indexes.py
 python research_commons/tools/validate_publisher_papers.py
+python research_commons/tools/validate_published_research_graph.py
 python research_commons/tools/detect_duplicates.py
 python research_commons/tools/validate_site_projection.py
 python research_commons/tools/build_site_projection_dispatch.py
-python research_commons/tools/check_publisher_source_drift.py
 python research_commons/tools/check_research_commons_control_state.py
 ```
 
-## Cross-repository dependencies
+Do not claim this extension validated, merged, or released until exact-head GitHub Actions evidence is green and the PR is merged with expected-head protection.
 
-```text
-GCAT-BCAT-Engine/Publisher
-  publication custody, source catalog, and reconciliation authority
+## Coordination state
 
-StegVerse-Labs/StegScholar
-  Research Commons indexing, posture, lineage, reuse contracts, validation, and fail-closed dispatch generation
+`RC-004` remains machine-owned source-drift observation. `RC-005` remains blocked Site projection. The source-neutral graph extension remains inside `RC-CTRL-001`/RC-008 and does not create a competing handoff or publication authority.
 
-StegVerse-Labs/Site
-  projection acceptance, deployment, public-path observation, and runtime activation after orchestrator admission
+No propagation to `admissibility-wiki`, `stegguardian-wiki`, `master-records`, or Site is asserted by this branch.
 
-StegVerse-Labs/Site/docs/TIDC_MIRROR_HANDOFF.md
-  TIDC scientific execution authority; Commons consumes only governed projections
+## Next executable action
 
-StegVerse-Labs/StegPay and GCAT-BCAT-Engine/workflows
-  payment evidence and governed-research execution boundaries
-```
-
-No propagation to `admissibility-wiki`, `stegguardian-wiki`, or `master-records` is asserted until a versioned destination contract and receipt exist.
-
-## Session consolidation
-
-```text
-MERGED INTO: StegVerse-Labs/StegScholar/RESEARCH_COMMONS_MIRROR_HANDOFF.md
-CONTROL: StegVerse-Labs/StegScholar/issues/37
-ACTIVATION GATE: StegVerse-Labs/StegScholar/issues/38
-FEATURE BACKLOG: StegVerse-Labs/StegScholar/issues/21
-VALIDATION RECEIPT: StegVerse-Labs/StegScholar/docs/receipts/research-commons-hosted-validation-30743296790.md
-```
-
-All unique requirements, implementation history, unresolved work, owners, blockers, validation evidence, authority boundaries, and next executable actions from the originating session are durable. Deleting or archiving the conversation does not impair continuation.
-
-## Archive disposition
-
-```text
-session_consolidation: 12/12
-session_unique_claims_remaining: 0
-session_archive_disposition: ARCHIVE_READY
-```
-
-Active product work remains, but it is repository-native or dependency-blocked and does not require this session.
-
-## Progress basis
-
-```text
-task_completion: 11/12
-required_developed_files: 24
-developed_files: 24
-scaffolding_or_stubs: 0
-missing_required_files: 0
-validation_completion: 14/14
-integration_completion: 7/9
-propagation_completion: 0/2
-goal_activation: 64%
-session_consolidation: 12/12
-archival_readiness: 100%
-```
+Open the implementation PR, obtain exact-head `Build and validate Research Commons` success, inspect failures if any, repair on the same branch, then merge only against the expected validated head. After merge, reconcile this handoff with the merge SHA and hosted run evidence.
