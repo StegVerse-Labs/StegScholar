@@ -1,6 +1,6 @@
 # Gate Legitimacy as a Separate Governance Invariant
 
-Status: Draft formalism under `GATE-LEGITIMACY-INVARIANT-001`
+Status: Accepted bounded formalism under `GATE-LEGITIMACY-INVARIANT-001`; canonical GTG/TT mandatory integration is separate work.
 
 ## Abstract
 
@@ -104,9 +104,9 @@ For a record to claim `LEGITIMATE`, all of the following must hold:
 4. evidence rules were frozen before candidate-specific evaluation;
 5. evidence-rule status is `VALID`;
 6. evaluator reference and standing reference are present;
-7. evaluator status is `VALID`;
+7. evaluator status is `VALID` or a disclosed conflict is independently mitigated;
 8. execution-path reference and controller reference are present;
-9. execution-path status is `VALID`;
+9. execution-path status is `VALID` or a disclosed conflict is independently mitigated;
 10. if a material evaluator/control conflict exists, independent review is required and satisfied;
 11. authority effect is exactly `NONE`.
 
@@ -135,36 +135,33 @@ if required_gate_legitimacy_state != LEGITIMATE:
     disposition cannot default to ALLOW
 ```
 
-This note does not install that rule into canonical GTG; it identifies the bounded integration point for falsification and review.
+This note does not install that rule into canonical GTG; it identifies the bounded integration point for separate compatibility/falsification work.
 
 ### TT
 
 TT may reference the gate-legitimacy record in the evidence/policy/authority trail for a transition cell. TT records the resulting governance path, execution state, consequence relation, observation posture, and receipts; it does not infer gate legitimacy from a later successful consequence.
 
-## 6. Falsification cases
+## 6. Falsification result
 
-The proposal should be rejected or revised if deterministic testing shows any of the following:
+Deterministic fixtures and validation established distinct, nonduplicate failure classes for:
 
-- standard provenance adds no independently testable information beyond existing authority references;
-- evidence-rule temporal binding cannot be represented without duplicating an already-canonical primitive;
-- conflict handling necessarily conflates gate legitimacy with reviewer independence or candidate admissibility;
-- execution-path control cannot be represented without assigning authority to the record itself;
-- the state model permits `LEGITIMATE` despite a failed required predicate;
-- a legitimate gate cannot still represent a substantive candidate `DENY` without contradiction.
+- missing governing-standard provenance;
+- evidence rules not frozen before candidate evaluation;
+- evaluator/evidence-rule-controller overlap without independent review;
+- evaluator/execution-path-controller overlap without independent review.
 
-## 7. Adoption criteria
+They also established two separation properties:
 
-Adoption into the canonical transition model is warranted only if deterministic fixtures establish that the record catches failure classes not already represented by the current RTG/GTG/TT fields while preserving all authority separations.
+- a disclosed conflict can be independently mitigated while `authority_effect` remains `NONE`;
+- a gate can be `LEGITIMATE` while the referenced candidate disposition is `DENY`.
 
-Minimum acceptance evidence:
+These results support retaining gate legitimacy as a distinct evidence invariant rather than collapsing it into candidate admissibility, authority, or execution outcome.
 
-- valid baseline case;
-- missing standard-provenance failure;
-- post-hoc evidence-rule failure;
-- evaluator/evidence-rule-controller conflict case;
-- evaluator/execution-path-controller conflict case;
-- legitimate-gate / candidate-denied case showing non-equivalence;
-- validator proof that `authority_effect` cannot become authorizing.
+## 7. Adoption criteria and result
+
+The bounded formalism is accepted because deterministic fixtures establish failure classes not represented by a simple candidate-disposition field while preserving authority separation. This acceptance does **not** make the record mandatory across all GTG/TT schemas.
+
+Canonical mandatory integration, if desired, must separately evaluate compatibility and define exactly when policy requires a gate-legitimacy reference. In particular, a required non-`LEGITIMATE` gate state must never default to `ALLOW`.
 
 ## 8. Provenance boundary
 
