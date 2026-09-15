@@ -1,0 +1,85 @@
+{
+  "schema_version": "0.1.0",
+  "cases": [
+    {
+      "case_id": "incumbent-all-pass",
+      "different_from_incumbent": false,
+      "denial_asserted": false,
+      "architecture_conformity_only": false,
+      "checks": {"evidence":"PASS","authority":"PASS","standing":"PASS","safety_constraints":"PASS","policy":"PASS","commit_time":"PASS"},
+      "expected_state": "SUBSTANTIVE_REQUIREMENTS_SATISFIED"
+    },
+    {
+      "case_id": "novel-different-evidence-path-all-pass",
+      "different_from_incumbent": true,
+      "denial_asserted": false,
+      "architecture_conformity_only": false,
+      "checks": {"evidence":"PASS","authority":"PASS","standing":"PASS","safety_constraints":"PASS","policy":"PASS","commit_time":"PASS"},
+      "expected_state": "SUBSTANTIVE_REQUIREMENTS_SATISFIED"
+    },
+    {
+      "case_id": "conformity-only-denial",
+      "different_from_incumbent": true,
+      "denial_asserted": true,
+      "architecture_conformity_only": true,
+      "checks": {"evidence":"PASS","authority":"PASS","standing":"PASS","safety_constraints":"PASS","policy":"PASS","commit_time":"PASS"},
+      "expected_state": "CONFORMITY_ONLY_DENIAL_INVALID"
+    },
+    {
+      "case_id": "evidence-failure",
+      "different_from_incumbent": true,
+      "denial_asserted": true,
+      "architecture_conformity_only": false,
+      "checks": {"evidence":"FAIL","authority":"PASS","standing":"PASS","safety_constraints":"PASS","policy":"PASS","commit_time":"PASS"},
+      "expected_state": "SUBSTANTIVE_DENIAL_SUPPORTED"
+    },
+    {
+      "case_id": "authority-failure",
+      "different_from_incumbent": true,
+      "denial_asserted": true,
+      "architecture_conformity_only": false,
+      "checks": {"evidence":"PASS","authority":"FAIL","standing":"PASS","safety_constraints":"PASS","policy":"PASS","commit_time":"PASS"},
+      "expected_state": "SUBSTANTIVE_DENIAL_SUPPORTED"
+    },
+    {
+      "case_id": "standing-failure",
+      "different_from_incumbent": false,
+      "denial_asserted": true,
+      "architecture_conformity_only": false,
+      "checks": {"evidence":"PASS","authority":"PASS","standing":"FAIL","safety_constraints":"PASS","policy":"PASS","commit_time":"PASS"},
+      "expected_state": "SUBSTANTIVE_DENIAL_SUPPORTED"
+    },
+    {
+      "case_id": "safety-constraint-failure",
+      "different_from_incumbent": false,
+      "denial_asserted": true,
+      "architecture_conformity_only": false,
+      "checks": {"evidence":"PASS","authority":"PASS","standing":"PASS","safety_constraints":"FAIL","policy":"PASS","commit_time":"PASS"},
+      "expected_state": "SUBSTANTIVE_DENIAL_SUPPORTED"
+    },
+    {
+      "case_id": "policy-failure",
+      "different_from_incumbent": true,
+      "denial_asserted": true,
+      "architecture_conformity_only": false,
+      "checks": {"evidence":"PASS","authority":"PASS","standing":"PASS","safety_constraints":"PASS","policy":"FAIL","commit_time":"PASS"},
+      "expected_state": "SUBSTANTIVE_DENIAL_SUPPORTED"
+    },
+    {
+      "case_id": "commit-time-failure",
+      "different_from_incumbent": true,
+      "denial_asserted": true,
+      "architecture_conformity_only": false,
+      "checks": {"evidence":"PASS","authority":"PASS","standing":"PASS","safety_constraints":"PASS","policy":"PASS","commit_time":"FAIL"},
+      "expected_state": "SUBSTANTIVE_DENIAL_SUPPORTED"
+    },
+    {
+      "case_id": "unresolved-required-state",
+      "different_from_incumbent": true,
+      "denial_asserted": false,
+      "architecture_conformity_only": false,
+      "checks": {"evidence":"PASS","authority":"PASS","standing":"PASS","safety_constraints":"UNRESOLVED","policy":"PASS","commit_time":"PASS"},
+      "expected_state": "FAIL_CLOSED_REQUIRED"
+    }
+  ]
+}

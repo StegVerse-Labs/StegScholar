@@ -1,0 +1,34 @@
+name: Validate Architecture Neutral Admissibility
+
+on:
+  pull_request:
+    paths:
+      - 'papers/generalized-transition-governance/architecture-neutral-admissibility.md'
+      - 'schemas/architecture-neutral-admissibility-record.schema.json'
+      - 'fixtures/architecture-neutral-admissibility/cases.json'
+      - 'scripts/validate_architecture_neutral_admissibility.py'
+      - 'tests/test_architecture_neutral_admissibility.py'
+      - '.github/workflows/validate-architecture-neutral-admissibility.yml'
+      - 'ARCHITECTURE_NEUTRAL_ADMISSIBILITY_MIRROR_HANDOFF.md'
+      - 'README.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Parse schema and fixtures
+        run: |
+          python -m json.tool schemas/architecture-neutral-admissibility-record.schema.json >/dev/null
+          python -m json.tool fixtures/architecture-neutral-admissibility/cases.json >/dev/null
+      - name: Run deterministic validator
+        run: python scripts/validate_architecture_neutral_admissibility.py
+      - name: Run unit tests
+        run: python -m unittest tests.test_architecture_neutral_admissibility

@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stegverse.org/schemas/architecture-neutral-admissibility-record.schema.json",
+  "title": "Architecture Neutral Admissibility Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "record_id",
+    "candidate_ref",
+    "requirement_ref",
+    "architecture",
+    "evidence_path_ref",
+    "substantive_checks",
+    "denial_basis",
+    "assessment",
+    "authority_effect"
+  ],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "record_id": {"type": "string", "minLength": 1},
+    "candidate_ref": {"type": "string", "minLength": 1},
+    "requirement_ref": {"type": "string", "minLength": 1},
+    "architecture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["architecture_ref", "incumbent_architecture_ref", "different_from_incumbent"],
+      "properties": {
+        "architecture_ref": {"type": "string", "minLength": 1},
+        "incumbent_architecture_ref": {"type": ["string", "null"]},
+        "different_from_incumbent": {"type": "boolean"}
+      }
+    },
+    "evidence_path_ref": {"type": "string", "minLength": 1},
+    "substantive_checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidence", "authority", "standing", "safety_constraints", "policy", "commit_time"],
+      "properties": {
+        "evidence": {"$ref": "#/$defs/check"},
+        "authority": {"$ref": "#/$defs/check"},
+        "standing": {"$ref": "#/$defs/check"},
+        "safety_constraints": {"$ref": "#/$defs/check"},
+        "policy": {"$ref": "#/$defs/check"},
+        "commit_time": {"$ref": "#/$defs/check"}
+      }
+    },
+    "denial_basis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["denial_asserted", "architecture_conformity_only", "reason_codes"],
+      "properties": {
+        "denial_asserted": {"type": "boolean"},
+        "architecture_conformity_only": {"type": "boolean"},
+        "reason_codes": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+      }
+    },
+    "assessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "reason_codes"],
+      "properties": {
+        "state": {
+          "enum": [
+            "SUBSTANTIVE_REQUIREMENTS_SATISFIED",
+            "SUBSTANTIVE_DENIAL_SUPPORTED",
+            "FAIL_CLOSED_REQUIRED",
+            "CONFORMITY_ONLY_DENIAL_INVALID"
+          ]
+        },
+        "reason_codes": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+      }
+    },
+    "authority_effect": {"const": "NONE"}
+  },
+  "$defs": {
+    "check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "evidence_refs"],
+      "properties": {
+        "status": {"enum": ["PASS", "FAIL", "UNRESOLVED"]},
+        "evidence_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+      }
+    }
+  }
+}
