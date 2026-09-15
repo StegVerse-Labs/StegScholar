@@ -18,6 +18,14 @@ It preserves provenance, consent, license terms, knowledge posture, disagreement
 
 First exemplar: `research_commons/topics/TIDC-001/`.
 
+## External-framework comparisons
+
+StegScholar may host provenance-preserving comparisons between independently authored external frameworks and StegVerse research formalisms. Functional convergence must not be represented as shared authorship, derivation, certification, or technical identity.
+
+Current comparison candidate:
+- `papers/external-frameworks/millings-method-rtg-gtg-tt-comparison.md`
+- continuation truth: `MILLINGS_METHOD_RTG_GTG_TT_COMPARISON_MIRROR_HANDOFF.md`
+
 ## Research Themes
 - Trust as a system state
 - Auditability and irrecoverable audit loss
@@ -35,6 +43,7 @@ First exemplar: `research_commons/topics/TIDC-001/`.
 - Consent is granular and separate from publication
 - Shared research preserves disagreement and uncertainty
 - Prior research requires a new admissibility review before reuse
+- External-framework comparisons preserve independent provenance and distinguish convergence from equivalence
 
 ## Status
 This repository is actively maintained and expanded as research progresses.
