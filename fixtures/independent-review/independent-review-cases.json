@@ -96,6 +96,18 @@
         "execution_path_control": {"state": "UNRESOLVED", "evidence_refs": []}
       },
       "expected_state": "UNRESOLVED"
+    },
+    {
+      "case_id": "conflict-mitigated-by-independent-evidence",
+      "review_available": true,
+      "dimensions": {
+        "common_control": {"state": "SEPARATE", "evidence_refs": ["ev-control-separation-after-mitigation"], "mitigation_ref": "mit-independent-panel"},
+        "rule_authorship": {"state": "SEPARATE", "evidence_refs": ["ev-rule"]},
+        "financial_interest": {"state": "SEPARATE", "evidence_refs": ["ev-fin"]},
+        "evaluator_identity": {"state": "SEPARATE", "evidence_refs": ["ev-id"]},
+        "execution_path_control": {"state": "SEPARATE", "evidence_refs": ["ev-path"]}
+      },
+      "expected_state": "INDEPENDENT"
     }
   ]
 }
