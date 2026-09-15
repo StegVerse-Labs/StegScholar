@@ -36,16 +36,18 @@ Continuation-renewal and execution-to-consequence reconciliation remain part of 
 
 ## Gate legitimacy formalism
 
-`GATE-LEGITIMACY-INVARIANT-001` is the active first refinement selected from the completed Millings comparison. It tests whether governance needs a first-class, non-authorizing record for the legitimacy of the gate itself, separate from the admissibility of the candidate being evaluated.
+`GATE-LEGITIMACY-INVARIANT-001` completed the first Millings-derived refinement. The validated formalism establishes gate legitimacy as a first-class, non-authorizing evidence invariant separate from the admissibility of the candidate being evaluated.
 
-Current source surfaces:
+Canonical source surfaces:
 - `papers/transition-table/gate-legitimacy-invariant.md`
 - `schemas/gate-legitimacy-record.schema.json`
 - `fixtures/gate-legitimacy/gate-legitimacy-cases.json`
 - `scripts/validate_gate_legitimacy.py`
 - `tests/test_gate_legitimacy.py`
 
-The model preserves governing-standard provenance, evidence-rule provenance and predeclaration, evaluator standing/conflicts, execution-path control, and challenge/review conditions. `GateLegitimate(g)` does not imply `CandidateAllowed(c)`: a legitimate gate can still deny a candidate on substantive grounds. The record has `authority_effect: NONE`; it cannot mint governance/execution authority, override GTG, or prove execution/consequence.
+The model preserves governing-standard provenance, evidence-rule provenance and predeclaration, evaluator standing/conflicts, execution-path control, and challenge/review conditions. Deterministic fixtures cover missing standard provenance, post-hoc evidence-rule mutation, evaluator/evidence-rule-controller overlap, evaluator/execution-path-controller overlap, independently mitigated conflict, and the legitimate-gate / candidate-DENY separation.
+
+`GateLegitimate(g)` does not imply `CandidateAllowed(c)`. The record has `authority_effect: NONE`; it cannot mint governance/execution authority, override GTG, or prove execution/consequence. Mandatory integration into canonical GTG/TT schemas, if desired, remains separate compatibility/integration work.
 
 ## Research Themes
 - Trust as a system state
