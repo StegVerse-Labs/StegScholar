@@ -5,6 +5,7 @@
 Canonical continuation record for the Research Commons workstream in `StegVerse-Labs/StegScholar`.
 
 Goal Task ID: `RC-CTRL-001`
+goal_id: RC-CTRL-001
 Canonical branch: `main`
 Active implementation branch: `rc-ctrl-001-published-research-graph`
 Canonical owner: StegVerse-Labs/StegScholar repository-native workstream
@@ -152,12 +153,23 @@ python research_commons/tools/check_research_commons_control_state.py
 
 Do not claim this extension validated, merged, or released until exact-head GitHub Actions evidence is green and the PR is merged with expected-head protection.
 
+## Cross-repository dependencies
+
+- `GCAT-BCAT-Engine/Publisher`: publication custody, source catalog, and Publisher reconciliation authority.
+- `StegVerse-Labs/StegScholar`: graph identity, provenance, relation lineage, review-state validation, and Research Commons custody of graph records.
+- `StegVerse-Labs/Site`: projection acceptance/deployment only after its own orchestrator admission.
+- `admissibility-wiki`, `stegguardian-wiki`, and `master-records`: no propagation asserted without a versioned destination contract and receipt.
+
 ## Coordination state
 
 `RC-004` remains machine-owned source-drift observation. `RC-005` remains blocked Site projection. The source-neutral graph extension remains inside `RC-CTRL-001`/RC-008 and does not create a competing handoff or publication authority.
 
 No propagation to `admissibility-wiki`, `stegguardian-wiki`, `master-records`, or Site is asserted by this branch.
 
+## Archive conditions
+
+This active implementation continuation is not archive-ready until PR #66 reaches exact-head green validation, merges with expected-head protection, and this handoff records the merge SHA plus hosted validation evidence. The earlier originating Research Commons session remains historically archive-ready; this section governs only the 2026-09-15 extension.
+
 ## Next executable action
 
-Open the implementation PR, obtain exact-head `Build and validate Research Commons` success, inspect failures if any, repair on the same branch, then merge only against the expected validated head. After merge, reconcile this handoff with the merge SHA and hosted run evidence.
+Obtain exact-head `Build and validate Research Commons` success on PR #66, inspect and repair any failures on the same branch, then merge only against the expected validated head. After merge, reconcile this handoff with the merge SHA and hosted run evidence.
