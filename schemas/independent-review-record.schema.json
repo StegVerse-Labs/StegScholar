@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stegverse.org/schemas/independent-review-record.schema.json",
+  "title": "Independent Review Record",
+  "type": "object",
+  "required": ["schema_version", "review_id", "review_available", "reviewer_ref", "challenged_gate_ref", "dimensions", "assessment", "authority_effect"],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "review_id": {"type": "string", "minLength": 1},
+    "review_available": {"type": "boolean"},
+    "reviewer_ref": {"type": "string", "minLength": 1},
+    "review_record_ref": {"type": ["string", "null"]},
+    "challenged_gate_ref": {"type": "string", "minLength": 1},
+    "challenged_rule_ref": {"type": ["string", "null"]},
+    "challenged_execution_path_ref": {"type": ["string", "null"]},
+    "original_evaluator_ref": {"type": ["string", "null"]},
+    "dimensions": {
+      "type": "object",
+      "required": ["common_control", "rule_authorship", "financial_interest", "evaluator_identity", "execution_path_control"],
+      "properties": {
+        "common_control": {"$ref": "#/$defs/dimension"},
+        "rule_authorship": {"$ref": "#/$defs/dimension"},
+        "financial_interest": {"$ref": "#/$defs/dimension"},
+        "evaluator_identity": {"$ref": "#/$defs/dimension"},
+        "execution_path_control": {"$ref": "#/$defs/dimension"}
+      },
+      "additionalProperties": false
+    },
+    "mitigation_refs": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "assessment": {
+      "type": "object",
+      "required": ["independence_state", "reason_codes"],
+      "properties": {
+        "independence_state": {"enum": ["INDEPENDENT", "NOT_INDEPENDENT", "UNRESOLVED"]},
+        "reason_codes": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+      },
+      "additionalProperties": false
+    },
+    "authority_effect": {"const": "NONE"}
+  },
+  "$defs": {
+    "dimension": {
+      "type": "object",
+      "required": ["state", "evidence_refs"],
+      "properties": {
+        "state": {"enum": ["SEPARATE", "CONFLICT", "UNRESOLVED"]},
+        "evidence_refs": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "mitigation_ref": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
