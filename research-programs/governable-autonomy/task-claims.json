@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-08-02T22:58:00Z",
+  "updated_at": "2026-09-15T07:16:00Z",
   "allowed_states": [
     "UNCLAIMED",
     "CLAIMED_FOR_IMPLEMENTATION",
@@ -28,11 +28,11 @@
       ],
       "claimant": "github-actions:governable-autonomy-validate",
       "role": "validation",
-      "state": "MACHINE_OWNED",
+      "state": "BLOCKED",
       "claim_created_at": "2026-08-02T22:49:51Z",
       "claim_expires_at": "2026-08-04T22:49:51Z",
       "release_condition": "A hosted Governable Autonomy Validation run completes successfully, its validate job and logs are inspected, its receipt artifact reports COMPLETE, issue #46 is updated, and this claim is marked COMPLETE or released.",
-      "blocked_release_condition": "If no hosted run becomes observable before expiration, mark BLOCKED and create a new explicit validation claim rather than silently extending this claim.",
+      "blocked_release_condition": "Expired without the required hosted-success evidence; successor validation claim GA-SEC-002 owns the current remediation and revalidation path.",
       "expected_evidence": [
         "commits 50ce914d01f5700878e9c513af6c66d029a01758, e3dd95f5e8f56f88652e7b919d5fad389fbdeb08, 2585f926cbb9abc760094125ab5e6312c73bbfa3, ad215d2416449a284dda047ac5c1a08ae026c9fb, 58c34a225953c2b363828b6fc2900595bd005f48, f0059c3dfdfe4eb673fb2cf389a38f142413fbda",
         "GitHub Actions run and validate-job conclusion",
@@ -44,6 +44,39 @@
       "collision_boundaries": [
         "No other lane may modify the listed files without first releasing, superseding, or explicitly splitting this claim.",
         "The funding workstream, Recoverability Geometry track, and unrelated StegScholar handoffs are outside this claim."
+      ],
+      "next_task_after_release": "Issue #7 deterministic BCAT execution-boundary model, followed by issue #10, issue #11, and issue #12 property tests."
+    },
+    {
+      "task_id": "GA-SEC-002",
+      "originating_goal": "Repair the expired GA-SEC-001 validation claim and obtain fresh hosted Governable Autonomy validation evidence without extending stale authority.",
+      "repository": "StegVerse-Labs/StegScholar",
+      "branch": "task/millings-rtg-gtg-tt-comparison-001",
+      "surfaces": [
+        "SECURITY_BASELINE.md",
+        "research-programs/governable-autonomy/review-schema.json",
+        "research-programs/governable-autonomy/task-claims.json",
+        "tools/validate_governable_autonomy.py",
+        ".github/workflows/governable-autonomy-validate.yml",
+        "STEGSCHOLAR_GOVERNABLE_AUTONOMY_MIRROR_HANDOFF.md"
+      ],
+      "claimant": "github-actions:governable-autonomy-validate",
+      "role": "validation",
+      "state": "MACHINE_OWNED",
+      "claim_created_at": "2026-09-15T07:16:00Z",
+      "claim_expires_at": "2026-09-17T07:16:00Z",
+      "release_condition": "A fresh hosted Governable Autonomy Validation run on the repaired claim state completes successfully, its validate job and logs are inspected, and its receipt reports COMPLETE; then mark GA-SEC-002 COMPLETE or release it.",
+      "blocked_release_condition": "If fresh hosted evidence is not observed before expiration, mark GA-SEC-002 BLOCKED and create a new explicit successor claim rather than extending it.",
+      "expected_evidence": [
+        "fresh GitHub Actions Governable Autonomy Validation run after GA-SEC-001 state repair",
+        "validate-job conclusion SUCCESS",
+        "decoded job log",
+        "governable-autonomy-validation-receipt result COMPLETE",
+        "handoff validation-state update"
+      ],
+      "collision_boundaries": [
+        "GA-SEC-001 is historical BLOCKED state and no longer an active collision owner.",
+        "No other active lane may modify the listed Governable Autonomy validation surfaces while GA-SEC-002 is active."
       ],
       "next_task_after_release": "Issue #7 deterministic BCAT execution-boundary model, followed by issue #10, issue #11, and issue #12 property tests."
     }
