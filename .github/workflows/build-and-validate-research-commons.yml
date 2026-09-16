@@ -49,6 +49,10 @@ jobs:
           printf '%s\n' "$output"
           test "$status" -ne 0
           printf '%s\n' "$output" | grep -F "machine-discovered admitted relation RC-REL-FIXTURE-UNREVIEWED-PROMOTION requires accepted review evidence"
+      - name: Prove accepted review can promote machine candidate
+        run: python research_commons/tools/validate_published_research_graph.py --graph research_commons/published_research_graph/fixtures/valid-machine-promoted-after-review.json
+      - name: Prove rejected review preserves rejected machine state
+        run: python research_commons/tools/validate_published_research_graph.py --graph research_commons/published_research_graph/fixtures/valid-machine-rejected-after-review.json
       - name: Detect duplicate records
         run: python research_commons/tools/detect_duplicates.py
       - name: Validate Site projection boundary
@@ -67,5 +71,5 @@ jobs:
             research_commons/reports/duplicate-detection.json
             research_commons/projection/site-projection-dispatch-packet.json
             research_commons/published_research_graph/graph.json
-            research_commons/published_research_graph/fixtures/invalid-machine-admitted-without-review.json
+            research_commons/published_research_graph/fixtures/*.json
           if-no-files-found: error
