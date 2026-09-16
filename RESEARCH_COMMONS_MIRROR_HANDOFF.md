@@ -35,47 +35,58 @@ Source-neutral graph implementation: PR #66, validated head `6555f9dbd4407429338
 
 First external ingestion: PR #69, validated head `2f704c9a9712077f41da0517891ae17ee8c5aa00`, merge `c330e774e3995248d07b299467e4227ae72a6239`, Research Commons run `35047331587` success. It ingested Amodei et al., `Concrete Problems in AI Safety`, as `RC-DOC-ARXIV-1606-06565`, preserving DOI/canonical URL/version/source custody and `authority_effect: NONE`.
 
+Second external ingestion: PR #72, validated head `e7614af5b42ef15b05a680264f6c5aa8281b2bf0`, merge `4f2463de23d64b0d1a9f049035fcb369c69a2466`, Research Commons run `35048696191` success. It ingested Leike et al., `AI Safety Gridworlds`, as `RC-DOC-ARXIV-1711-09883` and added explicit `cites`, bounded `extends`, conceptual-IICT, and machine-candidate edges.
+
 ## Graph identity, relation, and authority invariants
 
 The graph separates document (`RC-DOC-*`), claim (`RC-CLM-*`), evidence (`RC-EVD-*`), and relation (`RC-REL-*`) identity. External published research requires at least one durable locator from DOI, canonical URL, or content hash. Source custody remains with the external source.
 
 Supported relations include `cites`, `supports`, `corroborates`, `contradicts`, `challenges`, `extends`, `refines`, `replicates`, `fails_to_replicate`, `uses_method_from`, `uses_data_from`, `shares_evidence_with`, `derives_from`, `supersedes`, `independently_converges_with`, and `conceptually_related`.
 
-Machine-discovered relations require review for admission. `candidate` requires pending review; `admitted` requires accepted review plus reviewer identity/time; `rejected` requires rejected review plus reviewer identity/time. Every graph document and relation retains `authority_effect: NONE`. A graph node, edge, admission, or rejection does not establish scientific truth, causation, priority/authorship, publication standing/custody, reuse admissibility, governance authority, or execution authority.
+Machine-discovered relations require review for admission or rejection. `candidate` requires pending review; `admitted` requires accepted review plus reviewer identity/time; `rejected` requires rejected review plus reviewer identity/time. Every graph document and relation retains `authority_effect: NONE`. A graph node, edge, admission, or rejection does not establish scientific truth, causation, priority/authorship, publication standing/custody, reuse admissibility, governance authority, or execution authority.
 
-## Second authentic external published-research ingestion — merged 2026-09-16
+## Third authentic external published-research ingestion — validation pending
 
-Implementation PR: `StegVerse-Labs/StegScholar#72`
-Base main head: `e216da92c627672d5a91e4057a8120acd3baa10b`
-Validated PR head: `e7614af5b42ef15b05a680264f6c5aa8281b2bf0`
-Merge SHA: `4f2463de23d64b0d1a9f049035fcb369c69a2466`
-Hosted validation: `Build and validate Research Commons` run `35048696191`, run number 84, conclusion `success`.
-Additional exact-head checks: Test Readiness run `35048696196` success; Research Commons Control State run `35048696186` success; Independent Review run `35048696177` success; Architecture Neutral Admissibility run `35048696282` success; GTG Assurance Reference Integration run `35048696183` success.
+Implementation branch: `rc-ctrl-001-future-tasks-refinement`
+Base main head: `d244907a00e41e83dc3b3aae68441744cafc99f0`
 
 External source:
-- title: `AI Safety Gridworlds`
-- authors: Jan Leike, Miljan Martic, Victoria Krakovna, Pedro A. Ortega, Tom Everitt, Andrew Lefrancq, Laurent Orseau, Shane Legg
-- document identity: `RC-DOC-ARXIV-1711-09883`
-- version identity: `arxiv:1711.09883v2`
-- DOI: `10.48550/arXiv.1711.09883`
-- canonical URL: `https://arxiv.org/abs/1711.09883`
-- content hash: not asserted; authoritative PDF bytes were not independently retrieved for hashing in this execution
-- source custody: retained by arXiv/original authors
+- title: `Avoiding Side Effects By Considering Future Tasks`
+- authors: Victoria Krakovna, Laurent Orseau, Richard Ngo, Miljan Martic, Shane Legg
+- venue: NeurIPS 2020, Advances in Neural Information Processing Systems 33
+- document identity: `RC-DOC-ARXIV-2010-07877`
+- version identity: `neurips2020:dc1913d422398c25c5f0b81cab94cc87;arxiv:2010.07877v1`
+- DOI: `10.48550/arXiv.2010.07877`
+- canonical URL: `https://proceedings.neurips.cc/paper/2020/hash/dc1913d422398c25c5f0b81cab94cc87-Abstract.html`
+- content hash: not asserted; proceedings PDF bytes were inspected through the external proceedings surface but not independently retained as source custody
+- source custody: retained by NeurIPS/arXiv/original authors
 - authority effect: `NONE`
 
-Source-grounded graph relations:
-- `RC-REL-GRIDWORLDS-CITES-CONCRETE-001`: explicit-source `cites` from `AI Safety Gridworlds` to `Concrete Problems in AI Safety`; the source text explicitly cites Amodei et al. 2016.
-- `RC-REL-GRIDWORLDS-EXTENDS-SAFE-EXPLORATION-001`: bounded human-asserted `extends` relation because the later paper cites the earlier technical agenda, implements dedicated safety environments including safe exploration, and evaluates A2C/Rainbow; this records operationalization/empirical treatment, not proof or successful solution.
-- `RC-REL-GRIDWORLDS-IICT-REVERSIBILITY-001`: bounded human-asserted `conceptually_related` relation between the Gridworlds irreversible-side-effects/reversibility discussion and IICT recoverability/reconstructability.
-- `RC-REL-GRIDWORLDS-IICT-CANDIDATE-001`: machine-discovered `independently_converges_with`, confidence `0.74`, state `candidate`, review `pending`; it remains non-admitted.
+Source-grounded findings:
+- the NeurIPS paper explicitly cites `Concrete Problems in AI Safety` and `AI Safety Gridworlds` in references [2] and [13];
+- it formalizes interference incentives, introduces a future-task auxiliary reward and baseline policy, and proves the no-interference result only for the stated deterministic setting;
+- it reports gridworld experiments in which the future-task method with a baseline avoids the tested side effects/interference and is more effective than a reversibility penalty on the represented setup;
+- therefore `RC-REL-FUTURETASKS-REFINES-GRIDWORLDS-001` is a bounded human-asserted `refines` relation, not a claim that the paper replicated all Gridworlds results.
 
-Deterministic review-state evidence at validated PR head:
-- `invalid-machine-admitted-without-review.json` was required to fail with the accepted-review-evidence error;
-- `valid-machine-promoted-after-review.json` was required to pass with accepted reviewer identity/time and `authority_effect: NONE`;
-- `valid-machine-rejected-after-review.json` was required to pass with rejected reviewer identity/time, retained provenance, and `authority_effect: NONE`;
-- `invalid-machine-rejected-without-review.json` was required to fail with the rejected-review-evidence error.
+Multi-hop chain now represented:
+`Avoiding Side Effects By Considering Future Tasks`
+→ `refines` / `cites` → `AI Safety Gridworlds`
+→ `cites` / `extends` → `Concrete Problems in AI Safety`
+→ `conceptually_related` → StegVerse IICT recoverability.
 
-README, graph data, validator, review fixtures, and `.github/workflows/build-and-validate-research-commons.yml` were merged through PR #72. No source custody, scientific authority, publication authority, governance authority, execution authority, or reuse-admissibility authority changed.
+This chain records provenance and relation lineage only. It does not create support for IICT, scientific validation of StegVerse research, publication authority, governance authority, execution authority, or reuse admissibility.
+
+## Reviewed machine-candidate disposition
+
+`RC-REL-GRIDWORLDS-IICT-CANDIDATE-001` was reviewed on this continuation and changed from machine-discovered `candidate` / pending review to `rejected` with reviewer identity/time retained. The stronger `independently_converges_with` predicate was rejected because the retained evidence supports conceptual correspondence but does not establish independent development or convergence. The already-admitted bounded `conceptually_related` edge remains the appropriate relation.
+
+`RC-REL-EXT-AISAFETY-IICT-CANDIDATE-001` remains a separate pending machine candidate and was not silently promoted or rejected.
+
+Deterministic fixtures from PR #72 remain the review-state proof surfaces:
+- unreviewed machine admission must fail;
+- reviewed machine promotion must pass;
+- reviewed machine rejection must pass;
+- unreviewed machine rejection must fail.
 
 ## Existing Site projection blocker
 
@@ -104,6 +115,8 @@ python research_commons/tools/build_site_projection_dispatch.py
 python research_commons/tools/check_research_commons_control_state.py
 ```
 
+Hosted exact-head validation and expected-head-protected merge are still required before this third ingestion may be described as merged or repository-complete.
+
 ## Cross-repository dependencies
 
 - `GCAT-BCAT-Engine/Publisher`: publication custody, source catalog, and Publisher reconciliation authority.
@@ -117,8 +130,8 @@ python research_commons/tools/check_research_commons_control_state.py
 
 ## Archive conditions
 
-The graph architecture plus first and second external-source ingestions are repository-complete after expected-head-protected merges and hosted exact-head validation. This reconciliation commit must itself be observed green under the Research Commons build/control workflows before this bounded second-ingestion continuation is considered fully checked out. Ongoing RC-004 and RC-005 repository-native states continue independently.
+The third external ingestion is not archiveable while PR validation or merge evidence is pending. It becomes repository-complete only after the exact PR head is green under the Research Commons build/control workflows, the PR is merged with expected-head protection, the canonical handoff records the validated head and merge SHA, and post-merge main validation is observed. Ongoing `RC-004` and `RC-005` repository-native states continue independently and do not become resolved by this ingestion.
 
 ## Next executable action
 
-After post-reconciliation main validation is green, continue the graph by adding an external source that challenges, replicates, or materially refines one of the now-observed empirical safety results, preferably creating a multi-hop external-to-external-to-StegVerse evidence chain while preserving source custody and review-state authority boundaries.
+Obtain exact-head hosted validation for PR #76, repair any remaining validation failure without weakening graph/review invariants, merge only with expected-head protection, then update this handoff with validated head, workflow runs, merge SHA, and post-merge main evidence.
