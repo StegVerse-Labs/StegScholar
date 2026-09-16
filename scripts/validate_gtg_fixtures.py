@@ -89,6 +89,13 @@ def validate_case(case: dict[str, Any], seen: set[str]) -> tuple[list[str], dict
     if not isinstance(case.get("material_relation"), bool):
         errors.append(f"{case_id}: material_relation must be boolean")
 
+    assurance = case.get("governance_assurance")
+    if assurance is not None:
+        if not isinstance(assurance, dict):
+            errors.append(f"{case_id}: governance_assurance must be an object when present")
+        elif assurance.get("authority_effect") != "NONE":
+            errors.append(f"{case_id}: governance_assurance.authority_effect must equal NONE")
+
     expected_activation = case.get("expected_activation")
     expected_disposition = case.get("expected_disposition")
     if expected_activation not in ACTIVATION_STATES:
@@ -117,6 +124,8 @@ def validate_case(case: dict[str, Any], seen: set[str]) -> tuple[list[str], dict
         "source_determinations": case.get("source_determinations", []),
         "input_hash": canonical_hash(case),
     }
+    if assurance is not None:
+        receipt["governance_assurance"] = assurance
     receipt["receipt_hash"] = canonical_hash(receipt)
     return errors, receipt
 
