@@ -82,8 +82,9 @@ def validate() -> dict:
     assert result["assurance_validator_present"] is True
     assert result["tt_duplicates_assurance"] is False
     assert result["authority_promotion_observed"] is False
-    assert result["demonstrated_gap"] == "ASSURANCE_DROPPED_BY_LEGACY_FIXTURE_RECEIPT_SERIALIZER"
-    assert result["derived_task_required"] is True
+    assert result["serialized_assurance_preserved"] is True
+    assert result["demonstrated_gap"] is None
+    assert result["derived_task_required"] is False
     return result
 
 

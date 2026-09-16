@@ -146,17 +146,25 @@ TT remains intentionally unchanged: `schemas/tt-transition-cell.schema.json` has
 
 ## GTG assurance consumer compatibility sweep
 
-`GTG-ASSURANCE-CONSUMER-COMPATIBILITY-SWEEP-001` performs the bounded post-integration consumer sweep across current GTG schemas, producers/serializers, validators, reconstruction paths, orchestration surfaces, and repository-visible consumers.
+`GTG-ASSURANCE-CONSUMER-COMPATIBILITY-SWEEP-001` is retired after deterministically demonstrating one compatibility defect: the legacy `scripts/validate_gtg_fixtures.py:validate_case` serializer dropped optional `governance_assurance` from emitted `GTG-DECISION-*` receipts. No authority promotion or duplicate TT assurance field was observed.
 
-The deterministic sweep demonstrates one compatibility defect: `scripts/validate_gtg_fixtures.py:validate_case` accepts a source fixture containing optional `governance_assurance`, but its explicit `GTG-DECISION-*` receipt serializer omits that field. The resulting classification is `ASSURANCE_DROPPED_BY_LEGACY_FIXTURE_RECEIPT_SERIALIZER`. No authority promotion or duplicate TT assurance field was observed.
-
-Sweep surfaces:
+Historical sweep surfaces:
 - `papers/rtg-gtg-tt/gtg-assurance-consumer-compatibility-sweep.md`
 - `scripts/validate_gtg_assurance_consumer_compatibility_sweep.py`
 - `tests/test_gtg_assurance_consumer_compatibility_sweep.py`
 - `GTG_ASSURANCE_CONSUMER_COMPATIBILITY_SWEEP_MIRROR_HANDOFF.md`
 
-Exactly one bounded repair task is derived: `GTG-ASSURANCE-RECEIPT-PRESERVATION-001`, with handoff `GTG_ASSURANCE_RECEIPT_PRESERVATION_MIRROR_HANDOFF.md`. It is limited to preserving optional assurance through the legacy fixture receipt/reconstruction path while keeping `authority_effect: NONE`, historical compatibility, and the existing TT schema boundary.
+## GTG assurance receipt preservation
+
+`GTG-ASSURANCE-RECEIPT-PRESERVATION-001` is the bounded repair derived from that retired sweep. On its implementation branch, the legacy GTG fixture receipt serializer now preserves the exact optional `governance_assurance` object when present, omits it when absent, requires `authority_effect: NONE`, and hashes the receipt only after preserved assurance has been inserted.
+
+Repair surfaces:
+- `scripts/validate_gtg_fixtures.py`
+- `tests/test_gtg_assurance_receipt_preservation.py`
+- `tests/test_gtg_assurance_consumer_compatibility_sweep.py`
+- `GTG_ASSURANCE_RECEIPT_PRESERVATION_MIRROR_HANDOFF.md`
+
+The repair does not modify GTG activation/disposition algebra or the TT schema. Historical no-assurance receipts remain structurally compatible, and TT continues to use only `gtg_record_ref` for cross-layer reconstruction.
 
 ## Research Themes
 - Trust as a system state
