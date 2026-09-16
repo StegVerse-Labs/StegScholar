@@ -1,0 +1,29 @@
+name: Validate GTG Assurance Consumer Compatibility Sweep
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_gtg_assurance_consumer_compatibility_sweep.py'
+      - 'tests/test_gtg_assurance_consumer_compatibility_sweep.py'
+      - 'papers/rtg-gtg-tt/gtg-assurance-consumer-compatibility-sweep.md'
+      - 'GTG_ASSURANCE_CONSUMER_COMPATIBILITY_SWEEP_MIRROR_HANDOFF.md'
+      - 'GTG_ASSURANCE_RECEIPT_PRESERVATION_MIRROR_HANDOFF.md'
+      - '.github/workflows/validate-gtg-assurance-consumer-compatibility-sweep.yml'
+      - 'README.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run deterministic sweep
+        run: python scripts/validate_gtg_assurance_consumer_compatibility_sweep.py
+      - name: Run unit tests
+        run: python -m unittest tests.test_gtg_assurance_consumer_compatibility_sweep
