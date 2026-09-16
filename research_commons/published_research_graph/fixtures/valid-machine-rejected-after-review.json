@@ -1,0 +1,47 @@
+{
+  "graph_version": "1.0.0",
+  "documents": [
+    {
+      "document_id": "RC-DOC-FIXTURE-C",
+      "source_class": "external_published_research",
+      "title": "Fixture C",
+      "doi": "10.0000/fixture-c",
+      "canonical_url": null,
+      "content_hash": null,
+      "version_identity": "fixture:c@1",
+      "claims": [],
+      "evidence": [],
+      "provenance": {"source_authority": "fixture", "observed_at": "2026-09-16T02:28:00Z", "custody_retained_by_source": true},
+      "authority_effect": "NONE"
+    },
+    {
+      "document_id": "RC-DOC-FIXTURE-D",
+      "source_class": "external_published_research",
+      "title": "Fixture D",
+      "doi": "10.0000/fixture-d",
+      "canonical_url": null,
+      "content_hash": null,
+      "version_identity": "fixture:d@1",
+      "claims": [],
+      "evidence": [],
+      "provenance": {"source_authority": "fixture", "observed_at": "2026-09-16T02:28:00Z", "custody_retained_by_source": true},
+      "authority_effect": "NONE"
+    }
+  ],
+  "relations": [
+    {
+      "relation_id": "RC-REL-FIXTURE-REVIEWED-REJECTION",
+      "subject": "RC-DOC-FIXTURE-C",
+      "predicate": "independently_converges_with",
+      "object": "RC-DOC-FIXTURE-D",
+      "assertion_mode": "machine_discovered",
+      "state": "rejected",
+      "confidence": 0.61,
+      "evidence_refs": [],
+      "provenance": {"asserted_by": "fixture-machine", "observed_at": "2026-09-16T02:28:00Z", "basis": "Fixture proves review can reject a machine candidate without deleting provenance or granting authority."},
+      "review": {"required_for_admission": true, "review_state": "rejected", "reviewed_by": "fixture-reviewer", "reviewed_at": "2026-09-16T02:29:00Z"},
+      "authority_effect": "NONE"
+    }
+  ],
+  "authority_boundary": "Fixture only; rejected review preserves provenance and grants no scientific or execution authority."
+}
