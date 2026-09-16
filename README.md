@@ -140,6 +140,20 @@ The integration does not alter GTG disposition ownership. A valid Architecture-N
 
 TT remains intentionally unchanged: `schemas/tt-transition-cell.schema.json` has no `governance_assurance` field. Cross-layer reconstruction follows only `gtg_record_ref`, preventing independently mutable duplicate assurance state in TT.
 
+## GTG assurance consumer compatibility sweep
+
+`GTG-ASSURANCE-CONSUMER-COMPATIBILITY-SWEEP-001` performs the bounded post-integration consumer sweep across current GTG schemas, producers/serializers, validators, reconstruction paths, orchestration surfaces, and repository-visible consumers.
+
+The deterministic sweep demonstrates one compatibility defect: `scripts/validate_gtg_fixtures.py:validate_case` accepts a source fixture containing optional `governance_assurance`, but its explicit `GTG-DECISION-*` receipt serializer omits that field. The resulting classification is `ASSURANCE_DROPPED_BY_LEGACY_FIXTURE_RECEIPT_SERIALIZER`. No authority promotion or duplicate TT assurance field was observed.
+
+Sweep surfaces:
+- `papers/rtg-gtg-tt/gtg-assurance-consumer-compatibility-sweep.md`
+- `scripts/validate_gtg_assurance_consumer_compatibility_sweep.py`
+- `tests/test_gtg_assurance_consumer_compatibility_sweep.py`
+- `GTG_ASSURANCE_CONSUMER_COMPATIBILITY_SWEEP_MIRROR_HANDOFF.md`
+
+Exactly one bounded repair task is derived: `GTG-ASSURANCE-RECEIPT-PRESERVATION-001`, with handoff `GTG_ASSURANCE_RECEIPT_PRESERVATION_MIRROR_HANDOFF.md`. It is limited to preserving optional assurance through the legacy fixture receipt/reconstruction path while keeping `authority_effect: NONE`, historical compatibility, and the existing TT schema boundary.
+
 ## Research Themes
 - Trust as a system state
 - Auditability and irrecoverable audit loss
