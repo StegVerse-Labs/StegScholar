@@ -70,6 +70,38 @@ Existing Publisher `related_to` records are projected only as `conceptually_rela
 
 Every graph document and relation has `authority_effect: NONE`. A graph node or edge does not establish scientific truth, causation, priority/authorship, successful replication, publication standing/custody, reuse admissibility, governance authority, or execution authority. Graph admission means only that the relation record passed declared provenance/review requirements.
 
+## First authentic external published-research ingestion — merged 2026-09-16
+
+Implementation PR: `StegVerse-Labs/StegScholar#69`
+Base head: `3db553c987671eb98c09e4e7c75fdfeb232aa0ef`
+Validated PR head: `2f704c9a9712077f41da0517891ae17ee8c5aa00`
+Merge SHA: `c330e774e3995248d07b299467e4227ae72a6239`
+Hosted validation: `Build and validate Research Commons` run `35047331587`, run number 72, conclusion `success`.
+Additional exact-head checks: Test Readiness run `35047331605` success; Independent Review run `35047331591` success; Architecture Neutral Admissibility run `35047331594` success.
+
+Ingested external source:
+- title: `Concrete Problems in AI Safety`
+- authors: Dario Amodei, Chris Olah, Jacob Steinhardt, Paul Christiano, John Schulman, Dan Mané
+- document identity: `RC-DOC-ARXIV-1606-06565`
+- version identity: `arxiv:1606.06565v2`
+- DOI: `10.48550/arXiv.1606.06565`
+- canonical URL: `https://arxiv.org/abs/1606.06565`
+- source custody: retained by arXiv/original authors
+- authority effect: `NONE`
+
+The external paper's Section 2 safe-exploration discussion explicitly identifies negative or irrecoverable consequences as a safety concern. The existing IICT Commons entry separately records irreversible commitment, preserved reconstructability, and a contradiction class involving reduced recoverability or review quality. The graph therefore records one bounded human-asserted `conceptually_related` edge between anchored claims/evidence without asserting support, derivation, equivalence, validation, or priority.
+
+A second relation, `RC-REL-EXT-AISAFETY-IICT-CANDIDATE-001`, is machine-discovered `independently_converges_with`, confidence `0.68`, state `candidate`, review `pending`. It remains non-admitted.
+
+Deterministic negative proof:
+- fixture: `research_commons/published_research_graph/fixtures/invalid-machine-admitted-without-review.json`
+- validator now accepts `--graph` for deterministic fixture evaluation
+- workflow attempts to validate a machine-discovered relation marked `admitted` with pending/no reviewer evidence
+- success criterion is validator failure with exact error: `machine-discovered admitted relation RC-REL-FIXTURE-UNREVIEWED-PROMOTION requires accepted review evidence`
+- hosted run `35047331587` completed successfully, proving the workflow observed and required that rejection.
+
+README now records the external exemplar and candidate-promotion negative fixture. No source custody, scientific authority, publication authority, governance authority, execution authority, or reuse-admissibility authority changed.
+
 ## Existing Site projection blocker
 
 The pre-existing Site projection remains independently blocked pending Publisher reconciliation/authorization. This graph extension does not bypass or resolve that gate.
@@ -106,14 +138,14 @@ python research_commons/tools/check_research_commons_control_state.py
 
 ## Coordination state
 
-`RC-004` remains machine-owned source-drift observation. `RC-005` remains blocked Site projection. The source-neutral graph extension is merged into `main` under `RC-CTRL-001`/RC-008. No competing handoff or child Goal Task was created.
+`RC-004` remains machine-owned source-drift observation. `RC-005` remains blocked Site projection. The source-neutral graph extension and first external ingestion are merged into `main` under `RC-CTRL-001`/RC-008. No competing handoff or child Goal Task was created.
 
-No Site, admissibility-wiki, stegguardian-wiki, or master-records propagation is claimed by this completed repository-local extension.
+No Site, admissibility-wiki, stegguardian-wiki, or master-records propagation is claimed by this repository-local ingestion.
 
 ## Archive conditions
 
-The 2026-09-15 source-neutral graph implementation is repository-complete after merge and hosted exact-head validation. Archive/checkout of this bounded continuation is permissible once the post-merge handoff-only commit is observed green under the Research Commons control/build workflows; ongoing RC-004 and RC-005 repository-native states continue independently.
+The source-neutral graph extension and first external-source ingestion are repository-complete after expected-head-protected merges and hosted exact-head validation. Ongoing RC-004 and RC-005 repository-native states continue independently.
 
 ## Next executable action
 
-Use the source-neutral graph ingestion contract to admit the first authentic external published-research document with DOI/canonical URL/content-hash provenance, then exercise an explicit relation and a machine-discovered candidate relation without promoting the candidate unless review evidence satisfies the admitted-state invariant.
+Add a second external published source that either cites, challenges, refines, or empirically tests one of the graph's existing claims, then exercise cross-external-paper relation discovery and review while preserving candidate/admitted separation and source custody.
