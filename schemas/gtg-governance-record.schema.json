@@ -34,6 +34,7 @@
     "relational_projection": {"type": "array", "items": {"type": "object"}},
     "activation": {"enum": ["ACTIVE", "INACTIVE", "INCOMPLETE", "NOT_APPLICABLE", "ERROR"]},
     "activation_basis": {"type": "array", "items": {"type": "string"}},
+    "governance_assurance": {"$ref": "gtg-governance-assurance.schema.json"},
     "disposition": {"enum": ["ALLOW", "DENY", "FAIL_CLOSED", "DEFER", "TRANSFORM", "ERROR"]},
     "transform_target_ref": {"type": ["string", "null"]},
     "dissent": {"type": "array", "items": {"type": "object"}},
