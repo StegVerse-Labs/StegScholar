@@ -24,11 +24,13 @@ First exemplar: `research_commons/topics/TIDC-001/`.
 
 Document identity may retain DOI, canonical URL, content hash, and source-native version identity. Relations are typed and evidence-bearing, with explicit provenance, confidence, review state, and `authority_effect: NONE`.
 
-Machine-discovered relations must enter as `candidate`; they cannot become `admitted` without accepted review evidence. Explicit source relations may be admitted without implying scientific truth. No graph edge establishes causation, priority, replication, publication authority, governance authority, execution authority, or reuse admissibility.
+Machine-discovered relations must enter as `candidate`; they cannot become `admitted` without accepted review evidence. A machine-discovered rejection must likewise retain rejected review evidence. Explicit source relations may be admitted without implying scientific truth. No graph edge establishes causation, priority, replication, publication authority, governance authority, execution authority, or reuse admissibility.
 
 The current Publisher-paper relation set remains intact under `research_commons/sources/publisher-papers/`; the Published Research Graph generalizes that capability instead of replacing Publisher custody.
 
 The first external exemplar is Amodei et al., *Concrete Problems in AI Safety* (`arXiv:1606.06565v2`, DOI `10.48550/arXiv.1606.06565`). Its source custody remains external. A bounded evidence-backed conceptual relation connects its safe-exploration discussion of irrecoverable consequences to the existing IICT recoverability/reconstructability claim; a separate machine-discovered possible convergence remains `candidate` pending review.
+
+The second external exemplar is Leike et al., *AI Safety Gridworlds* (`arXiv:1711.09883v2`, DOI `10.48550/arXiv.1711.09883`). The source explicitly cites *Concrete Problems in AI Safety*, operationalizes safety problems as reinforcement-learning environments, includes safe exploration and irreversible side effects, and reports baseline evaluation of A2C and Rainbow. The graph therefore records an explicit `cites` edge and a bounded `extends` edge to the first external paper, plus a non-authorizing conceptual relation to IICT recoverability. A stronger machine-discovered convergence relation remains only a pending candidate.
 
 Validation:
 
@@ -36,7 +38,7 @@ Validation:
 python research_commons/tools/validate_published_research_graph.py
 ```
 
-The workflow also runs `fixtures/invalid-machine-admitted-without-review.json` and requires the validator to reject that attempted promotion with the exact accepted-review-evidence error.
+The workflow requires the unreviewed-promotion fixture to fail, and separately requires reviewed promotion and reviewed rejection fixtures to pass. Review changes graph relation state only; it does not create scientific, publication, governance, execution, or reuse-admissibility authority.
 
 ## External-framework comparisons
 
