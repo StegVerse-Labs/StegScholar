@@ -9,11 +9,12 @@ admissibility.
 
 from __future__ import annotations
 
+import argparse
 import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-GRAPH_PATH = ROOT / "research_commons" / "published_research_graph" / "graph.json"
+DEFAULT_GRAPH_PATH = ROOT / "research_commons" / "published_research_graph" / "graph.json"
 SCHEMA_PATH = ROOT / "research_commons" / "published_research_graph" / "schema.json"
 
 ALLOWED_PREDICATES = {
@@ -32,9 +33,7 @@ def load(path: Path) -> dict:
         raise SystemExit(f"cannot load {path}: {exc}") from exc
 
 
-def main() -> int:
-    graph = load(GRAPH_PATH)
-    load(SCHEMA_PATH)  # deterministic parse check; no third-party dependency.
+def validate_graph(graph: dict) -> list[str]:
     errors: list[str] = []
 
     if graph.get("graph_version") != "1.0.0":
@@ -110,6 +109,18 @@ def main() -> int:
         if not all(provenance.get(k) for k in ("asserted_by", "observed_at", "basis")):
             errors.append(f"relation {rel_id} requires asserted_by, observed_at, and basis")
 
+    return errors
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--graph", type=Path, default=DEFAULT_GRAPH_PATH)
+    args = parser.parse_args()
+
+    graph = load(args.graph)
+    load(SCHEMA_PATH)  # deterministic parse check; no third-party dependency.
+    errors = validate_graph(graph)
+
     if errors:
         print("Published Research Graph validation: FAIL")
         for error in errors:
@@ -117,8 +128,8 @@ def main() -> int:
         return 1
 
     print("Published Research Graph validation: PASS")
-    print(f"documents={len(documents)}")
-    print(f"relations={len(relations)}")
+    print(f"documents={len(graph.get('documents', []))}")
+    print(f"relations={len(graph.get('relations', []))}")
     print("machine_discovered_candidate_default=ENFORCED")
     print("authority_effect=NONE")
     return 0
