@@ -22,9 +22,21 @@
       "canonical_url": null,
       "content_hash": null,
       "version_identity": "publisher:sv-iict-2026@0.1.0",
-      "claims": [],
-      "evidence": [],
-      "provenance": {"source_authority": "GCAT-BCAT-Engine/Publisher", "observed_at": "2026-09-15T15:36:32Z", "custody_retained_by_source": true},
+      "claims": [
+        {
+          "claim_id": "RC-CLM-SV-IICT-RECOVERABILITY",
+          "locator": "research_commons/sources/publisher-papers/sv-iict-2026.md#abstract-posture",
+          "text_digest": "sha256:44fc1cd6bbd62369b61f64239a676634559a8175dd49b900fc1171a83a77f934"
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "RC-EVD-SV-IICT-RECOVERABILITY",
+          "locator": "research_commons/sources/publisher-papers/sv-iict-2026.md#governed-relationships",
+          "evidence_class": "argument"
+        }
+      ],
+      "provenance": {"source_authority": "GCAT-BCAT-Engine/Publisher", "observed_at": "2026-09-16T02:12:00Z", "custody_retained_by_source": true},
       "authority_effect": "NONE"
     },
     {
@@ -65,6 +77,31 @@
       "evidence": [],
       "provenance": {"source_authority": "GCAT-BCAT-Engine/Publisher", "observed_at": "2026-09-15T15:36:32Z", "custody_retained_by_source": true},
       "authority_effect": "NONE"
+    },
+    {
+      "document_id": "RC-DOC-ARXIV-1606-06565",
+      "source_class": "external_published_research",
+      "title": "Concrete Problems in AI Safety",
+      "doi": "10.48550/arXiv.1606.06565",
+      "canonical_url": "https://arxiv.org/abs/1606.06565",
+      "content_hash": null,
+      "version_identity": "arxiv:1606.06565v2",
+      "claims": [
+        {
+          "claim_id": "RC-CLM-ARXIV-1606-06565-SAFE-EXPLORATION",
+          "locator": "Section 2, Safe Exploration bullet, arXiv:1606.06565v2 PDF page 3",
+          "text_digest": "sha256:a187beba48963ccedef137da9f2030258f7db26bde25965de488fabfe72ef5c3"
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "RC-EVD-ARXIV-1606-06565-SAFE-EXPLORATION",
+          "locator": "https://arxiv.org/pdf/1606.06565#page=3; Section 2 Safe Exploration discussion",
+          "evidence_class": "argument"
+        }
+      ],
+      "provenance": {"source_authority": "arXiv / original authors", "observed_at": "2026-09-16T02:12:00Z", "custody_retained_by_source": true},
+      "authority_effect": "NONE"
     }
   ],
   "relations": [
@@ -92,6 +129,32 @@
       "evidence_refs": [],
       "provenance": {"asserted_by": "research_commons/sources/publisher-papers/relations.json", "observed_at": "2026-09-15T15:36:32Z", "basis": "Existing Publisher relation related_to; migrated without strengthening scientific meaning."},
       "review": {"required_for_admission": false, "review_state": "not_required", "reviewed_by": null, "reviewed_at": null},
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "RC-REL-EXT-AISAFETY-IICT-001",
+      "subject": "RC-CLM-ARXIV-1606-06565-SAFE-EXPLORATION",
+      "predicate": "conceptually_related",
+      "object": "RC-CLM-SV-IICT-RECOVERABILITY",
+      "assertion_mode": "human_asserted",
+      "state": "admitted",
+      "confidence": 0.92,
+      "evidence_refs": ["RC-EVD-ARXIV-1606-06565-SAFE-EXPLORATION", "RC-EVD-SV-IICT-RECOVERABILITY"],
+      "provenance": {"asserted_by": "RC-CTRL-001 research-graph ingestion", "observed_at": "2026-09-16T02:12:00Z", "basis": "Both sources explicitly discuss irreversible or irrecoverable consequences/recoverability around agent or governance transitions. The relation is limited to conceptual connection and does not claim derivation, support, equivalence, or validation."},
+      "review": {"required_for_admission": false, "review_state": "not_required", "reviewed_by": null, "reviewed_at": null},
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "RC-REL-EXT-AISAFETY-IICT-CANDIDATE-001",
+      "subject": "RC-CLM-ARXIV-1606-06565-SAFE-EXPLORATION",
+      "predicate": "independently_converges_with",
+      "object": "RC-CLM-SV-IICT-RECOVERABILITY",
+      "assertion_mode": "machine_discovered",
+      "state": "candidate",
+      "confidence": 0.68,
+      "evidence_refs": ["RC-EVD-ARXIV-1606-06565-SAFE-EXPLORATION", "RC-EVD-SV-IICT-RECOVERABILITY"],
+      "provenance": {"asserted_by": "RC-CTRL-001 machine relation discovery", "observed_at": "2026-09-16T02:12:00Z", "basis": "Machine comparison detected possible convergence around preventing or preserving recoverability across consequential transitions; this is a candidate only and may be rejected on review."},
+      "review": {"required_for_admission": true, "review_state": "pending", "reviewed_by": null, "reviewed_at": null},
       "authority_effect": "NONE"
     }
   ],
