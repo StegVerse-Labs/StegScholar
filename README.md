@@ -28,11 +28,15 @@ Machine-discovered relations must enter as `candidate`; they cannot become `admi
 
 The current Publisher-paper relation set remains intact under `research_commons/sources/publisher-papers/`; the Published Research Graph generalizes that capability instead of replacing Publisher custody.
 
+The first external exemplar is Amodei et al., *Concrete Problems in AI Safety* (`arXiv:1606.06565v2`, DOI `10.48550/arXiv.1606.06565`). Its source custody remains external. A bounded evidence-backed conceptual relation connects its safe-exploration discussion of irrecoverable consequences to the existing IICT recoverability/reconstructability claim; a separate machine-discovered possible convergence remains `candidate` pending review.
+
 Validation:
 
 ```text
 python research_commons/tools/validate_published_research_graph.py
 ```
+
+The workflow also runs `fixtures/invalid-machine-admitted-without-review.json` and requires the validator to reject that attempted promotion with the exact accepted-review-evidence error.
 
 ## External-framework comparisons
 
