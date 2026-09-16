@@ -16,6 +16,16 @@ Neither relation claims full replication, scientific equivalence among AUP/relat
 
 Source custody remains with NeurIPS proceedings, arXiv, and the original authors. The corresponding custody record is `sources/RC-DOC-NEURIPS-2020-F50A6C02.md`.
 
+## Seventh-source admission threshold and screening
+
+The next external source is intentionally held to a stronger empirical threshold. Admission requires an independently authored source that either:
+- directly benchmarks at least two already represented side-effect mitigation mechanisms under the same environment/protocol; or
+- independently reproduces or fails to reproduce one represented mechanism in a substantially different domain.
+
+Quantitative side-effect and task-performance outcomes are preferred. Conceptual adjacency, a comparison involving only one represented method, or a modified related method in another gridworld-style benchmark does not satisfy this threshold by itself.
+
+The current screening pass admitted no seventh graph source. Vamplew et al. (2021), Burden et al. (2021), Lindner et al. (2021), and Turner et al. (2020) were reviewed and rejected for this specific continuation threshold for distinct reasons recorded in `SEVENTH_SOURCE_SCREENING_NOTE.md`. The graph itself remains unchanged.
+
 ## Validation
 
 Run the canonical Research Commons validation contract from the repository root, including `python research_commons/tools/validate_published_research_graph.py` and `python research_commons/tools/check_research_commons_control_state.py`.
