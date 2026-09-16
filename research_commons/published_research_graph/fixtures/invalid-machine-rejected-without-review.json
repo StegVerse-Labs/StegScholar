@@ -1,0 +1,47 @@
+{
+  "graph_version": "1.0.0",
+  "documents": [
+    {
+      "document_id": "RC-DOC-FIXTURE-E",
+      "source_class": "external_published_research",
+      "title": "Fixture E",
+      "doi": "10.0000/fixture-e",
+      "canonical_url": null,
+      "content_hash": null,
+      "version_identity": "fixture:e@1",
+      "claims": [],
+      "evidence": [],
+      "provenance": {"source_authority": "fixture", "observed_at": "2026-09-16T02:28:00Z", "custody_retained_by_source": true},
+      "authority_effect": "NONE"
+    },
+    {
+      "document_id": "RC-DOC-FIXTURE-F",
+      "source_class": "external_published_research",
+      "title": "Fixture F",
+      "doi": "10.0000/fixture-f",
+      "canonical_url": null,
+      "content_hash": null,
+      "version_identity": "fixture:f@1",
+      "claims": [],
+      "evidence": [],
+      "provenance": {"source_authority": "fixture", "observed_at": "2026-09-16T02:28:00Z", "custody_retained_by_source": true},
+      "authority_effect": "NONE"
+    }
+  ],
+  "relations": [
+    {
+      "relation_id": "RC-REL-FIXTURE-UNREVIEWED-REJECTION",
+      "subject": "RC-DOC-FIXTURE-E",
+      "predicate": "conceptually_related",
+      "object": "RC-DOC-FIXTURE-F",
+      "assertion_mode": "machine_discovered",
+      "state": "rejected",
+      "confidence": 0.54,
+      "evidence_refs": [],
+      "provenance": {"asserted_by": "fixture-machine", "observed_at": "2026-09-16T02:28:00Z", "basis": "Invalid fixture: rejection lacks rejected review evidence."},
+      "review": {"required_for_admission": true, "review_state": "pending", "reviewed_by": null, "reviewed_at": null},
+      "authority_effect": "NONE"
+    }
+  ],
+  "authority_boundary": "Invalid fixture used only to prove review evidence is required for a machine rejection."
+}
