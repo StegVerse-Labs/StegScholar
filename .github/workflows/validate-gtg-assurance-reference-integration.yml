@@ -1,0 +1,39 @@
+name: Validate GTG Assurance Reference Integration
+
+on:
+  pull_request:
+    paths:
+      - 'schemas/gtg-governance-assurance.schema.json'
+      - 'schemas/gtg-decision.schema.json'
+      - 'schemas/gtg-governance-record.schema.json'
+      - 'schemas/tt-transition-cell.schema.json'
+      - 'fixtures/gtg-assurance-reference-integration/cases.json'
+      - 'scripts/validate_gtg_assurance_reference_integration.py'
+      - 'tests/test_gtg_assurance_reference_integration.py'
+      - '.github/workflows/validate-gtg-assurance-reference-integration.yml'
+      - 'GTG_ASSURANCE_REFERENCE_INTEGRATION_MIRROR_HANDOFF.md'
+      - 'README.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Parse schemas and fixtures
+        run: |
+          python -m json.tool schemas/gtg-governance-assurance.schema.json >/dev/null
+          python -m json.tool schemas/gtg-decision.schema.json >/dev/null
+          python -m json.tool schemas/gtg-governance-record.schema.json >/dev/null
+          python -m json.tool schemas/tt-transition-cell.schema.json >/dev/null
+          python -m json.tool fixtures/gtg-assurance-reference-integration/cases.json >/dev/null
+      - name: Run deterministic validator
+        run: python scripts/validate_gtg_assurance_reference_integration.py
+      - name: Run unit tests
+        run: python -m unittest tests.test_gtg_assurance_reference_integration

@@ -1,0 +1,298 @@
+{
+  "assurance_records": {
+    "gate-valid": {
+      "record_type": "GATE_LEGITIMACY",
+      "gate_id": "gate-1",
+      "candidate_ref": "candidate-1",
+      "assessment": {"legitimacy_state": "LEGITIMATE"},
+      "authority_effect": "NONE"
+    },
+    "gate-other-candidate": {
+      "record_type": "GATE_LEGITIMACY",
+      "gate_id": "gate-1",
+      "candidate_ref": "candidate-OTHER",
+      "assessment": {"legitimacy_state": "LEGITIMATE"},
+      "authority_effect": "NONE"
+    },
+    "gate-authorizing-invalid": {
+      "record_type": "GATE_LEGITIMACY",
+      "gate_id": "gate-1",
+      "candidate_ref": "candidate-1",
+      "assessment": {"legitimacy_state": "LEGITIMATE"},
+      "authority_effect": "ALLOW"
+    },
+    "review-valid": {
+      "record_type": "INDEPENDENT_REVIEW",
+      "challenged_gate_ref": "gate-1",
+      "challenged_rule_ref": "rule-1",
+      "original_evaluator_ref": "evaluator-1",
+      "assessment": {"independence_state": "INDEPENDENT"},
+      "authority_effect": "NONE"
+    },
+    "review-other-gate": {
+      "record_type": "INDEPENDENT_REVIEW",
+      "challenged_gate_ref": "gate-OTHER",
+      "challenged_rule_ref": "rule-1",
+      "original_evaluator_ref": "evaluator-1",
+      "assessment": {"independence_state": "INDEPENDENT"},
+      "authority_effect": "NONE"
+    },
+    "architecture-valid": {
+      "record_type": "ARCHITECTURE_NEUTRAL_ADMISSIBILITY",
+      "candidate_ref": "candidate-1",
+      "requirement_ref": "requirement-1",
+      "assessment": {"state": "SUBSTANTIVE_REQUIREMENTS_SATISFIED"},
+      "authority_effect": "NONE"
+    },
+    "architecture-other-candidate": {
+      "record_type": "ARCHITECTURE_NEUTRAL_ADMISSIBILITY",
+      "candidate_ref": "candidate-OTHER",
+      "requirement_ref": "requirement-1",
+      "assessment": {"state": "SUBSTANTIVE_REQUIREMENTS_SATISFIED"},
+      "authority_effect": "NONE"
+    }
+  },
+  "cases": [
+    {
+      "case_id": "historical-no-assurance",
+      "gtg": {"record_id": "gtg-historical", "candidate_transition_id": "candidate-1", "disposition": "ALLOW"},
+      "expected": "VALID"
+    },
+    {
+      "case_id": "all-three-required-valid",
+      "gtg": {
+        "record_id": "gtg-all-valid",
+        "candidate_transition_id": "candidate-1",
+        "disposition": "ALLOW",
+        "governance_assurance": {
+          "assurance_id": "assurance-all-valid",
+          "profile_ref": "profile-all-three",
+          "required_types": ["GATE_LEGITIMACY", "INDEPENDENT_REVIEW", "ARCHITECTURE_NEUTRAL_ADMISSIBILITY"],
+          "authority_effect": "NONE",
+          "bindings": {
+            "gate_legitimacy": {
+              "assurance_type": "GATE_LEGITIMACY",
+              "applicability": "REQUIRED",
+              "record_ref": "gate-valid",
+              "validation_state": "VALID",
+              "correlation": {"candidate_transition_id": "candidate-1", "gate_id": "gate-1", "rule_ref": "rule-1", "evaluator_ref": "evaluator-1"},
+              "authority_effect": "NONE"
+            },
+            "independent_review": {
+              "assurance_type": "INDEPENDENT_REVIEW",
+              "applicability": "REQUIRED",
+              "record_ref": "review-valid",
+              "validation_state": "VALID",
+              "correlation": {"candidate_transition_id": "candidate-1", "gate_id": "gate-1", "rule_ref": "rule-1", "evaluator_ref": "evaluator-1"},
+              "authority_effect": "NONE"
+            },
+            "architecture_neutral_admissibility": {
+              "assurance_type": "ARCHITECTURE_NEUTRAL_ADMISSIBILITY",
+              "applicability": "REQUIRED",
+              "record_ref": "architecture-valid",
+              "validation_state": "VALID",
+              "correlation": {"candidate_transition_id": "candidate-1", "gate_id": null, "rule_ref": null, "evaluator_ref": null},
+              "authority_effect": "NONE"
+            }
+          }
+        }
+      },
+      "expected": "VALID"
+    },
+    {
+      "case_id": "gate-candidate-mismatch",
+      "gtg": {
+        "record_id": "gtg-gate-mismatch",
+        "candidate_transition_id": "candidate-1",
+        "disposition": "DEFER",
+        "governance_assurance": {
+          "assurance_id": "assurance-gate-mismatch",
+          "profile_ref": "profile-gate",
+          "required_types": ["GATE_LEGITIMACY"],
+          "authority_effect": "NONE",
+          "bindings": {
+            "gate_legitimacy": {
+              "assurance_type": "GATE_LEGITIMACY",
+              "applicability": "REQUIRED",
+              "record_ref": "gate-other-candidate",
+              "validation_state": "VALID",
+              "correlation": {"candidate_transition_id": "candidate-1", "gate_id": "gate-1", "rule_ref": null, "evaluator_ref": null},
+              "authority_effect": "NONE"
+            }
+          }
+        }
+      },
+      "expected": "INVALID_BINDING"
+    },
+    {
+      "case_id": "independent-review-gate-mismatch",
+      "gtg": {
+        "record_id": "gtg-review-mismatch",
+        "candidate_transition_id": "candidate-1",
+        "disposition": "DEFER",
+        "governance_assurance": {
+          "assurance_id": "assurance-review-mismatch",
+          "profile_ref": "profile-review",
+          "required_types": ["INDEPENDENT_REVIEW"],
+          "authority_effect": "NONE",
+          "bindings": {
+            "independent_review": {
+              "assurance_type": "INDEPENDENT_REVIEW",
+              "applicability": "REQUIRED",
+              "record_ref": "review-other-gate",
+              "validation_state": "VALID",
+              "correlation": {"candidate_transition_id": "candidate-1", "gate_id": "gate-1", "rule_ref": "rule-1", "evaluator_ref": "evaluator-1"},
+              "authority_effect": "NONE"
+            }
+          }
+        }
+      },
+      "expected": "INVALID_BINDING"
+    },
+    {
+      "case_id": "architecture-candidate-mismatch",
+      "gtg": {
+        "record_id": "gtg-architecture-mismatch",
+        "candidate_transition_id": "candidate-1",
+        "disposition": "DENY",
+        "governance_assurance": {
+          "assurance_id": "assurance-architecture-mismatch",
+          "profile_ref": "profile-architecture",
+          "required_types": ["ARCHITECTURE_NEUTRAL_ADMISSIBILITY"],
+          "authority_effect": "NONE",
+          "bindings": {
+            "architecture_neutral_admissibility": {
+              "assurance_type": "ARCHITECTURE_NEUTRAL_ADMISSIBILITY",
+              "applicability": "REQUIRED",
+              "record_ref": "architecture-other-candidate",
+              "validation_state": "VALID",
+              "correlation": {"candidate_transition_id": "candidate-1", "gate_id": null, "rule_ref": null, "evaluator_ref": null},
+              "authority_effect": "NONE"
+            }
+          }
+        }
+      },
+      "expected": "INVALID_BINDING"
+    },
+    {
+      "case_id": "authority-effect-promotion-rejected",
+      "gtg": {
+        "record_id": "gtg-authority-promotion",
+        "candidate_transition_id": "candidate-1",
+        "disposition": "DEFER",
+        "governance_assurance": {
+          "assurance_id": "assurance-authority-promotion",
+          "profile_ref": "profile-gate",
+          "required_types": ["GATE_LEGITIMACY"],
+          "authority_effect": "NONE",
+          "bindings": {
+            "gate_legitimacy": {
+              "assurance_type": "GATE_LEGITIMACY",
+              "applicability": "REQUIRED",
+              "record_ref": "gate-authorizing-invalid",
+              "validation_state": "VALID",
+              "correlation": {"candidate_transition_id": "candidate-1", "gate_id": "gate-1", "rule_ref": null, "evaluator_ref": null},
+              "authority_effect": "NONE"
+            }
+          }
+        }
+      },
+      "expected": "INVALID_BINDING"
+    },
+    {
+      "case_id": "required-unresolved-fails-closed",
+      "gtg": {
+        "record_id": "gtg-required-unresolved",
+        "candidate_transition_id": "candidate-1",
+        "disposition": "FAIL_CLOSED",
+        "governance_assurance": {
+          "assurance_id": "assurance-required-unresolved",
+          "profile_ref": "profile-review",
+          "required_types": ["INDEPENDENT_REVIEW"],
+          "authority_effect": "NONE",
+          "bindings": {
+            "independent_review": {
+              "assurance_type": "INDEPENDENT_REVIEW",
+              "applicability": "REQUIRED",
+              "record_ref": "review-valid",
+              "validation_state": "UNRESOLVED",
+              "correlation": {"candidate_transition_id": "candidate-1", "gate_id": "gate-1", "rule_ref": "rule-1", "evaluator_ref": "evaluator-1"},
+              "authority_effect": "NONE"
+            }
+          }
+        }
+      },
+      "expected": "FAIL_CLOSED_REQUIRED"
+    },
+    {
+      "case_id": "optional-not-applicable-is-neutral",
+      "gtg": {
+        "record_id": "gtg-optional-na",
+        "candidate_transition_id": "candidate-1",
+        "disposition": "ALLOW",
+        "governance_assurance": {
+          "assurance_id": "assurance-optional-na",
+          "profile_ref": "profile-none-required",
+          "required_types": [],
+          "authority_effect": "NONE",
+          "bindings": {
+            "independent_review": {
+              "assurance_type": "INDEPENDENT_REVIEW",
+              "applicability": "NOT_APPLICABLE",
+              "record_ref": null,
+              "validation_state": "NOT_APPLICABLE",
+              "correlation": {},
+              "authority_effect": "NONE"
+            }
+          }
+        }
+      },
+      "expected": "VALID"
+    },
+    {
+      "case_id": "architecture-neutrality-does-not-force-allow",
+      "gtg": {
+        "record_id": "gtg-substantive-deny",
+        "candidate_transition_id": "candidate-1",
+        "disposition": "DENY",
+        "governance_assurance": {
+          "assurance_id": "assurance-architecture-valid-deny",
+          "profile_ref": "profile-architecture",
+          "required_types": ["ARCHITECTURE_NEUTRAL_ADMISSIBILITY"],
+          "authority_effect": "NONE",
+          "bindings": {
+            "architecture_neutral_admissibility": {
+              "assurance_type": "ARCHITECTURE_NEUTRAL_ADMISSIBILITY",
+              "applicability": "REQUIRED",
+              "record_ref": "architecture-valid",
+              "validation_state": "VALID",
+              "correlation": {"candidate_transition_id": "candidate-1", "gate_id": null, "rule_ref": null, "evaluator_ref": null},
+              "authority_effect": "NONE"
+            }
+          }
+        }
+      },
+      "expected": "VALID"
+    }
+  ],
+  "tt_cases": [
+    {
+      "case_id": "tt-reconstructs-valid-assurance-through-gtg-ref",
+      "tt": {"cell_id": "tt-valid", "gtg_record_ref": "gtg-all-valid"},
+      "expected_gtg_case_id": "all-three-required-valid",
+      "expected": "VALID"
+    },
+    {
+      "case_id": "tt-cannot-hide-invalid-gtg-assurance",
+      "tt": {"cell_id": "tt-invalid", "gtg_record_ref": "gtg-gate-mismatch"},
+      "expected_gtg_case_id": "gate-candidate-mismatch",
+      "expected": "INVALID_BINDING"
+    },
+    {
+      "case_id": "tt-historical-gtg-remains-reconstructable",
+      "tt": {"cell_id": "tt-historical", "gtg_record_ref": "gtg-historical"},
+      "expected_gtg_case_id": "historical-no-assurance",
+      "expected": "VALID"
+    }
+  ]
+}
