@@ -45,10 +45,29 @@ Supported relations include `cites`, `supports`, `corroborates`, `contradicts`, 
 
 Machine-discovered relations require review for admission or rejection. `candidate` requires pending review; `admitted` requires accepted review plus reviewer identity/time; `rejected` requires rejected review plus reviewer identity/time. Every graph document and relation retains `authority_effect: NONE`. A graph node, edge, admission, or rejection does not establish scientific truth, causation, priority/authorship, publication standing/custody, reuse admissibility, governance authority, or execution authority.
 
-## Third authentic external published-research ingestion — validation pending
+## Third authentic external published-research ingestion — merged 2026-09-16
 
+Implementation PR: `StegVerse-Labs/StegScholar#76`
 Implementation branch: `rc-ctrl-001-future-tasks-refinement`
 Base main head: `d244907a00e41e83dc3b3aae68441744cafc99f0`
+Validated PR head: `5d6b2a1ed0e022516c5dbe5a4fbef926c014b31a`
+Merge SHA: `a78e55950600a9b8fb50fe6ebde711729320e949`
+Expected-head protection: merge performed against exact head `5d6b2a1ed0e022516c5dbe5a4fbef926c014b31a`.
+
+Exact-head hosted validation:
+- `Build and validate Research Commons` run `35092985117`, run number 91, success.
+- `Validate Research Commons Control State` run `35092985095`, run number 594, success.
+- `Test Readiness` run `35092985133`, run number 799, success.
+- `Validate Independent Review` run `35092985119`, run number 39, success.
+- `Validate Architecture Neutral Admissibility` run `35092985109`, run number 12, success.
+- `Validate GTG Assurance Reference Integration` run `35092985112`, run number 7, success.
+- `Validate GTG Assurance Consumer Compatibility Sweep` run `35092985172`, run number 7, success.
+
+Validation repair history: an earlier PR head `3de99ec0b309f7baae5d6409b8abfdadfaa6327e` failed Research Commons run `35092876445` only at the control-state step because the handoff rewrite omitted the required `## Archive conditions` term. Graph validation, machine review-state fixtures, duplicate detection, Site projection boundary, and fail-closed dispatch had already passed on that head. The handoff contract was restored without weakening graph or review semantics, producing the final green exact head above.
+
+Post-merge main evidence at merge SHA `a78e55950600a9b8fb50fe6ebde711729320e949`:
+- `Build and validate Research Commons` run `35093024321`, run number 92, success.
+- `Validate Research Commons Control State` run `35093024292`, run number 595, success.
 
 External source:
 - title: `Avoiding Side Effects By Considering Future Tasks`
@@ -115,8 +134,6 @@ python research_commons/tools/build_site_projection_dispatch.py
 python research_commons/tools/check_research_commons_control_state.py
 ```
 
-Hosted exact-head validation and expected-head-protected merge are still required before this third ingestion may be described as merged or repository-complete.
-
 ## Cross-repository dependencies
 
 - `GCAT-BCAT-Engine/Publisher`: publication custody, source catalog, and Publisher reconciliation authority.
@@ -130,8 +147,8 @@ Hosted exact-head validation and expected-head-protected merge are still require
 
 ## Archive conditions
 
-The third external ingestion is not archiveable while PR validation or merge evidence is pending. It becomes repository-complete only after the exact PR head is green under the Research Commons build/control workflows, the PR is merged with expected-head protection, the canonical handoff records the validated head and merge SHA, and post-merge main validation is observed. Ongoing `RC-004` and `RC-005` repository-native states continue independently and do not become resolved by this ingestion.
+The third external ingestion is repository-complete: its exact PR head passed the Research Commons build/control workflows, PR #76 merged with expected-head protection, and the merge commit itself passed post-merge Research Commons build/control validation. This handoff reconciliation must itself be validated and merged before this bounded continuation is fully checked out. Ongoing `RC-004` and `RC-005` repository-native states continue independently and are not resolved by this ingestion.
 
 ## Next executable action
 
-Obtain exact-head hosted validation for PR #76, repair any remaining validation failure without weakening graph/review invariants, merge only with expected-head protection, then update this handoff with validated head, workflow runs, merge SHA, and post-merge main evidence.
+After this reconciliation commit is green and merged, continue `RC-CTRL-001` by reviewing the remaining machine-discovered `RC-REL-EXT-AISAFETY-IICT-CANDIDATE-001` against its retained evidence and either promote or reject it with explicit review evidence, then ingest another authentic external source only if it adds a genuinely supported challenge, replication, or material refinement rather than conceptual similarity.
