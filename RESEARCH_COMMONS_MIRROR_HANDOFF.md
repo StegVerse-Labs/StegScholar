@@ -49,7 +49,6 @@ Machine-discovered relations require review for admission or rejection. `candida
 
 Implementation branch: `rc-ctrl-001-future-tasks-refinement`
 Base main head: `d244907a00e41e83dc3b3aae68441744cafc99f0`
-Current implementation head after graph/README/handoff edits: pending final commit observation
 
 External source:
 - title: `Avoiding Side Effects By Considering Future Tasks`
@@ -129,6 +128,10 @@ Hosted exact-head validation and expected-head-protected merge are still require
 
 `RC-004` remains machine-owned source-drift observation. `RC-005` remains blocked Site projection. No competing handoff or child Goal Task has been created.
 
+## Archive conditions
+
+The third external ingestion is not archiveable while PR validation or merge evidence is pending. It becomes repository-complete only after the exact PR head is green under the Research Commons build/control workflows, the PR is merged with expected-head protection, the canonical handoff records the validated head and merge SHA, and post-merge main validation is observed. Ongoing `RC-004` and `RC-005` repository-native states continue independently and do not become resolved by this ingestion.
+
 ## Next executable action
 
-Open the bounded third-ingestion PR, obtain exact-head hosted validation, repair any validation failure without weakening graph/review invariants, merge only with expected-head protection, then update this handoff with validated head, workflow runs, merge SHA, and post-merge main evidence.
+Obtain exact-head hosted validation for PR #76, repair any remaining validation failure without weakening graph/review invariants, merge only with expected-head protection, then update this handoff with validated head, workflow runs, merge SHA, and post-merge main evidence.
