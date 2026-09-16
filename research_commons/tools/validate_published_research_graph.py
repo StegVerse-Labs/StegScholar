@@ -94,14 +94,23 @@ def validate_graph(graph: dict) -> list[str]:
         confidence = relation.get("confidence")
         if not isinstance(confidence, (int, float)) or not 0 <= confidence <= 1:
             errors.append(f"relation[{index}] confidence must be in [0,1]")
+
         mode = relation.get("assertion_mode")
         state = relation.get("state")
         review = relation.get("review", {})
-        if mode == "machine_discovered" and state == "admitted":
-            if review.get("review_state") != "accepted" or not review.get("reviewed_by") or not review.get("reviewed_at"):
-                errors.append(f"machine-discovered admitted relation {rel_id} requires accepted review evidence")
-        if mode == "machine_discovered" and state == "candidate" and review.get("review_state") != "pending":
-            errors.append(f"machine-discovered candidate relation {rel_id} must have pending review")
+        if mode == "machine_discovered":
+            if review.get("required_for_admission") is not True:
+                errors.append(f"machine-discovered relation {rel_id} must require review for admission")
+            if state == "admitted":
+                if review.get("review_state") != "accepted" or not review.get("reviewed_by") or not review.get("reviewed_at"):
+                    errors.append(f"machine-discovered admitted relation {rel_id} requires accepted review evidence")
+            elif state == "candidate":
+                if review.get("review_state") != "pending":
+                    errors.append(f"machine-discovered candidate relation {rel_id} must have pending review")
+            elif state == "rejected":
+                if review.get("review_state") != "rejected" or not review.get("reviewed_by") or not review.get("reviewed_at"):
+                    errors.append(f"machine-discovered rejected relation {rel_id} requires rejected review evidence")
+
         for ref in relation.get("evidence_refs", []):
             if ref not in anchor_ids:
                 errors.append(f"relation {rel_id} has unknown evidence_ref: {ref}")
@@ -118,7 +127,7 @@ def main() -> int:
     args = parser.parse_args()
 
     graph = load(args.graph)
-    load(SCHEMA_PATH)  # deterministic parse check; no third-party dependency.
+    load(SCHEMA_PATH)
     errors = validate_graph(graph)
 
     if errors:
@@ -130,7 +139,7 @@ def main() -> int:
     print("Published Research Graph validation: PASS")
     print(f"documents={len(graph.get('documents', []))}")
     print(f"relations={len(graph.get('relations', []))}")
-    print("machine_discovered_candidate_default=ENFORCED")
+    print("machine_discovered_review_gate=ENFORCED")
     print("authority_effect=NONE")
     return 0
 

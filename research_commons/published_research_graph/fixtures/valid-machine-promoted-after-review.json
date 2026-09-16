@@ -1,0 +1,47 @@
+{
+  "graph_version": "1.0.0",
+  "documents": [
+    {
+      "document_id": "RC-DOC-FIXTURE-A",
+      "source_class": "external_published_research",
+      "title": "Fixture A",
+      "doi": "10.0000/fixture-a",
+      "canonical_url": null,
+      "content_hash": null,
+      "version_identity": "fixture:a@1",
+      "claims": [],
+      "evidence": [],
+      "provenance": {"source_authority": "fixture", "observed_at": "2026-09-16T02:28:00Z", "custody_retained_by_source": true},
+      "authority_effect": "NONE"
+    },
+    {
+      "document_id": "RC-DOC-FIXTURE-B",
+      "source_class": "external_published_research",
+      "title": "Fixture B",
+      "doi": "10.0000/fixture-b",
+      "canonical_url": null,
+      "content_hash": null,
+      "version_identity": "fixture:b@1",
+      "claims": [],
+      "evidence": [],
+      "provenance": {"source_authority": "fixture", "observed_at": "2026-09-16T02:28:00Z", "custody_retained_by_source": true},
+      "authority_effect": "NONE"
+    }
+  ],
+  "relations": [
+    {
+      "relation_id": "RC-REL-FIXTURE-REVIEWED-PROMOTION",
+      "subject": "RC-DOC-FIXTURE-A",
+      "predicate": "conceptually_related",
+      "object": "RC-DOC-FIXTURE-B",
+      "assertion_mode": "machine_discovered",
+      "state": "admitted",
+      "confidence": 0.73,
+      "evidence_refs": [],
+      "provenance": {"asserted_by": "fixture-machine", "observed_at": "2026-09-16T02:28:00Z", "basis": "Fixture proves accepted review can promote a candidate without granting authority."},
+      "review": {"required_for_admission": true, "review_state": "accepted", "reviewed_by": "fixture-reviewer", "reviewed_at": "2026-09-16T02:29:00Z"},
+      "authority_effect": "NONE"
+    }
+  ],
+  "authority_boundary": "Fixture only; accepted review changes relation state, not scientific or execution authority."
+}

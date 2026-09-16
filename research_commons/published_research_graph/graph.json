@@ -22,20 +22,8 @@
       "canonical_url": null,
       "content_hash": null,
       "version_identity": "publisher:sv-iict-2026@0.1.0",
-      "claims": [
-        {
-          "claim_id": "RC-CLM-SV-IICT-RECOVERABILITY",
-          "locator": "research_commons/sources/publisher-papers/sv-iict-2026.md#abstract-posture",
-          "text_digest": "sha256:44fc1cd6bbd62369b61f64239a676634559a8175dd49b900fc1171a83a77f934"
-        }
-      ],
-      "evidence": [
-        {
-          "evidence_id": "RC-EVD-SV-IICT-RECOVERABILITY",
-          "locator": "research_commons/sources/publisher-papers/sv-iict-2026.md#governed-relationships",
-          "evidence_class": "argument"
-        }
-      ],
+      "claims": [{"claim_id": "RC-CLM-SV-IICT-RECOVERABILITY", "locator": "research_commons/sources/publisher-papers/sv-iict-2026.md#abstract-posture", "text_digest": "sha256:44fc1cd6bbd62369b61f64239a676634559a8175dd49b900fc1171a83a77f934"}],
+      "evidence": [{"evidence_id": "RC-EVD-SV-IICT-RECOVERABILITY", "locator": "research_commons/sources/publisher-papers/sv-iict-2026.md#governed-relationships", "evidence_class": "argument"}],
       "provenance": {"source_authority": "GCAT-BCAT-Engine/Publisher", "observed_at": "2026-09-16T02:12:00Z", "custody_retained_by_source": true},
       "authority_effect": "NONE"
     },
@@ -86,77 +74,43 @@
       "canonical_url": "https://arxiv.org/abs/1606.06565",
       "content_hash": null,
       "version_identity": "arxiv:1606.06565v2",
+      "claims": [{"claim_id": "RC-CLM-ARXIV-1606-06565-SAFE-EXPLORATION", "locator": "Section 2, Safe Exploration bullet, arXiv:1606.06565v2 PDF page 3", "text_digest": "sha256:a187beba48963ccedef137da9f2030258f7db26bde25965de488fabfe72ef5c3"}],
+      "evidence": [{"evidence_id": "RC-EVD-ARXIV-1606-06565-SAFE-EXPLORATION", "locator": "https://arxiv.org/pdf/1606.06565#page=3; Section 2 Safe Exploration discussion", "evidence_class": "argument"}],
+      "provenance": {"source_authority": "arXiv / original authors", "observed_at": "2026-09-16T02:12:00Z", "custody_retained_by_source": true},
+      "authority_effect": "NONE"
+    },
+    {
+      "document_id": "RC-DOC-ARXIV-1711-09883",
+      "source_class": "external_published_research",
+      "title": "AI Safety Gridworlds",
+      "doi": "10.48550/arXiv.1711.09883",
+      "canonical_url": "https://arxiv.org/abs/1711.09883",
+      "content_hash": null,
+      "version_identity": "arxiv:1711.09883v2",
       "claims": [
-        {
-          "claim_id": "RC-CLM-ARXIV-1606-06565-SAFE-EXPLORATION",
-          "locator": "Section 2, Safe Exploration bullet, arXiv:1606.06565v2 PDF page 3",
-          "text_digest": "sha256:a187beba48963ccedef137da9f2030258f7db26bde25965de488fabfe72ef5c3"
-        }
+        {"claim_id": "RC-CLM-ARXIV-1711-09883-SAFE-EXPLORATION", "locator": "Section 1 problem 8 and Section 2.2.4 Safe Exploration, arXiv:1711.09883v2", "text_digest": "sha256:2c430f95f67a63d319f3da1bb18b783427374a4a048ef6ec716aa33cbdf996d6"},
+        {"claim_id": "RC-CLM-ARXIV-1711-09883-BASELINE-RESULT", "locator": "Abstract and Section 1 baseline-results discussion, arXiv:1711.09883v2", "text_digest": "sha256:ed8887f7e1b48fbd0e0904e04802a10d8f5536ceb428d21c5c849fc55bd64fab"},
+        {"claim_id": "RC-CLM-ARXIV-1711-09883-REVERSIBILITY", "locator": "Section 2.1.2 Avoiding Side Effects, arXiv:1711.09883v2", "text_digest": "sha256:3d47bc0f8933f4249dda56177d4b984c2796f119d3741ead9853bf476ad21d91"}
       ],
       "evidence": [
-        {
-          "evidence_id": "RC-EVD-ARXIV-1606-06565-SAFE-EXPLORATION",
-          "locator": "https://arxiv.org/pdf/1606.06565#page=3; Section 2 Safe Exploration discussion",
-          "evidence_class": "argument"
-        }
+        {"evidence_id": "RC-EVD-ARXIV-1711-09883-CITES-AMODEI", "locator": "https://arxiv.org/abs/1711.09883; Introduction and side-effects discussion explicitly cite Amodei et al. 2016", "evidence_class": "citation"},
+        {"evidence_id": "RC-EVD-ARXIV-1711-09883-SAFE-EXPLORATION", "locator": "https://arxiv.org/abs/1711.09883; Section 2.2.4 Safe Exploration and island-navigation environment", "evidence_class": "method"},
+        {"evidence_id": "RC-EVD-ARXIV-1711-09883-BASELINE-RESULT", "locator": "https://arxiv.org/abs/1711.09883; abstract/Section 1 A2C and Rainbow baseline results", "evidence_class": "result"},
+        {"evidence_id": "RC-EVD-ARXIV-1711-09883-REVERSIBILITY", "locator": "https://arxiv.org/abs/1711.09883; Section 2.1.2 irreversible side-effects environment preserves option to move box back", "evidence_class": "argument"}
       ],
-      "provenance": {"source_authority": "arXiv / original authors", "observed_at": "2026-09-16T02:12:00Z", "custody_retained_by_source": true},
+      "provenance": {"source_authority": "arXiv / original authors", "observed_at": "2026-09-16T02:28:00Z", "custody_retained_by_source": true},
       "authority_effect": "NONE"
     }
   ],
   "relations": [
-    {
-      "relation_id": "RC-REL-PUB-001",
-      "subject": "RC-DOC-SV-GCAT-BCAT-ADMISSIBILITY-2026",
-      "predicate": "conceptually_related",
-      "object": "RC-DOC-SV-IICT-2026",
-      "assertion_mode": "explicit_source",
-      "state": "admitted",
-      "confidence": 1.0,
-      "evidence_refs": [],
-      "provenance": {"asserted_by": "research_commons/sources/publisher-papers/relations.json", "observed_at": "2026-09-15T15:36:32Z", "basis": "Existing Publisher relation related_to; migrated without strengthening scientific meaning."},
-      "review": {"required_for_admission": false, "review_state": "not_required", "reviewed_by": null, "reviewed_at": null},
-      "authority_effect": "NONE"
-    },
-    {
-      "relation_id": "RC-REL-PUB-002",
-      "subject": "RC-DOC-SV-GOD-FRAMEWORK-2026",
-      "predicate": "conceptually_related",
-      "object": "RC-DOC-SV-GCAT-BCAT-ADMISSIBILITY-2026",
-      "assertion_mode": "explicit_source",
-      "state": "admitted",
-      "confidence": 1.0,
-      "evidence_refs": [],
-      "provenance": {"asserted_by": "research_commons/sources/publisher-papers/relations.json", "observed_at": "2026-09-15T15:36:32Z", "basis": "Existing Publisher relation related_to; migrated without strengthening scientific meaning."},
-      "review": {"required_for_admission": false, "review_state": "not_required", "reviewed_by": null, "reviewed_at": null},
-      "authority_effect": "NONE"
-    },
-    {
-      "relation_id": "RC-REL-EXT-AISAFETY-IICT-001",
-      "subject": "RC-CLM-ARXIV-1606-06565-SAFE-EXPLORATION",
-      "predicate": "conceptually_related",
-      "object": "RC-CLM-SV-IICT-RECOVERABILITY",
-      "assertion_mode": "human_asserted",
-      "state": "admitted",
-      "confidence": 0.92,
-      "evidence_refs": ["RC-EVD-ARXIV-1606-06565-SAFE-EXPLORATION", "RC-EVD-SV-IICT-RECOVERABILITY"],
-      "provenance": {"asserted_by": "RC-CTRL-001 research-graph ingestion", "observed_at": "2026-09-16T02:12:00Z", "basis": "Both sources explicitly discuss irreversible or irrecoverable consequences/recoverability around agent or governance transitions. The relation is limited to conceptual connection and does not claim derivation, support, equivalence, or validation."},
-      "review": {"required_for_admission": false, "review_state": "not_required", "reviewed_by": null, "reviewed_at": null},
-      "authority_effect": "NONE"
-    },
-    {
-      "relation_id": "RC-REL-EXT-AISAFETY-IICT-CANDIDATE-001",
-      "subject": "RC-CLM-ARXIV-1606-06565-SAFE-EXPLORATION",
-      "predicate": "independently_converges_with",
-      "object": "RC-CLM-SV-IICT-RECOVERABILITY",
-      "assertion_mode": "machine_discovered",
-      "state": "candidate",
-      "confidence": 0.68,
-      "evidence_refs": ["RC-EVD-ARXIV-1606-06565-SAFE-EXPLORATION", "RC-EVD-SV-IICT-RECOVERABILITY"],
-      "provenance": {"asserted_by": "RC-CTRL-001 machine relation discovery", "observed_at": "2026-09-16T02:12:00Z", "basis": "Machine comparison detected possible convergence around preventing or preserving recoverability across consequential transitions; this is a candidate only and may be rejected on review."},
-      "review": {"required_for_admission": true, "review_state": "pending", "reviewed_by": null, "reviewed_at": null},
-      "authority_effect": "NONE"
-    }
+    {"relation_id": "RC-REL-PUB-001", "subject": "RC-DOC-SV-GCAT-BCAT-ADMISSIBILITY-2026", "predicate": "conceptually_related", "object": "RC-DOC-SV-IICT-2026", "assertion_mode": "explicit_source", "state": "admitted", "confidence": 1.0, "evidence_refs": [], "provenance": {"asserted_by": "research_commons/sources/publisher-papers/relations.json", "observed_at": "2026-09-15T15:36:32Z", "basis": "Existing Publisher relation related_to; migrated without strengthening scientific meaning."}, "review": {"required_for_admission": false, "review_state": "not_required", "reviewed_by": null, "reviewed_at": null}, "authority_effect": "NONE"},
+    {"relation_id": "RC-REL-PUB-002", "subject": "RC-DOC-SV-GOD-FRAMEWORK-2026", "predicate": "conceptually_related", "object": "RC-DOC-SV-GCAT-BCAT-ADMISSIBILITY-2026", "assertion_mode": "explicit_source", "state": "admitted", "confidence": 1.0, "evidence_refs": [], "provenance": {"asserted_by": "research_commons/sources/publisher-papers/relations.json", "observed_at": "2026-09-15T15:36:32Z", "basis": "Existing Publisher relation related_to; migrated without strengthening scientific meaning."}, "review": {"required_for_admission": false, "review_state": "not_required", "reviewed_by": null, "reviewed_at": null}, "authority_effect": "NONE"},
+    {"relation_id": "RC-REL-EXT-AISAFETY-IICT-001", "subject": "RC-CLM-ARXIV-1606-06565-SAFE-EXPLORATION", "predicate": "conceptually_related", "object": "RC-CLM-SV-IICT-RECOVERABILITY", "assertion_mode": "human_asserted", "state": "admitted", "confidence": 0.92, "evidence_refs": ["RC-EVD-ARXIV-1606-06565-SAFE-EXPLORATION", "RC-EVD-SV-IICT-RECOVERABILITY"], "provenance": {"asserted_by": "RC-CTRL-001 research-graph ingestion", "observed_at": "2026-09-16T02:12:00Z", "basis": "Both sources explicitly discuss irreversible or irrecoverable consequences/recoverability around agent or governance transitions. The relation is limited to conceptual connection and does not claim derivation, support, equivalence, or validation."}, "review": {"required_for_admission": false, "review_state": "not_required", "reviewed_by": null, "reviewed_at": null}, "authority_effect": "NONE"},
+    {"relation_id": "RC-REL-EXT-AISAFETY-IICT-CANDIDATE-001", "subject": "RC-CLM-ARXIV-1606-06565-SAFE-EXPLORATION", "predicate": "independently_converges_with", "object": "RC-CLM-SV-IICT-RECOVERABILITY", "assertion_mode": "machine_discovered", "state": "candidate", "confidence": 0.68, "evidence_refs": ["RC-EVD-ARXIV-1606-06565-SAFE-EXPLORATION", "RC-EVD-SV-IICT-RECOVERABILITY"], "provenance": {"asserted_by": "RC-CTRL-001 machine relation discovery", "observed_at": "2026-09-16T02:12:00Z", "basis": "Machine comparison detected possible convergence around preventing or preserving recoverability across consequential transitions; this is a candidate only and may be rejected on review."}, "review": {"required_for_admission": true, "review_state": "pending", "reviewed_by": null, "reviewed_at": null}, "authority_effect": "NONE"},
+    {"relation_id": "RC-REL-GRIDWORLDS-CITES-CONCRETE-001", "subject": "RC-DOC-ARXIV-1711-09883", "predicate": "cites", "object": "RC-DOC-ARXIV-1606-06565", "assertion_mode": "explicit_source", "state": "admitted", "confidence": 1.0, "evidence_refs": ["RC-EVD-ARXIV-1711-09883-CITES-AMODEI"], "provenance": {"asserted_by": "arXiv:1711.09883v2 source text", "observed_at": "2026-09-16T02:28:00Z", "basis": "AI Safety Gridworlds explicitly cites Amodei et al. 2016 in its introduction and side-effects discussion."}, "review": {"required_for_admission": false, "review_state": "not_required", "reviewed_by": null, "reviewed_at": null}, "authority_effect": "NONE"},
+    {"relation_id": "RC-REL-GRIDWORLDS-EXTENDS-SAFE-EXPLORATION-001", "subject": "RC-CLM-ARXIV-1711-09883-SAFE-EXPLORATION", "predicate": "extends", "object": "RC-CLM-ARXIV-1606-06565-SAFE-EXPLORATION", "assertion_mode": "human_asserted", "state": "admitted", "confidence": 0.97, "evidence_refs": ["RC-EVD-ARXIV-1711-09883-CITES-AMODEI", "RC-EVD-ARXIV-1711-09883-SAFE-EXPLORATION", "RC-EVD-ARXIV-1711-09883-BASELINE-RESULT", "RC-EVD-ARXIV-1606-06565-SAFE-EXPLORATION"], "provenance": {"asserted_by": "RC-CTRL-001 research-graph ingestion", "observed_at": "2026-09-16T02:28:00Z", "basis": "The later paper cites the earlier agenda, implements dedicated safety environments including safe exploration, and evaluates two deep-RL agents. Extends denotes operationalization/empirical treatment, not scientific validation or successful solution."}, "review": {"required_for_admission": false, "review_state": "not_required", "reviewed_by": null, "reviewed_at": null}, "authority_effect": "NONE"},
+    {"relation_id": "RC-REL-GRIDWORLDS-IICT-REVERSIBILITY-001", "subject": "RC-CLM-ARXIV-1711-09883-REVERSIBILITY", "predicate": "conceptually_related", "object": "RC-CLM-SV-IICT-RECOVERABILITY", "assertion_mode": "human_asserted", "state": "admitted", "confidence": 0.90, "evidence_refs": ["RC-EVD-ARXIV-1711-09883-REVERSIBILITY", "RC-EVD-SV-IICT-RECOVERABILITY"], "provenance": {"asserted_by": "RC-CTRL-001 research-graph ingestion", "observed_at": "2026-09-16T02:28:00Z", "basis": "Gridworlds operationalizes irreversible side effects by preserving the option to restore state; IICT separately treats preserved reconstructability/recoverability around irreversible commitment. The edge records bounded conceptual correspondence only."}, "review": {"required_for_admission": false, "review_state": "not_required", "reviewed_by": null, "reviewed_at": null}, "authority_effect": "NONE"},
+    {"relation_id": "RC-REL-GRIDWORLDS-IICT-CANDIDATE-001", "subject": "RC-CLM-ARXIV-1711-09883-REVERSIBILITY", "predicate": "independently_converges_with", "object": "RC-CLM-SV-IICT-RECOVERABILITY", "assertion_mode": "machine_discovered", "state": "candidate", "confidence": 0.74, "evidence_refs": ["RC-EVD-ARXIV-1711-09883-REVERSIBILITY", "RC-EVD-SV-IICT-RECOVERABILITY"], "provenance": {"asserted_by": "RC-CTRL-001 machine relation discovery", "observed_at": "2026-09-16T02:28:00Z", "basis": "Machine comparison detected possible independent convergence around preserving reversible/recoverable state across consequential transitions; candidate remains pending review."}, "review": {"required_for_admission": true, "review_state": "pending", "reviewed_by": null, "reviewed_at": null}, "authority_effect": "NONE"}
   ],
   "authority_boundary": "The Published Research Graph records identity, provenance, discoverability, and bounded relation assertions. A graph edge does not establish scientific truth, causation, priority, replication, publication authority, governance authority, execution authority, or reuse admissibility. Machine-discovered relations enter only as candidate state and require review before admission."
 }
