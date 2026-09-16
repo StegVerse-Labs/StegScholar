@@ -156,15 +156,16 @@ Historical sweep surfaces:
 
 ## GTG assurance receipt preservation
 
-`GTG-ASSURANCE-RECEIPT-PRESERVATION-001` is the bounded repair derived from that retired sweep. On its implementation branch, the legacy GTG fixture receipt serializer now preserves the exact optional `governance_assurance` object when present, omits it when absent, requires `authority_effect: NONE`, and hashes the receipt only after preserved assurance has been inserted.
+`GTG-ASSURANCE-RECEIPT-PRESERVATION-001` is complete and retired. StegScholar PR #75 repaired the legacy fixture serializer so emitted receipts preserve the exact optional `governance_assurance` object when present, omit it when absent, require `authority_effect: NONE`, and compute `receipt_hash` after preservation. Exact implementation head `d540be925ea6ad54b8fe8dcde2dc328d09eb9caa` passed the GTG, assurance-reference, compatibility-sweep, readiness, independent-review, and architecture-neutral validation workflows before merging as `c75b579fdf8261cb6fcba96d4d0b3cc3b4be3954`.
 
 Repair surfaces:
 - `scripts/validate_gtg_fixtures.py`
 - `tests/test_gtg_assurance_receipt_preservation.py`
 - `tests/test_gtg_assurance_consumer_compatibility_sweep.py`
+- `scripts/validate_gtg_assurance_consumer_compatibility_sweep.py`
 - `GTG_ASSURANCE_RECEIPT_PRESERVATION_MIRROR_HANDOFF.md`
 
-The repair does not modify GTG activation/disposition algebra or the TT schema. Historical no-assurance receipts remain structurally compatible, and TT continues to use only `gtg_record_ref` for cross-layer reconstruction.
+The repair does not modify GTG activation/disposition algebra or the TT schema. Historical no-assurance receipts remain structurally compatible, and TT continues to use only `gtg_record_ref` for cross-layer reconstruction. The retired parent sweep remains closed and retains the pre-fix evidence that justified this bounded repair.
 
 ## Research Themes
 - Trust as a system state
