@@ -107,15 +107,34 @@ Evidence, authority, standing, safety/constraints, policy, and commit-time failu
 
 ## Post-completion GTG/TT compatibility review
 
-`GTG-TT-MILLINGS-FORMALISM-COMPATIBILITY-REVIEW-001` reviews the three retired formalisms against the current GTG decision/governance schemas and TT transition-cell schema.
+`GTG-TT-MILLINGS-FORMALISM-COMPATIBILITY-REVIEW-001` reviewed the three retired formalisms against the current GTG decision/governance schemas and TT transition-cell schema.
 
-The review finds one material integration gap: GTG currently has generic evidence/challenge references but no typed, correlation-checked binding that identifies which gate-legitimacy, independent-review, or architecture-neutrality record applies to the exact governance decision. TT already has the correct ownership relationship through `gtg_record_ref`, so duplicating those assurance records into TT would create drift rather than deterministic value.
+The review found one material integration gap: GTG had generic evidence/challenge references but no typed, correlation-checked binding identifying which gate-legitimacy, independent-review, or architecture-neutrality record applies to the exact governance decision. TT already has the correct ownership relationship through `gtg_record_ref`, so duplicating those assurance records into TT would create drift rather than deterministic value.
 
 Review surfaces:
 - `papers/rtg-gtg-tt/millings-derived-formalism-compatibility-review.md`
 - `GTG_TT_MILLINGS_FORMALISM_COMPATIBILITY_REVIEW_MIRROR_HANDOFF.md`
 
-The minimum derived implementation task is `GTG-ASSURANCE-REFERENCE-INTEGRATION-001`, with handoff `GTG_ASSURANCE_REFERENCE_INTEGRATION_MIRROR_HANDOFF.md`. It is scoped to an optional typed GTG assurance object, profile-scoped applicability, record/candidate/gate correlation, `authority_effect: NONE` enforcement, and GTG->TT compatibility tests. No TT schema duplication is authorized by the review.
+The minimum derived implementation task is `GTG-ASSURANCE-REFERENCE-INTEGRATION-001`, with handoff `GTG_ASSURANCE_REFERENCE_INTEGRATION_MIRROR_HANDOFF.md`.
+
+## GTG assurance reference integration
+
+`GTG-ASSURANCE-REFERENCE-INTEGRATION-001` implements the compatibility-review result as an additive, non-authorizing GTG surface.
+
+Implementation surfaces:
+- `schemas/gtg-governance-assurance.schema.json`
+- `schemas/gtg-decision.schema.json`
+- `schemas/gtg-governance-record.schema.json`
+- `fixtures/gtg-assurance-reference-integration/cases.json`
+- `scripts/validate_gtg_assurance_reference_integration.py`
+- `tests/test_gtg_assurance_reference_integration.py`
+- `.github/workflows/validate-gtg-assurance-reference-integration.yml`
+
+`governance_assurance` is optional in both GTG schemas, preserving historical records that predate the integration. Profiles declare `required_types`; required unresolved assurance fails closed in deterministic validation, while absent optional or `NOT_APPLICABLE` assurance does not create a false failure. Each binding is typed and correlation-checked against the active candidate/gate/rule/evaluator context, and both the binding and referenced source record must retain `authority_effect: NONE`.
+
+The integration does not alter GTG disposition ownership. A valid Architecture-Neutral Admissibility record cannot force `ALLOW`, Gate Legitimacy cannot mint authority, and Independent Review does not become a second governance authority.
+
+TT remains intentionally unchanged: `schemas/tt-transition-cell.schema.json` has no `governance_assurance` field. Cross-layer reconstruction follows only `gtg_record_ref`, preventing independently mutable duplicate assurance state in TT.
 
 ## Research Themes
 - Trust as a system state
