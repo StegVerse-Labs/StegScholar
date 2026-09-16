@@ -94,9 +94,26 @@ Bounded graph treatment:
 
 Source custody is additionally preserved in `research_commons/published_research_graph/sources/RC-DOC-NEURIPS-2020-F50A6C02.md`, and the graph-local README summarizes the bounded sixth-source treatment.
 
-## Post-reconciliation integrity repair
+## Post-reconciliation integrity repair — merged 2026-09-16
 
-A final canonical re-read detected that the sixth-ingestion graph rewrite had accidentally changed the pre-existing `RC-CLM-ARXIV-1711-09883-BASELINE-RESULT` text digest. The canonical pre-ingestion digest is `sha256:ed8887f7e1b48fbd0e0904e04802a10d8f5536ceb428d21c5c849fc55bd64fab`. The changed value was a transcription defect only; no source evidence, relation semantics, authority boundary, or scientific conclusion changed. The repair branch `rc-ctrl-001-safelife-integrity-repair` restores the exact preserved digest and must pass exact-head validation and expected-head-protected merge before checkout.
+A final canonical re-read detected that the sixth-ingestion graph rewrite had accidentally changed the pre-existing `RC-CLM-ARXIV-1711-09883-BASELINE-RESULT` text digest. The canonical pre-ingestion digest is `sha256:ed8887f7e1b48fbd0e0904e04802a10d8f5536ceb428d21c5c849fc55bd64fab`. The changed value was a transcription defect only; no source evidence, relation semantics, authority boundary, or scientific conclusion changed.
+
+Integrity-repair PR: `StegVerse-Labs/StegScholar#85`
+Validated exact repair head: `1a12f086a6da688befe4b8c464f17c11a5aacf52`
+Repair merge SHA: `ba36d24eb7d81e7d4a83453692ad60dfdb12aa20`
+Expected-head protection: repair merge was performed against exact head `1a12f086a6da688befe4b8c464f17c11a5aacf52`.
+
+Repair exact-head validation:
+- `Build and validate Research Commons` run `35102782020`, run number 124, success.
+- `Validate Research Commons Control State` run `35102782053`, run number 618, success.
+- `Test Readiness` run `35102781933`, run number 848, success.
+
+Post-repair evidence at `ba36d24eb7d81e7d4a83453692ad60dfdb12aa20`:
+- `Build and validate Research Commons` run `35102827088`, run number 125, success.
+- `Validate Research Commons Control State` run `35102827035`, run number 619, success.
+- `Test Readiness` run `35102827030`, run number 849, success.
+
+The exact preserved Gridworlds digest is restored on canonical graph state.
 
 ## Existing Site projection blocker
 
@@ -138,8 +155,8 @@ python research_commons/tools/check_research_commons_control_state.py
 
 ## Archive conditions
 
-The sixth ingestion implementation and reconciliation are merged and validated, but the bounded continuation remains non-archiveable until the post-reconciliation integrity repair restoring the preserved Gridworlds claim digest passes exact-head hosted validation and merges with expected-head protection. `RC-004` and `RC-005` continue independently.
+The sixth ingestion, its reconciliation, and the post-reconciliation integrity repair are repository-complete and exact-head validated. This final handoff-only reconciliation must itself pass exact-head validation and expected-head-protected merge before the bounded continuation is fully checked out. `RC-004` and `RC-005` continue independently.
 
 ## Next executable action
 
-After the integrity repair is green and merged, continue `RC-CTRL-001` only with an independently authored empirical source that directly benchmarks at least two represented side-effect mitigation mechanisms under the same environment/protocol, or independently reproduces/fails to reproduce one represented mechanism in a substantially different domain. Prefer direct AUP-vs-relative-reachability-vs-future-task comparisons with quantitative side-effect and task-performance results; reject single-method conceptual extensions, preserve external custody plus `authority_effect: NONE`, and do not infer support for StegVerse research from graph lineage.
+After this final handoff reconciliation is green and merged, continue `RC-CTRL-001` only with an independently authored empirical source that directly benchmarks at least two represented side-effect mitigation mechanisms under the same environment/protocol, or independently reproduces/fails to reproduce one represented mechanism in a substantially different domain. Prefer direct AUP-vs-relative-reachability-vs-future-task comparisons with quantitative side-effect and task-performance results; reject single-method conceptual extensions, preserve external custody plus `authority_effect: NONE`, and do not infer support for StegVerse research from graph lineage.
