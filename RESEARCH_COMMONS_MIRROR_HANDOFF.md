@@ -17,107 +17,60 @@ Read before mutation:
 5. `research_commons/sources/publisher-papers/reconciliation.json`
 6. `research_commons/published_research_graph/schema.json`
 7. `research_commons/published_research_graph/graph.json`
-8. issue #21, issue #37, and issue #38
-9. `GCAT-BCAT-Engine/Publisher/docs/PUBLISHER_MIRROR_HANDOFF.md`
-10. before any Site mutation, `StegVerse-Labs/Site/docs/SITE_MIRROR_HANDOFF.md`
+8. `research_commons/published_research_graph/SEVENTH_SOURCE_SCREENING_NOTE.md`
+9. issue #21, issue #37, and issue #38
+10. `GCAT-BCAT-Engine/Publisher/docs/PUBLISHER_MIRROR_HANDOFF.md`
+11. before any Site mutation, `StegVerse-Labs/Site/docs/SITE_MIRROR_HANDOFF.md`
 
 ## Active goal
 
 `RC-CTRL-001` owns governed Research Commons ingestion, research indexing and relation lineage, validation, reuse boundaries, and Site projection without transferring publication or scientific authority. The source-neutral Published Research Graph remains an extension of RC-008 under this goal.
 
-## Durable prior state
+## Canonical graph state
 
-The source-neutral graph implementation and first five external ingestions remain canonical. Both machine-discovered IICT independent-convergence candidates remain explicitly rejected after review; bounded `conceptually_related` edges remain the appropriate non-authorizing representation.
+The source-neutral graph implementation and six external ingestions are canonical. Both machine-discovered IICT independent-convergence candidates remain explicitly rejected after review; bounded `conceptually_related` edges remain non-authorizing.
 
-The fifth external ingestion, Eresheim, Kovac, and Adrowitzer, `Standing Still Is Not an Option: Alternative Baselines for Attainable Utility Preservation`, merged in PR #81 as `84ac557f72df0acf8778061e5b2b38e97337444f`; reconciliation PR #82 merged as `54dedec2c9b8f41fbf769f07e8c3a785591cdb4e`. Post-reconciliation Research Commons build/control runs `35097971975` and `35097971822` succeeded.
+Every graph document and relation retains `authority_effect: NONE`. No graph edge establishes scientific truth, causation, priority/authorship, publication standing/custody, reuse admissibility, governance authority, or execution authority.
 
-## Graph identity, relation, and authority invariants
+### Sixth external ingestion
 
-The graph separates document (`RC-DOC-*`), claim (`RC-CLM-*`), evidence (`RC-EVD-*`), and relation (`RC-REL-*`) identity. External published research requires a durable locator. Source custody remains with the external source. Machine-discovered relations require review for admission or rejection. Every graph document and relation retains `authority_effect: NONE`; no graph edge establishes scientific truth, causation, priority/authorship, publication standing/custody, reuse admissibility, governance authority, or execution authority.
+Turner, Ratzlaff, and Tadepalli, `Avoiding Side Effects in Complex Environments`, NeurIPS 2020, arXiv `2006.06547v1`, is represented as `RC-DOC-NEURIPS-2020-F50A6C02` with source custody retained by NeurIPS proceedings / arXiv / original authors.
 
-## Sixth authentic external published-research ingestion — merged 2026-09-16
+Bounded relations:
+- `RC-REL-SAFELIFE-REFINES-GRIDWORLDS-001`: empirical refinement from small deterministic Gridworlds into substantially larger stochastic procedurally generated SafeLife environments.
+- `RC-REL-SAFELIFE-CHALLENGES-RR-SCALING-001`: mechanism-specific challenge to reachability-penalty scalability; does not invalidate the earlier toy-environment RR result.
 
-Implementation PR: `StegVerse-Labs/StegScholar#83`
-Implementation branch: `rc-ctrl-001-safelife-aup`
-Base main head: `54dedec2c9b8f41fbf769f07e8c3a785591cdb4e`
-Validated exact PR head: `5fb46e44318daeb9846643ec492be54d75b8bf7c`
-Merge SHA: `32d6db88c2f682ff44043394e0d547a8d0b35755`
-Expected-head protection: merge was performed against exact head `5fb46e44318daeb9846643ec492be54d75b8bf7c`.
+Implementation PR #83 exact head `5fb46e44318daeb9846643ec492be54d75b8bf7c` passed Research Commons build/control/Test Readiness runs `35101921005`, `35101920606`, and `35101920712` and merged with expected-head protection as `32d6db88c2f682ff44043394e0d547a8d0b35755`. Post-merge runs `35102021141`, `35102021136`, and `35102021124` passed.
 
-Exact-head hosted validation:
-- `Build and validate Research Commons` run `35101921005`, run number 116, success.
-- `Validate Research Commons Control State` run `35101920606`, run number 612, success.
-- `Test Readiness` run `35101920712`, run number 838, success.
+Reconciliation PR #84 exact head `639927026ec0c47da1717f2e7ab2560fb493393a` passed runs `35102309409`, `35102309386`, and `35102309541` and merged with expected-head protection as `52b961c5cd34ecc06fcf79d42afba9bb5da8e5d3`. Post-reconciliation runs `35102355014`, `35102355044`, and `35102355193` passed.
 
-Post-merge main evidence at `32d6db88c2f682ff44043394e0d547a8d0b35755`:
-- `Build and validate Research Commons` run `35102021141`, run number 117, success.
-- `Validate Research Commons Control State` run `35102021136`, run number 613, success.
-- `Test Readiness` run `35102021124`, run number 839, success.
+A subsequent canonical integrity audit found a transcription defect in the preserved `RC-CLM-ARXIV-1711-09883-BASELINE-RESULT` digest. PR #85 restored the exact prior digest `sha256:ed8887f7e1b48fbd0e0904e04802a10d8f5536ceb428d21c5c849fc55bd64fab`; exact head `1a12f086a6da688befe4b8c464f17c11a5aacf52` passed runs `35102782020`, `35102782053`, and `35102781933`, merged with expected-head protection as `ba36d24eb7d81e7d4a83453692ad60dfdb12aa20`, and post-repair runs `35102827088`, `35102827035`, and `35102827030` passed.
 
-Reconciliation PR: `StegVerse-Labs/StegScholar#84`
-Validated reconciliation exact head: `639927026ec0c47da1717f2e7ab2560fb493393a`
-Reconciliation merge SHA: `52b961c5cd34ecc06fcf79d42afba9bb5da8e5d3`
-Expected-head protection: reconciliation merge was performed against exact head `639927026ec0c47da1717f2e7ab2560fb493393a`.
+Final handoff reconciliation PR #86 exact head `f1d862717fad6c2e2d0920830104f3d7c4c204df` passed runs `35102986260`, `35102986310`, and `35102986353`, merged with expected-head protection as `68f86889856f18f48d70ced726ba6f212b8309db`, and post-final runs `35103029308`, `35103029423`, and `35103029305` passed.
 
-Reconciliation exact-head validation:
-- `Build and validate Research Commons` run `35102309409`, run number 120, success.
-- `Validate Research Commons Control State` run `35102309386`, run number 615, success.
-- `Test Readiness` run `35102309541`, run number 843, success.
+## Seventh-source frozen threshold
 
-Post-reconciliation evidence at `52b961c5cd34ecc06fcf79d42afba9bb5da8e5d3`:
-- `Build and validate Research Commons` run `35102355014`, run number 121, success.
-- `Validate Research Commons Control State` run `35102355044`, run number 616, success.
-- `Test Readiness` run `35102355193`, run number 844, success.
+A seventh external graph source may be admitted only if it is independently authored and either:
+- directly benchmarks at least two already represented side-effect mitigation mechanisms under the same environment/protocol; or
+- independently reproduces or fails to reproduce one represented mechanism in a substantially different domain.
 
-External source:
-- title: `Avoiding Side Effects in Complex Environments`
-- authors: Alexander Matt Turner, Neale Ratzlaff, Prasad Tadepalli
-- venue: NeurIPS 2020, Advances in Neural Information Processing Systems 33
-- arXiv: `2006.06547v1`
-- document identity: `RC-DOC-NEURIPS-2020-F50A6C02`
-- canonical URL: `https://proceedings.neurips.cc/paper/2020/hash/f50a6c02a3fc5a3a5d4d9391f05f3efc-Abstract.html`
-- source custody: NeurIPS proceedings / arXiv / original authors
-- authority effect: `NONE`
+Prefer same-protocol quantitative AUP-vs-relative-reachability-vs-future-task evidence reporting both side-effect and task-performance outcomes. Reject conceptual-only extensions and do not weaken independence, reproduction, or domain-change semantics post hoc.
 
-Source-grounded findings:
-- the paper is an independently authored NeurIPS 2020 empirical evaluation rather than a conceptual-only proposal;
-- it moves AUP from toy Gridworlds into SafeLife, contrasting dozens of states with billions, deterministic with stochastic dynamics, preset with randomly generated environments, one with many side-effect opportunities, and immediate effects with delayed chaotic effects;
-- it evaluates AUP on four SafeLife tasks using a learned auxiliary reward and compares against PPO, DQN, AUP projection, and naive baselines;
-- it reports that AUP can complete the represented tasks while avoiding many side effects with modest overhead;
-- it identifies a scalability limitation for state-reachability penalties: naive estimation of all reachability functions is quadratic in state-space size.
+## Seventh-source screening pass — no admission
 
-Bounded graph treatment:
-- `RC-REL-SAFELIFE-REFINES-GRIDWORLDS-001` records material empirical refinement from the represented small deterministic Gridworlds regime into a much larger stochastic procedurally generated environment class; it does not claim replication or correction of all Gridworlds findings;
-- `RC-REL-SAFELIFE-CHALLENGES-RR-SCALING-001` records a mechanism-specific challenge to scalability of the represented reachability-style approach; it does not dispute the earlier relative-reachability toy-environment result;
-- no relation asserts equivalence among AUP, relative reachability, future-task preservation, or StegVerse IICT;
-- conceptual-similarity-only sources were not admitted.
+The screening record is `research_commons/published_research_graph/SEVENTH_SOURCE_SCREENING_NOTE.md`. The Published Research Graph itself is unchanged in this pass.
 
-Source custody is additionally preserved in `research_commons/published_research_graph/sources/RC-DOC-NEURIPS-2020-F50A6C02.md`, and the graph-local README summarizes the bounded sixth-source treatment.
+Rejected candidates:
+- Vamplew, Foale, Dazeley, and Bignold (2021), `Potential-based multiobjective reinforcement learning approaches to low-impact agents for AI safety`, DOI `10.1016/j.engappai.2021.104186`: independent and empirical, and directly compares the authors' TLOA method with a learned Relative Reachability variant across four benchmark environments, but only RR is already represented, the RR implementation is modified, and the evaluation remains gridworld-style RL rather than a substantially different domain.
+- Burden, Hernandez-Orallo, and O hEigeartaigh (2021), `Negative Side Effects and AI Agent Indicators: Experiments in SafeLife`: independent and quantitative, but evaluates DQN, PPO, and a random agent rather than AUP, RR, or future-task mitigation; therefore it does not reproduce or compare a represented mitigation mechanism.
+- Lindner, Matoba, and Meulemans (2021), `Challenges for Using Impact Regularizers to Avoid Negative Side Effects`, arXiv `2101.12509`: independently authored and directly analyzes RR, attainable utility, and future-task approaches, but does not provide the required same-protocol empirical benchmark or different-domain reproduction.
+- Turner, Hadfield-Menell, and Tadepalli (2020), `Conservative Agency via Attainable Utility Preservation`: directly benchmarks AUP against RR, but fails this continuation's frozen independence criterion because it is the AUP source family.
 
-## Post-reconciliation integrity repair — merged 2026-09-16
-
-A final canonical re-read detected that the sixth-ingestion graph rewrite had accidentally changed the pre-existing `RC-CLM-ARXIV-1711-09883-BASELINE-RESULT` text digest. The canonical pre-ingestion digest is `sha256:ed8887f7e1b48fbd0e0904e04802a10d8f5536ceb428d21c5c849fc55bd64fab`. The changed value was a transcription defect only; no source evidence, relation semantics, authority boundary, or scientific conclusion changed.
-
-Integrity-repair PR: `StegVerse-Labs/StegScholar#85`
-Validated exact repair head: `1a12f086a6da688befe4b8c464f17c11a5aacf52`
-Repair merge SHA: `ba36d24eb7d81e7d4a83453692ad60dfdb12aa20`
-Expected-head protection: repair merge was performed against exact head `1a12f086a6da688befe4b8c464f17c11a5aacf52`.
-
-Repair exact-head validation:
-- `Build and validate Research Commons` run `35102782020`, run number 124, success.
-- `Validate Research Commons Control State` run `35102782053`, run number 618, success.
-- `Test Readiness` run `35102781933`, run number 848, success.
-
-Post-repair evidence at `ba36d24eb7d81e7d4a83453692ad60dfdb12aa20`:
-- `Build and validate Research Commons` run `35102827088`, run number 125, success.
-- `Validate Research Commons Control State` run `35102827035`, run number 619, success.
-- `Test Readiness` run `35102827030`, run number 849, success.
-
-The exact preserved Gridworlds digest is restored on canonical graph state.
+No scientific rejection beyond the stated continuation threshold is asserted. Screening disposition has `authority_effect: NONE` and cannot create or deny scientific, publication, governance, execution, or reuse authority.
 
 ## Existing Site projection blocker
 
-The pre-existing Site projection remains independently blocked pending Publisher reconciliation/authorization. This work does not bypass or resolve that gate.
+The pre-existing Site projection remains independently blocked pending Publisher reconciliation/authorization. This screening work does not bypass or resolve that gate.
 
 ```text
 dispatch_state: BLOCKED
@@ -142,6 +95,8 @@ python research_commons/tools/build_site_projection_dispatch.py
 python research_commons/tools/check_research_commons_control_state.py
 ```
 
+The current screening-only branch must pass exact-head hosted validation before merge. Because the graph is intentionally unchanged, validation must confirm that the screening record and README/handoff changes do not alter graph identity, authority semantics, or Site projection state.
+
 ## Cross-repository dependencies
 
 - `GCAT-BCAT-Engine/Publisher`: publication custody, source catalog, and Publisher reconciliation authority.
@@ -155,8 +110,8 @@ python research_commons/tools/check_research_commons_control_state.py
 
 ## Archive conditions
 
-The sixth ingestion, its reconciliation, and the post-reconciliation integrity repair are repository-complete and exact-head validated. This final handoff-only reconciliation must itself pass exact-head validation and expected-head-protected merge before the bounded continuation is fully checked out. `RC-004` and `RC-005` continue independently.
+This screening pass is archiveable only after its exact PR head passes the canonical Research Commons hosted validation set, merges with expected-head protection, post-merge build/control evidence is observed, and this handoff is reconciled with those exact receipts. The seventh external source remains unfilled; lack of a qualifying source is not permission to lower the frozen threshold.
 
 ## Next executable action
 
-After this final handoff reconciliation is green and merged, continue `RC-CTRL-001` only with an independently authored empirical source that directly benchmarks at least two represented side-effect mitigation mechanisms under the same environment/protocol, or independently reproduces/fails to reproduce one represented mechanism in a substantially different domain. Prefer direct AUP-vs-relative-reachability-vs-future-task comparisons with quantitative side-effect and task-performance results; reject single-method conceptual extensions, preserve external custody plus `authority_effect: NONE`, and do not infer support for StegVerse research from graph lineage.
+Continue source discovery for a genuinely independent empirical paper that clears the frozen seventh-source threshold. Prefer a same-protocol quantitative comparison of two or more represented mechanisms; otherwise require an actual independent reproduction or failure-to-reproduce of one represented mechanism in a substantially different domain. If no source clears the threshold, preserve `NO_ADMISSION` and add no graph node or relation.
