@@ -43,10 +43,14 @@ Supported relations include `cites`, `supports`, `corroborates`, `contradicts`, 
 
 Machine-discovered relations require review for admission. `candidate` requires pending review; `admitted` requires accepted review plus reviewer identity/time; `rejected` requires rejected review plus reviewer identity/time. Every graph document and relation retains `authority_effect: NONE`. A graph node, edge, admission, or rejection does not establish scientific truth, causation, priority/authorship, publication standing/custody, reuse admissibility, governance authority, or execution authority.
 
-## Second authentic external published-research ingestion — validation pending
+## Second authentic external published-research ingestion — merged 2026-09-16
 
-Implementation branch: `rc-ctrl-001-second-external-research`
+Implementation PR: `StegVerse-Labs/StegScholar#72`
 Base main head: `e216da92c627672d5a91e4057a8120acd3baa10b`
+Validated PR head: `e7614af5b42ef15b05a680264f6c5aa8281b2bf0`
+Merge SHA: `4f2463de23d64b0d1a9f049035fcb369c69a2466`
+Hosted validation: `Build and validate Research Commons` run `35048696191`, run number 84, conclusion `success`.
+Additional exact-head checks: Test Readiness run `35048696196` success; Research Commons Control State run `35048696186` success; Independent Review run `35048696177` success; Architecture Neutral Admissibility run `35048696282` success; GTG Assurance Reference Integration run `35048696183` success.
 
 External source:
 - title: `AI Safety Gridworlds`
@@ -63,14 +67,15 @@ Source-grounded graph relations:
 - `RC-REL-GRIDWORLDS-CITES-CONCRETE-001`: explicit-source `cites` from `AI Safety Gridworlds` to `Concrete Problems in AI Safety`; the source text explicitly cites Amodei et al. 2016.
 - `RC-REL-GRIDWORLDS-EXTENDS-SAFE-EXPLORATION-001`: bounded human-asserted `extends` relation because the later paper cites the earlier technical agenda, implements dedicated safety environments including safe exploration, and evaluates A2C/Rainbow; this records operationalization/empirical treatment, not proof or successful solution.
 - `RC-REL-GRIDWORLDS-IICT-REVERSIBILITY-001`: bounded human-asserted `conceptually_related` relation between the Gridworlds irreversible-side-effects/reversibility discussion and IICT recoverability/reconstructability.
-- `RC-REL-GRIDWORLDS-IICT-CANDIDATE-001`: machine-discovered `independently_converges_with`, confidence `0.74`, state `candidate`, review `pending`; it is not admitted.
+- `RC-REL-GRIDWORLDS-IICT-CANDIDATE-001`: machine-discovered `independently_converges_with`, confidence `0.74`, state `candidate`, review `pending`; it remains non-admitted.
 
-Review-state fixtures:
-- existing `invalid-machine-admitted-without-review.json` must fail validation;
-- `valid-machine-promoted-after-review.json` must pass with accepted reviewer identity/time while retaining `authority_effect: NONE`;
-- `valid-machine-rejected-after-review.json` must pass with rejected reviewer identity/time while retaining provenance and `authority_effect: NONE`.
+Deterministic review-state evidence at validated PR head:
+- `invalid-machine-admitted-without-review.json` was required to fail with the accepted-review-evidence error;
+- `valid-machine-promoted-after-review.json` was required to pass with accepted reviewer identity/time and `authority_effect: NONE`;
+- `valid-machine-rejected-after-review.json` was required to pass with rejected reviewer identity/time, retained provenance, and `authority_effect: NONE`;
+- `invalid-machine-rejected-without-review.json` was required to fail with the rejected-review-evidence error.
 
-README and `.github/workflows/build-and-validate-research-commons.yml` are updated on the implementation branch. Do not claim this second ingestion merged or validated until exact-head hosted validation succeeds and merge occurs with expected-head protection.
+README, graph data, validator, review fixtures, and `.github/workflows/build-and-validate-research-commons.yml` were merged through PR #72. No source custody, scientific authority, publication authority, governance authority, execution authority, or reuse-admissibility authority changed.
 
 ## Existing Site projection blocker
 
@@ -112,8 +117,8 @@ python research_commons/tools/check_research_commons_control_state.py
 
 ## Archive conditions
 
-The graph architecture and first external ingestion are repository-complete. This second ingestion is not archive-ready until exact-head validation, expected-head-protected merge, and post-merge handoff reconciliation are recorded. Ongoing RC-004 and RC-005 repository-native states continue independently.
+The graph architecture plus first and second external-source ingestions are repository-complete after expected-head-protected merges and hosted exact-head validation. This reconciliation commit must itself be observed green under the Research Commons build/control workflows before this bounded second-ingestion continuation is considered fully checked out. Ongoing RC-004 and RC-005 repository-native states continue independently.
 
 ## Next executable action
 
-Open the second-ingestion PR, obtain exact-head green Research Commons validation including promotion/rejection fixture checks, repair any failures on the same branch, merge only with expected-head protection, then reconcile this handoff with PR number, validated head, merge SHA, and post-merge main validation evidence.
+After post-reconciliation main validation is green, continue the graph by adding an external source that challenges, replicates, or materially refines one of the now-observed empirical safety results, preferably creating a multi-hop external-to-external-to-StegVerse evidence chain while preserving source custody and review-state authority boundaries.
