@@ -36,6 +36,8 @@ The third external exemplar is Krakovna et al., *Avoiding Side Effects By Consid
 
 The fourth external exemplar is Krakovna et al., *Penalizing Side Effects using Stepwise Relative Reachability* (AISafety@IJCAI 2019; `arXiv:1806.01186v2`, DOI `10.48550/arXiv.1806.01186`). The paper uses AI Safety Gridworlds-based experiments to separate side-effect penalty design into baseline-state and deviation-measure choices, shows a concrete failure mode for penalizing irreversibility alone when the task itself requires irreversible action, and reports that the stepwise inaction baseline combined with relative reachability avoids the represented interference, offsetting, and effectiveness failures. The graph therefore records both a bounded `refines` edge and a mechanism-specific `challenges` edge to the Gridworlds reversibility treatment; neither edge claims replication of the full benchmark or contradiction of the broader safety problem.
 
+The fifth external exemplar is Eresheim, Kovac, and Adrowitzer, *Standing Still Is Not an Option: Alternative Baselines for Attainable Utility Preservation* (CD-MAKE 2023, LNCS 14065, pp. 239-257; DOI `10.1007/978-3-031-40837-3_15`). This independently authored peer-reviewed paper identifies the no-op-action baseline as a limitation of prior AUP formulations, introduces four alternative baselines that do not require no-op, and evaluates the variants across AI Safety Gridworlds. The graph records bounded empirical refinement of the represented Gridworlds baseline/evaluation surface and benchmark use. It does not claim full replication, equivalence to relative reachability or future-task preservation, general correctness of AUP, or support for StegVerse research.
+
 Validation:
 
 ```text
