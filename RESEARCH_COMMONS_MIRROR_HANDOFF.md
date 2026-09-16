@@ -27,53 +27,43 @@ Read before mutation:
 
 ## Durable prior state
 
-The source-neutral graph implementation and first four external ingestions remain canonical. Both machine-discovered IICT independent-convergence candidates remain explicitly rejected after review; bounded `conceptually_related` edges remain the appropriate non-authorizing representation.
+The source-neutral graph implementation and first five external ingestions remain canonical. Both machine-discovered IICT independent-convergence candidates remain explicitly rejected after review; bounded `conceptually_related` edges remain the appropriate non-authorizing representation.
+
+The fifth external ingestion, Eresheim, Kovac, and Adrowitzer, `Standing Still Is Not an Option: Alternative Baselines for Attainable Utility Preservation`, merged in PR #81 as `84ac557f72df0acf8778061e5b2b38e97337444f`; reconciliation PR #82 merged as `54dedec2c9b8f41fbf769f07e8c3a785591cdb4e`. Post-reconciliation Research Commons build/control runs `35097971975` and `35097971822` succeeded.
 
 ## Graph identity, relation, and authority invariants
 
 The graph separates document (`RC-DOC-*`), claim (`RC-CLM-*`), evidence (`RC-EVD-*`), and relation (`RC-REL-*`) identity. External published research requires a durable locator. Source custody remains with the external source. Machine-discovered relations require review for admission or rejection. Every graph document and relation retains `authority_effect: NONE`; no graph edge establishes scientific truth, causation, priority/authorship, publication standing/custody, reuse admissibility, governance authority, or execution authority.
 
-## Fifth authentic external published-research ingestion — merged 2026-09-16
+## Sixth authentic external published-research ingestion — validation pending
 
-Implementation PR: `StegVerse-Labs/StegScholar#81`
-Implementation branch: `rc-ctrl-001-aup-baselines`
-Base main head: `7e98730125b977bd82e514e10fbdc06ed0e99a5b`
-Validated exact PR head: `87f40956e747585f3a75bbd67206696e9dc8afce`
-Merge SHA: `84ac557f72df0acf8778061e5b2b38e97337444f`
-Expected-head protection: merge was performed against exact head `87f40956e747585f3a75bbd67206696e9dc8afce`.
-
-Exact-head hosted validation:
-- `Build and validate Research Commons` run `35097670233`, run number 108, success.
-- `Validate Research Commons Control State` run `35097670362`, run number 606, success.
-- `Test Readiness` run `35097670346`, run number 828, success.
-- `Validate Independent Review` run `35097670402`, run number 49, success.
-- `Validate Architecture Neutral Admissibility` run `35097670366`, run number 15, success.
-- `Validate GTG Assurance Reference Integration` run `35097670312`, run number 10, success.
-- `Validate GTG Assurance Consumer Compatibility Sweep` run `35097670375`, run number 10, success.
-
-Post-merge main evidence at `84ac557f72df0acf8778061e5b2b38e97337444f`:
-- `Build and validate Research Commons` run `35097721217`, run number 109, success.
-- `Validate Research Commons Control State` run `35097721285`, run number 607, success.
-- `Test Readiness` run `35097721152`, run number 829, success.
-- `Validate Independent Review` run `35097721157`, run number 50, success.
+Implementation branch: `rc-ctrl-001-safelife-aup`
+Base main head: `54dedec2c9b8f41fbf769f07e8c3a785591cdb4e`
 
 External source:
-- title: `Standing Still Is Not an Option: Alternative Baselines for Attainable Utility Preservation`
-- authors: Sebastian Eresheim, Fabian Kovac, Alexander Adrowitzer
-- venue: CD-MAKE 2023, Lecture Notes in Computer Science 14065, pp. 239-257
-- DOI: `10.1007/978-3-031-40837-3_15`
-- document identity: `RC-DOC-SPRINGER-9783031408373-15`
-- canonical URL: `https://link.springer.com/chapter/10.1007/978-3-031-40837-3_15`
-- source custody: Springer Nature / original authors
+- title: `Avoiding Side Effects in Complex Environments`
+- authors: Alexander Matt Turner, Neale Ratzlaff, Prasad Tadepalli
+- venue: NeurIPS 2020, Advances in Neural Information Processing Systems 33
+- arXiv: `2006.06547v1`
+- document identity: `RC-DOC-NEURIPS-2020-F50A6C02`
+- canonical URL: `https://proceedings.neurips.cc/paper/2020/hash/f50a6c02a3fc5a3a5d4d9391f05f3efc-Abstract.html`
+- source custody: NeurIPS proceedings / arXiv / original authors
 - authority effect: `NONE`
 
-Source-grounded findings and bounded relations:
-- the independently authored peer-reviewed paper identifies prior AUP dependence on a no-op action as a limitation, introduces four alternative baselines without that requirement, and evaluates them on multiple AI Safety Gridworlds with broader task coverage and only small reported performance losses;
-- `RC-REL-AUP-REFINES-GRIDWORLDS-001` records bounded empirical refinement of baseline design / Gridworld task coverage, not full replication or correction of all Gridworlds findings;
-- `RC-REL-AUP-USES-GRIDWORLDS-001` records benchmark/method use only;
-- no relation claims equivalence to relative reachability, future-task preservation, or StegVerse IICT; conceptual-similarity-only screened sources were not ingested.
+Admission/evidence threshold:
+- the paper is a NeurIPS 2020 published empirical evaluation rather than a conceptual-only proposal;
+- it moves AUP from toy Gridworlds into SafeLife, contrasting dozens of states with billions, deterministic with stochastic dynamics, preset with randomly generated environments, one with many side-effect opportunities, and immediate effects with delayed chaotic effects;
+- it evaluates AUP on four SafeLife tasks using a single learned auxiliary reward and compares against PPO, DQN, AUP projection, and naive baselines;
+- it reports that AUP can complete the represented tasks while avoiding many side effects with modest overhead;
+- it explicitly states a scalability limitation for state-reachability penalties: naive estimation of all reachability functions is quadratic in state-space size.
 
-Process repair: an initial custody-note create was accidentally targeted at `main` as commit `3d253fe9eb23c9c4be3d821faa00bbf76c5adfb0` and immediately reverted as `7e98730125b977bd82e514e10fbdc06ed0e99a5b`, restoring the prior tree before the bounded implementation branch was created. The actual fifth-ingestion content entered canonical main only through validated PR #81.
+Bounded graph treatment:
+- `RC-REL-SAFELIFE-REFINES-GRIDWORLDS-001` records material empirical refinement from the represented small deterministic Gridworlds regime into a much larger stochastic procedurally generated environment class; it does not claim replication or correction of all Gridworlds findings;
+- `RC-REL-SAFELIFE-CHALLENGES-RR-SCALING-001` records a mechanism-specific challenge to scalability of the represented reachability-style approach; it does not dispute the earlier relative-reachability toy-environment result;
+- no relation asserts equivalence among AUP, relative reachability, future-task preservation, or StegVerse IICT;
+- conceptual-similarity-only sources are not admitted.
+
+Source custody is additionally preserved in `research_commons/published_research_graph/sources/RC-DOC-NEURIPS-2020-F50A6C02.md`.
 
 ## Existing Site projection blocker
 
@@ -102,6 +92,8 @@ python research_commons/tools/build_site_projection_dispatch.py
 python research_commons/tools/check_research_commons_control_state.py
 ```
 
+Exact-head hosted validation and expected-head-protected merge are required before the sixth ingestion is repository-complete.
+
 ## Cross-repository dependencies
 
 - `GCAT-BCAT-Engine/Publisher`: publication custody, source catalog, and Publisher reconciliation authority.
@@ -115,8 +107,8 @@ python research_commons/tools/check_research_commons_control_state.py
 
 ## Archive conditions
 
-The fifth ingestion is repository-complete at implementation/merge level: exact PR head validation passed, PR #81 merged with expected-head protection, and the merge commit passed post-merge Research Commons build/control validation. This reconciliation itself must pass hosted validation and merge before this bounded continuation is fully checked out. `RC-004` and `RC-005` continue independently.
+The sixth ingestion is not archiveable until its exact PR head passes Research Commons build/control validation, the PR merges with expected-head protection, post-merge validation is observed, and this handoff is reconciled with exact receipts. `RC-004` and `RC-005` continue independently.
 
 ## Next executable action
 
-After this reconciliation is green and merged, continue `RC-CTRL-001` only with an independently authored external empirical source that directly compares, challenges, replicates, or materially refines one or more represented side-effect mitigation mechanisms in harder or novel environments. Prefer head-to-head evidence across relative reachability, future-task preservation, AUP variants, or comparable impact regularization; reject conceptual-similarity-only additions and preserve external custody plus `authority_effect: NONE`.
+Open the bounded sixth-ingestion PR, validate the exact head, repair any failure without weakening provenance/relation semantics, merge only with expected-head protection, observe post-merge Research Commons build/control validation, then reconcile this handoff with exact head, workflow runs, merge SHA, and the next evidence threshold.
