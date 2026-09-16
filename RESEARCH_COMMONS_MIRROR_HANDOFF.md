@@ -37,6 +37,10 @@ First external ingestion: PR #69, validated head `2f704c9a9712077f41da0517891ae1
 
 Second external ingestion: PR #72, validated head `e7614af5b42ef15b05a680264f6c5aa8281b2bf0`, merge `4f2463de23d64b0d1a9f049035fcb369c69a2466`, Research Commons run `35048696191` success. It ingested Leike et al., `AI Safety Gridworlds`, as `RC-DOC-ARXIV-1711-09883` and added explicit `cites`, bounded `extends`, conceptual-IICT, and machine-candidate edges.
 
+Third external ingestion: PR #76, validated head `5d6b2a1ed0e022516c5dbe5a4fbef926c014b31a`, merge `a78e55950600a9b8fb50fe6ebde711729320e949`, Research Commons run `35092985117` success. It ingested Krakovna et al., `Avoiding Side Effects By Considering Future Tasks`, as `RC-DOC-ARXIV-2010-07877`, added explicit citations and a bounded `refines` relation to the Gridworlds side-effects mechanism/result, and rejected `RC-REL-GRIDWORLDS-IICT-CANDIDATE-001` after evidence review.
+
+Reconciliation PR #78 merged as `6869e11a159bd3b685a78fc56a14f4411d73e912`; post-reconciliation Research Commons build run `35093263798` and control-state run `35093263729` both succeeded.
+
 ## Graph identity, relation, and authority invariants
 
 The graph separates document (`RC-DOC-*`), claim (`RC-CLM-*`), evidence (`RC-EVD-*`), and relation (`RC-REL-*`) identity. External published research requires at least one durable locator from DOI, canonical URL, or content hash. Source custody remains with the external source.
@@ -45,67 +49,53 @@ Supported relations include `cites`, `supports`, `corroborates`, `contradicts`, 
 
 Machine-discovered relations require review for admission or rejection. `candidate` requires pending review; `admitted` requires accepted review plus reviewer identity/time; `rejected` requires rejected review plus reviewer identity/time. Every graph document and relation retains `authority_effect: NONE`. A graph node, edge, admission, or rejection does not establish scientific truth, causation, priority/authorship, publication standing/custody, reuse admissibility, governance authority, or execution authority.
 
-## Third authentic external published-research ingestion — merged 2026-09-16
+## Remaining machine-candidate review — implemented, validation pending
 
-Implementation PR: `StegVerse-Labs/StegScholar#76`
-Implementation branch: `rc-ctrl-001-future-tasks-refinement`
-Base main head: `d244907a00e41e83dc3b3aae68441744cafc99f0`
-Validated PR head: `5d6b2a1ed0e022516c5dbe5a4fbef926c014b31a`
-Merge SHA: `a78e55950600a9b8fb50fe6ebde711729320e949`
-Expected-head protection: merge performed against exact head `5d6b2a1ed0e022516c5dbe5a4fbef926c014b31a`.
+`RC-REL-EXT-AISAFETY-IICT-CANDIDATE-001` has been reviewed against its retained evidence. The stronger `independently_converges_with` predicate is rejected because `Concrete Problems in AI Safety` and IICT establish only a bounded conceptual relationship around irrecoverability/recoverability; the retained sources do not establish independent development, priority, or convergence. The already-admitted `RC-REL-EXT-AISAFETY-IICT-001` `conceptually_related` edge remains unchanged and is the appropriate representation.
 
-Exact-head hosted validation:
-- `Build and validate Research Commons` run `35092985117`, run number 91, success.
-- `Validate Research Commons Control State` run `35092985095`, run number 594, success.
-- `Test Readiness` run `35092985133`, run number 799, success.
-- `Validate Independent Review` run `35092985119`, run number 39, success.
-- `Validate Architecture Neutral Admissibility` run `35092985109`, run number 12, success.
-- `Validate GTG Assurance Reference Integration` run `35092985112`, run number 7, success.
-- `Validate GTG Assurance Consumer Compatibility Sweep` run `35092985172`, run number 7, success.
+Review state now records:
+- state: `rejected`
+- review_state: `rejected`
+- reviewer: `RC-CTRL-001 evidence review`
+- authority effect: `NONE`
 
-Validation repair history: an earlier PR head `3de99ec0b309f7baae5d6409b8abfdadfaa6327e` failed Research Commons run `35092876445` only at the control-state step because the handoff rewrite omitted the required `## Archive conditions` term. Graph validation, machine review-state fixtures, duplicate detection, Site projection boundary, and fail-closed dispatch had already passed on that head. The handoff contract was restored without weakening graph or review semantics, producing the final green exact head above.
+The review does not promote, validate, or discredit either underlying paper; it only rejects an over-strong graph predicate.
 
-Post-merge main evidence at merge SHA `a78e55950600a9b8fb50fe6ebde711729320e949`:
-- `Build and validate Research Commons` run `35093024321`, run number 92, success.
-- `Validate Research Commons Control State` run `35093024292`, run number 595, success.
+## Fourth authentic external published-research ingestion — validation pending
+
+Implementation branch: `rc-ctrl-001-relative-reachability`
+Base main head: `6869e11a159bd3b685a78fc56a14f4411d73e912`
 
 External source:
-- title: `Avoiding Side Effects By Considering Future Tasks`
-- authors: Victoria Krakovna, Laurent Orseau, Richard Ngo, Miljan Martic, Shane Legg
-- venue: NeurIPS 2020, Advances in Neural Information Processing Systems 33
-- document identity: `RC-DOC-ARXIV-2010-07877`
-- version identity: `neurips2020:dc1913d422398c25c5f0b81cab94cc87;arxiv:2010.07877v1`
-- DOI: `10.48550/arXiv.2010.07877`
-- canonical URL: `https://proceedings.neurips.cc/paper/2020/hash/dc1913d422398c25c5f0b81cab94cc87-Abstract.html`
-- content hash: not asserted; proceedings PDF bytes were inspected through the external proceedings surface but not independently retained as source custody
-- source custody: retained by NeurIPS/arXiv/original authors
+- title: `Penalizing Side Effects using Stepwise Relative Reachability`
+- authors: Victoria Krakovna, Laurent Orseau, Ramana Kumar, Miljan Martic, Shane Legg
+- venue: AISafety@IJCAI 2019 / CEUR Workshop Proceedings Vol. 2419
+- document identity: `RC-DOC-ARXIV-1806-01186`
+- version identity: `aisafety-ijcai2019:ceur-vol-2419-paper-1;arxiv:1806.01186v2`
+- DOI: `10.48550/arXiv.1806.01186`
+- canonical URL: `https://ceur-ws.org/Vol-2419/paper_1.pdf`
+- source custody: retained by CEUR-WS/arXiv/original authors
 - authority effect: `NONE`
 
 Source-grounded findings:
-- the NeurIPS paper explicitly cites `Concrete Problems in AI Safety` and `AI Safety Gridworlds` in references [2] and [13];
-- it formalizes interference incentives, introduces a future-task auxiliary reward and baseline policy, and proves the no-interference result only for the stated deterministic setting;
-- it reports gridworld experiments in which the future-task method with a baseline avoids the tested side effects/interference and is more effective than a reversibility penalty on the represented setup;
-- therefore `RC-REL-FUTURETASKS-REFINES-GRIDWORLDS-001` is a bounded human-asserted `refines` relation, not a claim that the paper replicated all Gridworlds results.
+- the paper directly studies side-effect penalties in Gridworlds-style environments and separates the design into baseline-state and deviation-measure components;
+- it shows a concrete failure mode for a simple reversibility penalty when task completion itself requires an irreversible action;
+- it identifies interference and offsetting incentives introduced by some baseline choices;
+- it reports that the stepwise inaction baseline combined with relative reachability avoids the represented failure modes in its gridworld experiments.
 
-Multi-hop chain now represented:
-`Avoiding Side Effects By Considering Future Tasks`
-→ `refines` / `cites` → `AI Safety Gridworlds`
+Graph relations:
+- `RC-REL-RR-REFINES-GRIDWORLDS-001`: bounded `refines` relation to the Gridworlds reversibility mechanism/result because the later work decomposes the mechanism, exposes failure conditions, and evaluates a more specific alternative;
+- `RC-REL-RR-CHALLENGES-REVERSIBILITY-PENALTY-001`: bounded mechanism-specific `challenges` relation because the paper demonstrates a failure mode for penalizing irreversibility alone when the objective requires irreversible action.
+
+Neither relation claims that `AI Safety Gridworlds` as a whole is contradicted, replicated, or invalidated. The broader claim that irreversible side effects are a safety problem remains compatible with the new evidence.
+
+This extends the provenance chain:
+`Stepwise Relative Reachability`
+→ `refines` / `challenges mechanism` → `AI Safety Gridworlds`
 → `cites` / `extends` → `Concrete Problems in AI Safety`
 → `conceptually_related` → StegVerse IICT recoverability.
 
-This chain records provenance and relation lineage only. It does not create support for IICT, scientific validation of StegVerse research, publication authority, governance authority, execution authority, or reuse admissibility.
-
-## Reviewed machine-candidate disposition
-
-`RC-REL-GRIDWORLDS-IICT-CANDIDATE-001` was reviewed on this continuation and changed from machine-discovered `candidate` / pending review to `rejected` with reviewer identity/time retained. The stronger `independently_converges_with` predicate was rejected because the retained evidence supports conceptual correspondence but does not establish independent development or convergence. The already-admitted bounded `conceptually_related` edge remains the appropriate relation.
-
-`RC-REL-EXT-AISAFETY-IICT-CANDIDATE-001` remains a separate pending machine candidate and was not silently promoted or rejected.
-
-Deterministic fixtures from PR #72 remain the review-state proof surfaces:
-- unreviewed machine admission must fail;
-- reviewed machine promotion must pass;
-- reviewed machine rejection must pass;
-- unreviewed machine rejection must fail.
+The chain records relation lineage only and does not create support for IICT, scientific validation, publication authority, governance authority, execution authority, or reuse admissibility.
 
 ## Existing Site projection blocker
 
@@ -134,6 +124,8 @@ python research_commons/tools/build_site_projection_dispatch.py
 python research_commons/tools/check_research_commons_control_state.py
 ```
 
+Hosted exact-head validation and expected-head-protected merge are required before this fourth ingestion is repository-complete.
+
 ## Cross-repository dependencies
 
 - `GCAT-BCAT-Engine/Publisher`: publication custody, source catalog, and Publisher reconciliation authority.
@@ -147,8 +139,8 @@ python research_commons/tools/check_research_commons_control_state.py
 
 ## Archive conditions
 
-The third external ingestion is repository-complete: its exact PR head passed the Research Commons build/control workflows, PR #76 merged with expected-head protection, and the merge commit itself passed post-merge Research Commons build/control validation. This handoff reconciliation must itself be validated and merged before this bounded continuation is fully checked out. Ongoing `RC-004` and `RC-005` repository-native states continue independently and are not resolved by this ingestion.
+The fourth external ingestion and remaining-candidate review are not archiveable until the exact PR head passes Research Commons build/control validation, the PR merges with expected-head protection, and post-merge main validation is observed. `RC-004` and `RC-005` continue independently and are not resolved by this work.
 
 ## Next executable action
 
-After this reconciliation commit is green and merged, continue `RC-CTRL-001` by reviewing the remaining machine-discovered `RC-REL-EXT-AISAFETY-IICT-CANDIDATE-001` against its retained evidence and either promote or reject it with explicit review evidence, then ingest another authentic external source only if it adds a genuinely supported challenge, replication, or material refinement rather than conceptual similarity.
+Open the bounded fourth-ingestion PR, obtain exact-head hosted validation, repair any failure without weakening graph/review invariants, merge only with expected-head protection, then reconcile this handoff on main with validated head, workflow runs, merge SHA, and post-merge evidence. If the ingestion merges cleanly, the next research continuation should prefer an external source that independently evaluates or challenges one of the now-represented side-effect mitigation mechanisms rather than adding another conceptually similar proposal.
