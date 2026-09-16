@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stegverse.org/schemas/gtg-governance-assurance.schema.json",
+  "title": "GTG Governance Assurance Binding",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["assurance_id", "profile_ref", "required_types", "bindings", "authority_effect"],
+  "properties": {
+    "assurance_id": {"type": "string", "minLength": 1},
+    "profile_ref": {"type": "string", "minLength": 1},
+    "required_types": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"enum": ["GATE_LEGITIMACY", "INDEPENDENT_REVIEW", "ARCHITECTURE_NEUTRAL_ADMISSIBILITY"]}
+    },
+    "bindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "gate_legitimacy": {"$ref": "#/$defs/gateLegitimacyBinding"},
+        "independent_review": {"$ref": "#/$defs/independentReviewBinding"},
+        "architecture_neutral_admissibility": {"$ref": "#/$defs/architectureNeutralBinding"}
+      }
+    },
+    "authority_effect": {"const": "NONE"}
+  },
+  "$defs": {
+    "correlation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "candidate_transition_id": {"type": ["string", "null"]},
+        "gate_id": {"type": ["string", "null"]},
+        "rule_ref": {"type": ["string", "null"]},
+        "evaluator_ref": {"type": ["string", "null"]}
+      }
+    },
+    "baseBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assurance_type", "applicability", "record_ref", "validation_state", "correlation", "authority_effect"],
+      "properties": {
+        "assurance_type": {"enum": ["GATE_LEGITIMACY", "INDEPENDENT_REVIEW", "ARCHITECTURE_NEUTRAL_ADMISSIBILITY"]},
+        "applicability": {"enum": ["REQUIRED", "OPTIONAL", "NOT_APPLICABLE"]},
+        "record_ref": {"type": ["string", "null"]},
+        "validation_state": {"enum": ["VALID", "INVALID", "UNRESOLVED", "NOT_APPLICABLE"]},
+        "correlation": {"$ref": "#/$defs/correlation"},
+        "authority_effect": {"const": "NONE"}
+      }
+    },
+    "gateLegitimacyBinding": {
+      "allOf": [
+        {"$ref": "#/$defs/baseBinding"},
+        {"properties": {"assurance_type": {"const": "GATE_LEGITIMACY"}}}
+      ]
+    },
+    "independentReviewBinding": {
+      "allOf": [
+        {"$ref": "#/$defs/baseBinding"},
+        {"properties": {"assurance_type": {"const": "INDEPENDENT_REVIEW"}}}
+      ]
+    },
+    "architectureNeutralBinding": {
+      "allOf": [
+        {"$ref": "#/$defs/baseBinding"},
+        {"properties": {"assurance_type": {"const": "ARCHITECTURE_NEUTRAL_ADMISSIBILITY"}}}
+      ]
+    }
+  }
+}
