@@ -49,22 +49,33 @@ Supported relations include `cites`, `supports`, `corroborates`, `contradicts`, 
 
 Machine-discovered relations require review for admission or rejection. `candidate` requires pending review; `admitted` requires accepted review plus reviewer identity/time; `rejected` requires rejected review plus reviewer identity/time. Every graph document and relation retains `authority_effect: NONE`. A graph node, edge, admission, or rejection does not establish scientific truth, causation, priority/authorship, publication standing/custody, reuse admissibility, governance authority, or execution authority.
 
-## Remaining machine-candidate review — implemented, validation pending
+## Remaining machine-candidate review — completed 2026-09-16
 
-`RC-REL-EXT-AISAFETY-IICT-CANDIDATE-001` has been reviewed against its retained evidence. The stronger `independently_converges_with` predicate is rejected because `Concrete Problems in AI Safety` and IICT establish only a bounded conceptual relationship around irrecoverability/recoverability; the retained sources do not establish independent development, priority, or convergence. The already-admitted `RC-REL-EXT-AISAFETY-IICT-001` `conceptually_related` edge remains unchanged and is the appropriate representation.
+`RC-REL-EXT-AISAFETY-IICT-CANDIDATE-001` was reviewed against its retained evidence and rejected. The stronger `independently_converges_with` predicate is not supported because `Concrete Problems in AI Safety` and IICT establish only a bounded conceptual relationship around irrecoverability/recoverability; the retained sources do not establish independent development, priority, or convergence. The already-admitted `RC-REL-EXT-AISAFETY-IICT-001` `conceptually_related` edge remains unchanged and is the appropriate representation.
 
-Review state now records:
-- state: `rejected`
-- review_state: `rejected`
-- reviewer: `RC-CTRL-001 evidence review`
-- authority effect: `NONE`
+Review state records `state: rejected`, `review_state: rejected`, reviewer `RC-CTRL-001 evidence review`, and `authority_effect: NONE`. The review does not promote, validate, or discredit either underlying paper; it only rejects an over-strong graph predicate.
 
-The review does not promote, validate, or discredit either underlying paper; it only rejects an over-strong graph predicate.
+## Fourth authentic external published-research ingestion — merged 2026-09-16
 
-## Fourth authentic external published-research ingestion — validation pending
-
+Implementation PR: `StegVerse-Labs/StegScholar#79`
 Implementation branch: `rc-ctrl-001-relative-reachability`
 Base main head: `6869e11a159bd3b685a78fc56a14f4411d73e912`
+Validated exact PR head: `7e6bc5e39966463d6ad970ecfb2e9d88c43db3fd`
+Merge SHA: `28b469e1e040d67c10b795f8ad971c2377314963`
+Expected-head protection: merge was performed against exact head `7e6bc5e39966463d6ad970ecfb2e9d88c43db3fd`.
+
+Exact-head hosted validation:
+- `Build and validate Research Commons` run `35093937158`, run number 98, success.
+- `Validate Research Commons Control State` run `35093937423`, run number 600, success.
+- `Test Readiness` run `35093937205`, run number 815, success.
+- `Validate Independent Review` run `35093937263`, run number 46, success.
+- `Validate Architecture Neutral Admissibility` run `35093937277`, run number 14, success.
+- `Validate GTG Assurance Reference Integration` run `35093937390`, run number 9, success.
+- `Validate GTG Assurance Consumer Compatibility Sweep` run `35093937208`, run number 9, success.
+
+Post-merge main evidence at merge SHA `28b469e1e040d67c10b795f8ad971c2377314963`:
+- `Build and validate Research Commons` run `35093980195`, run number 99, success.
+- `Validate Research Commons Control State` run `35093980112`, run number 601, success.
 
 External source:
 - title: `Penalizing Side Effects using Stepwise Relative Reachability`
@@ -124,8 +135,6 @@ python research_commons/tools/build_site_projection_dispatch.py
 python research_commons/tools/check_research_commons_control_state.py
 ```
 
-Hosted exact-head validation and expected-head-protected merge are required before this fourth ingestion is repository-complete.
-
 ## Cross-repository dependencies
 
 - `GCAT-BCAT-Engine/Publisher`: publication custody, source catalog, and Publisher reconciliation authority.
@@ -139,8 +148,8 @@ Hosted exact-head validation and expected-head-protected merge are required befo
 
 ## Archive conditions
 
-The fourth external ingestion and remaining-candidate review are not archiveable until the exact PR head passes Research Commons build/control validation, the PR merges with expected-head protection, and post-merge main validation is observed. `RC-004` and `RC-005` continue independently and are not resolved by this work.
+The fourth external ingestion and remaining-machine-candidate review are repository-complete: the exact PR head passed Research Commons build/control and related hosted validation, PR #79 merged with expected-head protection, and the merge commit passed post-merge Research Commons build/control validation. This handoff reconciliation must itself pass hosted validation and merge before the bounded continuation is fully checked out. `RC-004` and `RC-005` continue independently and are not resolved by this work.
 
 ## Next executable action
 
-Open the bounded fourth-ingestion PR, obtain exact-head hosted validation, repair any failure without weakening graph/review invariants, merge only with expected-head protection, then reconcile this handoff on main with validated head, workflow runs, merge SHA, and post-merge evidence. If the ingestion merges cleanly, the next research continuation should prefer an external source that independently evaluates or challenges one of the now-represented side-effect mitigation mechanisms rather than adding another conceptually similar proposal.
+After this reconciliation is green and merged, continue `RC-CTRL-001` only with an authentic external source that independently evaluates, replicates, challenges, or materially refines one of the now-represented side-effect mitigation mechanisms. Prefer an independently authored empirical evaluation of relative reachability, future-task preservation, attainable-utility-style impact regularization, or a comparable mechanism; do not add another source merely for conceptual similarity. Preserve source custody, typed relation semantics, and `authority_effect: NONE`, and do not infer support for StegVerse research from a multi-hop graph path.
