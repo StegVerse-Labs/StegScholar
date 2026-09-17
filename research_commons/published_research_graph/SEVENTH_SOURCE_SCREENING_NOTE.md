@@ -87,6 +87,24 @@ Evidence posture:
 
 Reason for rejection: relevant independent empirical extension of side-effect avoidance toward other-agent welfare and agency, but it does not satisfy either frozen admission path.
 
+### Adaptive querying for reward learning from human feedback (2025)
+
+Title: `Adaptive querying for reward learning from human feedback`
+Venue: Frontiers in Robotics and AI (2025)
+Canonical URL: `https://www.frontiersin.org/journals/robotics-and-ai/articles/10.3389/frobt.2025.1734564/full`
+External custody: Frontiers journal version of record / original authors
+Disposition: `REJECTED_FOR_SEVENTH_GRAPH_INGESTION`
+
+Evidence posture:
+- independently authored and empirical;
+- directly frames evaluation around avoidable and unavoidable negative side effects;
+- reports empirical evaluation across four simulation domains, a human-subjects simulation study, and an in-person study using a Kinova Gen3 7DoF robotic arm;
+- therefore provides substantially different-domain and embodied negative-side-effect evidence relative to the represented gridworld-style literature;
+- however, it evaluates adaptive human-feedback selection / reward learning rather than Attainable Utility Preservation, Relative Reachability, or future-task preservation;
+- it does not reproduce or fail to reproduce any represented mitigation mechanism, and it does not directly benchmark at least two represented mechanisms under one protocol.
+
+Reason for rejection: clears the empirical and substantially-different-domain relevance bar but fails the represented-mechanism requirement of both frozen admission routes.
+
 ## Result
 
 No seventh external graph ingestion was admitted in these screening passes. The Published Research Graph is intentionally unchanged.
