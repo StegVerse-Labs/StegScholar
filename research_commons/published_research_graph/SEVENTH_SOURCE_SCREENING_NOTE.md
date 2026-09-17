@@ -105,10 +105,47 @@ Evidence posture:
 
 Reason for rejection: clears the empirical and substantially-different-domain relevance bar but fails the represented-mechanism requirement of both frozen admission routes.
 
+### Overman and Bayati (2026)
+
+Title: `Calibrating Conservatism for Scalable Oversight`
+Venue: ICML 2026 / Stanford GSB working paper / arXiv
+arXiv: `2605.28807v1`
+DOI: `10.48550/arXiv.2605.28807`
+Canonical URL: `https://arxiv.org/abs/2605.28807`
+External custody: arXiv / Stanford Graduate School of Business / original authors
+Disposition: `REJECTED_FOR_SEVENTH_GRAPH_INGESTION`
+
+Evidence posture:
+- independently authored relative to the represented AUP source family;
+- experimentally evaluates Calibrated Collective Oversight in substantially different domains including MACHIAVELLI text-adventure trajectories and a modified SWE-bench software-engineering protocol, reporting both violation/misalignment rates and task/reward outcomes;
+- Appendix H also implements a fixed-λ AUP baseline using the original Q-value-style penalty structure and records both violation rate and total reward over repeated runs;
+- however, that actual AUP baseline is evaluated only in a purpose-built non-stationary gridworld with species-harm dynamics;
+- the MACHIAVELLI and SWE-bench experiments use the authors' generalized CCO method rather than AUP itself;
+- therefore the paper does not independently reproduce or fail to reproduce AUP in the substantially different domains, and it does not directly benchmark two already represented mechanisms under one protocol.
+
+Reason for rejection: exceptionally close empirical near-match, but the domain-diverse experiments exercise CCO rather than the represented AUP mechanism; the direct AUP comparison remains gridworld-style, so neither frozen route is satisfied.
+
+### Nayebi (2026)
+
+Title: `Core Safety Values for Provably Corrigible Agents`
+Venue: AAAI 2026 Machine Ethics Workshop / CEUR Workshop Proceedings Vol. 4189, pp. 94-107
+Canonical URL: `https://ceur-ws.org/Vol-4189/paper7.pdf`
+External custody: CEUR-WS / original author
+Disposition: `REJECTED_FOR_SEVENTH_GRAPH_INGESTION`
+
+Evidence posture:
+- independently authored relative to the represented AUP source family;
+- defines a belief-based extension of Attainable Utility Preservation for partially observed multi-step corrigibility and preserves a stepwise inaction-style counterfactual baseline;
+- extends the represented mechanism conceptually into a partially observed off-switch / corrigibility setting;
+- the contribution is primarily formal: the paper proves corrigibility and safety properties rather than reporting the required empirical reproduction or failure-to-reproduce with explicit task-performance and side-effect outcomes;
+- it does not directly benchmark at least two represented mechanisms under one shared empirical protocol.
+
+Reason for rejection: materially extends AUP into a different formal setting but fails the frozen empirical requirement.
+
 ## Result
 
 No seventh external graph ingestion was admitted in these screening passes. The Published Research Graph is intentionally unchanged.
 
-The next admissible source must clear the frozen threshold without weakening it: an independently authored same-protocol quantitative comparison of at least two represented mechanisms (preferably AUP, Relative Reachability, and/or future-task preservation), or an independent reproduction/failure of one represented mechanism in a substantially different domain with explicit task-performance and side-effect outcomes.
+The next admissible source must clear the frozen threshold without weakening it: an independently authored same-protocol quantitative comparison of at least two represented mechanisms (preferably AUP, Relative Reachability, and/or future-task preservation), or an independent empirical reproduction/failure of one represented mechanism in a substantially different domain with explicit task-performance and side-effect outcomes. An AUP-inspired replacement method in a different domain is not sufficient unless the represented AUP mechanism itself is empirically exercised there.
 
 This screening record is provenance only. It does not establish scientific truth, publication authority, governance authority, execution authority, reuse admissibility, or any support for StegVerse research.

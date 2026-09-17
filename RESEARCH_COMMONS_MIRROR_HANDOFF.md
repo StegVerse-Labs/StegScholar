@@ -42,7 +42,7 @@ A seventh external graph source may be admitted only if it is independently auth
 - directly benchmarks at least two already represented side-effect mitigation mechanisms under the same environment/protocol; or
 - independently reproduces or fails to reproduce one represented mechanism in a substantially different domain.
 
-Prefer same-protocol quantitative AUP-vs-relative-reachability-vs-future-task evidence reporting both side-effect and task-performance outcomes. Conceptual adjacency, comparison involving only one represented mechanism, a modified related implementation in another gridworld-style benchmark, or an unrelated side-effect method in a different domain does not satisfy this threshold.
+Prefer same-protocol quantitative AUP-vs-relative-reachability-vs-future-task evidence reporting both side-effect and task-performance outcomes. Conceptual adjacency, comparison involving only one represented mechanism, a modified related implementation in another gridworld-style benchmark, an AUP-inspired replacement method in a different domain, or a formal-only extension does not satisfy this threshold.
 
 ## Seventh-source screening — `NO_ADMISSION`
 
@@ -54,27 +54,34 @@ Already screened and excluded from re-screening:
 - Lindner, Matoba, and Meulemans (2021), `Challenges for Using Impact Regularizers to Avoid Negative Side Effects`;
 - Turner, Hadfield-Menell, and Tadepalli (2020), `Conservative Agency via Attainable Utility Preservation`;
 - Alizadeh Alamdari, Klassen, Toro Icarte, and McIlraith (2022), `Be Considerate: Avoiding Negative Side Effects in Reinforcement Learning`;
-- `Adaptive querying for reward learning from human feedback` (Frontiers in Robotics and AI, 2025).
+- `Adaptive querying for reward learning from human feedback` (Frontiers in Robotics and AI, 2025);
+- Overman and Bayati (2026), `Calibrating Conservatism for Scalable Oversight`;
+- Nayebi (2026), `Core Safety Values for Provably Corrigible Agents`.
 
-The 2025 adaptive-querying paper is independent and empirical and includes four simulation domains plus an in-person Kinova Gen3 7DoF robotic-arm study, but it evaluates adaptive human-feedback selection / reward learning rather than AUP, Relative Reachability, or future-task preservation. It therefore clears neither frozen admission route. This is a screening disposition only, not a scientific rejection, and carries `authority_effect: NONE`.
+Fourth continuation findings:
+- Overman and Bayati (2026) is independently authored and empirically evaluates CCO on substantially different MACHIAVELLI and modified SWE-bench domains while also implementing a fixed-λ AUP baseline. Protocol inspection shows the actual AUP baseline is confined to a controlled non-stationary species-harm gridworld; the domain-diverse MACHIAVELLI/SWE-bench experiments use CCO rather than AUP. It therefore does not reproduce/fail to reproduce AUP in the substantially different domains and does not compare two represented mechanisms under one protocol.
+- Nayebi (2026) independently defines a belief-based AUP extension for partially observed corrigibility with stepwise inaction-style counterfactual structure, but the contribution is formal/theoretical rather than the required empirical reproduction with explicit task-performance and side-effect outcomes.
 
-### Screening receipts through PR #91
+These are screening dispositions only, not scientific rejections. They carry `authority_effect: NONE` and cannot create or deny scientific, publication, governance, execution, or reuse authority.
+
+### Screening receipts through PR #92
 
 PR #87 exact head `9308b46df7dd0d224fcf3020aa1ba9e3cbfe8eee` merged with expected-head protection as `7e21ba38b3406a61faeafcb50f6aab1d777c598c` after successful validation.
 PR #88 exact head `b378ad5219e6ecb84cda312d6328b9921dc91a93` merged with expected-head protection as `5506a721b67c28d5723d4130eb82636c853706af` after successful validation.
 PR #89 exact head `127e73d44a473d66d3d9f2489e074a24495c47da` passed build/control/Test Readiness runs `35165120112`, `35165119962`, and `35165120166`, merged as `88ea3a4e0e7105e0b29275d018d4b25432710a54`, and post-merge runs `35165150662`, `35165150628`, and `35165150607` passed.
 PR #90 exact head `a4c82f3dc02c0163f5bb813c537937d763eab7d2` passed build/control/Test Readiness runs `35165223952`, `35165223872`, and `35165223849`, merged as `0b29bcb29a9324ea24c74cd4b0f56155da7fa357`, and post-merge runs `35165257283`, `35165257252`, and `35165257288` passed.
-PR #91 exact head `a40c640db89f0caa96b45e323b3c5156b40f8a9a` passed build/control/Test Readiness runs `35166311192`, `35166311134`, and `35166311123`, merged with expected-head protection as `250e1a537aa1849b1a68216aa0fa2a20abc5c617`, and post-merge runs `35166344184`, `35166344241`, and `35166344175` passed.
+PR #91 exact head `a40c640db89f0caa96b45e323b3c5156b40f8a9a` passed build/control/Test Readiness runs `35166311192`, `35166311134`, and `35166311123`, merged as `250e1a537aa1849b1a68216aa0fa2a20abc5c617`, and post-merge runs `35166344184`, `35166344241`, and `35166344175` passed.
+PR #92 exact head `f087b3998db8c7efccfffd76e6262d2b44ce6ee4` passed build/control/Test Readiness runs `35166409872`, `35166409947`, and `35166409917`, merged with expected-head protection as canonical main `b416079da1225586fe47436c8f96d94d07e22de1`, and post-merge runs `35166439188`, `35166439085`, and `35166439156` passed.
 
 No `graph.json` mutation occurred in these screening/reconciliation PRs.
 
 ## Current continuation mutation
 
-Branch: `rc-ctrl-001-seventh-source-screening-3-reconcile`
-Base main: `250e1a537aa1849b1a68216aa0fa2a20abc5c617`
-Scope: handoff-only reconciliation; `graph.json` remains unchanged.
+Branch: `rc-ctrl-001-seventh-source-screening-4`
+Base main: `b416079da1225586fe47436c8f96d94d07e22de1`
+Scope: screening record plus canonical handoff only; `graph.json` must remain unchanged by this continuation.
 
-This continuation is fully checked out only after this reconciliation head passes the canonical hosted validation set, merges with expected-head protection, and post-merge build/control/Test Readiness evidence is observed.
+This continuation is complete only after its exact PR head passes the canonical hosted validation set, merges with expected-head protection, post-merge build/control/Test Readiness evidence is observed, and this handoff is reconciled with the exact receipts.
 
 ## Existing Site projection blocker
 
@@ -116,8 +123,8 @@ python research_commons/tools/check_research_commons_control_state.py
 
 ## Archive conditions
 
-This continuation is archiveable only after reconciliation exact-head hosted validation, expected-head-protected merge, and observed post-merge validation. Lack of a qualifying seventh source is not permission to lower the frozen threshold. `NO_ADMISSION` remains the correct fail-closed graph state until qualifying evidence exists.
+This continuation is archiveable only after exact-head hosted validation, expected-head-protected merge, observed post-merge validation, and final handoff reconciliation. Lack of a qualifying seventh source is not permission to lower the frozen threshold. `NO_ADMISSION` remains the correct fail-closed graph state until qualifying evidence exists.
 
 ## Next executable action
 
-Continue `RC-CTRL-001` source discovery only for a genuinely independent empirical paper that clears the frozen seventh-source threshold. Do not re-screen candidates already recorded in `SEVENTH_SOURCE_SCREENING_NOTE.md`. Prefer a same-protocol quantitative comparison of two or more represented mechanisms; otherwise require an actual independent reproduction or failure-to-reproduce of one represented mechanism in a substantially different domain with explicit task-performance and side-effect outcomes. If no source clears the threshold, preserve `NO_ADMISSION`, leave the graph unchanged, and retain `authority_effect: NONE`.
+Continue `RC-CTRL-001` source discovery only for a genuinely independent empirical paper that clears the frozen seventh-source threshold. Do not re-screen candidates already recorded in `SEVENTH_SOURCE_SCREENING_NOTE.md`. Prefer a same-protocol quantitative comparison of two or more represented mechanisms; otherwise require an actual independent empirical reproduction or failure-to-reproduce of AUP, Relative Reachability, or future-task preservation in a substantially different domain with explicit task-performance and side-effect outcomes. If no source clears the threshold, preserve `NO_ADMISSION`, leave the graph unchanged, and retain `authority_effect: NONE`.
