@@ -63,17 +63,25 @@ These are screening dispositions only, not scientific rejections. They carry `au
 
 PR #87 exact head `9308b46df7dd0d224fcf3020aa1ba9e3cbfe8eee` passed Research Commons build/control/Test Readiness runs `35143573594`, `35143573400`, and `35143573475`, then merged with expected-head protection as `7e21ba38b3406a61faeafcb50f6aab1d777c598c`. Post-merge runs `35143624048`, `35143624082`, and `35143624100` passed.
 
-Handoff reconciliation PR #88 exact head `b378ad5219e6ecb84cda312d6328b9921dc91a93` passed build/control/Test Readiness runs `35143777121`, `35143777182`, and `35143777206`, then merged with expected-head protection as canonical main `5506a721b67c28d5723d4130eb82636c853706af`. Post-reconciliation runs `35143814305`, `35143814316`, and `35143814344` passed.
+Handoff reconciliation PR #88 exact head `b378ad5219e6ecb84cda312d6328b9921dc91a93` passed build/control/Test Readiness runs `35143777121`, `35143777182`, and `35143777206`, then merged with expected-head protection as `5506a721b67c28d5723d4130eb82636c853706af`. Post-reconciliation runs `35143814305`, `35143814316`, and `35143814344` passed.
 
-No `graph.json` mutation occurred in either PR.
+### Second continuation receipts
 
-## Current continuation mutation
+PR #89 branch `rc-ctrl-001-seventh-source-screening-2` was based on canonical main `5506a721b67c28d5723d4130eb82636c853706af`.
+Validated exact head: `127e73d44a473d66d3d9f2489e074a24495c47da`.
+Expected-head-protected merge SHA: `88ea3a4e0e7105e0b29275d018d4b25432710a54`.
 
-Branch: `rc-ctrl-001-seventh-source-screening-2`
-Base main: `5506a721b67c28d5723d4130eb82636c853706af`
-Scope: screening record plus canonical handoff only; `graph.json` must remain byte-for-byte unchanged by this continuation.
+Exact-head hosted validation:
+- `Build and validate Research Commons` run `35165120112`, run number 140, success.
+- `Validate Research Commons Control State` run `35165119962`, run number 633, success.
+- `Test Readiness` run `35165120166`, run number 870, success.
 
-The current continuation is complete only after its exact PR head passes the canonical hosted validation set, merges with expected-head protection, post-merge build/control/Test Readiness evidence is observed, and this handoff is reconciled if receipts change.
+Post-merge evidence at `88ea3a4e0e7105e0b29275d018d4b25432710a54`:
+- `Build and validate Research Commons` run `35165150662`, run number 141, success.
+- `Validate Research Commons Control State` run `35165150628`, run number 634, success.
+- `Test Readiness` run `35165150607`, run number 871, success.
+
+PR #89 changed only `research_commons/published_research_graph/SEVENTH_SOURCE_SCREENING_NOTE.md` and this canonical handoff. `graph.json` remained unchanged and no authority promotion occurred.
 
 ## Existing Site projection blocker
 
@@ -102,6 +110,8 @@ python research_commons/tools/build_site_projection_dispatch.py
 python research_commons/tools/check_research_commons_control_state.py
 ```
 
+This handoff-only reconciliation must itself pass the exact-head hosted validation set, merge with expected-head protection, and receive post-merge validation before the continuation is fully checked out.
+
 ## Cross-repository dependencies
 
 - `GCAT-BCAT-Engine/Publisher`: publication custody, source catalog, and Publisher reconciliation authority.
@@ -115,7 +125,7 @@ python research_commons/tools/check_research_commons_control_state.py
 
 ## Archive conditions
 
-This continuation is archiveable only after exact-head hosted validation, expected-head-protected merge, and observed post-merge validation. Lack of a qualifying seventh source is not permission to lower the frozen threshold. `NO_ADMISSION` remains the correct fail-closed graph state until qualifying evidence exists.
+The second screening continuation is implementation-complete with a durable `NO_ADMISSION` result and passing exact-head/post-merge validation. This final handoff reconciliation is archiveable only after its own exact-head validation, expected-head-protected merge, and post-merge validation. Lack of a qualifying seventh source is not permission to lower the frozen threshold.
 
 ## Next executable action
 
