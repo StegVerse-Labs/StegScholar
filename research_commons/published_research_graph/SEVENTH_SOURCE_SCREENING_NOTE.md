@@ -69,9 +69,27 @@ Evidence posture:
 
 Reason for rejection: direct comparison exists, but independence criterion fails for this continuation.
 
+### Alizadeh Alamdari, Klassen, Toro Icarte, and McIlraith (2022)
+
+Title: `Be Considerate: Avoiding Negative Side Effects in Reinforcement Learning`
+Venue: AAMAS 2022, Main Track, pp. 18-26
+Canonical URL: `https://www.ifaamas.org/Proceedings/aamas2022/pdfs/p18.pdf`
+External custody: IFAAMAS proceedings / original authors
+Disposition: `REJECTED_FOR_SEVENTH_GRAPH_INGESTION`
+
+Evidence posture:
+- independently authored and empirical;
+- explicitly situates its approach against prior Relative Reachability, Attainable Utility Preservation, and future-task-style work;
+- augments an acting agent's reward using expected future return / agency of other agents and reports qualitative and quantitative gridworld experiments;
+- the experiments evaluate the authors' considerate-agent formulations rather than a same-protocol head-to-head benchmark of at least two already represented mitigation mechanisms;
+- the evaluation remains gridworld reinforcement learning rather than a substantially different application domain;
+- therefore it neither independently reproduces nor fails to reproduce a represented mechanism under the frozen different-domain route.
+
+Reason for rejection: relevant independent empirical extension of side-effect avoidance toward other-agent welfare and agency, but it does not satisfy either frozen admission path.
+
 ## Result
 
-No seventh external graph ingestion was admitted in this screening pass. The Published Research Graph is intentionally unchanged.
+No seventh external graph ingestion was admitted in these screening passes. The Published Research Graph is intentionally unchanged.
 
 The next admissible source must clear the frozen threshold without weakening it: an independently authored same-protocol quantitative comparison of at least two represented mechanisms (preferably AUP, Relative Reachability, and/or future-task preservation), or an independent reproduction/failure of one represented mechanism in a substantially different domain with explicit task-performance and side-effect outcomes.
 
