@@ -5,7 +5,7 @@
   "canonical_handoff": "RESEARCH_COMMONS_MIRROR_HANDOFF.md",
   "control_issue": 37,
   "activation_issue": 38,
-  "updated_at": "2026-08-02T10:15:00Z",
+  "updated_at": "2026-09-17T08:37:00Z",
   "claim_ttl_hours": 72,
   "tasks": [
     {
@@ -98,6 +98,19 @@
       "expected_evidence": "RESEARCH_COMMONS_MIRROR_HANDOFF.md and docs/receipts/research-commons-hosted-validation-30743296790.md",
       "collision_boundary": "do not create competing handoffs",
       "next_task_after_release": "archive originating session"
+    },
+    {
+      "task_id": "RC-CTRL-002",
+      "originating_goal": "Continue governed seventh-source discovery after RC-CTRL-001 prompt ceiling",
+      "surface": "RESEARCH_COMMONS_SOURCE_DISCOVERY_SUCCESSOR_MIRROR_HANDOFF.md and research_commons/published_research_graph/",
+      "owner": "StegVerse-Labs/StegScholar canonical continuation",
+      "claim_state": "UNCLAIMED",
+      "role": "successor continuation",
+      "claim_timestamp": "2026-09-17T08:37:00Z",
+      "release_condition": "activate only after RC-CTRL-001 is canonically closed or superseded into this successor before or at its 20-prompt ceiling",
+      "expected_evidence": "RESEARCH_COMMONS_SOURCE_DISCOVERY_SUCCESSOR_MIRROR_HANDOFF.md plus predecessor closure receipts on canonical main",
+      "collision_boundary": "must not run concurrently with RC-CTRL-001 source discovery and cannot weaken the frozen seventh-source admission threshold",
+      "next_task_after_release": "continue governed source discovery under RC-CTRL-002"
     }
   ]
 }
