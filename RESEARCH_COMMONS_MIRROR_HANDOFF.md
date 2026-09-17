@@ -41,26 +41,26 @@ Screening record: `research_commons/published_research_graph/SEVENTH_SOURCE_SCRE
 
 Do not re-screen any candidate recorded there, including Miret, Majumdar, and Wainwright (2020), `Safety Aware Reinforcement Learning (SARL)`.
 
-Seventh continuation finding:
-- Miret, Majumdar, and Wainwright (2020) is independently authored and empirical. It evaluates task reward and post-episode side-effect outcomes across still and dynamic SafeLife prune/append tasks, explicitly discusses Relative Reachability and conservative/AUP-style work, and contrasts SARL with the AUP SafeLife extension. However, the experiments implement SARL's own virtual safety-agent distribution regularizer using the SafeLife side-effect information channel rather than AUP, Relative Reachability, or future-task preservation. It therefore neither directly benchmarks two represented mechanisms under one protocol nor independently reproduces/fails to reproduce one represented mechanism in a substantially different domain.
+Eighth continuation finding:
+- A deeper source-discovery pass found no genuinely new independently authored empirical paper that clears the frozen threshold and no new near-miss strong enough to justify screening-ledger churn. Searches centered on same-protocol comparisons of AUP, Relative Reachability, and future-task preservation, plus substantially different-domain reproductions. Returned material either resolved to already represented/source-family work, discussed represented mechanisms without independently exercising them, or evaluated pre-mechanism/unrepresented approaches. `Preventing Side-effects in Gridworlds` (Leech, Kubicki, Cooper, and McGrath, 2018) is an illustrative pre-mechanism draft that evaluates other low-impact / IRL approaches and predates the represented AUP/future-task mechanisms, so it was not added to the durable screening ledger.
 
-This is a screening disposition only, not a scientific rejection. It carries `authority_effect: NONE` and cannot create or deny scientific, publication, governance, execution, or reuse authority.
+This is a discovery disposition only, not a scientific rejection. It carries `authority_effect: NONE` and cannot create or deny scientific, publication, governance, execution, or reuse authority.
 
-### Canonical receipts through PR #99
-
-PR #98 exact head `f300607b9b4ed5d9400dde8f2931034745d296a9` passed build/control/Test Readiness runs `35169724667`, `35169724670`, and `35169724673`, merged with expected-head protection as `84edf64bd045be02a69cfbc6f8aebb5e09997bf9`, and post-merge build/control/Test Readiness runs `35169749772`, `35169749795`, and `35169749787` passed.
+### Canonical receipts through PR #100
 
 PR #99 exact head `d6a68386f312f04ad78c6013318b0e27c953491a` passed build/control/Test Readiness runs `35175857449`, `35175857523`, and `35175857439`, merged with expected-head protection as `92806cd2d5a85d58584c0d0d0e5e7ecdef36f60c`, and post-merge build/control/Test Readiness runs `35175882129`, `35175882103`, and `35175882107` passed.
 
-No `graph.json` mutation occurred in these screening/reconciliation PRs.
+PR #100 exact head `87500c0b2afb5699e5091072f8a5ccabc88e7608` passed build/control/Test Readiness runs `35175945570`, `35175945528`, and `35175945586`, merged with expected-head protection as canonical main `8311b2d67de47664eebd0254242c6c970362dbed`, and post-merge build/control/Test Readiness runs `35175969342`, `35175969349`, and `35175969354` passed.
+
+No `graph.json` mutation occurred in these screening/reconciliation PRs. The eighth discovery pass also leaves `SEVENTH_SOURCE_SCREENING_NOTE.md` unchanged because no new candidate warranted durable recording.
 
 ## Current continuation mutation
 
-Branch: `rc-ctrl-001-seventh-source-screening-7-reconcile`
-Base main: `92806cd2d5a85d58584c0d0d0e5e7ecdef36f60c`
-Scope: handoff-only reconciliation; `graph.json` remains unchanged.
+Branch: `rc-ctrl-001-seventh-source-screening-8-reconcile`
+Base main: `8311b2d67de47664eebd0254242c6c970362dbed`
+Scope: canonical handoff reconciliation only; `graph.json` and `SEVENTH_SOURCE_SCREENING_NOTE.md` remain unchanged.
 
-This continuation is fully checked out only after this reconciliation head passes the canonical hosted validation set, merges with expected-head protection, and post-merge build/control/Test Readiness evidence is observed.
+This continuation is fully checked out only after this exact handoff-only head passes the canonical hosted validation set, merges with expected-head protection, and post-merge build/control/Test Readiness evidence is observed.
 
 ## Existing Site projection blocker
 
@@ -98,8 +98,8 @@ python research_commons/tools/check_research_commons_control_state.py
 
 ## Archive conditions
 
-This seventh screening continuation is archiveable only after reconciliation exact-head hosted validation, expected-head-protected merge, and observed post-merge validation. `NO_ADMISSION` remains fail-closed until qualifying evidence exists.
+This eighth screening continuation is archiveable only after this handoff-only exact head passes hosted validation, merges with expected-head protection, and post-merge validation is observed. `NO_ADMISSION` remains fail-closed until qualifying evidence exists.
 
 ## Next executable action
 
-Continue `RC-CTRL-001` source discovery only for a genuinely new independently authored empirical paper that clears the frozen threshold. Do not re-screen any candidate in `SEVENTH_SOURCE_SCREENING_NOTE.md`. Prefer a same-protocol quantitative comparison of two or more represented mechanisms; otherwise require an actual independent empirical reproduction/failure of AUP, Relative Reachability, or future-task preservation in a substantially different domain with explicit task-performance and side-effect outcomes. If no source clears the threshold, preserve `NO_ADMISSION`, leave `graph.json` unchanged, and retain `authority_effect: NONE`.
+Continue `RC-CTRL-001` source discovery only for a genuinely new independently authored empirical paper that clears the frozen threshold. Do not re-screen any candidate in `SEVENTH_SOURCE_SCREENING_NOTE.md`. Prefer a same-protocol quantitative comparison of two or more represented mechanisms; otherwise require an actual independent empirical reproduction/failure of AUP, Relative Reachability, or future-task preservation in a substantially different domain with explicit task-performance and side-effect outcomes. Do not create durable screening churn for weak pre-mechanism drafts or conceptual-only mentions. If no source clears the threshold, preserve `NO_ADMISSION`, leave `graph.json` unchanged, and retain `authority_effect: NONE`.
