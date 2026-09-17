@@ -1,11 +1,11 @@
 {
-  "registry_id": "RC-CTRL-001",
+  "registry_id": "RC-CTRL-002",
   "repository": "StegVerse-Labs/StegScholar",
   "branch": "main",
-  "canonical_handoff": "RESEARCH_COMMONS_MIRROR_HANDOFF.md",
+  "canonical_handoff": "RESEARCH_COMMONS_SOURCE_DISCOVERY_SUCCESSOR_MIRROR_HANDOFF.md",
   "control_issue": 37,
   "activation_issue": 38,
-  "updated_at": "2026-09-17T08:37:00Z",
+  "updated_at": "2026-09-17T08:55:00Z",
   "claim_ttl_hours": 72,
   "tasks": [
     {
@@ -100,17 +100,30 @@
       "next_task_after_release": "archive originating session"
     },
     {
+      "task_id": "RC-CTRL-001",
+      "originating_goal": "Govern Research Commons through predecessor source-discovery prompt ceiling",
+      "surface": "RESEARCH_COMMONS_MIRROR_HANDOFF.md and research_commons/published_research_graph/",
+      "owner": "StegVerse-Labs/StegScholar canonical continuation",
+      "claim_state": "SUPERSEDED",
+      "role": "predecessor continuation",
+      "claim_timestamp": "2026-09-17T08:55:00Z",
+      "release_condition": "satisfied at Goal Prompt 20/20 by validated atomic supersession into RC-CTRL-002",
+      "expected_evidence": "RESEARCH_COMMONS_MIRROR_HANDOFF.md plus Prompt-20 transition validation and merge receipts",
+      "collision_boundary": "must not resume source discovery after supersession into RC-CTRL-002",
+      "next_task_after_release": "RC-CTRL-002"
+    },
+    {
       "task_id": "RC-CTRL-002",
       "originating_goal": "Continue governed seventh-source discovery after RC-CTRL-001 prompt ceiling",
       "surface": "RESEARCH_COMMONS_SOURCE_DISCOVERY_SUCCESSOR_MIRROR_HANDOFF.md and research_commons/published_research_graph/",
       "owner": "StegVerse-Labs/StegScholar canonical continuation",
-      "claim_state": "UNCLAIMED",
+      "claim_state": "CLAIMED_FOR_VALIDATION",
       "role": "successor continuation",
-      "claim_timestamp": "2026-09-17T08:37:00Z",
-      "release_condition": "activate only after RC-CTRL-001 is canonically closed or superseded into this successor before or at its 20-prompt ceiling",
-      "expected_evidence": "RESEARCH_COMMONS_SOURCE_DISCOVERY_SUCCESSOR_MIRROR_HANDOFF.md plus predecessor closure receipts on canonical main",
-      "collision_boundary": "must not run concurrently with RC-CTRL-001 source discovery and cannot weaken the frozen seventh-source admission threshold",
-      "next_task_after_release": "continue governed source discovery under RC-CTRL-002"
+      "claim_timestamp": "2026-09-17T08:55:00Z",
+      "release_condition": "release, complete, block, or supersede only through a validated canonical continuation mutation with exact evidence receipts",
+      "expected_evidence": "RESEARCH_COMMONS_SOURCE_DISCOVERY_SUCCESSOR_MIRROR_HANDOFF.md plus canonical validation and merge receipts",
+      "collision_boundary": "sole active source-discovery continuation; cannot weaken the frozen seventh-source admission threshold or overlap RC-CTRL-001",
+      "next_task_after_release": "select the next canonical continuation from verified Research Commons state"
     }
   ]
 }
