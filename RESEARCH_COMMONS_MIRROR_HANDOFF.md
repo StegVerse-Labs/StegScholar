@@ -33,35 +33,34 @@ A seventh external graph source may be admitted only if independently authored a
 - directly benchmarks at least two already represented side-effect mitigation mechanisms under the same environment/protocol; or
 - independently reproduces or fails to reproduce one represented mechanism in a substantially different domain.
 
-The threshold is not satisfied by conceptual adjacency, one represented mechanism plus an unrepresented method, another gridworld-style modification, an AUP-inspired replacement method in a different domain, or a formal-only extension.
+The threshold is not satisfied by conceptual adjacency, one represented mechanism plus an unrepresented method, another gridworld-style modification, an inspired replacement method in a different domain, or a formal-only extension.
 
 ## Seventh-source screening — `NO_ADMISSION`
 
 Screening record: `research_commons/published_research_graph/SEVENTH_SOURCE_SCREENING_NOTE.md`.
 
-Do not re-screen candidates recorded there, including Overman and Bayati (2026), `Calibrating Conservatism for Scalable Oversight`, and Nayebi (2026), `Core Safety Values for Provably Corrigible Agents`.
+Do not re-screen any candidate recorded there, including Overman and Bayati (2026), Nayebi (2026), and Smith, Klassert, and Pihlakas (2023), `Using soft maximin for risk averse multi-objective decision-making`.
 
-Fourth continuation findings:
-- Overman and Bayati independently evaluate CCO on MACHIAVELLI and modified SWE-bench and separately implement a fixed-λ AUP baseline. Protocol inspection shows AUP itself is exercised only in their controlled non-stationary species-harm gridworld; the substantially different domains use CCO. It therefore does not reproduce/fail to reproduce represented AUP in a substantially different domain and does not compare two represented mechanisms under one protocol.
-- Nayebi independently extends AUP into partially observed corrigibility with a belief-based formulation and stepwise inaction-style counterfactual structure, but the work is formal/theoretical rather than the required empirical reproduction with explicit task-performance and side-effect outcomes.
+Fifth continuation finding:
+- Smith, Klassert, and Pihlakas (2023) is independently authored and empirical. It evaluates SFELLA and related continuous non-linear multi-objective utility functions in tabular low-impact and resource-balancing gridworlds. The direct benchmark is against Vamplew et al.'s thresholded lexicographic alignment objective rather than represented AUP, Relative Reachability, or future-task preservation. AUP appears as motivating low-impact background, no Relative Reachability mechanism is evaluated, and the environments remain gridworlds. It therefore clears neither frozen admission route.
 
-These are screening dispositions only, not scientific rejections, and carry `authority_effect: NONE`.
+This is a screening disposition only, not a scientific rejection. It carries `authority_effect: NONE` and cannot create or deny scientific, publication, governance, execution, or reuse authority.
 
-### Fourth continuation receipts
+### Canonical receipts through PR #94
 
-PR #93 branch `rc-ctrl-001-seventh-source-screening-4` was based on canonical main `b416079da1225586fe47436c8f96d94d07e22de1`.
-Exact head `40b67877f5aa6811d40633bb4afebd3ac3d4b3f1` passed:
-- Build and validate Research Commons run `35167298424`, run 154, success.
-- Validate Research Commons Control State run `35167298392`, run 645, success.
-- Test Readiness run `35167298410`, run 888, success.
+PR #93 exact head `40b67877f5aa6811d40633bb4afebd3ac3d4b3f1` passed build/control/Test Readiness runs `35167298424`, `35167298392`, and `35167298410`, merged with expected-head protection as `6332aa99c62a18e331c961fd65362dbc5544846f`, and post-merge runs `35167358012`, `35167358015`, and `35167357966` passed.
 
-PR #93 merged with expected-head protection as `6332aa99c62a18e331c961fd65362dbc5544846f`.
-Post-merge main validation passed:
-- Build and validate Research Commons run `35167358012`, run 155, success.
-- Validate Research Commons Control State run `35167358015`, run 646, success.
-- Test Readiness run `35167357966`, run 889, success.
+PR #94 exact head `61f46d2caf1a0a59e4e7d2f548e81110c2fa7322` passed build/control/Test Readiness runs `35167412152`, `35167412112`, and `35167412101`, merged with expected-head protection as canonical main `bbe2cd8a6023aa5b5ba3712c80324f7cc108000d`, and post-merge build/control/Test Readiness runs `35167433179`, `35167433151`, and `35167433165` passed.
 
-PR #93 changed only the screening record and canonical handoff. `graph.json` remained unchanged.
+No `graph.json` mutation occurred in these screening/reconciliation PRs.
+
+## Current continuation mutation
+
+Branch: `rc-ctrl-001-seventh-source-screening-5`
+Base main: `bbe2cd8a6023aa5b5ba3712c80324f7cc108000d`
+Scope: screening record plus canonical handoff only; `graph.json` must remain unchanged by this continuation.
+
+This continuation is complete only after its exact PR head passes the canonical hosted validation set, merges with expected-head protection, post-merge build/control/Test Readiness evidence is observed, and this handoff is reconciled with the exact receipts.
 
 ## Existing Site projection blocker
 
@@ -99,7 +98,7 @@ python research_commons/tools/check_research_commons_control_state.py
 
 ## Archive conditions
 
-This fourth screening continuation is archiveable only after this handoff-only reconciliation passes exact-head hosted validation, merges with expected-head protection, and post-merge validation is observed. `NO_ADMISSION` remains fail-closed until qualifying evidence exists.
+This fifth screening continuation is archiveable only after exact-head hosted validation, expected-head-protected merge, observed post-merge validation, and final handoff reconciliation. `NO_ADMISSION` remains fail-closed until qualifying evidence exists.
 
 ## Next executable action
 

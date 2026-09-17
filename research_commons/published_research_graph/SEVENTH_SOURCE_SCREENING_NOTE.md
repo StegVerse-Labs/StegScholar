@@ -118,7 +118,7 @@ Disposition: `REJECTED_FOR_SEVENTH_GRAPH_INGESTION`
 Evidence posture:
 - independently authored relative to the represented AUP source family;
 - experimentally evaluates Calibrated Collective Oversight in substantially different domains including MACHIAVELLI text-adventure trajectories and a modified SWE-bench software-engineering protocol, reporting both violation/misalignment rates and task/reward outcomes;
-- Appendix H also implements a fixed-λ AUP baseline using the original Q-value-style penalty structure and records both violation rate and total reward over repeated runs;
+- Appendix H also implements a fixed-lambda AUP baseline using the original Q-value-style penalty structure and records both violation rate and total reward over repeated runs;
 - however, that actual AUP baseline is evaluated only in a purpose-built non-stationary gridworld with species-harm dynamics;
 - the MACHIAVELLI and SWE-bench experiments use the authors' generalized CCO method rather than AUP itself;
 - therefore the paper does not independently reproduce or fail to reproduce AUP in the substantially different domains, and it does not directly benchmark two already represented mechanisms under one protocol.
@@ -142,10 +142,29 @@ Evidence posture:
 
 Reason for rejection: materially extends AUP into a different formal setting but fails the frozen empirical requirement.
 
+### Smith, Klassert, and Pihlakas (2023)
+
+Title: `Using soft maximin for risk averse multi-objective decision-making`
+Venue: Autonomous Agents and Multi-Agent Systems 37, article 11 (2023)
+DOI: `10.1007/s10458-022-09586-2`
+Canonical URL: `https://link.springer.com/article/10.1007/s10458-022-09586-2`
+External custody: Springer Nature journal version of record / original authors
+Disposition: `REJECTED_FOR_SEVENTH_GRAPH_INGESTION`
+
+Evidence posture:
+- independently authored relative to the represented AUP, Relative Reachability, and future-task source families;
+- empirically evaluates proposed continuous non-linear multi-objective utility functions, especially SFELLA, in tabular gridworld environments including low-impact tasks inherited from Vamplew et al. and resource-balancing tasks;
+- explicitly discusses conservative agency and Attainable Utility Preservation as motivating low-impact background;
+- the direct head-to-head low-impact comparison is SFELLA against Vamplew et al.'s thresholded lexicographic alignment objective (TLOA), not against represented AUP, Relative Reachability, or future-task preservation;
+- no Relative Reachability implementation is evaluated in the paper and AUP is not empirically exercised as a mechanism;
+- all reported low-impact experiments remain simple gridworlds rather than a substantially different domain.
+
+Reason for rejection: independent and empirical, but it benchmarks an unrepresented thresholded alignment method against the authors' new SFELLA method; it neither compares two represented mechanisms under one protocol nor reproduces/fails to reproduce a represented mechanism in a substantially different domain.
+
 ## Result
 
 No seventh external graph ingestion was admitted in these screening passes. The Published Research Graph is intentionally unchanged.
 
-The next admissible source must clear the frozen threshold without weakening it: an independently authored same-protocol quantitative comparison of at least two represented mechanisms (preferably AUP, Relative Reachability, and/or future-task preservation), or an independent empirical reproduction/failure of one represented mechanism in a substantially different domain with explicit task-performance and side-effect outcomes. An AUP-inspired replacement method in a different domain is not sufficient unless the represented AUP mechanism itself is empirically exercised there.
+The next admissible source must clear the frozen threshold without weakening it: an independently authored same-protocol quantitative comparison of at least two represented mechanisms (preferably AUP, Relative Reachability, and/or future-task preservation), or an independent empirical reproduction/failure of one represented mechanism in a substantially different domain with explicit task-performance and side-effect outcomes. An inspired replacement method in a different domain is not sufficient unless the represented mechanism itself is empirically exercised there.
 
 This screening record is provenance only. It does not establish scientific truth, publication authority, governance authority, execution authority, reuse admissibility, or any support for StegVerse research.
