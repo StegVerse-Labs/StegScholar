@@ -26,8 +26,8 @@ Conceptual adjacency, source-family repeats, one represented mechanism plus an u
 
 - Published Research Graph: six external ingestions.
 - Seventh-source state: `NO_ADMISSION`.
-- `graph.json`: unchanged by the Prompt-20 transition and RC-CTRL-002 discovery pass 1.
-- Screening ledger: `research_commons/published_research_graph/SEVENTH_SOURCE_SCREENING_NOTE.md`, unchanged by the Prompt-20 transition and RC-CTRL-002 discovery pass 1.
+- `graph.json`: unchanged by the Prompt-20 transition and RC-CTRL-002 discovery passes 1-2.
+- Screening ledger: `research_commons/published_research_graph/SEVENTH_SOURCE_SCREENING_NOTE.md`, unchanged by the Prompt-20 transition and RC-CTRL-002 discovery passes 1-2.
 - All recorded-candidate exclusions remain in force; do not re-screen them.
 - External source custody remains with the identified publishers/authors.
 - Every graph and screening authority effect remains `NONE`.
@@ -89,6 +89,20 @@ Before discovery, the successor handoff, task registry, screening ledger, graph,
 A tightly scoped public-literature search targeted independently authored empirical work that either compares at least two represented mechanisms under one protocol or empirically reproduces/fails to reproduce AUP, Relative Reachability, or future-task preservation in a substantially different domain. Returned evidence resolved to already represented/source-family Relative Reachability, AUP, future-task, and SafeLife AUP work, plus background/prospective discussions that do not independently exercise a represented mechanism under a qualifying protocol. No genuinely new candidate cleared either frozen admission route, and no near-match warranted durable screening-ledger churn.
 
 Disposition: `NO_ADMISSION` preserved. `graph.json` and `SEVENTH_SOURCE_SCREENING_NOTE.md` remain unchanged. This disposition has `authority_effect: NONE` and is not a scientific rejection of any source.
+
+### Discovery pass 1 receipts
+
+PR #107 exact head `279581fe3ab492215ac04057fbd12aa112ecc161` passed Build/Control/Test Readiness runs `35230806579`, `35230806518`, and `35230806847`, merged with expected-head protection as `a4f95844df8a48c0207de2234779395b2d783a90`, and post-merge Build/Control/Test Readiness runs `35230884718`, `35230884674`, and `35230884637` all passed. Canonical `main` was re-read and verified at `a4f95844df8a48c0207de2234779395b2d783a90` with valid commit verification.
+
+## RC-CTRL-002 discovery pass 2
+
+Starting canonical main: `a4f95844df8a48c0207de2234779395b2d783a90`.
+
+The successor handoff, registry, screening ledger, graph, and both successor-aware workflow filters were re-read before mutation. Canonical state remained unchanged: `RC-CTRL-002` sole active continuation, `RC-CTRL-001 SUPERSEDED`, six external graph ingestions, `NO_ADMISSION`, `RC-004 MACHINE_OWNED`, `RC-005 BLOCKED`, external custody preserved, and `authority_effect: NONE`.
+
+The search prioritized independently authored empirical implementations in robotics, continuous control, software environments, SafeLife, and other substantially different domains. Searches for AUP, Relative Reachability, and future-task preservation in those settings returned source-family AUP/SafeLife work, the already screened EPFL thesis, original RR/AUP implementations, prospective SafeLife material describing AUP/RR as future work, or unrelated/background references. No genuinely new independent study was found that either benchmarks at least two represented mechanisms under one shared protocol with explicit task and side-effect outcomes or reproduces/fails to reproduce a represented mechanism in a substantially different domain.
+
+Disposition: `NO_ADMISSION` preserved. No candidate warrants durable screening-ledger entry. `graph.json` and `SEVENTH_SOURCE_SCREENING_NOTE.md` remain unchanged. External custody and `authority_effect: NONE` are preserved.
 
 ## Existing Site projection blocker
 
