@@ -74,6 +74,12 @@ The activation mutation atomically:
 
 PR #104 exact head `978fad78267ffc485b146d708cdfffdbc455732e` passed Build/Control/Test Readiness runs `35202133255`, `35202133332`, and `35202133282`, merged with expected-head protection as `6b36328f47fe28d255f90dd72459917b03df3688`, and post-merge Build/Control/Test Readiness runs `35202184122`, `35202184043`, and `35202184073` all passed. Canonical `main` was verified at `6b36328f47fe28d255f90dd72459917b03df3688` with valid commit verification before activation began.
 
+## Prompt-20 transition receipts
+
+PR #105 exact transition head `673192e65b96cc1dc733bbb95502b41ede649d80` passed Build/Control/Test Readiness runs `35202615612`, `35202615708`, and `35202615726`. PR #105 merged with expected-head protection as `e336bce348ad08821345e2119f1bb9da926c8110`. Post-merge successor-era Build/Control/Test Readiness runs `35202701779`, `35202701706`, and `35202701587` all passed. Canonical `main` was re-read at `e336bce348ad08821345e2119f1bb9da926c8110` with valid commit verification.
+
+These receipts complete the predecessor-to-successor authority transition. `RC-CTRL-001` is permanently `SUPERSEDED` at exactly `20/20`; `RC-CTRL-002` is the sole active continuation. The receipt reconciliation itself performs no source discovery and changes no graph or screening evidence.
+
 ## Existing Site projection blocker
 
 ```text
@@ -111,7 +117,7 @@ Hosted validation remains:
 
 ## Archive conditions
 
-This activation is canonical only after its exact transition head passes hosted Build/Control/Test Readiness, merges with expected-head protection, and post-merge validation is observed on `main`. Thereafter `RC-CTRL-001` is permanently historical/superseded and this handoff is the only canonical source-discovery continuation until `RC-CTRL-002` itself is completed, blocked, released, or superseded through a validated future transition.
+The Prompt-20 activation is complete: its exact transition head passed hosted Build/Control/Test Readiness, merged with expected-head protection, and post-merge successor-era validation passed on canonical `main`. `RC-CTRL-001` is permanently historical/superseded and this handoff is the only canonical source-discovery continuation until `RC-CTRL-002` itself is completed, blocked, released, or superseded through a validated future transition.
 
 ## First executable action after activation
 
