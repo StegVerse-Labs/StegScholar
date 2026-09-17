@@ -8,7 +8,8 @@ from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-HANDOFF = ROOT / "RESEARCH_COMMONS_MIRROR_HANDOFF.md"
+HANDOFF = ROOT / "RESEARCH_COMMONS_SOURCE_DISCOVERY_SUCCESSOR_MIRROR_HANDOFF.md"
+PREDECESSOR_HANDOFF = ROOT / "RESEARCH_COMMONS_MIRROR_HANDOFF.md"
 REGISTRY = ROOT / "research_commons/control/task-registry.json"
 ALLOWED = {
     "UNCLAIMED",
@@ -35,12 +36,15 @@ def fail(message: str) -> None:
 def main() -> None:
     if not HANDOFF.exists():
         fail(f"missing handoff: {HANDOFF.relative_to(ROOT)}")
+    if not PREDECESSOR_HANDOFF.exists():
+        fail(f"missing predecessor handoff: {PREDECESSOR_HANDOFF.relative_to(ROOT)}")
     if not REGISTRY.exists():
         fail(f"missing registry: {REGISTRY.relative_to(ROOT)}")
 
     handoff = HANDOFF.read_text(encoding="utf-8")
+    predecessor_handoff = PREDECESSOR_HANDOFF.read_text(encoding="utf-8")
     required_handoff_terms = [
-        "goal_id: RC-CTRL-001",
+        "goal_id: RC-CTRL-002",
         "research_commons/control/task-registry.json",
         "## Archive conditions",
         "## Cross-repository dependencies",
@@ -49,10 +53,14 @@ def main() -> None:
         if term not in handoff:
             fail(f"handoff missing required term: {term}")
 
+    for term in ("goal_id: RC-CTRL-001", "Predecessor status: `SUPERSEDED`"):
+        if term not in predecessor_handoff:
+            fail(f"predecessor handoff missing closure term: {term}")
+
     data = json.loads(REGISTRY.read_text(encoding="utf-8"))
-    if data.get("registry_id") != "RC-CTRL-001":
+    if data.get("registry_id") != "RC-CTRL-002":
         fail("unexpected registry_id")
-    if data.get("canonical_handoff") != "RESEARCH_COMMONS_MIRROR_HANDOFF.md":
+    if data.get("canonical_handoff") != "RESEARCH_COMMONS_SOURCE_DISCOVERY_SUCCESSOR_MIRROR_HANDOFF.md":
         fail("canonical handoff mismatch")
 
     tasks = data.get("tasks")
@@ -63,6 +71,7 @@ def main() -> None:
     now = datetime.now(timezone.utc)
     ttl = timedelta(hours=int(data.get("claim_ttl_hours", 72)))
     stale: list[str] = []
+    state_by_task: dict[str, str] = {}
 
     for task in tasks:
         task_id = task.get("task_id")
@@ -73,6 +82,7 @@ def main() -> None:
         state = task.get("claim_state")
         if state not in ALLOWED:
             fail(f"{task_id}: invalid claim_state {state}")
+        state_by_task[task_id] = state
 
         for field in (
             "originating_goal",
@@ -94,19 +104,36 @@ def main() -> None:
             if state != "MACHINE_OWNED" and now - parse_time(timestamp) > ttl:
                 stale.append(task_id)
 
-    required_tasks = {"RC-002", "RC-004", "RC-005", "RC-009", "RC-010", "RC-011", "RC-012"}
+    required_tasks = {
+        "RC-002",
+        "RC-004",
+        "RC-005",
+        "RC-009",
+        "RC-010",
+        "RC-011",
+        "RC-012",
+        "RC-CTRL-001",
+        "RC-CTRL-002",
+    }
     missing = required_tasks - seen
     if missing:
         fail(f"missing required tasks: {sorted(missing)}")
+    if state_by_task.get("RC-CTRL-001") != "SUPERSEDED":
+        fail("RC-CTRL-001 must be SUPERSEDED")
+    if state_by_task.get("RC-CTRL-002") != "CLAIMED_FOR_VALIDATION":
+        fail("RC-CTRL-002 must be CLAIMED_FOR_VALIDATION")
     if stale:
         fail(f"stale claims require release, block, or evidence-backed renewal: {stale}")
 
     print(json.dumps({
         "state": "COMPLETE",
         "registry_id": data["registry_id"],
+        "canonical_handoff": data["canonical_handoff"],
         "task_count": len(tasks),
         "active_claims": sum(1 for task in tasks if str(task["claim_state"]).startswith("CLAIMED_FOR_")),
         "machine_owned": sum(1 for task in tasks if task["claim_state"] == "MACHINE_OWNED"),
+        "predecessor_state": state_by_task["RC-CTRL-001"],
+        "successor_state": state_by_task["RC-CTRL-002"],
         "stale_claims": [],
     }, indent=2, sort_keys=True))
 
