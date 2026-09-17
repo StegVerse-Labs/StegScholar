@@ -5,11 +5,13 @@ on:
     paths:
       - "research_commons/**"
       - "RESEARCH_COMMONS_MIRROR_HANDOFF.md"
+      - "RESEARCH_COMMONS_SOURCE_DISCOVERY_SUCCESSOR_MIRROR_HANDOFF.md"
       - ".github/workflows/build-and-validate-research-commons.yml"
   pull_request:
     paths:
       - "research_commons/**"
       - "RESEARCH_COMMONS_MIRROR_HANDOFF.md"
+      - "RESEARCH_COMMONS_SOURCE_DISCOVERY_SUCCESSOR_MIRROR_HANDOFF.md"
       - ".github/workflows/build-and-validate-research-commons.yml"
   workflow_dispatch:
 
