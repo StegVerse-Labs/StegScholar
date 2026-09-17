@@ -180,6 +180,24 @@ Evidence posture:
 
 Reason for rejection: independent, empirical, and explicitly connected to all three represented mechanism families, but it evaluates a new self-imagination/ToM mechanism rather than directly benchmarking two represented mechanisms or reproducing/failing to reproduce one represented mechanism in a substantially different domain.
 
+### Miret, Majumdar, and Wainwright (2020)
+
+Title: `Safety Aware Reinforcement Learning (SARL)`
+Venue: arXiv / ICLR 2021 submission
+arXiv: `2010.02846`
+Canonical URL: `https://arxiv.org/abs/2010.02846`
+External custody: arXiv / original authors
+Disposition: `REJECTED_FOR_SEVENTH_GRAPH_INGESTION`
+
+Evidence posture:
+- independently authored relative to the represented AUP, Relative Reachability, and future-task source families;
+- empirically evaluates task reward and post-episode side-effect outcomes across still and dynamic SafeLife prune/append tasks, a substantially more complex non-tabular environment than the early gridworld tests;
+- explicitly discusses Relative Reachability and conservative/AUP-style work and distinguishes SARL from the AUP SafeLife extension;
+- the implemented mechanism is SARL's own virtual safety agent with a distribution-distance regularizer, trained using the SafeLife side-effect information channel;
+- neither AUP nor Relative Reachability nor future-task preservation is implemented as the tested mechanism or direct baseline in the reported experiments.
+
+Reason for rejection: independent and empirical in a complex SafeLife domain, but it does not empirically exercise any represented mechanism there and therefore neither reproduces/fails to reproduce one represented mechanism in a substantially different domain nor benchmarks two represented mechanisms under one shared protocol.
+
 ## Result
 
 No seventh external graph ingestion was admitted in these screening passes. The Published Research Graph is intentionally unchanged.
