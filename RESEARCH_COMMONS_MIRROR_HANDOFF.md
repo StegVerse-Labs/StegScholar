@@ -46,21 +46,21 @@ Seventh continuation finding:
 
 This is a screening disposition only, not a scientific rejection. It carries `authority_effect: NONE` and cannot create or deny scientific, publication, governance, execution, or reuse authority.
 
-### Canonical receipts through PR #98
+### Canonical receipts through PR #99
 
-PR #97 exact head `37317343caa33d4ccf6f2944f425387e93723461` passed build/control/Test Readiness runs `35169634945`, `35169634981`, and `35169634944`, merged with expected-head protection as `abe1094e52c1d004b70246da1ec9bbd9fd6f39db`, and post-merge build/control/Test Readiness runs `35169666461`, `35169666486`, and `35169666462` passed.
+PR #98 exact head `f300607b9b4ed5d9400dde8f2931034745d296a9` passed build/control/Test Readiness runs `35169724667`, `35169724670`, and `35169724673`, merged with expected-head protection as `84edf64bd045be02a69cfbc6f8aebb5e09997bf9`, and post-merge build/control/Test Readiness runs `35169749772`, `35169749795`, and `35169749787` passed.
 
-PR #98 exact head `f300607b9b4ed5d9400dde8f2931034745d296a9` passed build/control/Test Readiness runs `35169724667`, `35169724670`, and `35169724673`, merged with expected-head protection as canonical main `84edf64bd045be02a69cfbc6f8aebb5e09997bf9`, and post-merge build/control/Test Readiness runs `35169749772`, `35169749795`, and `35169749787` passed.
+PR #99 exact head `d6a68386f312f04ad78c6013318b0e27c953491a` passed build/control/Test Readiness runs `35175857449`, `35175857523`, and `35175857439`, merged with expected-head protection as `92806cd2d5a85d58584c0d0d0e5e7ecdef36f60c`, and post-merge build/control/Test Readiness runs `35175882129`, `35175882103`, and `35175882107` passed.
 
 No `graph.json` mutation occurred in these screening/reconciliation PRs.
 
 ## Current continuation mutation
 
-Branch: `rc-ctrl-001-seventh-source-screening-7`
-Base main: `84edf64bd045be02a69cfbc6f8aebb5e09997bf9`
-Scope: screening record plus canonical handoff only; `graph.json` must remain unchanged by this continuation.
+Branch: `rc-ctrl-001-seventh-source-screening-7-reconcile`
+Base main: `92806cd2d5a85d58584c0d0d0e5e7ecdef36f60c`
+Scope: handoff-only reconciliation; `graph.json` remains unchanged.
 
-This continuation is complete only after its exact PR head passes the canonical hosted validation set, merges with expected-head protection, post-merge build/control/Test Readiness evidence is observed, and this handoff is reconciled with the exact receipts.
+This continuation is fully checked out only after this reconciliation head passes the canonical hosted validation set, merges with expected-head protection, and post-merge build/control/Test Readiness evidence is observed.
 
 ## Existing Site projection blocker
 
@@ -98,7 +98,7 @@ python research_commons/tools/check_research_commons_control_state.py
 
 ## Archive conditions
 
-This seventh screening continuation is archiveable only after exact-head hosted validation, expected-head-protected merge, observed post-merge validation, and final handoff reconciliation. `NO_ADMISSION` remains fail-closed until qualifying evidence exists.
+This seventh screening continuation is archiveable only after reconciliation exact-head hosted validation, expected-head-protected merge, and observed post-merge validation. `NO_ADMISSION` remains fail-closed until qualifying evidence exists.
 
 ## Next executable action
 
