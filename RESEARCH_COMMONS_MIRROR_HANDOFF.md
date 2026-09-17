@@ -12,80 +12,58 @@ Canonical owner: StegVerse-Labs/StegScholar repository-native workstream
 Read before mutation:
 1. `RESEARCH_COMMONS_MIRROR_HANDOFF.md`
 2. `research_commons/control/task-registry.json`
-3. `research_commons/sources/publisher-papers/registry.json`
-4. `research_commons/sources/publisher-papers/relations.json`
-5. `research_commons/sources/publisher-papers/reconciliation.json`
-6. `research_commons/published_research_graph/schema.json`
-7. `research_commons/published_research_graph/graph.json`
-8. `research_commons/published_research_graph/SEVENTH_SOURCE_SCREENING_NOTE.md`
-9. issue #21, issue #37, and issue #38
-10. `GCAT-BCAT-Engine/Publisher/docs/PUBLISHER_MIRROR_HANDOFF.md`
-11. before any Site mutation, `StegVerse-Labs/Site/docs/SITE_MIRROR_HANDOFF.md`
+3. `research_commons/published_research_graph/graph.json`
+4. `research_commons/published_research_graph/SEVENTH_SOURCE_SCREENING_NOTE.md`
+5. issue #21, issue #37, and issue #38
+6. before any Site mutation, `StegVerse-Labs/Site/docs/SITE_MIRROR_HANDOFF.md`
 
 ## Active goal
 
-`RC-CTRL-001` owns governed Research Commons ingestion, research indexing and relation lineage, validation, reuse boundaries, and Site projection without transferring publication or scientific authority. The source-neutral Published Research Graph remains an extension of RC-008 under this goal.
+`RC-CTRL-001` owns governed Research Commons ingestion, research indexing and relation lineage, validation, reuse boundaries, and Site projection without transferring publication or scientific authority.
 
 ## Canonical graph state
 
-Six external ingestions remain canonical. Seventh-source screening remains `NO_ADMISSION`; no new document, claim, evidence, or relation has been admitted. The Published Research Graph remains unchanged.
-
-Every graph document and relation retains `authority_effect: NONE`. No graph edge establishes scientific truth, causation, priority/authorship, publication standing/custody, reuse admissibility, governance authority, or execution authority.
-
-The sixth source remains Turner, Ratzlaff, and Tadepalli, `Avoiding Side Effects in Complex Environments` (NeurIPS 2020; arXiv `2006.06547v1`), represented as `RC-DOC-NEURIPS-2020-F50A6C02` with external NeurIPS/arXiv/original-author custody. Its bounded SafeLife refinement and reachability-scaling challenge remain unchanged.
+Six external ingestions remain canonical. Seventh-source screening remains `NO_ADMISSION`; no new document, claim, evidence, or relation has been admitted. The Published Research Graph remains unchanged and every graph authority effect remains `NONE`.
 
 The preserved Gridworlds baseline-result digest remains `sha256:ed8887f7e1b48fbd0e0904e04802a10d8f5536ceb428d21c5c849fc55bd64fab`.
 
 ## Seventh-source frozen threshold
 
-A seventh external graph source may be admitted only if it is independently authored and either:
+A seventh external graph source may be admitted only if independently authored and either:
 - directly benchmarks at least two already represented side-effect mitigation mechanisms under the same environment/protocol; or
 - independently reproduces or fails to reproduce one represented mechanism in a substantially different domain.
 
-Prefer same-protocol quantitative AUP-vs-relative-reachability-vs-future-task evidence reporting both side-effect and task-performance outcomes. Conceptual adjacency, comparison involving only one represented mechanism, a modified related implementation in another gridworld-style benchmark, an AUP-inspired replacement method in a different domain, or a formal-only extension does not satisfy this threshold.
+The threshold is not satisfied by conceptual adjacency, one represented mechanism plus an unrepresented method, another gridworld-style modification, an AUP-inspired replacement method in a different domain, or a formal-only extension.
 
 ## Seventh-source screening — `NO_ADMISSION`
 
 Screening record: `research_commons/published_research_graph/SEVENTH_SOURCE_SCREENING_NOTE.md`.
 
-Already screened and excluded from re-screening:
-- Vamplew, Foale, Dazeley, and Bignold (2021), `Potential-based multiobjective reinforcement learning approaches to low-impact agents for AI safety`;
-- Burden, Hernandez-Orallo, and O hEigeartaigh (2021), `Negative Side Effects and AI Agent Indicators: Experiments in SafeLife`;
-- Lindner, Matoba, and Meulemans (2021), `Challenges for Using Impact Regularizers to Avoid Negative Side Effects`;
-- Turner, Hadfield-Menell, and Tadepalli (2020), `Conservative Agency via Attainable Utility Preservation`;
-- Alizadeh Alamdari, Klassen, Toro Icarte, and McIlraith (2022), `Be Considerate: Avoiding Negative Side Effects in Reinforcement Learning`;
-- `Adaptive querying for reward learning from human feedback` (Frontiers in Robotics and AI, 2025);
-- Overman and Bayati (2026), `Calibrating Conservatism for Scalable Oversight`;
-- Nayebi (2026), `Core Safety Values for Provably Corrigible Agents`.
+Do not re-screen candidates recorded there, including Overman and Bayati (2026), `Calibrating Conservatism for Scalable Oversight`, and Nayebi (2026), `Core Safety Values for Provably Corrigible Agents`.
 
 Fourth continuation findings:
-- Overman and Bayati (2026) is independently authored and empirically evaluates CCO on substantially different MACHIAVELLI and modified SWE-bench domains while also implementing a fixed-λ AUP baseline. Protocol inspection shows the actual AUP baseline is confined to a controlled non-stationary species-harm gridworld; the domain-diverse MACHIAVELLI/SWE-bench experiments use CCO rather than AUP. It therefore does not reproduce/fail to reproduce AUP in the substantially different domains and does not compare two represented mechanisms under one protocol.
-- Nayebi (2026) independently defines a belief-based AUP extension for partially observed corrigibility with stepwise inaction-style counterfactual structure, but the contribution is formal/theoretical rather than the required empirical reproduction with explicit task-performance and side-effect outcomes.
+- Overman and Bayati independently evaluate CCO on MACHIAVELLI and modified SWE-bench and separately implement a fixed-λ AUP baseline. Protocol inspection shows AUP itself is exercised only in their controlled non-stationary species-harm gridworld; the substantially different domains use CCO. It therefore does not reproduce/fail to reproduce represented AUP in a substantially different domain and does not compare two represented mechanisms under one protocol.
+- Nayebi independently extends AUP into partially observed corrigibility with a belief-based formulation and stepwise inaction-style counterfactual structure, but the work is formal/theoretical rather than the required empirical reproduction with explicit task-performance and side-effect outcomes.
 
-These are screening dispositions only, not scientific rejections. They carry `authority_effect: NONE` and cannot create or deny scientific, publication, governance, execution, or reuse authority.
+These are screening dispositions only, not scientific rejections, and carry `authority_effect: NONE`.
 
-### Screening receipts through PR #92
+### Fourth continuation receipts
 
-PR #87 exact head `9308b46df7dd0d224fcf3020aa1ba9e3cbfe8eee` merged with expected-head protection as `7e21ba38b3406a61faeafcb50f6aab1d777c598c` after successful validation.
-PR #88 exact head `b378ad5219e6ecb84cda312d6328b9921dc91a93` merged with expected-head protection as `5506a721b67c28d5723d4130eb82636c853706af` after successful validation.
-PR #89 exact head `127e73d44a473d66d3d9f2489e074a24495c47da` passed build/control/Test Readiness runs `35165120112`, `35165119962`, and `35165120166`, merged as `88ea3a4e0e7105e0b29275d018d4b25432710a54`, and post-merge runs `35165150662`, `35165150628`, and `35165150607` passed.
-PR #90 exact head `a4c82f3dc02c0163f5bb813c537937d763eab7d2` passed build/control/Test Readiness runs `35165223952`, `35165223872`, and `35165223849`, merged as `0b29bcb29a9324ea24c74cd4b0f56155da7fa357`, and post-merge runs `35165257283`, `35165257252`, and `35165257288` passed.
-PR #91 exact head `a40c640db89f0caa96b45e323b3c5156b40f8a9a` passed build/control/Test Readiness runs `35166311192`, `35166311134`, and `35166311123`, merged as `250e1a537aa1849b1a68216aa0fa2a20abc5c617`, and post-merge runs `35166344184`, `35166344241`, and `35166344175` passed.
-PR #92 exact head `f087b3998db8c7efccfffd76e6262d2b44ce6ee4` passed build/control/Test Readiness runs `35166409872`, `35166409947`, and `35166409917`, merged with expected-head protection as canonical main `b416079da1225586fe47436c8f96d94d07e22de1`, and post-merge runs `35166439188`, `35166439085`, and `35166439156` passed.
+PR #93 branch `rc-ctrl-001-seventh-source-screening-4` was based on canonical main `b416079da1225586fe47436c8f96d94d07e22de1`.
+Exact head `40b67877f5aa6811d40633bb4afebd3ac3d4b3f1` passed:
+- Build and validate Research Commons run `35167298424`, run 154, success.
+- Validate Research Commons Control State run `35167298392`, run 645, success.
+- Test Readiness run `35167298410`, run 888, success.
 
-No `graph.json` mutation occurred in these screening/reconciliation PRs.
+PR #93 merged with expected-head protection as `6332aa99c62a18e331c961fd65362dbc5544846f`.
+Post-merge main validation passed:
+- Build and validate Research Commons run `35167358012`, run 155, success.
+- Validate Research Commons Control State run `35167358015`, run 646, success.
+- Test Readiness run `35167357966`, run 889, success.
 
-## Current continuation mutation
-
-Branch: `rc-ctrl-001-seventh-source-screening-4`
-Base main: `b416079da1225586fe47436c8f96d94d07e22de1`
-Scope: screening record plus canonical handoff only; `graph.json` must remain unchanged by this continuation.
-
-This continuation is complete only after its exact PR head passes the canonical hosted validation set, merges with expected-head protection, post-merge build/control/Test Readiness evidence is observed, and this handoff is reconciled with the exact receipts.
+PR #93 changed only the screening record and canonical handoff. `graph.json` remained unchanged.
 
 ## Existing Site projection blocker
-
-The pre-existing Site projection remains independently blocked pending Publisher reconciliation/authorization. This screening work does not bypass or resolve that gate.
 
 ```text
 dispatch_state: BLOCKED
@@ -97,8 +75,6 @@ authority_effect: NONE
 ```
 
 ## Validation
-
-Canonical validation includes:
 
 ```text
 python research_commons/tools/build_publisher_indexes.py
@@ -112,19 +88,19 @@ python research_commons/tools/check_research_commons_control_state.py
 
 ## Cross-repository dependencies
 
-- `GCAT-BCAT-Engine/Publisher`: publication custody, source catalog, and Publisher reconciliation authority.
-- `StegVerse-Labs/StegScholar`: graph identity, provenance, relation lineage, review-state validation, and Research Commons graph custody.
+- `GCAT-BCAT-Engine/Publisher`: publication custody and Publisher reconciliation authority.
+- `StegVerse-Labs/StegScholar`: graph identity, provenance, relation lineage, review-state validation, and graph custody.
 - `StegVerse-Labs/Site`: projection acceptance/deployment only after its own orchestrator admission.
-- `admissibility-wiki`, `stegguardian-wiki`, and `master-records`: no propagation asserted without a versioned destination contract and receipt.
+- `admissibility-wiki`, `stegguardian-wiki`, and `master-records`: no propagation without a versioned destination contract and receipt.
 
 ## Coordination state
 
-`RC-004` remains machine-owned source-drift observation. `RC-005` remains blocked Site projection. No competing handoff or child Goal Task has been created.
+`RC-004` remains `MACHINE_OWNED` source-drift observation. `RC-005` remains `BLOCKED` Site projection. No competing handoff or child Goal Task has been created.
 
 ## Archive conditions
 
-This continuation is archiveable only after exact-head hosted validation, expected-head-protected merge, observed post-merge validation, and final handoff reconciliation. Lack of a qualifying seventh source is not permission to lower the frozen threshold. `NO_ADMISSION` remains the correct fail-closed graph state until qualifying evidence exists.
+This fourth screening continuation is archiveable only after this handoff-only reconciliation passes exact-head hosted validation, merges with expected-head protection, and post-merge validation is observed. `NO_ADMISSION` remains fail-closed until qualifying evidence exists.
 
 ## Next executable action
 
-Continue `RC-CTRL-001` source discovery only for a genuinely independent empirical paper that clears the frozen seventh-source threshold. Do not re-screen candidates already recorded in `SEVENTH_SOURCE_SCREENING_NOTE.md`. Prefer a same-protocol quantitative comparison of two or more represented mechanisms; otherwise require an actual independent empirical reproduction or failure-to-reproduce of AUP, Relative Reachability, or future-task preservation in a substantially different domain with explicit task-performance and side-effect outcomes. If no source clears the threshold, preserve `NO_ADMISSION`, leave the graph unchanged, and retain `authority_effect: NONE`.
+Continue `RC-CTRL-001` source discovery only for a genuinely new independently authored empirical paper that clears the frozen threshold. Do not re-screen any candidate in `SEVENTH_SOURCE_SCREENING_NOTE.md`. Prefer a same-protocol quantitative comparison of two or more represented mechanisms; otherwise require an actual independent empirical reproduction/failure of AUP, Relative Reachability, or future-task preservation in a substantially different domain with explicit task-performance and side-effect outcomes. If no source clears the threshold, preserve `NO_ADMISSION`, leave `graph.json` unchanged, and retain `authority_effect: NONE`.
