@@ -53,29 +53,28 @@ Already screened and excluded from re-screening:
 - Burden, Hernandez-Orallo, and O hEigeartaigh (2021), `Negative Side Effects and AI Agent Indicators: Experiments in SafeLife`;
 - Lindner, Matoba, and Meulemans (2021), `Challenges for Using Impact Regularizers to Avoid Negative Side Effects`;
 - Turner, Hadfield-Menell, and Tadepalli (2020), `Conservative Agency via Attainable Utility Preservation`;
-- Alizadeh Alamdari, Klassen, Toro Icarte, and McIlraith (2022), `Be Considerate: Avoiding Negative Side Effects in Reinforcement Learning`.
+- Alizadeh Alamdari, Klassen, Toro Icarte, and McIlraith (2022), `Be Considerate: Avoiding Negative Side Effects in Reinforcement Learning`;
+- `Adaptive querying for reward learning from human feedback` (Frontiers in Robotics and AI, 2025).
 
-The third continuation screen added:
-- `Adaptive querying for reward learning from human feedback` (Frontiers in Robotics and AI, 2025). This is independent and empirical, evaluates avoidable/unavoidable negative side effects across four simulation domains, a human-subjects simulation study, and an in-person Kinova Gen3 7DoF robotic-arm study, so it supplies substantially different-domain and embodied negative-side-effect evidence. It nevertheless evaluates adaptive feedback selection / reward learning rather than AUP, Relative Reachability, or future-task preservation. It therefore neither directly benchmarks at least two represented mechanisms nor independently reproduces/fails to reproduce a represented mechanism.
+The 2025 adaptive-querying paper is independent and empirical and includes four simulation domains plus an in-person Kinova Gen3 7DoF robotic-arm study, but it evaluates adaptive human-feedback selection / reward learning rather than AUP, Relative Reachability, or future-task preservation. It therefore clears neither frozen admission route. This is a screening disposition only, not a scientific rejection, and carries `authority_effect: NONE`.
 
-This is a screening disposition only, not a scientific rejection. It carries `authority_effect: NONE` and cannot create or deny scientific, publication, governance, execution, or reuse authority.
+### Screening receipts through PR #91
 
-### Prior screening receipts
-
-PR #87 exact head `9308b46df7dd0d224fcf3020aa1ba9e3cbfe8eee` passed build/control/Test Readiness and merged with expected-head protection as `7e21ba38b3406a61faeafcb50f6aab1d777c598c`.
-PR #88 exact head `b378ad5219e6ecb84cda312d6328b9921dc91a93` passed validation and merged with expected-head protection as `5506a721b67c28d5723d4130eb82636c853706af`.
-PR #89 exact head `127e73d44a473d66d3d9f2489e074a24495c47da` passed build/control/Test Readiness runs `35165120112`, `35165119962`, and `35165120166`, merged with expected-head protection as `88ea3a4e0e7105e0b29275d018d4b25432710a54`, and post-merge runs `35165150662`, `35165150628`, and `35165150607` passed.
-PR #90 exact head `a4c82f3dc02c0163f5bb813c537937d763eab7d2` passed build/control/Test Readiness runs `35165223952`, `35165223872`, and `35165223849`, merged with expected-head protection as canonical main `0b29bcb29a9324ea24c74cd4b0f56155da7fa357`, and post-merge runs `35165257283`, `35165257252`, and `35165257288` passed.
+PR #87 exact head `9308b46df7dd0d224fcf3020aa1ba9e3cbfe8eee` merged with expected-head protection as `7e21ba38b3406a61faeafcb50f6aab1d777c598c` after successful validation.
+PR #88 exact head `b378ad5219e6ecb84cda312d6328b9921dc91a93` merged with expected-head protection as `5506a721b67c28d5723d4130eb82636c853706af` after successful validation.
+PR #89 exact head `127e73d44a473d66d3d9f2489e074a24495c47da` passed build/control/Test Readiness runs `35165120112`, `35165119962`, and `35165120166`, merged as `88ea3a4e0e7105e0b29275d018d4b25432710a54`, and post-merge runs `35165150662`, `35165150628`, and `35165150607` passed.
+PR #90 exact head `a4c82f3dc02c0163f5bb813c537937d763eab7d2` passed build/control/Test Readiness runs `35165223952`, `35165223872`, and `35165223849`, merged as `0b29bcb29a9324ea24c74cd4b0f56155da7fa357`, and post-merge runs `35165257283`, `35165257252`, and `35165257288` passed.
+PR #91 exact head `a40c640db89f0caa96b45e323b3c5156b40f8a9a` passed build/control/Test Readiness runs `35166311192`, `35166311134`, and `35166311123`, merged with expected-head protection as `250e1a537aa1849b1a68216aa0fa2a20abc5c617`, and post-merge runs `35166344184`, `35166344241`, and `35166344175` passed.
 
 No `graph.json` mutation occurred in these screening/reconciliation PRs.
 
 ## Current continuation mutation
 
-Branch: `rc-ctrl-001-seventh-source-screening-3`
-Base main: `0b29bcb29a9324ea24c74cd4b0f56155da7fa357`
-Scope: screening record plus canonical handoff only; `graph.json` must remain unchanged by this continuation.
+Branch: `rc-ctrl-001-seventh-source-screening-3-reconcile`
+Base main: `250e1a537aa1849b1a68216aa0fa2a20abc5c617`
+Scope: handoff-only reconciliation; `graph.json` remains unchanged.
 
-This continuation is complete only after its exact PR head passes the canonical hosted validation set, merges with expected-head protection, post-merge build/control/Test Readiness evidence is observed, and this handoff is reconciled with the exact receipts.
+This continuation is fully checked out only after this reconciliation head passes the canonical hosted validation set, merges with expected-head protection, and post-merge build/control/Test Readiness evidence is observed.
 
 ## Existing Site projection blocker
 
@@ -117,7 +116,7 @@ python research_commons/tools/check_research_commons_control_state.py
 
 ## Archive conditions
 
-This continuation is archiveable only after exact-head hosted validation, expected-head-protected merge, observed post-merge validation, and final handoff reconciliation. Lack of a qualifying seventh source is not permission to lower the frozen threshold. `NO_ADMISSION` remains the correct fail-closed graph state until qualifying evidence exists.
+This continuation is archiveable only after reconciliation exact-head hosted validation, expected-head-protected merge, and observed post-merge validation. Lack of a qualifying seventh source is not permission to lower the frozen threshold. `NO_ADMISSION` remains the correct fail-closed graph state until qualifying evidence exists.
 
 ## Next executable action
 
