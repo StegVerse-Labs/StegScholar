@@ -26,8 +26,8 @@ Conceptual adjacency, source-family repeats, one represented mechanism plus an u
 
 - Published Research Graph: six external ingestions.
 - Seventh-source state: `NO_ADMISSION`.
-- `graph.json`: unchanged by the Prompt-20 transition.
-- Screening ledger: `research_commons/published_research_graph/SEVENTH_SOURCE_SCREENING_NOTE.md`, unchanged by the Prompt-20 transition.
+- `graph.json`: unchanged by the Prompt-20 transition and RC-CTRL-002 discovery pass 1.
+- Screening ledger: `research_commons/published_research_graph/SEVENTH_SOURCE_SCREENING_NOTE.md`, unchanged by the Prompt-20 transition and RC-CTRL-002 discovery pass 1.
 - All recorded-candidate exclusions remain in force; do not re-screen them.
 - External source custody remains with the identified publishers/authors.
 - Every graph and screening authority effect remains `NONE`.
@@ -80,6 +80,16 @@ PR #105 exact transition head `673192e65b96cc1dc733bbb95502b41ede649d80` passed 
 
 These receipts complete the predecessor-to-successor authority transition. `RC-CTRL-001` is permanently `SUPERSEDED` at exactly `20/20`; `RC-CTRL-002` is the sole active continuation. The receipt reconciliation itself performs no source discovery and changes no graph or screening evidence.
 
+## RC-CTRL-002 discovery pass 1
+
+Starting canonical main: `df20453b05dd1857daab89ae853ca7694651e5b8`.
+
+Before discovery, the successor handoff, task registry, screening ledger, graph, and successor-aware Build/Control workflow path filters were re-read. The registry remained `RC-CTRL-002`, `RC-CTRL-001` remained `SUPERSEDED`, `RC-004` remained `MACHINE_OWNED`, and `RC-005` remained `BLOCKED`. Both hosted workflow definitions explicitly watched `RESEARCH_COMMONS_SOURCE_DISCOVERY_SUCCESSOR_MIRROR_HANDOFF.md`.
+
+A tightly scoped public-literature search targeted independently authored empirical work that either compares at least two represented mechanisms under one protocol or empirically reproduces/fails to reproduce AUP, Relative Reachability, or future-task preservation in a substantially different domain. Returned evidence resolved to already represented/source-family Relative Reachability, AUP, future-task, and SafeLife AUP work, plus background/prospective discussions that do not independently exercise a represented mechanism under a qualifying protocol. No genuinely new candidate cleared either frozen admission route, and no near-match warranted durable screening-ledger churn.
+
+Disposition: `NO_ADMISSION` preserved. `graph.json` and `SEVENTH_SOURCE_SCREENING_NOTE.md` remain unchanged. This disposition has `authority_effect: NONE` and is not a scientific rejection of any source.
+
 ## Existing Site projection blocker
 
 ```text
@@ -117,7 +127,7 @@ Hosted validation remains:
 
 ## Archive conditions
 
-The Prompt-20 activation is complete: its exact transition head passed hosted Build/Control/Test Readiness, merged with expected-head protection, and post-merge successor-era validation passed on canonical `main`. `RC-CTRL-001` is permanently historical/superseded and this handoff is the only canonical source-discovery continuation until `RC-CTRL-002` itself is completed, blocked, released, or superseded through a validated future transition.
+The Prompt-20 activation is complete: its exact transition head passed hosted Build/Control/Test Readiness, merged with expected-head protection, and post-merge successor-era validation passed on `main`. `RC-CTRL-001` is permanently historical/superseded and this handoff is the only canonical source-discovery continuation until `RC-CTRL-002` itself is completed, blocked, released, or superseded through a validated future transition.
 
 ## First executable action after activation
 
