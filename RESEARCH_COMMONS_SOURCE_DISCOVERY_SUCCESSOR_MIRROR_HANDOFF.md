@@ -2,16 +2,17 @@
 
 ## Authority and scope
 
-Prepared successor continuation record for the Research Commons source-discovery workstream in `StegVerse-Labs/StegScholar`.
+Active canonical continuation record for the Research Commons source-discovery workstream in `StegVerse-Labs/StegScholar`.
 
 Goal Task ID: `RC-CTRL-002`
 goal_id: RC-CTRL-002
 Canonical branch: `main`
 Predecessor Goal Task ID: `RC-CTRL-001`
-Activation state: `UNCLAIMED`
+Activation state: `CLAIMED_FOR_VALIDATION`
+Predecessor state: `SUPERSEDED`
 Authority effect: `NONE`
 
-This successor is prepared before the predecessor reaches its 20-prompt ceiling. It MUST NOT run concurrently with `RC-CTRL-001` source discovery and MUST NOT be treated as active until the predecessor is canonically closed or superseded into this successor.
+`RC-CTRL-001` reached exactly Goal Prompt `20/20` and is superseded into this successor. `RC-CTRL-002` is now the sole active source-discovery continuation. No source discovery occurred during the Prompt-20 transition itself.
 
 ## Inherited frozen source threshold
 
@@ -25,47 +26,93 @@ Conceptual adjacency, source-family repeats, one represented mechanism plus an u
 
 - Published Research Graph: six external ingestions.
 - Seventh-source state: `NO_ADMISSION`.
-- `graph.json`: unchanged by predecessor screening passes after the sixth ingestion.
-- Screening ledger: `research_commons/published_research_graph/SEVENTH_SOURCE_SCREENING_NOTE.md`.
+- `graph.json`: unchanged by the Prompt-20 transition.
+- Screening ledger: `research_commons/published_research_graph/SEVENTH_SOURCE_SCREENING_NOTE.md`, unchanged by the Prompt-20 transition.
+- All recorded-candidate exclusions remain in force; do not re-screen them.
+- External source custody remains with the identified publishers/authors.
 - Every graph and screening authority effect remains `NONE`.
 - `RC-004` remains `MACHINE_OWNED` source-drift observation.
 - `RC-005` remains `BLOCKED` Site projection.
 
-## Read before activation
+The preserved Gridworlds baseline-result digest remains `sha256:ed8887f7e1b48fbd0e0904e04802a10d8f5536ceb428d21c5c849fc55bd64fab`.
 
-1. `RESEARCH_COMMONS_MIRROR_HANDOFF.md`
-2. `RESEARCH_COMMONS_SOURCE_DISCOVERY_SUCCESSOR_MIRROR_HANDOFF.md`
-3. `research_commons/control/task-registry.json`
-4. `research_commons/published_research_graph/SEVENTH_SOURCE_SCREENING_NOTE.md`
-5. `research_commons/published_research_graph/graph.json`
+## Canonical coordination state
+
+Registry: `research_commons/control/task-registry.json`
+Registry ID: `RC-CTRL-002`
+Canonical handoff: `RESEARCH_COMMONS_SOURCE_DISCOVERY_SUCCESSOR_MIRROR_HANDOFF.md`
+Active claim: `RC-CTRL-002` -> `CLAIMED_FOR_VALIDATION`
+Retired predecessor: `RC-CTRL-001` -> `SUPERSEDED`
+
+The predecessor handoff `RESEARCH_COMMONS_MIRROR_HANDOFF.md` remains closure/provenance evidence only. It must not be treated as a competing active continuation.
+
+## Read before mutation
+
+1. `RESEARCH_COMMONS_SOURCE_DISCOVERY_SUCCESSOR_MIRROR_HANDOFF.md`
+2. `research_commons/control/task-registry.json`
+3. `research_commons/published_research_graph/SEVENTH_SOURCE_SCREENING_NOTE.md`
+4. `research_commons/published_research_graph/graph.json`
+5. `RESEARCH_COMMONS_MIRROR_HANDOFF.md` only for predecessor closure/history
+6. issue #21, issue #37, and issue #38
+7. before any Site mutation, `StegVerse-Labs/Site/docs/SITE_MIRROR_HANDOFF.md`
 
 ## Collision boundary
 
-Do not activate or claim `RC-CTRL-002` while `RC-CTRL-001` remains the active source-discovery Goal Task. The successor exists only to avoid exceeding the predecessor's prompt ceiling and to preserve continuity without parallel authority.
+`RC-CTRL-002` is the sole active Research Commons source-discovery continuation. Do not reopen `RC-CTRL-001`, create a parallel source-discovery handoff, weaken the frozen seventh-source threshold, or treat screening/graph relations as scientific or execution authority.
 
-## Activation readiness at predecessor Prompt 19/20
+## Prompt-20 activation contract
 
-The predecessor has completed its final source-discovery pass and is now closure-ready. No qualifying seventh source was found, so the inherited state remains `NO_ADMISSION`; `graph.json` and the screening ledger remain unchanged.
+The activation mutation atomically:
+- supersedes `RC-CTRL-001` at exactly Goal Prompt `20/20`;
+- advances `RC-CTRL-002` from `UNCLAIMED` to `CLAIMED_FOR_VALIDATION`;
+- updates registry identity and canonical handoff to `RC-CTRL-002` / this file;
+- updates the control-state validator to validate the successor rather than the retired predecessor;
+- leaves `graph.json` and the screening ledger unchanged;
+- preserves `NO_ADMISSION`, recorded-candidate exclusions, external custody, `RC-004 MACHINE_OWNED`, `RC-005 BLOCKED`, and `authority_effect: NONE`.
 
-`RC-CTRL-002` remains `UNCLAIMED` during Prompt 19. Goal Prompt 20 is the only authorized transition step for this prepared successor and must atomically:
-- re-read canonical `main` and all coordination artifacts;
-- close or supersede `RC-CTRL-001` into `RC-CTRL-002`;
-- advance the registry claim state for `RC-CTRL-002` to the appropriate active state;
-- change this handoff from prepared/dormant to active canonical continuation;
-- preserve the frozen threshold, all recorded-candidate exclusions, external custody, `NO_ADMISSION`, and `authority_effect: NONE`;
-- exact-head validate, merge only with expected-head protection, and observe post-merge Build/Control/Test Readiness before any new source discovery under `RC-CTRL-002`.
+## Predecessor receipts through Prompt 19
 
-## Activation condition
+PR #104 exact head `978fad78267ffc485b146d708cdfffdbc455732e` passed Build/Control/Test Readiness runs `35202133255`, `35202133332`, and `35202133282`, merged with expected-head protection as `6b36328f47fe28d255f90dd72459917b03df3688`, and post-merge Build/Control/Test Readiness runs `35202184122`, `35202184043`, and `35202184073` all passed. Canonical `main` was verified at `6b36328f47fe28d255f90dd72459917b03df3688` with valid commit verification before activation began.
 
-Activate `RC-CTRL-002` only after:
-- `RC-CTRL-001` has reached Goal Prompt 20 and its canonical closure/supersession mutation is part of the same validated transition;
-- predecessor receipts and current `NO_ADMISSION`/graph state are reconciled on canonical `main`;
-- the task registry is updated from `UNCLAIMED` to the appropriate active claim state without creating a competing handoff.
+## Existing Site projection blocker
 
-## First executable action after activation
+```text
+dispatch_state: BLOCKED
+blockers:
+- projection_manifest_not_authorized
+- sv-gcat-bcat-admissibility-2026: blocked_pending_source_reconciliation
+- sv-god-framework-2026: blocked_pending_complete_source_record
+authority_effect: NONE
+```
 
-After the Prompt-20 transition is validated, merged, and post-merge receipts are observed, re-read the predecessor handoff and screening ledger, preserve all recorded-candidate exclusions, and continue source discovery only for genuinely new independently authored empirical evidence satisfying the frozen threshold. If no source qualifies, leave `graph.json` and the screening ledger unchanged and preserve `NO_ADMISSION` and `authority_effect: NONE`.
+## Validation
+
+```text
+python research_commons/tools/build_publisher_indexes.py
+python research_commons/tools/validate_publisher_papers.py
+python research_commons/tools/validate_published_research_graph.py
+python research_commons/tools/detect_duplicates.py
+python research_commons/tools/validate_site_projection.py
+python research_commons/tools/build_site_projection_dispatch.py
+python research_commons/tools/check_research_commons_control_state.py
+```
+
+Hosted validation remains:
+- `Build and validate Research Commons`
+- `Validate Research Commons Control State`
+- `Test Readiness`
+
+## Cross-repository dependencies
+
+- `GCAT-BCAT-Engine/Publisher`: publication custody and Publisher reconciliation authority.
+- `StegVerse-Labs/StegScholar`: graph identity, provenance, relation lineage, review-state validation, and graph custody.
+- `StegVerse-Labs/Site`: projection acceptance/deployment only after its own orchestrator admission.
+- `admissibility-wiki`, `stegguardian-wiki`, and `master-records`: no propagation without a versioned destination contract and receipt.
 
 ## Archive conditions
 
-This prepared successor handoff remains dormant while `RC-CTRL-002` is `UNCLAIMED`. It becomes the canonical continuation handoff only after predecessor closure and explicit registry activation at Goal Prompt 20.
+This activation is canonical only after its exact transition head passes hosted Build/Control/Test Readiness, merges with expected-head protection, and post-merge validation is observed on `main`. Thereafter `RC-CTRL-001` is permanently historical/superseded and this handoff is the only canonical source-discovery continuation until `RC-CTRL-002` itself is completed, blocked, released, or superseded through a validated future transition.
+
+## First executable action after activation
+
+Re-read this handoff, the task registry, screening ledger, and graph. Continue source discovery only for genuinely new independently authored empirical evidence satisfying the frozen threshold. Do not re-screen recorded candidates. If no source qualifies, leave `graph.json` and the screening ledger unchanged and preserve `NO_ADMISSION` and `authority_effect: NONE`.
