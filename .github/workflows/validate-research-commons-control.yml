@@ -4,14 +4,17 @@ on:
   push:
     paths:
       - "RESEARCH_COMMONS_MIRROR_HANDOFF.md"
+      - "RESEARCH_COMMONS_SOURCE_DISCOVERY_SUCCESSOR_MIRROR_HANDOFF.md"
       - "research_commons/control/**"
       - "research_commons/tools/check_research_commons_control_state.py"
       - ".github/workflows/validate-research-commons-control.yml"
   pull_request:
     paths:
       - "RESEARCH_COMMONS_MIRROR_HANDOFF.md"
+      - "RESEARCH_COMMONS_SOURCE_DISCOVERY_SUCCESSOR_MIRROR_HANDOFF.md"
       - "research_commons/control/**"
       - "research_commons/tools/check_research_commons_control_state.py"
+      - ".github/workflows/validate-research-commons-control.yml"
   schedule:
     - cron: "17 * * * *"
   workflow_dispatch:
