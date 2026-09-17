@@ -161,6 +161,25 @@ Evidence posture:
 
 Reason for rejection: independent and empirical, but it benchmarks an unrepresented thresholded alignment method against the authors' new SFELLA method; it neither compares two represented mechanisms under one protocol nor reproduces/fails to reproduce a represented mechanism in a substantially different domain.
 
+### Tong, Lu, Sun, Han, Liu, Zhao, and Zeng (2025)
+
+Title: `Autonomous Alignment with Human Value on Altruism through Considerate Self-imagination and Theory of Mind`
+Venue: arXiv preprint / author-hosted manuscript
+arXiv: `2501.00320`
+Canonical URL: `https://arxiv.org/abs/2501.00320`
+External custody: arXiv / Beijing Normal University author-hosted manuscript / original authors
+Disposition: `REJECTED_FOR_SEVENTH_GRAPH_INGESTION`
+
+Evidence posture:
+- independently authored relative to the represented AUP, Relative Reachability, and future-task source families;
+- explicitly identifies Relative Reachability, Attainable Utility Preservation, and Future Task Rewards as prior approaches to avoiding negative environmental effects;
+- empirically evaluates a self-imagination plus Theory-of-Mind framework across multiple Sima-Guang-style gridworld variants with explicit task completion, human-rescue, and irreversible environmental-damage tradeoffs;
+- ablation experiments evaluate the authors' negative-side-effect penalty and empathy components against classic/modified DQN-style baselines;
+- none of the represented AUP, Relative Reachability, or future-task mechanisms is itself implemented or empirically exercised in the reported comparison;
+- the experiments remain gridworld-style rather than a substantially different domain.
+
+Reason for rejection: independent, empirical, and explicitly connected to all three represented mechanism families, but it evaluates a new self-imagination/ToM mechanism rather than directly benchmarking two represented mechanisms or reproducing/failing to reproduce one represented mechanism in a substantially different domain.
+
 ## Result
 
 No seventh external graph ingestion was admitted in these screening passes. The Published Research Graph is intentionally unchanged.
