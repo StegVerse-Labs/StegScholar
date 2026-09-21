@@ -121,6 +121,10 @@ Disposition: `NO_ADMISSION` preserved. No new candidate qualifies or warrants du
 
 Exact-head validation initially exposed a deterministic control-state failure rather than a research or graph failure: `RC-CTRL-002` remained `CLAIMED_FOR_VALIDATION` but its 72-hour claim timestamp from 2026-09-17 had expired. Build reached the final control-state step and failed with `CONTROL_STATE_INVALID: stale claims require release, block, or evidence-backed renewal: ['RC-CTRL-002']`; graph validation, duplicate detection, Site projection validation, and all earlier Build steps passed, while standalone Control and Test Readiness passed. The existing `RC-CTRL-002` claim was renewed in place from this exact validation evidence at `2026-09-21T12:43:16Z`; no task, authority, source threshold, graph state, or screening state changed.
 
+### Discovery pass 3 receipts
+
+PR #110 exact repaired head `5e6aae55142438da5c5d54b32bb1264858aab4fe` passed Build/Control/Test Readiness runs `35601318557`, `35601318558`, and `35601318566`. During validation, canonical `main` advanced by an additional non-overlapping StegNeuro BCI continuation commit `639de22e0db1ef6c77c94fb999b7e1cd26488bb1`; comparison confirmed that delta touched only `research_commons/runtime/STEGNEURO-BCI-001/continuation-latest.json`. PR #110 remained mergeable and merged with expected-head protection as `58c86703cc1c1950726f3db67d523b6d03140c75`, whose parents are the latest StegNeuro head `639de22e0db1ef6c77c94fb999b7e1cd26488bb1` and the validated RC-CTRL-002 head `5e6aae55142438da5c5d54b32bb1264858aab4fe`. Post-merge Build/Control/Test Readiness runs `35601475322`, `35601475345`, and `35601475414` all passed, and the merge commit carries valid GitHub verification.
+
 ## Existing Site projection blocker
 
 ```text
