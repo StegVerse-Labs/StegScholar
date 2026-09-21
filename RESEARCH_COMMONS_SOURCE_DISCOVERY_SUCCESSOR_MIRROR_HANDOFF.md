@@ -119,6 +119,8 @@ This pass emphasized third-party reproductions, dissertations with empirical rep
 
 Disposition: `NO_ADMISSION` preserved. No new candidate qualifies or warrants durable screening recording. `graph.json` and `SEVENTH_SOURCE_SCREENING_NOTE.md` remain unchanged. External custody and `authority_effect: NONE` are preserved.
 
+Exact-head validation initially exposed a deterministic control-state failure rather than a research or graph failure: `RC-CTRL-002` remained `CLAIMED_FOR_VALIDATION` but its 72-hour claim timestamp from 2026-09-17 had expired. Build reached the final control-state step and failed with `CONTROL_STATE_INVALID: stale claims require release, block, or evidence-backed renewal: ['RC-CTRL-002']`; graph validation, duplicate detection, Site projection validation, and all earlier Build steps passed, while standalone Control and Test Readiness passed. The existing `RC-CTRL-002` claim was renewed in place from this exact validation evidence at `2026-09-21T12:43:16Z`; no task, authority, source threshold, graph state, or screening state changed.
+
 ## Existing Site projection blocker
 
 ```text
