@@ -26,8 +26,8 @@ Conceptual adjacency, source-family repeats, one represented mechanism plus an u
 
 - Published Research Graph: six external ingestions.
 - Seventh-source state: `NO_ADMISSION`.
-- `graph.json`: unchanged by the Prompt-20 transition and RC-CTRL-002 discovery passes 1-2.
-- Screening ledger: `research_commons/published_research_graph/SEVENTH_SOURCE_SCREENING_NOTE.md`, unchanged by the Prompt-20 transition and RC-CTRL-002 discovery passes 1-2.
+- `graph.json`: unchanged by the Prompt-20 transition and RC-CTRL-002 discovery passes 1-3.
+- Screening ledger: `research_commons/published_research_graph/SEVENTH_SOURCE_SCREENING_NOTE.md`, unchanged by the Prompt-20 transition and RC-CTRL-002 discovery passes 1-3.
 - All recorded-candidate exclusions remain in force; do not re-screen them.
 - External source custody remains with the identified publishers/authors.
 - Every graph and screening authority effect remains `NONE`.
@@ -103,6 +103,21 @@ The successor handoff, registry, screening ledger, graph, and both successor-awa
 The search prioritized independently authored empirical implementations in robotics, continuous control, software environments, SafeLife, and other substantially different domains. Searches for AUP, Relative Reachability, and future-task preservation in those settings returned source-family AUP/SafeLife work, the already screened EPFL thesis, original RR/AUP implementations, prospective SafeLife material describing AUP/RR as future work, or unrelated/background references. No genuinely new independent study was found that either benchmarks at least two represented mechanisms under one shared protocol with explicit task and side-effect outcomes or reproduces/fails to reproduce a represented mechanism in a substantially different domain.
 
 Disposition: `NO_ADMISSION` preserved. No candidate warrants durable screening-ledger entry. `graph.json` and `SEVENTH_SOURCE_SCREENING_NOTE.md` remain unchanged. External custody and `authority_effect: NONE` are preserved.
+
+
+### Discovery pass 2 receipts
+
+PR #108 exact head `4e28ff1f36f653d4098d93b49d40170e83d0c486` passed Build/Control/Test Readiness runs `35231618163`, `35231617828`, and `35231617924`, merged with expected-head protection as `de59b3c804756ad9c8d047cce9230cbd9d5792b1`, and post-merge Build/Control/Test Readiness runs `35231678607`, `35231678622`, and `35231678958` all passed. Canonical `main` was re-read and verified at `de59b3c804756ad9c8d047cce9230cbd9d5792b1` with valid commit verification.
+
+## RC-CTRL-002 discovery pass 3
+
+Starting canonical main: `de59b3c804756ad9c8d047cce9230cbd9d5792b1`.
+
+Before discovery, the successor handoff, canonical task registry, screening ledger, graph, and successor-aware Build/Control workflow path filters were re-read. Canonical state remained unchanged: `RC-CTRL-002` sole active continuation, `RC-CTRL-001 SUPERSEDED`, six external graph ingestions, `NO_ADMISSION`, `RC-004 MACHINE_OWNED`, `RC-005 BLOCKED`, external custody preserved, and `authority_effect: NONE`.
+
+This pass emphasized third-party reproductions, dissertations with empirical reproduction sections, benchmark suites exercising multiple represented mechanisms under one protocol, and embodied/software-domain implementations where AUP, Relative Reachability, or future-task preservation itself is executed. Search results still resolved to original/source-family RR, AUP, future-task, and SafeLife work; the previously screened EPFL thesis; prospective SafeLife material; or non-qualifying implementations. One genuinely third-party implementation lead, `hari-sikchi/safeRL`, documents a simple Relative Reachability example based on the source paper, but does not report the explicit task-performance plus side-effect empirical outcomes required by the frozen threshold and therefore does not warrant durable screening-ledger entry.
+
+Disposition: `NO_ADMISSION` preserved. No new candidate qualifies or warrants durable screening recording. `graph.json` and `SEVENTH_SOURCE_SCREENING_NOTE.md` remain unchanged. External custody and `authority_effect: NONE` are preserved.
 
 ## Existing Site projection blocker
 
