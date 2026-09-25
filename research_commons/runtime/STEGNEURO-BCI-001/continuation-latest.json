@@ -1,7 +1,7 @@
 {
   "schema": "stegscholar.continuation-state.v1",
   "topic_id": "STEGNEURO-BCI-001",
-  "generated_at": "2026-09-25T04:53:34.680643+00:00",
+  "generated_at": "2026-09-25T17:07:56.161196+00:00",
   "state": "REVIEW_REQUIRED",
   "owner": "StegVerse-Labs/StegScholar#50",
   "observer": ".github/workflows/stegneuro-bci-source-discovery.yml",
@@ -832,6 +832,15 @@
       "candidate_dimensions": [],
       "candidate_review_queue": [
         {
+          "doi": "10.1016/j.neurom.2026.09.011",
+          "title": "A comparison between movement-related brain activity modalities for increasing corticospinal excitability using an associative brain-computer interface",
+          "year": 2026,
+          "provider": "crossref",
+          "coverage_dimensions": [],
+          "state": "REVIEW_REQUIRED",
+          "authority_effect": "NONE"
+        },
+        {
           "doi": "10.46604/emsi.2026.15979",
           "title": "A Lightweight Real-Time EEG-Based Brain–Computer Interface for Imagined Speech-Controlled Robotics via Machine Learning",
           "year": 2026,
@@ -917,19 +926,6 @@
           "provider": "crossref",
           "coverage_dimensions": [
             "functional_ultrasound_read"
-          ],
-          "state": "REVIEW_REQUIRED",
-          "authority_effect": "NONE"
-        },
-        {
-          "doi": "10.1016/j.csl.2026.101939",
-          "title": "Decoding phone pairs from MEG signals across speech modalities",
-          "year": 2026,
-          "provider": "crossref",
-          "coverage_dimensions": [
-            "intracortical_wired_read",
-            "noninvasive_eeg_meg",
-            "speech_inner_speech"
           ],
           "state": "REVIEW_REQUIRED",
           "authority_effect": "NONE"
