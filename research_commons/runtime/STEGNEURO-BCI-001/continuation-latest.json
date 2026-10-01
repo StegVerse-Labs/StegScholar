@@ -1,7 +1,7 @@
 {
   "schema": "stegscholar.continuation-state.v1",
   "topic_id": "STEGNEURO-BCI-001",
-  "generated_at": "2026-10-01T05:47:25.548668+00:00",
+  "generated_at": "2026-10-01T13:08:35.112354+00:00",
   "state": "REVIEW_REQUIRED",
   "owner": "StegVerse-Labs/StegScholar#50",
   "observer": ".github/workflows/stegneuro-bci-source-discovery.yml",
@@ -12,7 +12,7 @@
   "triage_counts": {
     "ADMIT_SOURCE": 157,
     "DUPLICATE": 3,
-    "REJECT_SOURCE": 63,
+    "REJECT_SOURCE": 64,
     "RETRY": 1
   },
   "provider_error_count": 0,
@@ -544,6 +544,19 @@
           "authority_effect": "NONE"
         },
         {
+          "doi": "10.53365/nrfhh.2238",
+          "title": "Decoding Complex Emotions Through Fusion Of Brain Computer Interface Data and Multilingual Natural Language Models",
+          "year": 2026,
+          "provider": "crossref",
+          "coverage_dimensions": [
+            "decoder_prior_confound",
+            "noninvasive_eeg_meg",
+            "speech_inner_speech"
+          ],
+          "state": "REVIEW_REQUIRED",
+          "authority_effect": "NONE"
+        },
+        {
           "doi": "10.1016/j.csl.2026.101939",
           "title": "Decoding phone pairs from MEG signals across speech modalities",
           "year": 2026,
@@ -565,18 +578,6 @@
             "ecog_surface_read",
             "intracortical_wired_read",
             "speech_inner_speech"
-          ],
-          "state": "REVIEW_REQUIRED",
-          "authority_effect": "NONE"
-        },
-        {
-          "doi": "10.1109/bci69045.2026.11435041",
-          "title": "NeuroLex: A Lightweight Domain Language Model for EEG Report Understanding and Generation",
-          "year": 2026,
-          "provider": "crossref",
-          "coverage_dimensions": [
-            "decoder_prior_confound",
-            "noninvasive_eeg_meg"
           ],
           "state": "REVIEW_REQUIRED",
           "authority_effect": "NONE"
@@ -664,6 +665,19 @@
           "authority_effect": "NONE"
         },
         {
+          "doi": "10.53365/nrfhh.2238",
+          "title": "Decoding Complex Emotions Through Fusion Of Brain Computer Interface Data and Multilingual Natural Language Models",
+          "year": 2026,
+          "provider": "crossref",
+          "coverage_dimensions": [
+            "decoder_prior_confound",
+            "noninvasive_eeg_meg",
+            "speech_inner_speech"
+          ],
+          "state": "REVIEW_REQUIRED",
+          "authority_effect": "NONE"
+        },
+        {
           "doi": "10.1016/j.csl.2026.101939",
           "title": "Decoding phone pairs from MEG signals across speech modalities",
           "year": 2026,
@@ -685,18 +699,6 @@
             "ecog_surface_read",
             "intracortical_wired_read",
             "speech_inner_speech"
-          ],
-          "state": "REVIEW_REQUIRED",
-          "authority_effect": "NONE"
-        },
-        {
-          "doi": "10.1109/bci69045.2026.11435041",
-          "title": "NeuroLex: A Lightweight Domain Language Model for EEG Report Understanding and Generation",
-          "year": 2026,
-          "provider": "crossref",
-          "coverage_dimensions": [
-            "decoder_prior_confound",
-            "noninvasive_eeg_meg"
           ],
           "state": "REVIEW_REQUIRED",
           "authority_effect": "NONE"
