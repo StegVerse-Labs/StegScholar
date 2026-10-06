@@ -1,7 +1,7 @@
 {
   "schema": "stegscholar.continuation-state.v1",
   "topic_id": "STEGNEURO-BCI-001",
-  "generated_at": "2026-10-03T21:11:48.032230+00:00",
+  "generated_at": "2026-10-06T00:01:03.300187+00:00",
   "state": "REVIEW_REQUIRED",
   "owner": "StegVerse-Labs/StegScholar#50",
   "observer": ".github/workflows/stegneuro-bci-source-discovery.yml",
@@ -744,6 +744,18 @@
           "authority_effect": "NONE"
         },
         {
+          "doi": "10.1016/j.neurom.2026.06.194",
+          "title": "ID# 2200727 MAGNETIC RESONANCE-GUIDED HIGH-INTENSITY FOCUSED ULTRASOUND TARGETING LIMBIC ASSOCIATED BRAIN CIRCUITS FOR CHRONIC PAIN: A META-ANALYSIS",
+          "year": 2026,
+          "provider": "crossref",
+          "coverage_dimensions": [
+            "calibration_drift_reliability",
+            "focused_ultrasound_write"
+          ],
+          "state": "REVIEW_REQUIRED",
+          "authority_effect": "NONE"
+        },
+        {
           "doi": "10.21203/rs.3.rs-10426644/v1",
           "title": "Reconstructing the brain’s language network from non-invasive EEG enables interpretable speech decoding",
           "year": 2026,
@@ -808,18 +820,6 @@
             "fnirs_optical_read",
             "noninvasive_eeg_meg",
             "reproducible_data"
-          ],
-          "state": "REVIEW_REQUIRED",
-          "authority_effect": "NONE"
-        },
-        {
-          "doi": "10.1016/j.neurom.2025.08.024",
-          "title": "ID# 1880792 Focused ultrasound- blood brain barrier opening for treatment of chronic pain",
-          "year": 2025,
-          "provider": "crossref",
-          "coverage_dimensions": [
-            "calibration_drift_reliability",
-            "focused_ultrasound_write"
           ],
           "state": "REVIEW_REQUIRED",
           "authority_effect": "NONE"
