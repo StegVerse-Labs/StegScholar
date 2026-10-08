@@ -40,7 +40,7 @@ StegOps-Deliverables must:
 - An application submission is not an award.
 - A public announcement is not award authority.
 - StegScholar must not activate post-award tasks from an expected or verbal award.
-- No propagation to Site, Publisher, admissibility-wiki, stegguardian-wiki, or master-records occurs without the applicable publication or custody classification.
+- No propagation to Site, Publisher, admissibility-wiki, stegguardian-wiki, or master-records occurs without the applicable publication or organization-record classification.
 
 ## Release condition
 
