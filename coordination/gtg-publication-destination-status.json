@@ -62,9 +62,9 @@
       "state": "CLAIMED_FOR_INTEGRATION",
       "handoff": "ORCHESTRATION_MIRROR_HANDOFF.md",
       "live_state": "master-records/orchestration#2",
-      "owner": "Master-Records custody/reconstruction workstream",
-      "reason": "Master-Records has an active custody/reconstruction goal and issue #2 owns authenticated custody plus reconstructability evidence. GTG pin custody must join that canonical evidence topology rather than create a second custody authority.",
-      "required_next_transition": "define a bounded GTG publication-custody record that preserves target/factory/mirror commit pins and no execution/admissibility authority, then admit it under the existing Master-Records custody workstream",
+      "owner": "Master-Records organization records/reconstruction workstream",
+      "reason": "Master-Records has an active organization records/reconstruction goal and issue #2 owns authenticated organization records plus reconstructability results. The GTG pin record must join that canonical organization-record topology rather than create a second record authority.",
+      "required_next_transition": "define a bounded GTG publication organization record that preserves target/factory/mirror commit pins and no execution/admissibility authority; Master Records keeps it under the existing Master-Records organization records workstream; Interlock/InTr admits the transition",
       "direct_mutation_authorized": false,
       "authority_effect": false
     }

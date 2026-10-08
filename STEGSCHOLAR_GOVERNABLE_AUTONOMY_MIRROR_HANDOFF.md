@@ -159,7 +159,8 @@ At release readiness, issue #8 governs applicability and propagation checks for:
 - `GCAT-BCAT-Engine/Publisher`
 - `admissibility-wiki`
 - `stegguardian-wiki`
-- any master-records or publication-custody target identified by current contracts
+- any master-records organization-record target identified by current contracts
+- any publication-custody target identified by current contracts
 
 No propagation, deployment, runtime publication, release, or governed activation is currently claimed.
 

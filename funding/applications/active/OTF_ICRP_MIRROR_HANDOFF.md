@@ -77,7 +77,7 @@ python funding/tools/validate_funding_state.py
 
 - Parent portfolio coordination remains in `funding/FUNDING_MIRROR_HANDOFF.md`.
 - StegOps-Deliverables activates only after a verified award.
-- No Site, Publisher, wiki, or master-records propagation is authorized before submission, award, publication, or custody classification.
+- No Site, Publisher, wiki, or master-records propagation is authorized before submission, award, publication, or organization-record classification.
 
 ## Session consolidation
 

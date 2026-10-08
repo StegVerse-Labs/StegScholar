@@ -140,7 +140,7 @@ python funding/tools/check_funding_deadlines.py
 
 ## Propagation
 
-No propagation is authorized to Site, Publisher, admissibility-wiki, stegguardian-wiki, or master-records before a verified submission, award, publication, or custody classification.
+No propagation is authorized to Site, Publisher, admissibility-wiki, stegguardian-wiki, or master-records before a verified submission, award, publication, or organization-record classification.
 
 ## Session consolidation
 
