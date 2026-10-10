@@ -1,7 +1,7 @@
 {
   "schema": "stegscholar.continuation-state.v1",
   "topic_id": "STEGNEURO-BCI-001",
-  "generated_at": "2026-10-09T22:35:39.977555+00:00",
+  "generated_at": "2026-10-10T05:47:26.789171+00:00",
   "state": "REVIEW_REQUIRED",
   "owner": "StegVerse-Labs/StegScholar#50",
   "observer": ".github/workflows/stegneuro-bci-source-discovery.yml",
@@ -26,6 +26,18 @@
         "endovascular_or_endocisternal"
       ],
       "candidate_review_queue": [
+        {
+          "doi": "10.1016/j.neurom.2026.09.030",
+          "title": "An updated prospective quantitative analysis of symptoms and safety for human low-intensity focused ultrasound neuromodulation",
+          "year": 2026,
+          "provider": "crossref",
+          "coverage_dimensions": [
+            "focused_ultrasound_write",
+            "safety_regulatory"
+          ],
+          "state": "REVIEW_REQUIRED",
+          "authority_effect": "NONE"
+        },
         {
           "doi": "10.54941/ahfe1007498",
           "title": "Brain-Computer Interface versus Brain-Computer Interaction",
@@ -109,18 +121,6 @@
           ],
           "state": "REVIEW_REQUIRED",
           "authority_effect": "NONE"
-        },
-        {
-          "doi": "10.1101/2025.09.19.25335875",
-          "title": "Motor Cortex Coverage Predicts Signal Strength of a Stentrode Endovascular Brain-Computer Interface",
-          "year": 2025,
-          "provider": "crossref",
-          "coverage_dimensions": [
-            "endovascular_or_endocisternal",
-            "intracortical_wired_read"
-          ],
-          "state": "REVIEW_REQUIRED",
-          "authority_effect": "NONE"
         }
       ],
       "next_action": "REVIEW_SOURCE_CONTENT",
@@ -133,6 +133,18 @@
         "safety_regulatory"
       ],
       "candidate_review_queue": [
+        {
+          "doi": "10.1016/j.neurom.2026.09.030",
+          "title": "An updated prospective quantitative analysis of symptoms and safety for human low-intensity focused ultrasound neuromodulation",
+          "year": 2026,
+          "provider": "crossref",
+          "coverage_dimensions": [
+            "focused_ultrasound_write",
+            "safety_regulatory"
+          ],
+          "state": "REVIEW_REQUIRED",
+          "authority_effect": "NONE"
+        },
         {
           "doi": "10.21203/rs.3.rs-3976596/v1",
           "title": "A Clinical Trial Evaluating Feasibility and Acceptability of a Brain-computer Interface for Telerehabilitation in Stroke Patients",
@@ -216,18 +228,6 @@
         {
           "doi": "10.1016/b978-0-444-63934-9.00024-x",
           "title": "Ethics and the emergence of brain-computer interface medicine",
-          "year": 2020,
-          "provider": "crossref",
-          "coverage_dimensions": [
-            "intracortical_wireless_read",
-            "safety_regulatory"
-          ],
-          "state": "REVIEW_REQUIRED",
-          "authority_effect": "NONE"
-        },
-        {
-          "doi": "10.1016/b978-0-444-63934-9.00025-1",
-          "title": "Industrial perspectives on brain-computer interface technology",
           "year": 2020,
           "provider": "crossref",
           "coverage_dimensions": [
@@ -640,6 +640,18 @@
           "authority_effect": "NONE"
         },
         {
+          "doi": "10.1016/j.neurom.2026.09.030",
+          "title": "An updated prospective quantitative analysis of symptoms and safety for human low-intensity focused ultrasound neuromodulation",
+          "year": 2026,
+          "provider": "crossref",
+          "coverage_dimensions": [
+            "focused_ultrasound_write",
+            "safety_regulatory"
+          ],
+          "state": "REVIEW_REQUIRED",
+          "authority_effect": "NONE"
+        },
+        {
           "doi": "10.1109/bci69045.2026.11435059",
           "title": "Confidence-Aware Neural Decoding of Overt Speech from EEG: Toward Robust Brain–Computer Interfaces",
           "year": 2026,
@@ -685,19 +697,6 @@
           "coverage_dimensions": [
             "intracortical_wired_read",
             "noninvasive_eeg_meg",
-            "speech_inner_speech"
-          ],
-          "state": "REVIEW_REQUIRED",
-          "authority_effect": "NONE"
-        },
-        {
-          "doi": "10.1002/smll.202514286",
-          "title": "Flexible Surface Electrodes for Electrocorticography in Neurological Diseases and Brain‐Computer Interface Applications",
-          "year": 2026,
-          "provider": "crossref",
-          "coverage_dimensions": [
-            "ecog_surface_read",
-            "intracortical_wired_read",
             "speech_inner_speech"
           ],
           "state": "REVIEW_REQUIRED",
@@ -884,6 +883,18 @@
           "authority_effect": "NONE"
         },
         {
+          "doi": "10.1016/j.neurom.2026.09.030",
+          "title": "An updated prospective quantitative analysis of symptoms and safety for human low-intensity focused ultrasound neuromodulation",
+          "year": 2026,
+          "provider": "crossref",
+          "coverage_dimensions": [
+            "focused_ultrasound_write",
+            "safety_regulatory"
+          ],
+          "state": "REVIEW_REQUIRED",
+          "authority_effect": "NONE"
+        },
+        {
           "doi": "10.54941/ahfe1007498",
           "title": "Brain-Computer Interface versus Brain-Computer Interaction",
           "year": 2026,
@@ -917,17 +928,6 @@
             "intracortical_wired_read",
             "intracortical_wireless_read",
             "speech_inner_speech"
-          ],
-          "state": "REVIEW_REQUIRED",
-          "authority_effect": "NONE"
-        },
-        {
-          "doi": "10.2139/ssrn.7361758",
-          "title": "Decoding Brain-Computer Interface (BCI) Signals Using Artificial Intelligence and Machine Learning: A Three-Stage Framework for Brain-to-Text Communication Systems",
-          "year": 2026,
-          "provider": "crossref",
-          "coverage_dimensions": [
-            "functional_ultrasound_read"
           ],
           "state": "REVIEW_REQUIRED",
           "authority_effect": "NONE"
