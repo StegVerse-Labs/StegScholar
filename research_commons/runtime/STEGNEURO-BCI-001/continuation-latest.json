@@ -1,7 +1,7 @@
 {
   "schema": "stegscholar.continuation-state.v1",
   "topic_id": "STEGNEURO-BCI-001",
-  "generated_at": "2026-10-12T05:51:31.927564+00:00",
+  "generated_at": "2026-10-12T15:16:29.884179+00:00",
   "state": "REVIEW_REQUIRED",
   "owner": "StegVerse-Labs/StegScholar#50",
   "observer": ".github/workflows/stegneuro-bci-source-discovery.yml",
@@ -77,6 +77,18 @@
           "authority_effect": "NONE"
         },
         {
+          "doi": "10.3389/fmats.2026.1969087",
+          "title": "From peri-implant distance ranges to spatial niches: a resolution-aware analytical framework for the intracortical microelectrode–brain interface",
+          "year": 2026,
+          "provider": "crossref",
+          "coverage_dimensions": [
+            "intracortical_wired_read",
+            "intracortical_wireless_read"
+          ],
+          "state": "REVIEW_REQUIRED",
+          "authority_effect": "NONE"
+        },
+        {
           "doi": "10.1109/mems61431.2025.10917753",
           "title": "A Mems-Based Miniaturized Wireless Fully-Implantable Brain-Computer Interface System",
           "year": 2025,
@@ -101,18 +113,6 @@
         {
           "doi": "10.31579/2578-8868/389",
           "title": "Connexus Direct Data Interface: Architectural Design and Translational Performance of a High-Bandwidth Intracortical Brain–Computer Interface",
-          "year": 2025,
-          "provider": "crossref",
-          "coverage_dimensions": [
-            "intracortical_wired_read",
-            "intracortical_wireless_read"
-          ],
-          "state": "REVIEW_REQUIRED",
-          "authority_effect": "NONE"
-        },
-        {
-          "doi": "10.1101/2025.05.05.652199",
-          "title": "Intracortical brain-computer interface for navigation in virtual reality in macaque monkeys",
           "year": 2025,
           "provider": "crossref",
           "coverage_dimensions": [
@@ -406,6 +406,18 @@
           "authority_effect": "NONE"
         },
         {
+          "doi": "10.3389/fmats.2026.1969087",
+          "title": "From peri-implant distance ranges to spatial niches: a resolution-aware analytical framework for the intracortical microelectrode–brain interface",
+          "year": 2026,
+          "provider": "crossref",
+          "coverage_dimensions": [
+            "intracortical_wired_read",
+            "intracortical_wireless_read"
+          ],
+          "state": "REVIEW_REQUIRED",
+          "authority_effect": "NONE"
+        },
+        {
           "doi": "10.1109/mems61431.2025.10917753",
           "title": "A Mems-Based Miniaturized Wireless Fully-Implantable Brain-Computer Interface System",
           "year": 2025,
@@ -447,18 +459,6 @@
           "coverage_dimensions": [
             "intracortical_wired_read",
             "intracortical_wireless_read"
-          ],
-          "state": "REVIEW_REQUIRED",
-          "authority_effect": "NONE"
-        },
-        {
-          "doi": "10.1101/2025.09.19.25335875",
-          "title": "Motor Cortex Coverage Predicts Signal Strength of a Stentrode Endovascular Brain-Computer Interface",
-          "year": 2025,
-          "provider": "crossref",
-          "coverage_dimensions": [
-            "endovascular_or_endocisternal",
-            "intracortical_wired_read"
           ],
           "state": "REVIEW_REQUIRED",
           "authority_effect": "NONE"
