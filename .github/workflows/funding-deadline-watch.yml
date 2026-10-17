@@ -1,8 +1,6 @@
 name: Funding Deadline Watch
 
 on:
-  schedule:
-    - cron: "15 13 * * *"
   workflow_dispatch:
   push:
     branches: [main]
