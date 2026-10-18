@@ -1,0 +1,28 @@
+{
+  "schema": "stegverse.funding-fail-closed-record/v1",
+  "record_id": "FAIL-CLOSED-FUNDING-NSF-PESOSE-2026-001",
+  "application_id": "FUNDING-NSF-PESOSE-2026-001",
+  "opportunity_id": "NSF 26-506 (PESOSE Track 1)",
+  "deadline": "2026-09-01T17:00:00-05:00",
+  "submitted_at": null,
+  "submission_evidence_present": false,
+  "disposition": "FAIL_CLOSED",
+  "failure_code": "EXTERNAL_SUBMISSION_WINDOW_ELAPSED",
+  "failed_predicate": "application FUNDING-NSF-PESOSE-2026-001 submitted to the external sponsor before dates.deadline 2026-09-01T17:00:00-05:00",
+  "required_evidence_or_repair": "none for the elapsed window; for the next admissible cycle, the existing application gates (applicant identity, IP, budget and submission authority evidence) recorded in this application's next_action",
+  "retry_entrypoint": ".github/workflows/funding-deadline-watch.yml (push/pull_request path filters, workflow_dispatch) running funding/tools/check_funding_deadlines.py",
+  "owning_existing_goal": "FUNDING-PIPELINE-001 (StegVerse-Labs/StegScholar#56); StegVerse-org/.github#166 (P4-repairs)",
+  "next_attempt": "the next NSF PESOSE solicitation deadline after NSF 26-506 (the next admissible cycle); a new cycle opens a fresh application record and claim",
+  "goal_state": "OPEN",
+  "terminal_call_made": false,
+  "decided_by_invariant": [
+    "StegVerse-Labs/.github docs/WORKER_BLOCKER_FALLBACK_INVARIANT.md L74 (blob 553a079e): Third-party failure is never a terminal StegVerse blocker",
+    "StegVerse-org/.github docs/ORGANIZATION_ROLE_RUNTIME_REALITY_DEPLOYMENT.md L61 (Conformance item 5): a non-ALLOW result carries the six fields",
+    "StegVerse-org/.github#166 comment 6245552833 (Coordination classification D)"
+  ],
+  "authority_effect": "NONE_RECORD_ONLY",
+  "auto_submission_performed": false,
+  "deadline_modified": false,
+  "recorded_at": "2026-10-18T04:40:00+00:00",
+  "recorded_by": "P4 Maintenance Lane (activity b450ce57-31b9-40f8-904d-b4c8b9dd5239)"
+}

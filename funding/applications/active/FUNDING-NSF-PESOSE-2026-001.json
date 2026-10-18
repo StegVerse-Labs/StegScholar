@@ -21,7 +21,7 @@
       "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-supplementary-documents-control.md"
     ]
   },
-  "state": "WITHDRAWN",
+  "state": "BLOCKED",
   "authority": {
     "application_owner": "StegVerse-Labs/StegScholar",
     "ip_authority": "StegVerse-Labs/StegPatents",
@@ -41,7 +41,7 @@
     "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-references-cited.md",
     "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-collaboration-letter-intake.md",
     "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-supplementary-documents-control.md",
-    "funding/evidence/no-go-receipts/FUNDING-NSF-PESOSE-2026-001.json"
+    "funding/evidence/fail-closed/FUNDING-NSF-PESOSE-2026-001.json"
   ],
   "budget": {
     "currency": "USD",
@@ -53,7 +53,7 @@
   "next_action": {
     "owner": "StegVerse-Labs/StegScholar funding lane",
     "location": "funding/applications/active/FUNDING-NSF-PESOSE-2026-001-product-evidence.md",
-    "action": "None for this cycle: the deadline lapsed without submission; the no-go receipt records the terminal state",
-    "release_condition": "Released by committed no-go receipt funding/evidence/no-go-receipts/FUNDING-NSF-PESOSE-2026-001.json"
+    "action": "FAIL_CLOSED EXTERNAL_SUBMISSION_WINDOW_ELAPSED for the NSF 26-506 (PESOSE Track 1) window; carry the open application gates to the next admissible cycle",
+    "release_condition": "Next admissible cycle opens a fresh application record; until then the six-field record funding/evidence/fail-closed/FUNDING-NSF-PESOSE-2026-001.json is the disposition (goal stays open)"
   }
 }
