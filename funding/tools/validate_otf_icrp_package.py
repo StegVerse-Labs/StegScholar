@@ -29,7 +29,15 @@ def main() -> int:
 
     app = json.loads(FILES["application"].read_text())
     budget = json.loads(FILES["budget"].read_text())
-    require(app["state"] == "DRAFTING", "OTF application must remain DRAFTING")
+    require(app["state"] in ("DRAFTING", "WITHDRAWN"), "OTF application must remain DRAFTING unless a committed no-go receipt withdraws it")
+    if app["state"] == "WITHDRAWN":
+        no_go_path = ROOT / "funding/evidence/no-go-receipts" / f"{app['application_id']}.json"
+        require(no_go_path.is_file(), "WITHDRAWN requires a committed no-go receipt")
+        no_go = json.loads(no_go_path.read_text())
+        require(no_go.get("application_id") == app["application_id"], "no-go receipt must bind this application")
+        require(no_go.get("terminal_application_state") == "WITHDRAWN", "no-go receipt must record WITHDRAWN")
+        require(no_go.get("auto_submission_performed") is False, "no-go receipt must not record a submission")
+        require(app["dates"].get("submitted_at") is None, "a withdrawn application must not carry submitted_at")
     require(app["applicant"]["organization"] == "UNVERIFIED_OR_INDIVIDUAL_APPLICANT", "applicant must remain unverified")
     require(app["publication_classification"] == "DISCLOSURE_REVIEW_REQUIRED", "disclosure review must remain required")
     require(app["budget"]["status"] == "DRAFT_UNAPPROVED", "application budget must be unapproved")

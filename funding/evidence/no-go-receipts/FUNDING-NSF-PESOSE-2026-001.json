@@ -1,0 +1,30 @@
+{
+  "schema": "stegverse.funding-no-go-receipt/v1",
+  "receipt_id": "NO-GO-FUNDING-NSF-PESOSE-2026-001",
+  "application_id": "FUNDING-NSF-PESOSE-2026-001",
+  "terminal_application_state": "WITHDRAWN",
+  "terminal_claim_state": "FAILED",
+  "reason_code": "DEADLINE_LAPSED_WITHOUT_SUBMISSION",
+  "deadline": "2026-09-01T17:00:00-05:00",
+  "submitted_at": null,
+  "submission_evidence_present": false,
+  "decided_by_rule": [
+    "funding/tools/check_funding_deadlines.py: an OVERDUE application must be SUBMITTED, DECLINED, WITHDRAWN, SUPERSEDED or AWARDED",
+    "funding/coordination/funding-tasks.json claims[].release_condition: release by a committed no-go decision; expected_evidence: submission receipt or no-go receipt",
+    "fail-closed: no submission receipt exists (dates.submitted_at is null), so SUBMITTED/AWARDED cannot be recorded; no qualified lead applicant is recorded, so SUPERSEDED cannot be recorded"
+  ],
+  "six_field_record": {
+    "disposition": "FAIL_CLOSED",
+    "failure_code": "FUNDING_DEADLINE_LAPSED_WITHOUT_SUBMISSION",
+    "failed_predicate": "application submitted before dates.deadline by authorized organizational authority",
+    "required_evidence_or_repair": "none for this cycle; a future cycle of the same program opens a new application record and a new claim",
+    "retry_entrypoint": ".github/workflows/funding-deadline-watch.yml (push/pull_request path filter, workflow_dispatch)",
+    "owning_existing_goal": "FUNDING-PIPELINE-001; StegVerse-org/.github#166 (P4-repairs, StegScholar#56)",
+    "next_attempt": "next published cycle of the same opportunity"
+  },
+  "authority_effect": "NONE_RECORD_ONLY",
+  "auto_submission_performed": false,
+  "deadline_modified": false,
+  "recorded_at": "2026-10-18T04:30:00+00:00",
+  "recorded_by": "P4 Maintenance Lane (activity b450ce57-31b9-40f8-904d-b4c8b9dd5239)"
+}
