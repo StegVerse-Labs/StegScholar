@@ -37,7 +37,15 @@ def main() -> int:
 
     app = json.loads(FILES["application"].read_text(encoding="utf-8"))
     budget = json.loads(FILES["budget"].read_text(encoding="utf-8"))
-    require(app["state"] == "DRAFTING", "PESOSE application must remain DRAFTING")
+    require(app["state"] in ("DRAFTING", "BLOCKED"), "PESOSE application must remain DRAFTING unless a six-field FAIL_CLOSED record blocks it")
+    if app["state"] == "BLOCKED":
+        record_path = ROOT / "funding/evidence/fail-closed" / f"{app['application_id']}.json"
+        require(record_path.is_file(), "BLOCKED requires a committed six-field FAIL_CLOSED record")
+        record = json.loads(record_path.read_text(encoding="utf-8"))
+        require(record.get("application_id") == app["application_id"], "FAIL_CLOSED record must bind this application")
+        require(record.get("failure_code") == "EXTERNAL_SUBMISSION_WINDOW_ELAPSED", "FAIL_CLOSED record must carry EXTERNAL_SUBMISSION_WINDOW_ELAPSED")
+        require(record.get("auto_submission_performed") is False, "FAIL_CLOSED record must not record a submission")
+        require(app["dates"].get("submitted_at") is None, "a blocked application must not carry submitted_at")
     require(app["publication_classification"] == "DISCLOSURE_REVIEW_REQUIRED", "PESOSE disclosure review must remain required")
     require(budget["state"] == "DRAFT_UNAPPROVED", "PESOSE budget request must remain DRAFT_UNAPPROVED")
     require(budget.get("validation", {}).get("authority_approved") is False, "PESOSE budget must not claim authority approval")

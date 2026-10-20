@@ -1,8 +1,6 @@
 name: Funding Deadline Watch
 
 on:
-  schedule:
-    - cron: "15 13 * * *"
   workflow_dispatch:
   push:
     branches: [main]
@@ -10,12 +8,14 @@ on:
       - "funding/applications/active/**"
       - "funding/coordination/funding-tasks.json"
       - "funding/tools/check_funding_deadlines.py"
+      - "funding/evidence/fail-closed/**"
       - ".github/workflows/funding-deadline-watch.yml"
   pull_request:
     paths:
       - "funding/applications/active/**"
       - "funding/coordination/funding-tasks.json"
       - "funding/tools/check_funding_deadlines.py"
+      - "funding/evidence/fail-closed/**"
       - ".github/workflows/funding-deadline-watch.yml"
       - "funding/evidence/deadline-watch-validation-request.md"
 

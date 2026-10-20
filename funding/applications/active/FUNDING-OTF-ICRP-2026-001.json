@@ -21,7 +21,7 @@
       "funding/opportunities/2026-08-02-expanded-scan.md"
     ]
   },
-  "state": "DRAFTING",
+  "state": "BLOCKED",
   "authority": {
     "application_owner": "StegVerse-Labs/StegScholar",
     "ip_authority": "UNRESOLVED_HUMAN_IP_AUTHORITY",
@@ -39,7 +39,8 @@
     "funding/applications/active/FUNDING-OTF-ICRP-2026-001-eligibility.md",
     "funding/applications/active/FUNDING-OTF-ICRP-2026-001-ethics-safety-plan.md",
     "funding/applications/active/FUNDING-OTF-ICRP-2026-001-milestones.md",
-    "funding/applications/active/FUNDING-OTF-ICRP-2026-001-budget-request.json"
+    "funding/applications/active/FUNDING-OTF-ICRP-2026-001-budget-request.json",
+    "funding/evidence/fail-closed/FUNDING-OTF-ICRP-2026-001.json"
   ],
   "budget": {
     "currency": "USD",
@@ -51,7 +52,7 @@
   "next_action": {
     "owner": "Named individual applicant authority",
     "location": "funding/applications/active/FUNDING-OTF-ICRP-2026-001-eligibility.md",
-    "action": "Provide applicant identity, CV, experience, work eligibility, availability and declarations, then obtain ethical, IP and budget authority responses",
-    "release_condition": "All mandatory eligibility gates are supported and the named applicant authorizes concept-note submission"
+    "action": "FAIL_CLOSED EXTERNAL_SUBMISSION_WINDOW_ELAPSED for the OTF-ICRP-2026 window; carry the open application gates to the next admissible cycle",
+    "release_condition": "Next admissible cycle opens a fresh application record; until then the six-field record funding/evidence/fail-closed/FUNDING-OTF-ICRP-2026-001.json is the disposition (goal stays open)"
   }
 }
