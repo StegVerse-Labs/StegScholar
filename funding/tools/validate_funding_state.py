@@ -36,7 +36,7 @@ REQUIRED = [
     "funding/contracts/stegfinco-budget-handoff-contract.md",
     "funding/contracts/stegops-deliverables-consumer-contract.md",
     "funding/tools/validate_funding_state.py",
-    ".github/workflows/funding-state-validation.yml",
+    "tools/tasks/folded/funding-state-validation.yml",
 ]
 TERMINAL = {"COMPLETE", "SUPERSEDED", "MERGED_INTO_CANONICAL_WORKSTREAM"}
 ACTIVE = {"CLAIMED_FOR_IMPLEMENTATION", "CLAIMED_FOR_VALIDATION", "CLAIMED_FOR_INTEGRATION"}
