@@ -1,0 +1,1 @@
+python scripts/validate_gtg_reconstruction_mirror.py

@@ -1,0 +1,1 @@
+python scripts/reconcile_gtg_task_registry.py

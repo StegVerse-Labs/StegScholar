@@ -1,0 +1,1 @@
+python scripts/validate_tt_transition_elements.py

@@ -1,0 +1,1 @@
+python scripts/validate_gtg_r4_challenges.py

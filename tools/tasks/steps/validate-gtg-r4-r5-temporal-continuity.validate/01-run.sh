@@ -1,0 +1,1 @@
+python scripts/validate_gtg_r4_r5_temporal_continuity.py

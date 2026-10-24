@@ -5,7 +5,7 @@
   "canonical_handoff": "RESEARCH_COMMONS_SOURCE_DISCOVERY_SUCCESSOR_MIRROR_HANDOFF.md",
   "control_issue": 37,
   "activation_issue": 38,
-  "updated_at": "2026-09-21T12:43:16Z",
+  "updated_at": "2026-10-24T18:19:38Z",
   "claim_ttl_hours": 72,
   "tasks": [
     {
@@ -117,12 +117,27 @@
       "originating_goal": "Continue governed seventh-source discovery after RC-CTRL-001 prompt ceiling",
       "surface": "RESEARCH_COMMONS_SOURCE_DISCOVERY_SUCCESSOR_MIRROR_HANDOFF.md and research_commons/published_research_graph/",
       "owner": "StegVerse-Labs/StegScholar canonical continuation",
-      "claim_state": "CLAIMED_FOR_VALIDATION",
+      "claim_state": "BLOCKED",
       "role": "successor continuation",
       "claim_timestamp": "2026-09-21T12:43:16Z",
       "release_condition": "release, complete, block, or supersede only through a validated canonical continuation mutation with exact evidence receipts; active claim renewed from exact-head validation evidence after deterministic TTL expiry on 2026-09-21",
       "expected_evidence": "RESEARCH_COMMONS_SOURCE_DISCOVERY_SUCCESSOR_MIRROR_HANDOFF.md plus canonical validation and merge receipts",
       "collision_boundary": "sole active source-discovery continuation; cannot weaken the frozen seventh-source admission threshold or overlap RC-CTRL-001",
+      "next_task_after_release": "RC-CTRL-003",
+      "blocked_at": "2026-10-24T18:19:38Z",
+      "blocked_reason": "claim_ttl_hours 72 from claim_timestamp 2026-09-21T12:43:16Z expired 2026-09-24T12:43:16Z; no exact-head validation evidence of the continuation's own work exists to renew it, so it is blocked under its release_condition (block only through a validated canonical continuation mutation with exact evidence receipts), not extended; explicit successor RC-CTRL-003 is UNCLAIMED. Applied by the P4 Maintenance Lane on StegVerse-Labs/StegScholar#114, tracked on StegVerse-Labs/StegScholar#37.",
+      "blocked_evidence": "StegVerse-Labs/StegScholar Actions run 40120166233 job 120949808943 (catalog group build-and-validate-research-commons.validate step 12) at exact head 64da25f835bfdaadb36b451e5f2e4cb666b2d24c, 2026-10-24T18:19:38Z: CONTROL_STATE_INVALID: stale claims require release, block, or evidence-backed renewal: ['RC-CTRL-002']"
+    },
+    {
+      "task_id": "RC-CTRL-003",
+      "originating_goal": "Continue governed seventh-source discovery after the RC-CTRL-002 claim expired and was blocked (successor; not an extension of RC-CTRL-002)",
+      "surface": "RESEARCH_COMMONS_SOURCE_DISCOVERY_SUCCESSOR_MIRROR_HANDOFF.md and research_commons/published_research_graph/",
+      "owner": "StegVerse-Labs/StegScholar canonical continuation",
+      "claim_state": "UNCLAIMED",
+      "role": "successor continuation",
+      "release_condition": "claimed (CLAIMED_FOR_VALIDATION with a claim_timestamp) only by a canonical continuation from exact-head validation evidence; release, complete, block, or supersede only through a validated canonical continuation mutation with exact evidence receipts",
+      "expected_evidence": "RESEARCH_COMMONS_SOURCE_DISCOVERY_SUCCESSOR_MIRROR_HANDOFF.md plus canonical validation and merge receipts",
+      "collision_boundary": "sole successor source-discovery continuation once claimed; RC-CTRL-002 is historical BLOCKED state and no longer an active collision owner; cannot weaken the frozen seventh-source admission threshold or overlap RC-CTRL-001",
       "next_task_after_release": "select the next canonical continuation from verified Research Commons state"
     }
   ]

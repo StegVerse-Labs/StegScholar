@@ -1,0 +1,1 @@
+python -m unittest tests.test_gtg_assurance_consumer_compatibility_sweep

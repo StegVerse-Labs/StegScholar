@@ -1,0 +1,1 @@
+python scripts/validate_architecture_neutral_admissibility.py

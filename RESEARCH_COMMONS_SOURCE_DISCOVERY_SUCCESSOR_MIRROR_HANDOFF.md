@@ -160,6 +160,12 @@ Hosted validation remains:
 - `StegVerse-Labs/Site`: projection acceptance/deployment only after its own orchestrator admission.
 - `admissibility-wiki`, `stegguardian-wiki`, and `master-records`: no propagation without a versioned destination contract and receipt.
 
+## RC-CTRL-002 claim block (2026-10-24)
+
+`RC-CTRL-002` was `CLAIMED_FOR_VALIDATION` from `2026-09-21T12:43:16Z` with `claim_ttl_hours: 72`; the claim expired `2026-09-24T12:43:16Z`. No exact-head validation evidence of the continuation's own work exists to renew it, so it was not extended. Under its own `release_condition` (block only through a validated canonical continuation mutation with exact evidence receipts) it is now `BLOCKED`, with the receipt: Actions run 40120166233, job 120949808943, exact head `64da25f835bfdaadb36b451e5f2e4cb666b2d24c`, `CONTROL_STATE_INVALID: stale claims require release, block, or evidence-backed renewal: ['RC-CTRL-002']`. The explicit successor `RC-CTRL-003` is `UNCLAIMED`. A canonical continuation claims it from exact-head validation evidence before it resumes source discovery on this handoff. Graph state, screening state, the frozen seventh-source threshold, `NO_ADMISSION` and `authority_effect: NONE` are unchanged. Tracked on StegVerse-Labs/StegScholar#37.
+
+SKAP Vault invariant (the HST): the SKAP Vault (`KV/_Vault/SKAP`) is the PII and credential storage vault for every user, StegVerse's own ecosystem PII and credentials included. This block stores, moves or reads none.
+
 ## Archive conditions
 
 The Prompt-20 activation is complete: its exact transition head passed hosted Build/Control/Test Readiness, merged with expected-head protection, and post-merge successor-era validation passed on `main`. `RC-CTRL-001` is permanently historical/superseded and this handoff is the only canonical source-discovery continuation until `RC-CTRL-002` itself is completed, blocked, released, or superseded through a validated future transition.

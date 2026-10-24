@@ -1,0 +1,1328 @@
+{
+ "schema": "stegverse.task-catalog/v1",
+ "repository": "StegVerse-Labs/StegScholar",
+ "goal_id": "G17-WORKFLOW-SURFACE-MINIMIZATION",
+ "authority": "Rigel 2026-10-24 retroactive G17 enforcement; StegVerse-Labs/.github#167/#168; P4 StegVerse-org/.github#166",
+ "dispatcher": ".github/workflows/validation-dispatcher.yml",
+ "runner": "tools/tasks/run_catalog.py",
+ "rule": "Every check a folded workflow job ran is one group here; its step bodies are the original run blocks byte for byte, pinned by sha256. A new check is a new group (or a step in one), never a new workflow file.",
+ "path_filters": "Dropped: every group runs on every event it declares (a superset of the original path-filtered runs).",
+ "schedules": "Dropped: a group folded from a scheduled workflow runs on pull_request and push (and on request via run_catalog.py run --group); nothing is scheduled.",
+ "folded_from_commit": "bc4057b",
+ "groups": [
+  {
+   "id": "build-and-validate-research-commons.validate",
+   "source": {
+    "workflow": ".github/workflows/build-and-validate-research-commons.yml",
+    "workflow_name": "Build and validate Research Commons",
+    "job": "validate",
+    "job_name": null,
+    "commit": "bc4057b",
+    "triggers_before": [
+     "push",
+     "pull_request",
+     "workflow_dispatch"
+    ],
+    "permissions_before": {
+     "contents": "read"
+    },
+    "path_filter_dropped": true,
+    "note": "workflow_dispatch removed (G17: no click trigger); inputs.* render empty, as on pull_request/push"
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Parse all Research Commons JSON contracts",
+     "run_file": "tools/tasks/steps/build-and-validate-research-commons.validate/01-parse-all-research-commons-json-contracts.sh",
+     "run_sha256": "d6dc3beb947a7000c518e7e062c9b1b5ffb4755b448fa5a4819a516b1e608093"
+    },
+    {
+     "name": "Build deterministic indexes and canonical registry receipt",
+     "run_file": "tools/tasks/steps/build-and-validate-research-commons.validate/02-build-deterministic-indexes-and-canonical-registry-receipt.sh",
+     "run_sha256": "d2d7e04d509c405a3117fe32bd20649412875a64ed0a485685185a83fffb9e57"
+    },
+    {
+     "name": "Validate Publisher paper registry",
+     "run_file": "tools/tasks/steps/build-and-validate-research-commons.validate/03-validate-publisher-paper-registry.sh",
+     "run_sha256": "bd0011d1a17b76cdccd0f177c793897698c74859de3c06c2b2672fa81f49d669"
+    },
+    {
+     "name": "Validate source-neutral Published Research Graph",
+     "run_file": "tools/tasks/steps/build-and-validate-research-commons.validate/04-validate-source-neutral-published-research-graph.sh",
+     "run_sha256": "45c466e449be1c80bc9056ca4a6836a18400783c033ef938d93d8b10769e8dd7"
+    },
+    {
+     "name": "Prove unreviewed machine candidate cannot be admitted",
+     "run_file": "tools/tasks/steps/build-and-validate-research-commons.validate/05-prove-unreviewed-machine-candidate-cannot-be-admitted.sh",
+     "run_sha256": "207a150cd087dfe62a07f1df794c929c4f9590ef193e22cc047920a7ffee4051"
+    },
+    {
+     "name": "Prove accepted review can promote machine candidate",
+     "run_file": "tools/tasks/steps/build-and-validate-research-commons.validate/06-prove-accepted-review-can-promote-machine-candidate.sh",
+     "run_sha256": "8ee01102843336716245163e0a9681ea9709448e7cd0fd6d567430d5d3088f2c"
+    },
+    {
+     "name": "Prove rejected review preserves rejected machine state",
+     "run_file": "tools/tasks/steps/build-and-validate-research-commons.validate/07-prove-rejected-review-preserves-rejected-machine-state.sh",
+     "run_sha256": "f8b3e090253559cef4ef9ce61749af371b8327a230aecab6d5b1d0c7beaca8f1"
+    },
+    {
+     "name": "Prove unreviewed machine rejection is invalid",
+     "run_file": "tools/tasks/steps/build-and-validate-research-commons.validate/08-prove-unreviewed-machine-rejection-is-invalid.sh",
+     "run_sha256": "51b37d8c8340a4e059c5c5150b5f427e0767bc2b812da93ccee721414cc7ce0d"
+    },
+    {
+     "name": "Detect duplicate records",
+     "run_file": "tools/tasks/steps/build-and-validate-research-commons.validate/09-detect-duplicate-records.sh",
+     "run_sha256": "14f3db55c1d6d63e704256b9d7462954032773a7e61b91a4b1d30185048f8930"
+    },
+    {
+     "name": "Validate Site projection boundary",
+     "run_file": "tools/tasks/steps/build-and-validate-research-commons.validate/10-validate-site-projection-boundary.sh",
+     "run_sha256": "9aac822db4efc6add2def70b33090bd7e04c652a0158368590d673a3f426e202"
+    },
+    {
+     "name": "Build fail-closed Site dispatch packet",
+     "run_file": "tools/tasks/steps/build-and-validate-research-commons.validate/11-build-fail-closed-site-dispatch-packet.sh",
+     "run_sha256": "2f3cc866908a250e4125de31a2d6768d81b4594452899ea4d84dff59a4038604"
+    },
+    {
+     "name": "Validate Research Commons control state",
+     "run_file": "tools/tasks/steps/build-and-validate-research-commons.validate/12-validate-research-commons-control-state.sh",
+     "run_sha256": "58a227f5a639c544e1e0f4b24124dad3c28114d26621af6f73b116c59ec82c7d"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "research-commons-validation",
+     "path": "research_commons/indexes/publisher-papers/*.json\nresearch_commons/sources/publisher-papers/registry-hash-receipt.json\nresearch_commons/reports/duplicate-detection.json\nresearch_commons/projection/site-projection-dispatch-packet.json\nresearch_commons/published_research_graph/graph.json\nresearch_commons/published_research_graph/fixtures/*.json\n",
+     "if_no_files_found": "error",
+     "if": null
+    }
+   ],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 360,
+    "python_version": "3.12",
+    "artifact_name": "research-commons-validation",
+    "artifact_if_no_files_found": "error"
+   }
+  },
+  {
+   "id": "complete-gtg-reconstruction-tasks.complete-bounded-tasks",
+   "source": {
+    "workflow": ".github/workflows/complete-gtg-reconstruction-tasks.yml",
+    "workflow_name": "Complete GTG reconstruction tasks",
+    "job": "complete-bounded-tasks",
+    "job_name": null,
+    "commit": "bc4057b",
+    "triggers_before": [
+     "workflow_dispatch",
+     "schedule"
+    ],
+    "permissions_before": {
+     "contents": "write",
+     "pull-requests": "write"
+    },
+    "event_mapping": "schedule removed (cron 23 */6 * * *); runs on pull_request and push per G17 (never scheduled)",
+    "note": "workflow_dispatch removed (G17: no click trigger); inputs.* render empty, as on pull_request/push",
+    "removed_steps": [
+     {
+      "name": "Create or update bounded completion pull request",
+      "run_sha256": "6724fa5223cd56c6b147d6cf6fffb547b9d95ac9cd50ea21408419b9ca32a941",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "SCHEDULED_PR_WRITER_REMOVED_BY_G17",
+      "if_before": null,
+      "env_before": {
+       "GH_TOKEN": "${{ github.token }}"
+      }
+     }
+    ]
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Prove completer uses repository-resident pinned evidence only",
+     "run_file": "tools/tasks/steps/complete-gtg-reconstruction-tasks.complete-bounded-tasks/01-prove-completer-uses-repository-resident-pinned-evidence-onl.sh",
+     "run_sha256": "2fddd5617ac6c8a5ff9de8f69f53b2cd97305c92b2df620697cf4a37547c98be"
+    },
+    {
+     "name": "Observe repository-resident deterministic task evidence",
+     "run_file": "tools/tasks/steps/complete-gtg-reconstruction-tasks.complete-bounded-tasks/02-observe-repository-resident-deterministic-task-evidence.sh",
+     "run_sha256": "f752c3249a95fafaaa1bc2243e57578c91e24fe84fac6eadd8419581958e7146"
+    },
+    {
+     "name": "Validate resulting state",
+     "run_file": "tools/tasks/steps/complete-gtg-reconstruction-tasks.complete-bounded-tasks/03-validate-resulting-state.sh",
+     "run_sha256": "07caeb9fc7be28b430434c12fac2b98c38873e2232eb9e7deb03e3ca7e8701dc"
+    }
+   ],
+   "artifacts": [],
+   "runner": {
+    "fetch_depth": "0",
+    "persist_credentials": "true",
+    "timeout_minutes": 360,
+    "python_version": "3.12"
+   }
+  },
+  {
+   "id": "funding-deadline-watch.watch",
+   "source": {
+    "workflow": ".github/workflows/funding-deadline-watch.yml",
+    "workflow_name": "Funding Deadline Watch",
+    "job": "watch",
+    "job_name": null,
+    "commit": "bc4057b",
+    "triggers_before": [
+     "workflow_dispatch",
+     "push",
+     "pull_request"
+    ],
+    "permissions_before": {
+     "contents": "read"
+    },
+    "path_filter_dropped": true,
+    "note": "workflow_dispatch removed (G17: no click trigger); inputs.* render empty, as on pull_request/push"
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Check application deadlines and active claims",
+     "run_file": "tools/tasks/steps/funding-deadline-watch.watch/01-check-application-deadlines-and-active-claims.sh",
+     "run_sha256": "6b5a271ebd8d229ebde8d057af77cf3ea86e6124697d44a4168e8c0383f21a4b"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "funding-deadline-watch",
+     "path": "funding/evidence/latest-deadline-watch.json",
+     "if_no_files_found": "error",
+     "if": "always()"
+    }
+   ],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 360,
+    "python_version": "3.12",
+    "artifact_name": "funding-deadline-watch",
+    "artifact_if_no_files_found": "error"
+   }
+  },
+  {
+   "id": "funding-state-validation.validate",
+   "source": {
+    "workflow": ".github/workflows/funding-state-validation.yml",
+    "workflow_name": "Funding State Validation",
+    "job": "validate",
+    "job_name": null,
+    "commit": "bc4057b",
+    "triggers_before": [
+     "push",
+     "pull_request",
+     "workflow_dispatch"
+    ],
+    "permissions_before": {
+     "contents": "read"
+    },
+    "path_filter_dropped": true,
+    "note": "workflow_dispatch removed (G17: no click trigger); inputs.* render empty, as on pull_request/push"
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Validate funding state",
+     "run_file": "tools/tasks/steps/funding-state-validation.validate/01-validate-funding-state.sh",
+     "run_sha256": "302570a6b1d885776b2c6c76ef289cbf5d953c8946deb958f27ed7d1209f9d37"
+    },
+    {
+     "name": "Validate OTF ICRP package",
+     "run_file": "tools/tasks/steps/funding-state-validation.validate/02-validate-otf-icrp-package.sh",
+     "run_sha256": "e8df961c0f1db928e60a67a31241b155f12fb3a72c4ee027a3e0f552c30f672d"
+    },
+    {
+     "name": "Validate PESOSE supporting documents",
+     "run_file": "tools/tasks/steps/funding-state-validation.validate/03-validate-pesose-supporting-documents.sh",
+     "run_sha256": "0d5391f627a1fcb547d5a1de354d86ba423225b55ac1d14e2e17e0e972475da7"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "funding-state-validation",
+     "path": "funding/evidence/latest-validation.json\nfunding/evidence/latest-otf-icrp-validation.json\nfunding/evidence/latest-pesose-support-validation.json\n",
+     "if_no_files_found": "error",
+     "if": null
+    }
+   ],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 360,
+    "python_version": "3.12",
+    "artifact_name": "funding-state-validation",
+    "artifact_if_no_files_found": "error"
+   }
+  },
+  {
+   "id": "governable-autonomy-validate.validate",
+   "source": {
+    "workflow": ".github/workflows/governable-autonomy-validate.yml",
+    "workflow_name": "Governable Autonomy Validation",
+    "job": "validate",
+    "job_name": null,
+    "commit": "bc4057b",
+    "triggers_before": [
+     "push",
+     "pull_request",
+     "workflow_dispatch"
+    ],
+    "permissions_before": {
+     "contents": "read"
+    },
+    "path_filter_dropped": true,
+    "note": "workflow_dispatch removed (G17: no click trigger); inputs.* render empty, as on pull_request/push",
+    "artifact_note": "retention-days 90 dropped (repo default); name is now governable-autonomy-validation-receipt-<run_id>"
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Run fail-closed validator",
+     "run_file": "tools/tasks/steps/governable-autonomy-validate.validate/01-run-fail-closed-validator.sh",
+     "run_sha256": "03050a4ba6fe3c5f472e71fbc335284312fffaff0f77c5e0ab0869c268972ada"
+    },
+    {
+     "name": "Verify receipt result",
+     "run_file": "tools/tasks/steps/governable-autonomy-validate.validate/02-verify-receipt-result.sh",
+     "run_sha256": "a22c859360b3a6a494085181edcb6da8684782bf931cfab7f71713fac3b1da7e"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "governable-autonomy-validation-receipt-${{ github.sha }}",
+     "path": "governable-autonomy-validation-receipt.json",
+     "if_no_files_found": "error",
+     "if": "always()"
+    }
+   ],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "false",
+    "timeout_minutes": 5,
+    "python_version": "3.12",
+    "artifact_name": "governable-autonomy-validation-receipt",
+    "artifact_if_no_files_found": "error"
+   }
+  },
+  {
+   "id": "observe-gtg-reconstruction-tasks.observe-and-select-next-work",
+   "source": {
+    "workflow": ".github/workflows/observe-gtg-reconstruction-tasks.yml",
+    "workflow_name": "Observe GTG reconstruction tasks",
+    "job": "observe-and-select-next-work",
+    "job_name": null,
+    "commit": "bc4057b",
+    "triggers_before": [
+     "workflow_dispatch",
+     "schedule",
+     "pull_request",
+     "push"
+    ],
+    "permissions_before": {
+     "contents": "read"
+    },
+    "path_filter_dropped": true,
+    "event_mapping": "schedule removed (cron 17 */6 * * *); runs on pull_request and push per G17 (never scheduled)",
+    "note": "workflow_dispatch removed (G17: no click trigger); inputs.* render empty, as on pull_request/push"
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Observe dependencies and expose executable StegVerse tasks",
+     "run_file": "tools/tasks/steps/observe-gtg-reconstruction-tasks.observe-and-select-next-work/01-observe-dependencies-and-expose-executable-stegverse-tasks.sh",
+     "run_sha256": "16b5c57f65eb4edc5b12a323bc1750730d92e34db8d5bdeb9e0ac4ede6b0c3ec",
+     "env_removed": {
+      "GITHUB_TOKEN": "${{ github.token }}"
+     },
+     "adaptation": "G17: step env GITHUB_TOKEN: ${{ github.token }} removed (the read-only dispatcher passes no token; the script reads it as optional and falls back to an unauthenticated public read); run body byte-identical"
+    },
+    {
+     "name": "Write actionable tasks to workflow summary",
+     "run_file": "tools/tasks/steps/observe-gtg-reconstruction-tasks.observe-and-select-next-work/02-write-actionable-tasks-to-workflow-summary.sh",
+     "run_sha256": "0c49b4299d5895fdf738141f5723f742246dced8951080301dca4313624bb2f8"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "gtg-reconstruction-task-report",
+     "path": "coordination/gtg-reconstruction-task-report.json",
+     "if_no_files_found": "error",
+     "if": null
+    }
+   ],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 360,
+    "python_version": "3.12",
+    "artifact_name": "gtg-reconstruction-task-report",
+    "artifact_if_no_files_found": "error"
+   }
+  },
+  {
+   "id": "reconcile-gtg-task-registry.reconcile",
+   "source": {
+    "workflow": ".github/workflows/reconcile-gtg-task-registry.yml",
+    "workflow_name": "Reconcile StegVerse GTG task registry",
+    "job": "reconcile",
+    "job_name": null,
+    "commit": "bc4057b",
+    "triggers_before": [
+     "push",
+     "pull_request",
+     "schedule",
+     "workflow_dispatch"
+    ],
+    "permissions_before": {
+     "contents": "read"
+    },
+    "path_filter_dropped": true,
+    "event_mapping": "schedule removed (cron 41 */6 * * *); runs on pull_request and push per G17 (never scheduled)",
+    "note": "workflow_dispatch removed (G17: no click trigger); inputs.* render empty, as on pull_request/push"
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Reconcile local GTG tasks",
+     "run_file": "tools/tasks/steps/reconcile-gtg-task-registry.reconcile/01-reconcile-local-gtg-tasks.sh",
+     "run_sha256": "e9881dfff83769ca351a5d85735cab58c644b6abac9ce0654c974fc4288ff86b"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "gtg-task-discovery-report",
+     "path": "coordination/gtg-task-discovery-report.json",
+     "if_no_files_found": "warn",
+     "if": null
+    }
+   ],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 360,
+    "python_version": "3.12",
+    "artifact_name": "gtg-task-discovery-report",
+    "artifact_if_no_files_found": "warn"
+   }
+  },
+  {
+   "id": "rigel-validation.test-and-simulate",
+   "source": {
+    "workflow": ".github/workflows/rigel-validation.yml",
+    "workflow_name": "Rigel validation",
+    "job": "test-and-simulate",
+    "job_name": null,
+    "commit": "bc4057b",
+    "triggers_before": [
+     "workflow_dispatch",
+     "push",
+     "pull_request"
+    ],
+    "permissions_before": {
+     "contents": "write"
+    },
+    "path_filter_dropped": true,
+    "note": "workflow_dispatch removed (G17: no click trigger); inputs.* render empty, as on pull_request/push",
+    "artifact_note": "retention-days 30 dropped (repo default); name is now rigel-validation-<run_id>",
+    "removed_steps": [
+     {
+      "name": "Persist compact validation evidence",
+      "run_sha256": "16b5566143edaf36d7be2cc6c5b65f20904be61f2f9c6bd92adaa75137915133",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "PUSH_TO_MAIN_WRITER_REMOVED_BY_G17",
+      "if_before": "github.event_name != 'pull_request'",
+      "env_before": null
+     }
+    ]
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Run deterministic tests",
+     "run_file": "tools/tasks/steps/rigel-validation.test-and-simulate/01-run-deterministic-tests.sh",
+     "run_sha256": "f2e7c64f80acd78c816347db6c23d57dfdc8a13d65a569fbd6c0fc82b6928a5a"
+    },
+    {
+     "name": "Resolve run sizes",
+     "run_file": "tools/tasks/steps/rigel-validation.test-and-simulate/02-resolve-run-sizes.sh",
+     "run_sha256": "1d953ce1a64456f0715262a3218e19f2990e1d0bc6dbd08f78f4835b08c65fc5",
+     "shell": "bash",
+     "id": "run_sizes"
+    },
+    {
+     "name": "Run scalar benchmark",
+     "run_file": "tools/tasks/steps/rigel-validation.test-and-simulate/03-run-scalar-benchmark.sh",
+     "run_sha256": "6adf59b4a0cb6e2466d4f688e4264ce1c5e9aff836c0e6624d8b7064d16c76f2"
+    },
+    {
+     "name": "Fit held-out latency baselines",
+     "run_file": "tools/tasks/steps/rigel-validation.test-and-simulate/04-fit-held-out-latency-baselines.sh",
+     "run_sha256": "c49d55616b0e91d513523dae881aa8faf9df07776fff26c30639435e458ee855"
+    },
+    {
+     "name": "Run constant-total-latency ablation",
+     "run_file": "tools/tasks/steps/rigel-validation.test-and-simulate/05-run-constant-total-latency-ablation.sh",
+     "run_sha256": "0e173fb00d2d0780d2838bdc6350faa9ed113ecdd81dd2604df5e35e0d93d0d2"
+    },
+    {
+     "name": "Evaluate fail-closed validation state",
+     "run_file": "tools/tasks/steps/rigel-validation.test-and-simulate/06-evaluate-fail-closed-validation-state.sh",
+     "run_sha256": "40efefe9e9db72d52a39fa49101011998dd37214f7ae87a397c5bbadf6ab8c12"
+    },
+    {
+     "name": "Create validation receipts",
+     "run_file": "tools/tasks/steps/rigel-validation.test-and-simulate/07-create-validation-receipts.sh",
+     "run_sha256": "67dda19b75fbbbecca0b77b331c83e7c2fc84207e06cf4ce1b11e384ee9c8b39",
+     "shell": "bash"
+    },
+    {
+     "name": "Display summaries and state",
+     "run_file": "tools/tasks/steps/rigel-validation.test-and-simulate/08-display-summaries-and-state.sh",
+     "run_sha256": "17298785618674b77069d68680b39d7ca51f75a32501b883dd469f3d9c181a91"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "rigel-validation-${{ github.sha }}",
+     "path": "generated/scalar-delayed-control/config.json\ngenerated/scalar-delayed-control/episodes.csv\ngenerated/scalar-delayed-control/summary.json\ngenerated/scalar-delayed-control/baseline-evaluation.json\ngenerated/scalar-delayed-control/validation-receipt.json\ngenerated/constant-total-latency-ablation/config.json\ngenerated/constant-total-latency-ablation/episodes.csv\ngenerated/constant-total-latency-ablation/summary.json\ngenerated/constant-total-latency-ablation/validation-receipt.json\ngenerated/validation-state.json\n",
+     "if_no_files_found": "error",
+     "if": null
+    }
+   ],
+   "runner": {
+    "fetch_depth": "0",
+    "persist_credentials": "true",
+    "timeout_minutes": 30,
+    "python_version": "3.12",
+    "artifact_name": "rigel-validation",
+    "artifact_if_no_files_found": "error"
+   }
+  },
+  {
+   "id": "stegneuro-bci-source-discovery.discover",
+   "source": {
+    "workflow": ".github/workflows/stegneuro-bci-source-discovery.yml",
+    "workflow_name": "StegNeuro BCI Source Discovery",
+    "job": "discover",
+    "job_name": null,
+    "commit": "bc4057b",
+    "triggers_before": [
+     "workflow_dispatch",
+     "schedule",
+     "push"
+    ],
+    "permissions_before": {
+     "contents": "write"
+    },
+    "path_filter_dropped": true,
+    "event_mapping": "schedule removed (cron 17 */6 * * *); runs on pull_request and push per G17 (never scheduled)",
+    "note": "workflow_dispatch removed (G17: no click trigger); inputs.* render empty, as on pull_request/push",
+    "removed_steps": [
+     {
+      "name": "Persist changed continuation state",
+      "run_sha256": "d5329e87777f8e711cf2d57a14ae5ab52918a9edd757675f1945f1369abac219",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "PUSH_WRITER_REMOVED_BY_G17",
+      "if_before": null,
+      "env_before": null
+     }
+    ]
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Validate canonical reviewed research inputs",
+     "run_file": "tools/tasks/steps/stegneuro-bci-source-discovery.discover/01-validate-canonical-reviewed-research-inputs.sh",
+     "run_sha256": "be075962bd802aa9eeccaa329e6c7fd1f2a27d7a6f80817133fd274a6cc73a29"
+    },
+    {
+     "name": "Discover candidate current sources",
+     "run_file": "tools/tasks/steps/stegneuro-bci-source-discovery.discover/02-discover-candidate-current-sources.sh",
+     "run_sha256": "d37beaee0df1fb9d79f53d5c85dad8cacd424e2a3c3cafb52ea0efa30e06eedb"
+    },
+    {
+     "name": "Triage metadata and build evidence gap map",
+     "run_file": "tools/tasks/steps/stegneuro-bci-source-discovery.discover/03-triage-metadata-and-build-evidence-gap-map.sh",
+     "run_sha256": "99f8d29dde5c50d16cc8dfc17293b7ef32cec3b85f2305e9a327ea09c4fd4d94"
+    },
+    {
+     "name": "Build persistent continuation state and review queues",
+     "run_file": "tools/tasks/steps/stegneuro-bci-source-discovery.discover/04-build-persistent-continuation-state-and-review-queues.sh",
+     "run_sha256": "8df579a50467352e3ef4f9d6cbf76206e78a370e17c5ec63f86f786090461d28"
+    },
+    {
+     "name": "Verify fail-closed discovery posture",
+     "run_file": "tools/tasks/steps/stegneuro-bci-source-discovery.discover/05-verify-fail-closed-discovery-posture.sh",
+     "run_sha256": "36ae1a0f3887c04547600a25190d3b5377f7c1a050f886fe65f326f133cdc880"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "stegneuro-bci-source-evidence",
+     "path": "generated/stegneuro-bci/candidate-sources.json\ngenerated/stegneuro-bci/source-triage.json\ngenerated/stegneuro-bci/gap-map.json\nresearch_commons/runtime/STEGNEURO-BCI-001/continuation-latest.json\n",
+     "if_no_files_found": "error",
+     "if": null
+    }
+   ],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 360,
+    "python_version": "3.11",
+    "artifact_name": "stegneuro-bci-source-evidence",
+    "artifact_if_no_files_found": "error"
+   }
+  },
+  {
+   "id": "test-readiness.repo-smoke",
+   "source": {
+    "workflow": ".github/workflows/test-readiness.yml",
+    "workflow_name": "Test Readiness",
+    "job": "repo-smoke",
+    "job_name": null,
+    "commit": "bc4057b",
+    "triggers_before": [
+     "push",
+     "pull_request",
+     "workflow_dispatch"
+    ],
+    "permissions_before": {
+     "contents": "read"
+    },
+    "note": "workflow_dispatch removed (G17: no click trigger); inputs.* render empty, as on pull_request/push"
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Baseline repository smoke test",
+     "run_file": "tools/tasks/steps/test-readiness.repo-smoke/01-baseline-repository-smoke-test.sh",
+     "run_sha256": "b9ca9ed2406c9532b40bd3c46ae13c4eb0924562a3232a0b9308a04329377ec1"
+    }
+   ],
+   "artifacts": [],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 5,
+    "python_version": "3.11"
+   }
+  },
+  {
+   "id": "time-causal-kernel.validate",
+   "source": {
+    "workflow": ".github/workflows/time-causal-kernel.yml",
+    "workflow_name": "Time Causal Kernel",
+    "job": "validate",
+    "job_name": null,
+    "commit": "bc4057b",
+    "triggers_before": [
+     "pull_request",
+     "workflow_dispatch"
+    ],
+    "permissions_before": {
+     "contents": "read"
+    },
+    "path_filter_dropped": true,
+    "note": "workflow_dispatch removed (G17: no click trigger); inputs.* render empty, as on pull_request/push"
+   },
+   "events": [
+    "pull_request"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Run causal-kernel fixture matrix",
+     "run_file": "tools/tasks/steps/time-causal-kernel.validate/01-run-causal-kernel-fixture-matrix.sh",
+     "run_sha256": "207d9f375fe33d976db38cfaed3d1073f41f59456258579c2ea3fd7877c2d6cb"
+    }
+   ],
+   "artifacts": [],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 360,
+    "python_version": "3.11"
+   }
+  },
+  {
+   "id": "validate-architecture-neutral-admissibility.validate",
+   "source": {
+    "workflow": ".github/workflows/validate-architecture-neutral-admissibility.yml",
+    "workflow_name": "Validate Architecture Neutral Admissibility",
+    "job": "validate",
+    "job_name": null,
+    "commit": "bc4057b",
+    "triggers_before": [
+     "pull_request",
+     "workflow_dispatch"
+    ],
+    "permissions_before": {
+     "contents": "read"
+    },
+    "path_filter_dropped": true,
+    "note": "workflow_dispatch removed (G17: no click trigger); inputs.* render empty, as on pull_request/push"
+   },
+   "events": [
+    "pull_request"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Parse schema and fixtures",
+     "run_file": "tools/tasks/steps/validate-architecture-neutral-admissibility.validate/01-parse-schema-and-fixtures.sh",
+     "run_sha256": "e771f35dfbab1e8088f93fc45cf10a0437ed98286969a1fdb0e36c9b2dafdf61"
+    },
+    {
+     "name": "Run deterministic validator",
+     "run_file": "tools/tasks/steps/validate-architecture-neutral-admissibility.validate/02-run-deterministic-validator.sh",
+     "run_sha256": "0fbaaca8f4d752e63858ba1073ec7a074dfadcbaa28a05196ec98fac6d823f37"
+    },
+    {
+     "name": "Run unit tests",
+     "run_file": "tools/tasks/steps/validate-architecture-neutral-admissibility.validate/03-run-unit-tests.sh",
+     "run_sha256": "80c44a202ca55d49e8d6635e4e249abaaa65e5d6063d76bd9d45eed02ce0a8c6"
+    }
+   ],
+   "artifacts": [],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 360,
+    "python_version": "3.12"
+   }
+  },
+  {
+   "id": "validate-gtg-assurance-consumer-compatibility-sweep.validate",
+   "source": {
+    "workflow": ".github/workflows/validate-gtg-assurance-consumer-compatibility-sweep.yml",
+    "workflow_name": "Validate GTG Assurance Consumer Compatibility Sweep",
+    "job": "validate",
+    "job_name": null,
+    "commit": "bc4057b",
+    "triggers_before": [
+     "pull_request",
+     "workflow_dispatch"
+    ],
+    "permissions_before": {
+     "contents": "read"
+    },
+    "path_filter_dropped": true,
+    "note": "workflow_dispatch removed (G17: no click trigger); inputs.* render empty, as on pull_request/push"
+   },
+   "events": [
+    "pull_request"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Run deterministic sweep",
+     "run_file": "tools/tasks/steps/validate-gtg-assurance-consumer-compatibility-sweep.validate/01-run-deterministic-sweep.sh",
+     "run_sha256": "370049d43c2487fca8f50c2400702e6edbd3454df1f88e6ee2795fc868041d67"
+    },
+    {
+     "name": "Run unit tests",
+     "run_file": "tools/tasks/steps/validate-gtg-assurance-consumer-compatibility-sweep.validate/02-run-unit-tests.sh",
+     "run_sha256": "fdd07c8c797ffd7b59ce19ef7d97a8450ae178dc61c6840629a6d2ee480df5bf"
+    }
+   ],
+   "artifacts": [],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 360,
+    "python_version": "3.12"
+   }
+  },
+  {
+   "id": "validate-gtg-assurance-reference-integration.validate",
+   "source": {
+    "workflow": ".github/workflows/validate-gtg-assurance-reference-integration.yml",
+    "workflow_name": "Validate GTG Assurance Reference Integration",
+    "job": "validate",
+    "job_name": null,
+    "commit": "bc4057b",
+    "triggers_before": [
+     "pull_request",
+     "workflow_dispatch"
+    ],
+    "permissions_before": {
+     "contents": "read"
+    },
+    "path_filter_dropped": true,
+    "note": "workflow_dispatch removed (G17: no click trigger); inputs.* render empty, as on pull_request/push"
+   },
+   "events": [
+    "pull_request"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Parse schemas and fixtures",
+     "run_file": "tools/tasks/steps/validate-gtg-assurance-reference-integration.validate/01-parse-schemas-and-fixtures.sh",
+     "run_sha256": "312368fc515eeb30753e01c52aaedf9908da3e0a34fe7231042d02ba875c1b65"
+    },
+    {
+     "name": "Run deterministic validator",
+     "run_file": "tools/tasks/steps/validate-gtg-assurance-reference-integration.validate/02-run-deterministic-validator.sh",
+     "run_sha256": "1ccdc701562e6f4dbbb178ee8b82f6d336702098a45bdb2cadbe1a1978a6cf58"
+    },
+    {
+     "name": "Run unit tests",
+     "run_file": "tools/tasks/steps/validate-gtg-assurance-reference-integration.validate/03-run-unit-tests.sh",
+     "run_sha256": "e52c9b231d275acb369259840dbe8a2d51616bdadaf9ca6e8e91ed3e6c5a399c"
+    }
+   ],
+   "artifacts": [],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 360,
+    "python_version": "3.12"
+   }
+  },
+  {
+   "id": "validate-gtg-r4-challenges.validate",
+   "source": {
+    "workflow": ".github/workflows/validate-gtg-r4-challenges.yml",
+    "workflow_name": "Validate StegVerse GTG R4 challenges",
+    "job": "validate",
+    "job_name": null,
+    "commit": "bc4057b",
+    "triggers_before": [
+     "push",
+     "pull_request",
+     "workflow_dispatch"
+    ],
+    "permissions_before": {
+     "contents": "read"
+    },
+    "path_filter_dropped": true,
+    "note": "workflow_dispatch removed (G17: no click trigger); inputs.* render empty, as on pull_request/push"
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "run_file": "tools/tasks/steps/validate-gtg-r4-challenges.validate/01-run.sh",
+     "run_sha256": "f35d4d876e48ca094cec5341e4377136dee58804424d055bf7344c5fae9efd20"
+    },
+    {
+     "name": "Verify bounded activation receipt",
+     "run_file": "tools/tasks/steps/validate-gtg-r4-challenges.validate/02-verify-bounded-activation-receipt.sh",
+     "run_sha256": "4e4902c3318d0550918d0c75883b5f1630c56305c1f98b62a37a08b09dc385ff"
+    }
+   ],
+   "artifacts": [],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 360,
+    "python_version": "3.12"
+   }
+  },
+  {
+   "id": "validate-gtg-r4-r5-boundary.validate",
+   "source": {
+    "workflow": ".github/workflows/validate-gtg-r4-r5-boundary.yml",
+    "workflow_name": "Validate StegVerse GTG R4-R5 boundary",
+    "job": "validate",
+    "job_name": null,
+    "commit": "bc4057b",
+    "triggers_before": [
+     "pull_request",
+     "push",
+     "workflow_dispatch"
+    ],
+    "permissions_before": {
+     "contents": "read"
+    },
+    "path_filter_dropped": true,
+    "note": "workflow_dispatch removed (G17: no click trigger); inputs.* render empty, as on pull_request/push"
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "run_file": "tools/tasks/steps/validate-gtg-r4-r5-boundary.validate/01-run.sh",
+     "run_sha256": "5846cdaad2c6c06b334a1e35d9e3535535d7efba8139b0f7da69a84253f4d961"
+    }
+   ],
+   "artifacts": [],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 360,
+    "python_version": "3.12"
+   }
+  },
+  {
+   "id": "validate-gtg-r4-r5-subject-continuity.validate",
+   "source": {
+    "workflow": ".github/workflows/validate-gtg-r4-r5-subject-continuity.yml",
+    "workflow_name": "Validate StegVerse GTG R4-R5 subject continuity",
+    "job": "validate",
+    "job_name": null,
+    "commit": "bc4057b",
+    "triggers_before": [
+     "push",
+     "pull_request",
+     "workflow_dispatch"
+    ],
+    "permissions_before": {
+     "contents": "read"
+    },
+    "path_filter_dropped": true,
+    "note": "workflow_dispatch removed (G17: no click trigger); inputs.* render empty, as on pull_request/push"
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "run_file": "tools/tasks/steps/validate-gtg-r4-r5-subject-continuity.validate/01-run.sh",
+     "run_sha256": "8cbd1298ab4d31ffe4f9c5a3d8e82be3fa3626e29e068aeeec783f9c6f8b2914"
+    }
+   ],
+   "artifacts": [],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 360,
+    "python_version": "3.12"
+   }
+  },
+  {
+   "id": "validate-gtg-r4-r5-temporal-continuity.validate",
+   "source": {
+    "workflow": ".github/workflows/validate-gtg-r4-r5-temporal-continuity.yml",
+    "workflow_name": "Validate StegVerse GTG R4-R5 temporal continuity",
+    "job": "validate",
+    "job_name": null,
+    "commit": "bc4057b",
+    "triggers_before": [
+     "pull_request",
+     "push",
+     "workflow_dispatch"
+    ],
+    "permissions_before": {
+     "contents": "read"
+    },
+    "path_filter_dropped": true,
+    "note": "workflow_dispatch removed (G17: no click trigger); inputs.* render empty, as on pull_request/push"
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "run_file": "tools/tasks/steps/validate-gtg-r4-r5-temporal-continuity.validate/01-run.sh",
+     "run_sha256": "a18426d1d61d052de75b2378241f208095b3765e6399475f4952ec10e7cf0315"
+    }
+   ],
+   "artifacts": [],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 360,
+    "python_version": "3.12"
+   }
+  },
+  {
+   "id": "validate-gtg-r5-reality-contact.validate",
+   "source": {
+    "workflow": ".github/workflows/validate-gtg-r5-reality-contact.yml",
+    "workflow_name": "Validate StegVerse GTG R5 reality contact",
+    "job": "validate",
+    "job_name": null,
+    "commit": "bc4057b",
+    "triggers_before": [
+     "pull_request",
+     "push",
+     "workflow_dispatch"
+    ],
+    "permissions_before": {
+     "contents": "read"
+    },
+    "path_filter_dropped": true,
+    "note": "workflow_dispatch removed (G17: no click trigger); inputs.* render empty, as on pull_request/push"
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "run_file": "tools/tasks/steps/validate-gtg-r5-reality-contact.validate/01-run.sh",
+     "run_sha256": "638bcdd97fe2074d93542c7e4e54441cb1d40b7ba624bc5b0042c055cc4b650f"
+    },
+    {
+     "name": "Verify bounded posture",
+     "run_file": "tools/tasks/steps/validate-gtg-r5-reality-contact.validate/02-verify-bounded-posture.sh",
+     "run_sha256": "cdba5e2eecda155ade48e62882d7b99ef921e4fd2679a64eeb8bf0b48d9cecdd"
+    }
+   ],
+   "artifacts": [],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 360,
+    "python_version": "3.12"
+   }
+  },
+  {
+   "id": "validate-gtg-reconstruction-mirror.validate",
+   "source": {
+    "workflow": ".github/workflows/validate-gtg-reconstruction-mirror.yml",
+    "workflow_name": "Validate GTG reconstruction mirror",
+    "job": "validate",
+    "job_name": null,
+    "commit": "bc4057b",
+    "triggers_before": [
+     "pull_request",
+     "push"
+    ],
+    "permissions_before": {
+     "contents": "read"
+    },
+    "path_filter_dropped": true
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "run_file": "tools/tasks/steps/validate-gtg-reconstruction-mirror.validate/01-run.sh",
+     "run_sha256": "e49fc0d99198fa7698a18fed3b6b3c31514473ba96038426c540b9dd0ba6675c"
+    }
+   ],
+   "artifacts": [],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 360,
+    "python_version": "3.12"
+   }
+  },
+  {
+   "id": "validate-gtg.validate",
+   "source": {
+    "workflow": ".github/workflows/validate-gtg.yml",
+    "workflow_name": "Validate GTG",
+    "job": "validate",
+    "job_name": null,
+    "commit": "bc4057b",
+    "triggers_before": [
+     "push",
+     "pull_request",
+     "workflow_dispatch"
+    ],
+    "permissions_before": {
+     "contents": "read"
+    },
+    "path_filter_dropped": true,
+    "note": "workflow_dispatch removed (G17: no click trigger); inputs.* render empty, as on pull_request/push"
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Validate deterministic GTG fixtures",
+     "run_file": "tools/tasks/steps/validate-gtg.validate/01-validate-deterministic-gtg-fixtures.sh",
+     "run_sha256": "69e6cff0f5b5e5f899ae2db07422cef304c612630a8e832c14beca57e496f2e9"
+    },
+    {
+     "name": "Verify receipt is reproducible",
+     "run_file": "tools/tasks/steps/validate-gtg.validate/02-verify-receipt-is-reproducible.sh",
+     "run_sha256": "d96988e658e27b21ff00ef6e6fddbe528d913cce227a75e5af97a590c7bcf79c"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "gtg-validation-receipt",
+     "path": "receipts/gtg/fixture-validation-receipt.json",
+     "if_no_files_found": "error",
+     "if": null
+    }
+   ],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 360,
+    "python_version": "3.12",
+    "artifact_name": "gtg-validation-receipt",
+    "artifact_if_no_files_found": "error"
+   }
+  },
+  {
+   "id": "validate-independent-review.validate",
+   "source": {
+    "workflow": ".github/workflows/validate-independent-review.yml",
+    "workflow_name": "Validate Independent Review",
+    "job": "validate",
+    "job_name": null,
+    "commit": "bc4057b",
+    "triggers_before": [
+     "pull_request",
+     "push"
+    ],
+    "permissions_before": {
+     "contents": "read"
+    },
+    "path_filter_dropped": true
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Validate fixtures",
+     "run_file": "tools/tasks/steps/validate-independent-review.validate/01-validate-fixtures.sh",
+     "run_sha256": "47ce3c3676eb99877bc84bbf2cdcd050332c032c8fe7dc47aace77217eb3ca75"
+    },
+    {
+     "name": "Run tests",
+     "run_file": "tools/tasks/steps/validate-independent-review.validate/02-run-tests.sh",
+     "run_sha256": "c8cc90f9ee0a866e09fece3dd68d4e544885d84762f43a5c6ae4bd2044f3c139"
+    }
+   ],
+   "artifacts": [],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 360,
+    "python_version": "3.12"
+   }
+  },
+  {
+   "id": "validate-research-commons-control.validate-control-state",
+   "source": {
+    "workflow": ".github/workflows/validate-research-commons-control.yml",
+    "workflow_name": "Validate Research Commons Control State",
+    "job": "validate-control-state",
+    "job_name": null,
+    "commit": "bc4057b",
+    "triggers_before": [
+     "push",
+     "pull_request",
+     "schedule",
+     "workflow_dispatch"
+    ],
+    "permissions_before": {
+     "contents": "read"
+    },
+    "path_filter_dropped": true,
+    "event_mapping": "schedule removed (cron 17 * * * *); runs on pull_request and push per G17 (never scheduled)",
+    "note": "workflow_dispatch removed (G17: no click trigger); inputs.* render empty, as on pull_request/push"
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Validate handoff and task claims",
+     "run_file": "tools/tasks/steps/validate-research-commons-control.validate-control-state/01-validate-handoff-and-task-claims.sh",
+     "run_sha256": "b062cb56167b31a787124d1453e1c8229873d0095237694001dddca87a87fe5b"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "research-commons-control-state",
+     "path": "reports/research-commons-control-state.json",
+     "if_no_files_found": "error",
+     "if": null
+    }
+   ],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 360,
+    "python_version": "3.12",
+    "artifact_name": "research-commons-control-state",
+    "artifact_if_no_files_found": "error"
+   }
+  },
+  {
+   "id": "validate-research-commons-publisher-papers.validate",
+   "source": {
+    "workflow": ".github/workflows/validate-research-commons-publisher-papers.yml",
+    "workflow_name": "Validate Research Commons Publisher Papers",
+    "job": "validate",
+    "job_name": null,
+    "commit": "bc4057b",
+    "triggers_before": [
+     "push",
+     "pull_request",
+     "workflow_dispatch"
+    ],
+    "permissions_before": {
+     "contents": "read"
+    },
+    "path_filter_dropped": true,
+    "note": "workflow_dispatch removed (G17: no click trigger); inputs.* render empty, as on pull_request/push"
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Validate Publisher paper projection",
+     "run_file": "tools/tasks/steps/validate-research-commons-publisher-papers.validate/01-validate-publisher-paper-projection.sh",
+     "run_sha256": "bd0011d1a17b76cdccd0f177c793897698c74859de3c06c2b2672fa81f49d669"
+    }
+   ],
+   "artifacts": [],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 360,
+    "python_version": "3.12"
+   }
+  },
+  {
+   "id": "validate-tt.validate-tt",
+   "source": {
+    "workflow": ".github/workflows/validate-tt.yml",
+    "workflow_name": "Validate Transition Table",
+    "job": "validate-tt",
+    "job_name": null,
+    "commit": "bc4057b",
+    "triggers_before": [
+     "push",
+     "pull_request"
+    ],
+    "permissions_before": {
+     "contents": "read"
+    },
+    "path_filter_dropped": true
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Install test dependency",
+     "run_file": "tools/tasks/steps/validate-tt.validate-tt/01-install-test-dependency.sh",
+     "run_sha256": "d5cf1ea8dcdee09f04f8232a17689623c901ff0221f86fc8dbad251f8475d96a"
+    },
+    {
+     "name": "Validate transition-element fixtures",
+     "run_file": "tools/tasks/steps/validate-tt.validate-tt/02-validate-transition-element-fixtures.sh",
+     "run_sha256": "5433dd8ea3f192ad4899475f0d6d5e44c11d54b3dde95dd0e7a6280564cc149d"
+    },
+    {
+     "name": "Run TT tests",
+     "run_file": "tools/tasks/steps/validate-tt.validate-tt/03-run-tt-tests.sh",
+     "run_sha256": "a7f3aea198e46f32cdecaa50784ce8191c56dc14e7f7024e0ba5f9d486cfb918"
+    }
+   ],
+   "artifacts": [],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 360,
+    "python_version": "3.12"
+   }
+  },
+  {
+   "id": "workflow-surface-registry.validate",
+   "source": {
+    "added_by": "G17 consolidation",
+    "name": "Workflow surface registry",
+    "note": "G17: enforces the registry and folded records"
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "artifacts": [],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "false",
+    "timeout_minutes": 15,
+    "python_version": "3.12"
+   },
+   "steps": [
+    {
+     "name": "Registry and folded records hold",
+     "run_file": "tools/tasks/steps/workflow-surface-registry.validate/01-registry-and-folded-records-hold.sh",
+     "run_sha256": "7262ec513f658334604b18fd85c37d9d80c8462eb5e34850f047277d0d3dc8d1"
+    }
+   ]
+  }
+ ]
+}

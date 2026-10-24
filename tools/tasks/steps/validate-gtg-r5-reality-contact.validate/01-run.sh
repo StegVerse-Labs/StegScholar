@@ -1,0 +1,1 @@
+python scripts/validate_gtg_r5_reality_contact.py
