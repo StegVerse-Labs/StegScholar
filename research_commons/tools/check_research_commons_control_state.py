@@ -72,6 +72,7 @@ def main() -> None:
     ttl = timedelta(hours=int(data.get("claim_ttl_hours", 72)))
     stale: list[str] = []
     state_by_task: dict[str, str] = {}
+    task_by_id: dict[str, dict] = {}
 
     for task in tasks:
         task_id = task.get("task_id")
@@ -83,6 +84,7 @@ def main() -> None:
         if state not in ALLOWED:
             fail(f"{task_id}: invalid claim_state {state}")
         state_by_task[task_id] = state
+        task_by_id[task_id] = task
 
         for field in (
             "originating_goal",
@@ -120,8 +122,23 @@ def main() -> None:
         fail(f"missing required tasks: {sorted(missing)}")
     if state_by_task.get("RC-CTRL-001") != "SUPERSEDED":
         fail("RC-CTRL-001 must be SUPERSEDED")
-    if state_by_task.get("RC-CTRL-002") != "CLAIMED_FOR_VALIDATION":
-        fail("RC-CTRL-002 must be CLAIMED_FOR_VALIDATION")
+    rc_ctrl_002 = state_by_task.get("RC-CTRL-002")
+    if rc_ctrl_002 == "BLOCKED":
+        # RC-CTRL-002's release_condition allows a block only through a validated
+        # canonical continuation mutation with exact evidence receipts, and the
+        # stale-claim rule below names "block" as a repair. A block must carry its
+        # receipt and an explicit successor; it is never an extension.
+        blocked = task_by_id["RC-CTRL-002"]
+        for field in ("blocked_at", "blocked_reason", "blocked_evidence"):
+            if not blocked.get(field):
+                fail(f"RC-CTRL-002 BLOCKED without {field}")
+        if blocked.get("next_task_after_release") != "RC-CTRL-003":
+            fail("RC-CTRL-002 BLOCKED must name RC-CTRL-003 as its successor")
+        successor = state_by_task.get("RC-CTRL-003")
+        if successor != "UNCLAIMED" and not str(successor).startswith("CLAIMED_FOR_"):
+            fail("RC-CTRL-003 must be UNCLAIMED or CLAIMED_FOR_* when RC-CTRL-002 is BLOCKED")
+    elif rc_ctrl_002 != "CLAIMED_FOR_VALIDATION":
+        fail("RC-CTRL-002 must be CLAIMED_FOR_VALIDATION, or BLOCKED with receipt and successor RC-CTRL-003")
     if stale:
         fail(f"stale claims require release, block, or evidence-backed renewal: {stale}")
 
@@ -134,6 +151,7 @@ def main() -> None:
         "machine_owned": sum(1 for task in tasks if task["claim_state"] == "MACHINE_OWNED"),
         "predecessor_state": state_by_task["RC-CTRL-001"],
         "successor_state": state_by_task["RC-CTRL-002"],
+        "successor_continuation_state": state_by_task.get("RC-CTRL-003"),
         "stale_claims": [],
     }, indent=2, sort_keys=True))
 

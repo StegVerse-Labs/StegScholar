@@ -847,25 +847,19 @@
    "reason": "G17: enforces the registry and the folded records"
   }
  ],
- "pre_existing_baseline_failures": [
-  {
-   "surface": "catalog group build-and-validate-research-commons.validate step 12 (python research_commons/tools/check_research_commons_control_state.py)",
-   "now": "DENY at StegScholar main bc4057ba state as well as at this branch; the source workflow's path filter had not selected a run since 2026-09-21 (success then); the hourly validate-research-commons-control job runs the same checker piped to tee without pipefail, so its exit status was masked",
-   "disposition": "PRE_EXISTING_BASELINE_FAILURE",
-   "failure_code": "RESEARCH_COMMONS_STALE_CLAIM",
-   "failed_predicate": "CONTROL_STATE_HAS_NO_STALE_CLAIMS (RC-CTRL-002 claim past its window)",
-   "required_evidence_or_repair": "the RC-CTRL-002 claim holder releases, blocks or evidence-renews the claim in research_commons/control/task-registry.json",
-   "retry_entrypoint": "python3 tools/tasks/run_catalog.py run --group build-and-validate-research-commons.validate",
-   "owning_existing_goal": "Research Commons control (RC-CTRL-002) owner; tracked on StegVerse-org/.github#166",
-   "next_attempt": "the next push after the claim is released or renewed"
-  }
- ],
+ "pre_existing_baseline_failures": [],
  "repaired_baseline_failures": [
   {
    "surface": "catalog group governable-autonomy-validate.validate (python tools/validate_governable_autonomy.py)",
    "was": "PRE_EXISTING_BASELINE_FAILURE GOVERNABLE_AUTONOMY_CLAIM_EXPIRED (GA-SEC-002 expired 2026-09-17T07:16:00Z)",
    "repair": "GA-SEC-002 marked BLOCKED per its own blocked_release_condition (not extended); explicit successor GA-SEC-003 added UNCLAIMED in research-programs/governable-autonomy/task-claims.json, following the GA-SEC-001 -> GA-SEC-002 precedent",
    "verification": "python tools/validate_governable_autonomy.py -> result COMPLETE"
+  },
+  {
+   "surface": "catalog group build-and-validate-research-commons.validate step 12 (python research_commons/tools/check_research_commons_control_state.py)",
+   "was": "PRE_EXISTING_BASELINE_FAILURE RESEARCH_COMMONS_STALE_CLAIM (RC-CTRL-002 claim expired 2026-09-24T12:43:16Z; DENY at 64da25f8, run 40120166233 job 120949808943)",
+   "repair": "RC-CTRL-002 marked BLOCKED under its own release_condition (research_commons/control/task-registry.json) with blocked_at/blocked_reason/blocked_evidence, not extended; explicit successor RC-CTRL-003 added UNCLAIMED; checker accepts BLOCKED only with that receipt and successor (StegScholar#37 option (b))",
+   "verification": "python research_commons/tools/check_research_commons_control_state.py -> state COMPLETE"
   }
  ]
 }
