@@ -1,0 +1,2 @@
+python scripts/validate_gtg_reconstruction_mirror.py
+python scripts/run_gtg_task_orchestrator.py

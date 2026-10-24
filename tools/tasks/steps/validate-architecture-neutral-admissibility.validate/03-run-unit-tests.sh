@@ -1,0 +1,1 @@
+python -m unittest tests.test_architecture_neutral_admissibility

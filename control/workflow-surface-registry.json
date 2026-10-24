@@ -1,0 +1,850 @@
+{
+ "schema": "stegverse.workflow-surface-registry/v1",
+ "goal_id": "G17-WORKFLOW-SURFACE-MINIMIZATION",
+ "repository": "StegVerse-Labs/StegScholar",
+ "policy_issue": "StegVerse-Labs/.github#167, #168",
+ "authority": "Rigel 2026-10-24: retroactive G17 enforcement (StegVerse-org/.github#166)",
+ "author_session": "P4 Maintenance Lane (a65c67bf)",
+ "standard": "ACTION_BY_MANIFEST; every transition ends ALLOW, DENY or FAIL_CLOSED; no new external machines or dependencies",
+ "credential_authority": "TV/TVC only; no secret or token is introduced or moved; credentials live only in the SKAP Vault inside KV",
+ "preferred_repository_workflow_count_max": 2,
+ "exception_repository_workflow_count_max": 3,
+ "above_two_rule": "KEEP_STANDALONE_EXCEPTION_REQUIRES_DOCUMENTED_TECHNICAL_NECESSITY_AND_EVIDENCE",
+ "invariants": [
+  "Every repository-authored workflow file must be explicitly registered in surfaces[] before merge/push. Unregistered workflow proliferation fails closed (tests/test_workflow_surface_registry.py).",
+  "A new check is a group in tools/tasks/task_catalog.json run by the stable validator dispatcher, never a new workflow file.",
+  "Registered triggers and permissions equal the workflow file's own; a drift fails closed.",
+  "No surface carries workflow_dispatch, schedule, repository_dispatch, issues or workflow_run unless its registered exception names it.",
+  "Each folded workflow's verbatim record is pinned by sha256 and its run blocks equal the catalog step bodies (tests/test_folded_workflow_records.py)."
+ ],
+ "unregistered_workflow_outcome": {
+  "disposition": "FAIL_CLOSED",
+  "failure_code": "UNREGISTERED_WORKFLOW_SURFACE",
+  "failed_predicate": "EVERY_WORKFLOW_FILE_IS_REGISTERED",
+  "required_evidence_or_repair": "register the file in control/workflow-surface-registry.json surfaces[] with a classification, or fold it into tools/tasks/task_catalog.json",
+  "retry_entrypoint": "tests/test_workflow_surface_registry.py",
+  "owning_existing_goal": "G17-WORKFLOW-SURFACE-MINIMIZATION (StegVerse-Labs/.github#167/#168); P4 maintenance StegVerse-org/.github#166",
+  "next_attempt": "the next pull request touching .github/workflows/"
+ },
+ "surfaces": [
+  {
+   "path": ".github/workflows/validation-dispatcher.yml",
+   "classification": "KEEP_STABLE_DISPATCHER",
+   "triggers": [
+    "pull_request",
+    "push"
+   ],
+   "permissions": {
+    "workflow": {},
+    "jobs": {
+     "plan": {
+      "contents": "read"
+     },
+     "check": {
+      "contents": "read"
+     }
+    }
+   },
+   "lifecycle": "validation: every pull_request and every push to main; read-only; runs tools/tasks/task_catalog.json",
+   "catalog": "tools/tasks/task_catalog.json"
+  }
+ ],
+ "folded": [
+  {
+   "workflow": ".github/workflows/build-and-validate-research-commons.yml",
+   "name": "Build and validate Research Commons",
+   "triggers_before": [
+    "push",
+    "pull_request",
+    "workflow_dispatch"
+   ],
+   "permissions_before": {
+    "workflow": {
+     "contents": "read"
+    },
+    "jobs": {}
+   },
+   "record": "tools/tasks/folded/build-and-validate-research-commons.yml",
+   "record_sha256": "dbf6954568d76abbff64a8b1eb61efb7e760e039b1d576a23dae6ddb4dbf9452",
+   "classification": "CONSOLIDATE_INTO_STABLE_DISPATCHER",
+   "into": ".github/workflows/validation-dispatcher.yml",
+   "catalog_groups": [
+    "build-and-validate-research-commons.validate"
+   ],
+   "events_after": [
+    "pull_request",
+    "push"
+   ]
+  },
+  {
+   "workflow": ".github/workflows/check-research-commons-publisher-drift.yml",
+   "name": "Check Research Commons Publisher Drift",
+   "triggers_before": [
+    "workflow_dispatch"
+   ],
+   "permissions_before": {
+    "workflow": {
+     "contents": "read"
+    },
+    "jobs": {}
+   },
+   "record": "tools/tasks/folded/check-research-commons-publisher-drift.yml",
+   "record_sha256": "fbb3faa5507a890e79c7fab510fc94433d781fc4a4051be3d577dc72fcc1de76",
+   "classification": "ELIMINATE",
+   "status": "PENDING_OWNER_DECISION",
+   "catalog_groups": [],
+   "events_after": []
+  },
+  {
+   "workflow": ".github/workflows/complete-gtg-reconstruction-tasks.yml",
+   "name": "Complete GTG reconstruction tasks",
+   "triggers_before": [
+    "workflow_dispatch",
+    "schedule"
+   ],
+   "permissions_before": {
+    "workflow": {
+     "contents": "write",
+     "pull-requests": "write"
+    },
+    "jobs": {}
+   },
+   "record": "tools/tasks/folded/complete-gtg-reconstruction-tasks.yml",
+   "record_sha256": "748f36dff7f133f78565d565279769fe588ec130d70fa7d13140a696287fde6f",
+   "schedule_removed": [
+    "23 */6 * * *"
+   ],
+   "classification": "CONSOLIDATE_INTO_STABLE_DISPATCHER",
+   "into": ".github/workflows/validation-dispatcher.yml",
+   "catalog_groups": [
+    "complete-gtg-reconstruction-tasks.complete-bounded-tasks"
+   ],
+   "events_after": [
+    "pull_request",
+    "push"
+   ]
+  },
+  {
+   "workflow": ".github/workflows/funding-deadline-watch.yml",
+   "name": "Funding Deadline Watch",
+   "triggers_before": [
+    "workflow_dispatch",
+    "push",
+    "pull_request"
+   ],
+   "permissions_before": {
+    "workflow": {
+     "contents": "read"
+    },
+    "jobs": {}
+   },
+   "record": "tools/tasks/folded/funding-deadline-watch.yml",
+   "record_sha256": "4f1feee1c898ac7947906f1813c3ccd89ccd278fad250eb6e0d03bd97731918d",
+   "classification": "CONSOLIDATE_INTO_STABLE_DISPATCHER",
+   "into": ".github/workflows/validation-dispatcher.yml",
+   "catalog_groups": [
+    "funding-deadline-watch.watch"
+   ],
+   "events_after": [
+    "pull_request",
+    "push"
+   ]
+  },
+  {
+   "workflow": ".github/workflows/funding-state-validation.yml",
+   "name": "Funding State Validation",
+   "triggers_before": [
+    "push",
+    "pull_request",
+    "workflow_dispatch"
+   ],
+   "permissions_before": {
+    "workflow": {
+     "contents": "read"
+    },
+    "jobs": {}
+   },
+   "record": "tools/tasks/folded/funding-state-validation.yml",
+   "record_sha256": "bb42712a9a6eaaea99f46729b5ef40bca4620657fc2a237a303db712e6582589",
+   "classification": "CONSOLIDATE_INTO_STABLE_DISPATCHER",
+   "into": ".github/workflows/validation-dispatcher.yml",
+   "catalog_groups": [
+    "funding-state-validation.validate"
+   ],
+   "events_after": [
+    "pull_request",
+    "push"
+   ]
+  },
+  {
+   "workflow": ".github/workflows/governable-autonomy-validate.yml",
+   "name": "Governable Autonomy Validation",
+   "triggers_before": [
+    "push",
+    "pull_request",
+    "workflow_dispatch"
+   ],
+   "permissions_before": {
+    "workflow": {
+     "contents": "read"
+    },
+    "jobs": {}
+   },
+   "record": "tools/tasks/folded/governable-autonomy-validate.yml",
+   "record_sha256": "f154552c5653c274140e1ba30ccb73adc3781c9843964e6940761f0cd00d4c62",
+   "classification": "CONSOLIDATE_INTO_STABLE_DISPATCHER",
+   "into": ".github/workflows/validation-dispatcher.yml",
+   "catalog_groups": [
+    "governable-autonomy-validate.validate"
+   ],
+   "events_after": [
+    "pull_request",
+    "push"
+   ]
+  },
+  {
+   "workflow": ".github/workflows/observe-gtg-reconstruction-tasks.yml",
+   "name": "Observe GTG reconstruction tasks",
+   "triggers_before": [
+    "workflow_dispatch",
+    "schedule",
+    "pull_request",
+    "push"
+   ],
+   "permissions_before": {
+    "workflow": {
+     "contents": "read"
+    },
+    "jobs": {}
+   },
+   "record": "tools/tasks/folded/observe-gtg-reconstruction-tasks.yml",
+   "record_sha256": "ecb7902778362bb9a5fb9b247f782ceabdfd929b5897ed5f3effd456bf41508c",
+   "schedule_removed": [
+    "17 */6 * * *"
+   ],
+   "classification": "CONSOLIDATE_INTO_STABLE_DISPATCHER",
+   "into": ".github/workflows/validation-dispatcher.yml",
+   "catalog_groups": [
+    "observe-gtg-reconstruction-tasks.observe-and-select-next-work"
+   ],
+   "events_after": [
+    "pull_request",
+    "push"
+   ]
+  },
+  {
+   "workflow": ".github/workflows/reconcile-gtg-task-registry.yml",
+   "name": "Reconcile StegVerse GTG task registry",
+   "triggers_before": [
+    "push",
+    "pull_request",
+    "schedule",
+    "workflow_dispatch"
+   ],
+   "permissions_before": {
+    "workflow": {
+     "contents": "read"
+    },
+    "jobs": {}
+   },
+   "record": "tools/tasks/folded/reconcile-gtg-task-registry.yml",
+   "record_sha256": "8811bb0a4d4fe8044a8dd82e34222c194be5d5348b6a363229c924237e30ca49",
+   "schedule_removed": [
+    "41 */6 * * *"
+   ],
+   "classification": "CONSOLIDATE_INTO_STABLE_DISPATCHER",
+   "into": ".github/workflows/validation-dispatcher.yml",
+   "catalog_groups": [
+    "reconcile-gtg-task-registry.reconcile"
+   ],
+   "events_after": [
+    "pull_request",
+    "push"
+   ]
+  },
+  {
+   "workflow": ".github/workflows/rigel-validation.yml",
+   "name": "Rigel validation",
+   "triggers_before": [
+    "workflow_dispatch",
+    "push",
+    "pull_request"
+   ],
+   "permissions_before": {
+    "workflow": {
+     "contents": "write"
+    },
+    "jobs": {}
+   },
+   "record": "tools/tasks/folded/rigel-validation.yml",
+   "record_sha256": "0e4b63a4d43886405878aed210c095c5b177a7fbad613abdf873c81b04081bb8",
+   "classification": "CONSOLIDATE_INTO_STABLE_DISPATCHER",
+   "into": ".github/workflows/validation-dispatcher.yml",
+   "catalog_groups": [
+    "rigel-validation.test-and-simulate"
+   ],
+   "events_after": [
+    "pull_request",
+    "push"
+   ]
+  },
+  {
+   "workflow": ".github/workflows/stegneuro-bci-source-discovery.yml",
+   "name": "StegNeuro BCI Source Discovery",
+   "triggers_before": [
+    "workflow_dispatch",
+    "schedule",
+    "push"
+   ],
+   "permissions_before": {
+    "workflow": {
+     "contents": "write"
+    },
+    "jobs": {}
+   },
+   "record": "tools/tasks/folded/stegneuro-bci-source-discovery.yml",
+   "record_sha256": "50014fc7c0ea8e543d7559ca9d078334ea4468955a7076d95b5c3d0c6e24c30f",
+   "schedule_removed": [
+    "17 */6 * * *"
+   ],
+   "classification": "CONSOLIDATE_INTO_STABLE_DISPATCHER",
+   "into": ".github/workflows/validation-dispatcher.yml",
+   "catalog_groups": [
+    "stegneuro-bci-source-discovery.discover"
+   ],
+   "events_after": [
+    "pull_request",
+    "push"
+   ]
+  },
+  {
+   "workflow": ".github/workflows/sync-overlay-from-stegdb.yml",
+   "name": "Sync overlay from StegDB",
+   "triggers_before": [
+    "workflow_dispatch",
+    "schedule"
+   ],
+   "permissions_before": {
+    "workflow": {
+     "contents": "write"
+    },
+    "jobs": {}
+   },
+   "record": "tools/tasks/folded/sync-overlay-from-stegdb.yml",
+   "record_sha256": "6ec4ff0b249bcb75b72a9343886d09331b900055f80cd531cdf210147e96b67b",
+   "schedule_removed": [
+    "17 3 * * *"
+   ],
+   "classification": "ELIMINATE",
+   "status": "PENDING_OWNER_DECISION",
+   "catalog_groups": [],
+   "events_after": []
+  },
+  {
+   "workflow": ".github/workflows/test-readiness.yml",
+   "name": "Test Readiness",
+   "triggers_before": [
+    "push",
+    "pull_request",
+    "workflow_dispatch"
+   ],
+   "permissions_before": {
+    "workflow": {
+     "contents": "read"
+    },
+    "jobs": {}
+   },
+   "record": "tools/tasks/folded/test-readiness.yml",
+   "record_sha256": "8508ba02eab5538440c83e9d43a26fd5a9a4c66185cdc0d4b73f8fcb49225f17",
+   "classification": "CONSOLIDATE_INTO_STABLE_DISPATCHER",
+   "into": ".github/workflows/validation-dispatcher.yml",
+   "catalog_groups": [
+    "test-readiness.repo-smoke"
+   ],
+   "events_after": [
+    "pull_request",
+    "push"
+   ]
+  },
+  {
+   "workflow": ".github/workflows/time-causal-kernel.yml",
+   "name": "Time Causal Kernel",
+   "triggers_before": [
+    "pull_request",
+    "workflow_dispatch"
+   ],
+   "permissions_before": {
+    "workflow": {
+     "contents": "read"
+    },
+    "jobs": {}
+   },
+   "record": "tools/tasks/folded/time-causal-kernel.yml",
+   "record_sha256": "d83c581178d4a6c0740c437676adff56ab2d734ae48be53297481b6dac34abb4",
+   "classification": "CONSOLIDATE_INTO_STABLE_DISPATCHER",
+   "into": ".github/workflows/validation-dispatcher.yml",
+   "catalog_groups": [
+    "time-causal-kernel.validate"
+   ],
+   "events_after": [
+    "pull_request"
+   ]
+  },
+  {
+   "workflow": ".github/workflows/validate-architecture-neutral-admissibility.yml",
+   "name": "Validate Architecture Neutral Admissibility",
+   "triggers_before": [
+    "pull_request",
+    "workflow_dispatch"
+   ],
+   "permissions_before": {
+    "workflow": {
+     "contents": "read"
+    },
+    "jobs": {}
+   },
+   "record": "tools/tasks/folded/validate-architecture-neutral-admissibility.yml",
+   "record_sha256": "478edfe3b208be86879058d857092a66c11d2d364c4f4bc62e056667a0822a07",
+   "classification": "CONSOLIDATE_INTO_STABLE_DISPATCHER",
+   "into": ".github/workflows/validation-dispatcher.yml",
+   "catalog_groups": [
+    "validate-architecture-neutral-admissibility.validate"
+   ],
+   "events_after": [
+    "pull_request"
+   ]
+  },
+  {
+   "workflow": ".github/workflows/validate-gtg-assurance-consumer-compatibility-sweep.yml",
+   "name": "Validate GTG Assurance Consumer Compatibility Sweep",
+   "triggers_before": [
+    "pull_request",
+    "workflow_dispatch"
+   ],
+   "permissions_before": {
+    "workflow": {
+     "contents": "read"
+    },
+    "jobs": {}
+   },
+   "record": "tools/tasks/folded/validate-gtg-assurance-consumer-compatibility-sweep.yml",
+   "record_sha256": "101cc6b595e40290af19290de076e1cd91b8e9734478ff4a7ab708235da97b94",
+   "classification": "CONSOLIDATE_INTO_STABLE_DISPATCHER",
+   "into": ".github/workflows/validation-dispatcher.yml",
+   "catalog_groups": [
+    "validate-gtg-assurance-consumer-compatibility-sweep.validate"
+   ],
+   "events_after": [
+    "pull_request"
+   ]
+  },
+  {
+   "workflow": ".github/workflows/validate-gtg-assurance-reference-integration.yml",
+   "name": "Validate GTG Assurance Reference Integration",
+   "triggers_before": [
+    "pull_request",
+    "workflow_dispatch"
+   ],
+   "permissions_before": {
+    "workflow": {
+     "contents": "read"
+    },
+    "jobs": {}
+   },
+   "record": "tools/tasks/folded/validate-gtg-assurance-reference-integration.yml",
+   "record_sha256": "3e487f477e44b9b71d8297f1af6ed48a603232fc0b0ee36a228936466541377a",
+   "classification": "CONSOLIDATE_INTO_STABLE_DISPATCHER",
+   "into": ".github/workflows/validation-dispatcher.yml",
+   "catalog_groups": [
+    "validate-gtg-assurance-reference-integration.validate"
+   ],
+   "events_after": [
+    "pull_request"
+   ]
+  },
+  {
+   "workflow": ".github/workflows/validate-gtg-r4-challenges.yml",
+   "name": "Validate StegVerse GTG R4 challenges",
+   "triggers_before": [
+    "push",
+    "pull_request",
+    "workflow_dispatch"
+   ],
+   "permissions_before": {
+    "workflow": {
+     "contents": "read"
+    },
+    "jobs": {}
+   },
+   "record": "tools/tasks/folded/validate-gtg-r4-challenges.yml",
+   "record_sha256": "580d5a7d9cd48dcbdb6857b25b375ec98d3733a4668a6a96c1dbd4f6a2df8541",
+   "classification": "CONSOLIDATE_INTO_STABLE_DISPATCHER",
+   "into": ".github/workflows/validation-dispatcher.yml",
+   "catalog_groups": [
+    "validate-gtg-r4-challenges.validate"
+   ],
+   "events_after": [
+    "pull_request",
+    "push"
+   ]
+  },
+  {
+   "workflow": ".github/workflows/validate-gtg-r4-r5-boundary.yml",
+   "name": "Validate StegVerse GTG R4-R5 boundary",
+   "triggers_before": [
+    "pull_request",
+    "push",
+    "workflow_dispatch"
+   ],
+   "permissions_before": {
+    "workflow": {
+     "contents": "read"
+    },
+    "jobs": {}
+   },
+   "record": "tools/tasks/folded/validate-gtg-r4-r5-boundary.yml",
+   "record_sha256": "40a150fb2afa783372bba4fa46705b8b477f7f0adec5d7842d906e03e6201b03",
+   "classification": "CONSOLIDATE_INTO_STABLE_DISPATCHER",
+   "into": ".github/workflows/validation-dispatcher.yml",
+   "catalog_groups": [
+    "validate-gtg-r4-r5-boundary.validate"
+   ],
+   "events_after": [
+    "pull_request",
+    "push"
+   ]
+  },
+  {
+   "workflow": ".github/workflows/validate-gtg-r4-r5-subject-continuity.yml",
+   "name": "Validate StegVerse GTG R4-R5 subject continuity",
+   "triggers_before": [
+    "push",
+    "pull_request",
+    "workflow_dispatch"
+   ],
+   "permissions_before": {
+    "workflow": {
+     "contents": "read"
+    },
+    "jobs": {}
+   },
+   "record": "tools/tasks/folded/validate-gtg-r4-r5-subject-continuity.yml",
+   "record_sha256": "c69dbb556766b48a7490ec1beec1eac62d010a540fb1b7ad7e0d1457bcaeb9ce",
+   "classification": "CONSOLIDATE_INTO_STABLE_DISPATCHER",
+   "into": ".github/workflows/validation-dispatcher.yml",
+   "catalog_groups": [
+    "validate-gtg-r4-r5-subject-continuity.validate"
+   ],
+   "events_after": [
+    "pull_request",
+    "push"
+   ]
+  },
+  {
+   "workflow": ".github/workflows/validate-gtg-r4-r5-temporal-continuity.yml",
+   "name": "Validate StegVerse GTG R4-R5 temporal continuity",
+   "triggers_before": [
+    "pull_request",
+    "push",
+    "workflow_dispatch"
+   ],
+   "permissions_before": {
+    "workflow": {
+     "contents": "read"
+    },
+    "jobs": {}
+   },
+   "record": "tools/tasks/folded/validate-gtg-r4-r5-temporal-continuity.yml",
+   "record_sha256": "b801656cae52026632d40b4d194d4a22b0a9ca433568f8e2eba128d580441422",
+   "classification": "CONSOLIDATE_INTO_STABLE_DISPATCHER",
+   "into": ".github/workflows/validation-dispatcher.yml",
+   "catalog_groups": [
+    "validate-gtg-r4-r5-temporal-continuity.validate"
+   ],
+   "events_after": [
+    "pull_request",
+    "push"
+   ]
+  },
+  {
+   "workflow": ".github/workflows/validate-gtg-r5-reality-contact.yml",
+   "name": "Validate StegVerse GTG R5 reality contact",
+   "triggers_before": [
+    "pull_request",
+    "push",
+    "workflow_dispatch"
+   ],
+   "permissions_before": {
+    "workflow": {
+     "contents": "read"
+    },
+    "jobs": {}
+   },
+   "record": "tools/tasks/folded/validate-gtg-r5-reality-contact.yml",
+   "record_sha256": "d27223b8bcf2f8c623db5ddcc1fdedae89b8da3d56d1e3dcb386b16cc7772512",
+   "classification": "CONSOLIDATE_INTO_STABLE_DISPATCHER",
+   "into": ".github/workflows/validation-dispatcher.yml",
+   "catalog_groups": [
+    "validate-gtg-r5-reality-contact.validate"
+   ],
+   "events_after": [
+    "pull_request",
+    "push"
+   ]
+  },
+  {
+   "workflow": ".github/workflows/validate-gtg-reconstruction-mirror.yml",
+   "name": "Validate GTG reconstruction mirror",
+   "triggers_before": [
+    "pull_request",
+    "push"
+   ],
+   "permissions_before": {
+    "workflow": {
+     "contents": "read"
+    },
+    "jobs": {}
+   },
+   "record": "tools/tasks/folded/validate-gtg-reconstruction-mirror.yml",
+   "record_sha256": "c655429975f55342747f4736a5f45e1ceb7cc8262345f74af1a70e68a48c0bc5",
+   "classification": "CONSOLIDATE_INTO_STABLE_DISPATCHER",
+   "into": ".github/workflows/validation-dispatcher.yml",
+   "catalog_groups": [
+    "validate-gtg-reconstruction-mirror.validate"
+   ],
+   "events_after": [
+    "pull_request",
+    "push"
+   ]
+  },
+  {
+   "workflow": ".github/workflows/validate-gtg.yml",
+   "name": "Validate GTG",
+   "triggers_before": [
+    "push",
+    "pull_request",
+    "workflow_dispatch"
+   ],
+   "permissions_before": {
+    "workflow": {
+     "contents": "read"
+    },
+    "jobs": {}
+   },
+   "record": "tools/tasks/folded/validate-gtg.yml",
+   "record_sha256": "e1f7a1d7d2d07b8b934adf78d236f7ae5f792e18a8c97c43da6fa1feb04b03f3",
+   "classification": "CONSOLIDATE_INTO_STABLE_DISPATCHER",
+   "into": ".github/workflows/validation-dispatcher.yml",
+   "catalog_groups": [
+    "validate-gtg.validate"
+   ],
+   "events_after": [
+    "pull_request",
+    "push"
+   ]
+  },
+  {
+   "workflow": ".github/workflows/validate-independent-review.yml",
+   "name": "Validate Independent Review",
+   "triggers_before": [
+    "pull_request",
+    "push"
+   ],
+   "permissions_before": {
+    "workflow": {
+     "contents": "read"
+    },
+    "jobs": {}
+   },
+   "record": "tools/tasks/folded/validate-independent-review.yml",
+   "record_sha256": "5bf5d3b07a9d5bd7fb59d7b941493866d62d12c022c4986809143fa8fcf95d67",
+   "classification": "CONSOLIDATE_INTO_STABLE_DISPATCHER",
+   "into": ".github/workflows/validation-dispatcher.yml",
+   "catalog_groups": [
+    "validate-independent-review.validate"
+   ],
+   "events_after": [
+    "pull_request",
+    "push"
+   ]
+  },
+  {
+   "workflow": ".github/workflows/validate-research-commons-control.yml",
+   "name": "Validate Research Commons Control State",
+   "triggers_before": [
+    "push",
+    "pull_request",
+    "schedule",
+    "workflow_dispatch"
+   ],
+   "permissions_before": {
+    "workflow": {
+     "contents": "read"
+    },
+    "jobs": {}
+   },
+   "record": "tools/tasks/folded/validate-research-commons-control.yml",
+   "record_sha256": "7e7a0020e46bbb023e95706f6af443ab062e82860b275960f424738e24944869",
+   "schedule_removed": [
+    "17 * * * *"
+   ],
+   "classification": "CONSOLIDATE_INTO_STABLE_DISPATCHER",
+   "into": ".github/workflows/validation-dispatcher.yml",
+   "catalog_groups": [
+    "validate-research-commons-control.validate-control-state"
+   ],
+   "events_after": [
+    "pull_request",
+    "push"
+   ]
+  },
+  {
+   "workflow": ".github/workflows/validate-research-commons-publisher-papers.yml",
+   "name": "Validate Research Commons Publisher Papers",
+   "triggers_before": [
+    "push",
+    "pull_request",
+    "workflow_dispatch"
+   ],
+   "permissions_before": {
+    "workflow": {
+     "contents": "read"
+    },
+    "jobs": {}
+   },
+   "record": "tools/tasks/folded/validate-research-commons-publisher-papers.yml",
+   "record_sha256": "7fbfa99738d550c7a99aa38d0cdb7cdd0211fca7cade243ed5f50cc3fee4b4f0",
+   "classification": "CONSOLIDATE_INTO_STABLE_DISPATCHER",
+   "into": ".github/workflows/validation-dispatcher.yml",
+   "catalog_groups": [
+    "validate-research-commons-publisher-papers.validate"
+   ],
+   "events_after": [
+    "pull_request",
+    "push"
+   ]
+  },
+  {
+   "workflow": ".github/workflows/validate-tt.yml",
+   "name": "Validate Transition Table",
+   "triggers_before": [
+    "push",
+    "pull_request"
+   ],
+   "permissions_before": {
+    "workflow": {
+     "contents": "read"
+    },
+    "jobs": {}
+   },
+   "record": "tools/tasks/folded/validate-tt.yml",
+   "record_sha256": "967121897c0313ca270d08502a6d5ad4365a0af7eb5bd5ed6bfb3b2ae1e58a44",
+   "classification": "CONSOLIDATE_INTO_STABLE_DISPATCHER",
+   "into": ".github/workflows/validation-dispatcher.yml",
+   "catalog_groups": [
+    "validate-tt.validate-tt"
+   ],
+   "events_after": [
+    "pull_request",
+    "push"
+   ]
+  }
+ ],
+ "fail_closed_pending": [
+  {
+   "surface": ".github/workflows/check-research-commons-publisher-drift.yml (workflow_dispatch only, three required typed inputs; read-only drift check)",
+   "now": "record tools/tasks/folded/check-research-commons-publisher-drift.yml; not run",
+   "disposition": "FAIL_CLOSED",
+   "failure_code": "DISPATCH_TRIGGER_REMOVED_BY_G17",
+   "failed_predicate": "PUBLISHER_DRIFT_CHECK_IS_SELECTED_BY_COMMITTED_STATE",
+   "required_evidence_or_repair": "commit the current Publisher identities (source_ref, papers_json_sha, manifest_sha) as a drift-check request under research_commons/ so a catalog group selects it from committed state; no click trigger with typed inputs",
+   "retry_entrypoint": "python research_commons/tools/check_publisher_source_drift.py --source-ref <sha> --papers-json-sha <sha> --manifest-sha <sha> (record tools/tasks/folded/check-research-commons-publisher-drift.yml)",
+   "owning_existing_goal": "G17-WORKFLOW-SURFACE-MINIMIZATION (StegVerse-Labs/.github#167/#168); P4 maintenance StegVerse-org/.github#166",
+   "next_attempt": "Rigel decision on dispatch-only modes (#166); the check stays runnable on request from the record's command"
+  },
+  {
+   "surface": ".github/workflows/complete-gtg-reconstruction-tasks.yml step 'Create or update bounded completion pull request' (writer; permissions_before {\"contents\": \"write\", \"pull-requests\": \"write\"})",
+   "now": "record tools/tasks/folded/complete-gtg-reconstruction-tasks.yml; step not run; the rest of the job is catalog group complete-gtg-reconstruction-tasks.complete-bounded-tasks",
+   "disposition": "FAIL_CLOSED",
+   "failure_code": "SCHEDULED_PR_WRITER_REMOVED_BY_G17",
+   "failed_predicate": "GTG_TASK_COMPLETION_IS_PROPOSED_BY_MANIFEST_WITHOUT_A_HOSTED_WRITE_TOKEN",
+   "required_evidence_or_repair": "a StegVerse worker (or the task author) commits the completer's diff on its own branch; the hosted step used github.token with contents/pull-requests: write and git push --force-with-lease, which the read-only dispatcher does not carry",
+   "retry_entrypoint": "python scripts/complete_gtg_tasks.py (catalog group complete-gtg-reconstruction-tasks.complete-bounded-tasks steps 1-3)",
+   "owning_existing_goal": "G17-WORKFLOW-SURFACE-MINIMIZATION (StegVerse-Labs/.github#167/#168); P4 maintenance StegVerse-org/.github#166",
+   "next_attempt": "Rigel decision on transferred schedules/writers (#166)"
+  },
+  {
+   "surface": ".github/workflows/rigel-validation.yml step 'Persist compact validation evidence' (writer; permissions_before {\"contents\": \"write\"})",
+   "now": "record tools/tasks/folded/rigel-validation.yml; step not run; the rest of the job is catalog group rigel-validation.test-and-simulate",
+   "disposition": "FAIL_CLOSED",
+   "failure_code": "PUSH_TO_MAIN_WRITER_REMOVED_BY_G17",
+   "failed_predicate": "RIGEL_COMPACT_EVIDENCE_IS_COMMITTED_BY_MANIFEST",
+   "required_evidence_or_repair": "commit evidence/rigel-validation/latest/ with the change that alters the simulations (the group's artifact carries the files); the hosted step pushed to main with contents: write",
+   "retry_entrypoint": "python3 tools/tasks/run_catalog.py run --group rigel-validation.test-and-simulate",
+   "owning_existing_goal": "G17-WORKFLOW-SURFACE-MINIMIZATION (StegVerse-Labs/.github#167/#168); P4 maintenance StegVerse-org/.github#166",
+   "next_attempt": "Rigel decision on hosted writers (#166)"
+  },
+  {
+   "surface": ".github/workflows/stegneuro-bci-source-discovery.yml step 'Persist changed continuation state' (writer; permissions_before {\"contents\": \"write\"})",
+   "now": "record tools/tasks/folded/stegneuro-bci-source-discovery.yml; step not run; the rest of the job is catalog group stegneuro-bci-source-discovery.discover",
+   "disposition": "FAIL_CLOSED",
+   "failure_code": "PUSH_WRITER_REMOVED_BY_G17",
+   "failed_predicate": "STEGNEURO_CONTINUATION_STATE_IS_COMMITTED_BY_MANIFEST",
+   "required_evidence_or_repair": "a StegVerse worker or the topic owner (StegScholar#50) commits research_commons/runtime/STEGNEURO-BCI-001/continuation-latest.json; the hosted step committed and pushed it every 6h with contents: write",
+   "retry_entrypoint": "python3 tools/tasks/run_catalog.py run --group stegneuro-bci-source-discovery.discover",
+   "owning_existing_goal": "G17-WORKFLOW-SURFACE-MINIMIZATION (StegVerse-Labs/.github#167/#168); P4 maintenance StegVerse-org/.github#166",
+   "next_attempt": "Rigel decision on transferred schedules/writers (#166)"
+  },
+  {
+   "surface": ".github/workflows/sync-overlay-from-stegdb.yml (workflow_dispatch + schedule 17 3 * * *; contents: write; checks out private stegverse-labs/stegdb at inputs.stegdb_ref (default main) and pushes canon/; GitHub state disabled_inactivity, last run 2026-04-09)",
+   "now": "record tools/tasks/folded/sync-overlay-from-stegdb.yml; not run",
+   "disposition": "FAIL_CLOSED",
+   "failure_code": "CROSS_REPO_CREDENTIAL_AND_SCHEDULED_WRITER_REMOVED_BY_G17",
+   "failed_predicate": "STEGSCHOLAR_OVERLAY_SYNC_READS_A_PINNED_STEGDB_ARTIFACT_WITHOUT_A_REPO_CREDENTIAL",
+   "required_evidence_or_repair": "consume StegDB's pinned canonical-<sha> artifact (StegDB#60 / StegDB#25 pin contract) by committed pin, not a checkout of the private stegverse-labs/stegdb at a moving ref; any credential comes from the SKAP Vault in KV, never a repository secret; the commit-and-push writer needs an owner decision",
+   "retry_entrypoint": "tools/tasks/folded/sync-overlay-from-stegdb.yml",
+   "owning_existing_goal": "G17-WORKFLOW-SURFACE-MINIMIZATION (StegVerse-Labs/.github#167/#168); P4 maintenance StegVerse-org/.github#166",
+   "next_attempt": "after StegDB#60 lands the pinned canonical-<sha> publisher and Rigel names the artifact owner (#166)"
+  }
+ ],
+ "transfer_pending": [],
+ "adaptations": [
+  {
+   "group": "complete-gtg-reconstruction-tasks.complete-bounded-tasks",
+   "step": "Create or update bounded completion pull request",
+   "kind": "writer step removed (FAIL_CLOSED)",
+   "detail": "permissions_before {\"contents\": \"write\", \"pull-requests\": \"write\"} -> contents: read (dispatcher)"
+  },
+  {
+   "group": "observe-gtg-reconstruction-tasks.observe-and-select-next-work",
+   "step": "Observe dependencies and expose executable StegVerse tasks",
+   "kind": "step env removed",
+   "detail": "G17: step env GITHUB_TOKEN: ${{ github.token }} removed (the read-only dispatcher passes no token; the script reads it as optional and falls back to an unauthenticated public read); run body byte-identical"
+  },
+  {
+   "group": "rigel-validation.test-and-simulate",
+   "step": "Persist compact validation evidence",
+   "kind": "writer step removed (FAIL_CLOSED)",
+   "detail": "permissions_before {\"contents\": \"write\"} -> contents: read (dispatcher)"
+  },
+  {
+   "group": "stegneuro-bci-source-discovery.discover",
+   "step": "Persist changed continuation state",
+   "kind": "writer step removed (FAIL_CLOSED)",
+   "detail": "permissions_before {\"contents\": \"write\"} -> contents: read (dispatcher)"
+  }
+ ],
+ "open_decisions": [
+  "hosted writers removed (complete-gtg PR writer, rigel-validation push-to-main evidence, stegneuro continuation push): owner for committing that state, or a registered writer surface (count would be 2)",
+  "dispatch-only drift check (check-research-commons-publisher-drift)",
+  "sync-overlay-from-stegdb: pinned StegDB canonical-<sha> consumption and artifact owner (StegDB#25/#60)"
+ ],
+ "catalog_additions": [
+  {
+   "catalog_groups": [
+    "workflow-surface-registry.validate"
+   ],
+   "reason": "G17: enforces the registry and the folded records"
+  }
+ ]
+}

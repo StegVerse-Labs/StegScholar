@@ -1,0 +1,1 @@
+python research_commons/tools/build_publisher_indexes.py

@@ -1,0 +1,1 @@
+python research_commons/tools/validate_published_research_graph.py --graph research_commons/published_research_graph/fixtures/valid-machine-promoted-after-review.json

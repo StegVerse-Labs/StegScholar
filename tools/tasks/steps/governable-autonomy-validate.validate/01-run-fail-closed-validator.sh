@@ -1,0 +1,1 @@
+python tools/validate_governable_autonomy.py | tee governable-autonomy-validation-receipt.json

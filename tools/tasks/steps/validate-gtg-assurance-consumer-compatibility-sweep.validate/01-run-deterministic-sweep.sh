@@ -1,0 +1,1 @@
+python scripts/validate_gtg_assurance_consumer_compatibility_sweep.py
